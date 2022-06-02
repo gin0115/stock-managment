@@ -50,7 +50,7 @@ return array(
 	'whitelist'                  => array(
 		'PHPUnit\Framework\*',
 		'Composer\Autoload\ClassLoader',
-		'PinkCrab\Headless_Blog\*',
+		'PinkCrab\Stock_Management\*',
 	),
 	'whitelist-global-constants' => true,
 	'whitelist-global-classes'   => true,

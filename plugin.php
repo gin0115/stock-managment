@@ -39,5 +39,3 @@ $app = ( new App_Factory( __DIR__ ) )->with_wp_dice( true )
 
 // Register the plugin lifecycle events.
 $plugin_state_controller = new Plugin_State_Controller($app, __FILE__);
-
-dump($app);

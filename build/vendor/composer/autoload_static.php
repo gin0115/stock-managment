@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit62431815ef05dc6b3985a3cdbc61c040
+class ComposerStaticInit335b6391696e4625c00bbcb692bd3a00
 {
     public static $files = array (
         'be8785f285476d960a9374d1a827f21a' => __DIR__ . '/..' . '/pinkcrab/hook-loader/tests/Fixtures/functions.php',
@@ -13,6 +13,7 @@ class ComposerStaticInit62431815ef05dc6b3985a3cdbc61c040
     public static $prefixLengthsPsr4 = array (
         'P' => 
         array (
+            'PinkCrab\\Stock_Management\\' => 26,
             'PC_Woo_Stock_Man\\eftec\\bladeonehtml\\' => 36,
             'PC_Woo_Stock_Man\\eftec\\bladeone\\' => 32,
             'PC_Woo_Stock_Man\\eftec\\' => 23,
@@ -20,7 +21,6 @@ class ComposerStaticInit62431815ef05dc6b3985a3cdbc61c040
             'PC_Woo_Stock_Man\\Psr\\Http\\Message\\' => 34,
             'PC_Woo_Stock_Man\\Psr\\Container\\' => 31,
             'PC_Woo_Stock_Man\\PinkCrab\\WP_PSR16_Cache\\' => 41,
-            'PC_Woo_Stock_Man\\PinkCrab\\Stock_Management\\' => 43,
             'PC_Woo_Stock_Man\\PinkCrab\\Registerables\\' => 40,
             'PC_Woo_Stock_Man\\PinkCrab\\Plugin_Lifecycle\\' => 43,
             'PC_Woo_Stock_Man\\PinkCrab\\Perique_Admin_Menu\\' => 45,
@@ -40,6 +40,10 @@ class ComposerStaticInit62431815ef05dc6b3985a3cdbc61c040
     );
 
     public static $prefixDirsPsr4 = array (
+        'PinkCrab\\Stock_Management\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/../src',
+        ),
         'PC_Woo_Stock_Man\\eftec\\bladeonehtml\\' => 
         array (
             0 => __DIR__ . '/..' . '/eftec/bladeonehtml/lib',
@@ -68,10 +72,6 @@ class ComposerStaticInit62431815ef05dc6b3985a3cdbc61c040
         'PC_Woo_Stock_Man\\PinkCrab\\WP_PSR16_Cache\\' => 
         array (
             0 => __DIR__ . '/..' . '/pinkcrab/wp-psr16-cache/src',
-        ),
-        'PC_Woo_Stock_Man\\PinkCrab\\Stock_Management\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/../src',
         ),
         'PC_Woo_Stock_Man\\PinkCrab\\Registerables\\' => 
         array (
@@ -277,14 +277,16 @@ class ComposerStaticInit62431815ef05dc6b3985a3cdbc61c040
         'PC_Woo_Stock_Man\\eftec\\bladeone\\BladeOneCacheRedis' => __DIR__ . '/..' . '/eftec/bladeone/lib/BladeOneCacheRedis.php',
         'PC_Woo_Stock_Man\\eftec\\bladeone\\BladeOneCustom' => __DIR__ . '/..' . '/eftec/bladeone/lib/BladeOneCustom.php',
         'PC_Woo_Stock_Man\\eftec\\bladeonehtml\\BladeOneHtml' => __DIR__ . '/..' . '/eftec/bladeonehtml/lib/BladeOneHtml.php',
+        'PinkCrab\\Stock_Management\\Plugin\\Plugin_Settings' => __DIR__ . '/../..' . '/../src/Plugin/Plugin_Settings.php',
+        'PinkCrab\\Stock_Management\\WP_Repository\\Options_Repository' => __DIR__ . '/../..' . '/../src/WP_Repository/Options_Repository.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit62431815ef05dc6b3985a3cdbc61c040::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit62431815ef05dc6b3985a3cdbc61c040::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit62431815ef05dc6b3985a3cdbc61c040::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit335b6391696e4625c00bbcb692bd3a00::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit335b6391696e4625c00bbcb692bd3a00::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit335b6391696e4625c00bbcb692bd3a00::$classMap;
 
         }, null, ClassLoader::class);
     }
