@@ -18,13 +18,13 @@ $builder->set_stubs(
 			'destination' => __DIR__ . '/patchers/wp_patcher.do',
 		),
 		array(
-			'package'     => 'kimhf/woocommerce-stubs',
-			'stubsPath'   => array( $vendor_dir . '/kimhf/woocommerce-stubs/woocommerce-stubs.php' ),
+			'package'     => 'php-stubs/woocommerce-stubs',
+			'stubsPath'   => array( $vendor_dir . '/php-stubs/woocommerce-stubs/woocommerce-stubs.php' ),
 			'destination' => __DIR__ . '/patchers/wc_patcher.do',
 		),
 		array(
-			'package'     => 'kimhf/advanced-custom-fields-pro-stubs',
-			'stubsPath'   => array( $vendor_dir . '/kimhf/advanced-custom-fields-pro-stubs/advanced-custom-fields-pro-stubs.php' ),
+			'package'     => 'php-stubs/acf-pro-stubs',
+			'stubsPath'   => array( $vendor_dir . '/php-stubs/acf-pro-stubs/acf-pro-stubs.php' ),
 			'destination' => __DIR__ . '/patchers/acf_patcher.do',
 		),
 	)

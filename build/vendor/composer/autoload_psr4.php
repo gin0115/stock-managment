@@ -6,6 +6,7 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'PinkCrab\\Stock_Management\\' => array($baseDir . '/../src'),
     'PC_Woo_Stock_Man\\eftec\\bladeonehtml\\' => array($vendorDir . '/eftec/bladeonehtml/lib'),
     'PC_Woo_Stock_Man\\eftec\\bladeone\\' => array($vendorDir . '/eftec/bladeone/lib'),
     'PC_Woo_Stock_Man\\eftec\\' => array($vendorDir . '/eftec/messagecontainer/lib'),
@@ -13,7 +14,6 @@ return array(
     'PC_Woo_Stock_Man\\Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-factory/src', $vendorDir . '/psr/http-message/src'),
     'PC_Woo_Stock_Man\\Psr\\Container\\' => array($vendorDir . '/psr/container/src'),
     'PC_Woo_Stock_Man\\PinkCrab\\WP_PSR16_Cache\\' => array($vendorDir . '/pinkcrab/wp-psr16-cache/src'),
-    'PC_Woo_Stock_Man\\PinkCrab\\Stock_Management\\' => array($baseDir . '/../src'),
     'PC_Woo_Stock_Man\\PinkCrab\\Registerables\\' => array($vendorDir . '/pinkcrab/registerables/src'),
     'PC_Woo_Stock_Man\\PinkCrab\\Plugin_Lifecycle\\' => array($vendorDir . '/pinkcrab/perique-plugin-lifecycle/src'),
     'PC_Woo_Stock_Man\\PinkCrab\\Perique_Admin_Menu\\' => array($vendorDir . '/pinkcrab/perique-admin-menu/src'),
