@@ -1,0 +1,10 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"phpstan.configFile": "phpstan.neon.dist"
+	}
+}
