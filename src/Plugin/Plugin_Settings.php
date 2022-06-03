@@ -21,8 +21,8 @@ class Plugin_Settings {
 	protected const SETTINGS_KEY            = 'pc_woo_stock_man';
 	protected const LOCATION_SITES_KEY      = 'location_sites';
 	protected const LOCATION_BINS_KEY       = 'location_bins';
-	protected const PACK_SIZE_MODIFIERS_KEY = 'location_modifiers';
-	protected const PICK_PARTIAL_ORDER_KEY  = 'location_partial_orders';
+	protected const PACK_SIZE_MODIFIERS_KEY = 'pack_size_modifiers';
+	protected const PICK_PARTIAL_ORDER_KEY  = 'partial_orders';
 
 	/**
 	 * Access for settings and getting from the WP options table
@@ -80,6 +80,7 @@ class Plugin_Settings {
 	protected function set_vars(): void {
 		$vars = $this->options_repository->get( self::SETTINGS_KEY, new \stdClass() );
 
+		// Attempt to get properties from stdClass
 		$get_value = function( string $key, $default ) use ( $vars ) {
 			return is_object( $vars ) && property_exists( $vars, $key )
 				? $vars->$key : $default;
@@ -88,7 +89,7 @@ class Plugin_Settings {
 		$this->use_location_sites      = $get_value( self::LOCATION_SITES_KEY, true );
 		$this->use_location_bins       = $get_value( self::LOCATION_BINS_KEY, true );
 		$this->use_pack_size_modifiers = $get_value( self::PACK_SIZE_MODIFIERS_KEY, false );
-		$this->use_pick_partial_orders = $get_value( self::PICK_PARTIAL_ORDER_KEY, true );
+		$this->use_pick_partial_orders = $get_value( self::PICK_PARTIAL_ORDER_KEY, false );
 	}
 
 	/**

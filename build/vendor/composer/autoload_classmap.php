@@ -147,6 +147,8 @@ return array(
     'PC_Woo_Stock_Man\\eftec\\bladeone\\BladeOneCacheRedis' => $vendorDir . '/eftec/bladeone/lib/BladeOneCacheRedis.php',
     'PC_Woo_Stock_Man\\eftec\\bladeone\\BladeOneCustom' => $vendorDir . '/eftec/bladeone/lib/BladeOneCustom.php',
     'PC_Woo_Stock_Man\\eftec\\bladeonehtml\\BladeOneHtml' => $vendorDir . '/eftec/bladeonehtml/lib/BladeOneHtml.php',
+    'PinkCrab\\Stock_Management\\Exception\\Plugin_Settings_Exception' => $baseDir . '/../src/Exception/Plugin_Settings_Exception.php',
+    'PinkCrab\\Stock_Management\\I18n\\Plugin_Settings_Translations' => $baseDir . '/../src/I18n/Plugin_Settings_Translations.php',
     'PinkCrab\\Stock_Management\\Plugin\\Plugin_Settings' => $baseDir . '/../src/Plugin/Plugin_Settings.php',
     'PinkCrab\\Stock_Management\\WP_Repository\\Options_Repository' => $baseDir . '/../src/WP_Repository/Options_Repository.php',
 );
