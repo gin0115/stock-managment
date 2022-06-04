@@ -10,7 +10,11 @@ parameters:
         - %currentWorkingDirectory%/tests/*
     scanDirectories:
       - build/vendor
+    ignoreErrors:
+        - '#Function get_option invoked with 2 parameters, 0 required#'
     bootstrapFiles:
         - vendor/php-stubs/wordpress-stubs/wordpress-stubs.php
         - vendor/php-stubs/woocommerce-stubs/woocommerce-stubs.php
         #- vendor/php-stubs/acf-pro-stubs/acf-pro-stubs.php
+
+# Function get_option invoked with 2 parameters, 0 required.

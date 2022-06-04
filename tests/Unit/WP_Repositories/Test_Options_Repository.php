@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Sample Test
+ * Unit tests for the Options Repository.
  *
  * @package PinkCrab\Stock_Management\Tests
  * @author Glynn Quelch glynn.quelch@gmail.com
@@ -10,7 +10,6 @@
 namespace PinkCrab\WP_Repository\Tests\Unit\WP_Repository;
 
 use PinkCrab\Stock_Management\WP_Repository\Options_Repository;
-
 
 class Test_Options_Repository extends \WP_UnitTestCase {
 

@@ -6,8 +6,8 @@ $loader = require_once __DIR__.'/autoload.php';
 
 // Aliases for the whitelisted classes. For more information see:
 // https://github.com/humbug/php-scoper/blob/master/README.md#class-whitelisting
-if (!class_exists('ComposerAutoloaderInit335b6391696e4625c00bbcb692bd3a00', false) && !interface_exists('ComposerAutoloaderInit335b6391696e4625c00bbcb692bd3a00', false) && !trait_exists('ComposerAutoloaderInit335b6391696e4625c00bbcb692bd3a00', false)) {
-    spl_autoload_call('PC_Woo_Stock_Man\ComposerAutoloaderInit335b6391696e4625c00bbcb692bd3a00');
+if (!class_exists('ComposerAutoloaderInite88c7f84a9d102b0d3e3b955f26e3862', false) && !interface_exists('ComposerAutoloaderInite88c7f84a9d102b0d3e3b955f26e3862', false) && !trait_exists('ComposerAutoloaderInite88c7f84a9d102b0d3e3b955f26e3862', false)) {
+    spl_autoload_call('PC_Woo_Stock_Man\ComposerAutoloaderInite88c7f84a9d102b0d3e3b955f26e3862');
 }
 if (!class_exists('Composer\Autoload\ClassLoader', false) && !interface_exists('Composer\Autoload\ClassLoader', false) && !trait_exists('Composer\Autoload\ClassLoader', false)) {
     spl_autoload_call('PC_Woo_Stock_Man\Composer\Autoload\ClassLoader');
@@ -267,9 +267,9 @@ if (!class_exists('CallTest', false) && !interface_exists('CallTest', false) && 
 
 // Functions whitelisting. For more information see:
 // https://github.com/humbug/php-scoper/blob/master/README.md#functions-whitelisting
-if (!function_exists('composerRequire335b6391696e4625c00bbcb692bd3a00')) {
-    function composerRequire335b6391696e4625c00bbcb692bd3a00() {
-        return \PC_Woo_Stock_Man\composerRequire335b6391696e4625c00bbcb692bd3a00(...func_get_args());
+if (!function_exists('composerRequiree88c7f84a9d102b0d3e3b955f26e3862')) {
+    function composerRequiree88c7f84a9d102b0d3e3b955f26e3862() {
+        return \PC_Woo_Stock_Man\composerRequiree88c7f84a9d102b0d3e3b955f26e3862(...func_get_args());
     }
 }
 if (!function_exists('message')) {

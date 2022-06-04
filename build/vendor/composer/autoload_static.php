@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit335b6391696e4625c00bbcb692bd3a00
+class ComposerStaticInite88c7f84a9d102b0d3e3b955f26e3862
 {
     public static $files = array (
         'be8785f285476d960a9374d1a827f21a' => __DIR__ . '/..' . '/pinkcrab/hook-loader/tests/Fixtures/functions.php',
@@ -277,6 +277,8 @@ class ComposerStaticInit335b6391696e4625c00bbcb692bd3a00
         'PC_Woo_Stock_Man\\eftec\\bladeone\\BladeOneCacheRedis' => __DIR__ . '/..' . '/eftec/bladeone/lib/BladeOneCacheRedis.php',
         'PC_Woo_Stock_Man\\eftec\\bladeone\\BladeOneCustom' => __DIR__ . '/..' . '/eftec/bladeone/lib/BladeOneCustom.php',
         'PC_Woo_Stock_Man\\eftec\\bladeonehtml\\BladeOneHtml' => __DIR__ . '/..' . '/eftec/bladeonehtml/lib/BladeOneHtml.php',
+        'PinkCrab\\Stock_Management\\Exception\\Plugin_Settings_Exception' => __DIR__ . '/../..' . '/../src/Exception/Plugin_Settings_Exception.php',
+        'PinkCrab\\Stock_Management\\I18n\\Plugin_Settings_Translations' => __DIR__ . '/../..' . '/../src/I18n/Plugin_Settings_Translations.php',
         'PinkCrab\\Stock_Management\\Plugin\\Plugin_Settings' => __DIR__ . '/../..' . '/../src/Plugin/Plugin_Settings.php',
         'PinkCrab\\Stock_Management\\WP_Repository\\Options_Repository' => __DIR__ . '/../..' . '/../src/WP_Repository/Options_Repository.php',
     );
@@ -284,9 +286,9 @@ class ComposerStaticInit335b6391696e4625c00bbcb692bd3a00
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit335b6391696e4625c00bbcb692bd3a00::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit335b6391696e4625c00bbcb692bd3a00::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit335b6391696e4625c00bbcb692bd3a00::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInite88c7f84a9d102b0d3e3b955f26e3862::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInite88c7f84a9d102b0d3e3b955f26e3862::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInite88c7f84a9d102b0d3e3b955f26e3862::$classMap;
 
         }, null, ClassLoader::class);
     }
