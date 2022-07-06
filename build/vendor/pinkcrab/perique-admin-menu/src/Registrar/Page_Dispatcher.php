@@ -20,17 +20,17 @@ declare (strict_types=1);
  * @license http://www.opensource.org/licenses/mit-license.html  MIT License
  * @package PinkCrab\Perique_Admin_Menu
  */
-namespace PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Registrar;
+namespace pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Registrar;
 
 use Throwable;
-use PC_Woo_Stock_Man\PinkCrab\Perique\Services\View\View;
-use PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Page\Page;
-use PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces\DI_Container;
-use PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Registrar\Registrar;
-use PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Group\Abstract_Group;
-use PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Exception\Page_Exception;
-use PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Exception\Group_Exception;
-use PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Validator\Group_Validator;
+use pc_stock_man_v1\PinkCrab\Perique\Services\View\View;
+use pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Page\Page;
+use pc_stock_man_v1\PinkCrab\Perique\Interfaces\DI_Container;
+use pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Registrar\Registrar;
+use pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Group\Abstract_Group;
+use pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Exception\Page_Exception;
+use pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Exception\Group_Exception;
+use pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Validator\Group_Validator;
 class Page_Dispatcher
 {
     /** @var \PinkCrab\Perique\Interfaces\DI_Container */
@@ -39,7 +39,7 @@ class Page_Dispatcher
     protected $view;
     /** @var \PinkCrab\Perique_Admin_Menu\Registrar\Registrar */
     protected $registrar;
-    public function __construct(\PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces\DI_Container $di_container, \PC_Woo_Stock_Man\PinkCrab\Perique\Services\View\View $view, \PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Registrar\Registrar $registrar)
+    public function __construct(\pc_stock_man_v1\PinkCrab\Perique\Interfaces\DI_Container $di_container, \pc_stock_man_v1\PinkCrab\Perique\Services\View\View $view, \pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Registrar\Registrar $registrar)
     {
         $this->di_container = $di_container;
         $this->view = $view;
@@ -51,7 +51,7 @@ class Page_Dispatcher
      * @param \PinkCrab\Perique_Admin_Menu\Group\Abstract_Group $group
      * @return void
      */
-    public function register_group(\PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Group\Abstract_Group $group) : void
+    public function register_group(\pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Group\Abstract_Group $group) : void
     {
         // If current user can not access the group, bail without attempting to register.
         if (!current_user_can($group->get_capability())) {
@@ -59,9 +59,9 @@ class Page_Dispatcher
         }
         try {
             // Validate the group.
-            $validator = new \PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Validator\Group_Validator();
+            $validator = new \pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Validator\Group_Validator();
             if (!$validator->validate($group)) {
-                throw \PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Exception\Group_Exception::failed_validation($validator, $group);
+                throw \pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Exception\Group_Exception::failed_validation($validator, $group);
             }
             $this->register_primary_page($group);
             // Register all pages and attempt to set primary page name in menu.
@@ -84,7 +84,7 @@ class Page_Dispatcher
     {
         add_action('admin_notices', function () use($object, $exception) {
             $class = 'notice notice-error';
-            $message = \sprintf('%s <i>%s</i> generated errors while being registered. This might result in admin pages being missing or broken. <br><b>%s(%s: %s)</b>', \get_class($object) === \PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Page\Page::class ? 'Page' : 'Menu Group', \get_class($object), $exception->getMessage(), $exception->getFile(), $exception->getLine());
+            $message = \sprintf('%s <i>%s</i> generated errors while being registered. This might result in admin pages being missing or broken. <br><b>%s(%s: %s)</b>', \get_class($object) === \pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Page\Page::class ? 'Page' : 'Menu Group', \get_class($object), $exception->getMessage(), $exception->getFile(), $exception->getLine());
             \printf('<div class="%1$s"><p>%2$s</p></div>', esc_attr($class), wp_kses($message, array('br' => array(), 'b' => array(), 'i' => array())));
         });
     }
@@ -94,7 +94,7 @@ class Page_Dispatcher
      * @param \PinkCrab\Perique_Admin_Menu\Group\Abstract_Group $group
      * @return void
      */
-    protected function register_primary_page(\PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Group\Abstract_Group $group) : void
+    protected function register_primary_page(\pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Group\Abstract_Group $group) : void
     {
         $this->registrar->register_primary($this->get_primary_page($group), $group);
     }
@@ -104,12 +104,12 @@ class Page_Dispatcher
      * @param \PinkCrab\Perique_Admin_Menu\Group\Abstract_Group $group
      * @return \PinkCrab\Perique_Admin_Menu\Page\Page
      */
-    protected function get_primary_page(\PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Group\Abstract_Group $group) : \PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Page\Page
+    protected function get_primary_page(\pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Group\Abstract_Group $group) : \pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Page\Page
     {
         /** @var Page */
         $page = $this->di_container->create($group->get_primary_page());
-        if (!\is_object($page) || !\is_a($page, \PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Page\Page::class)) {
-            throw \PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Exception\Page_Exception::invalid_page_type($page);
+        if (!\is_object($page) || !\is_a($page, \pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Page\Page::class)) {
+            throw \pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Exception\Page_Exception::invalid_page_type($page);
         }
         // Register view if requied.
         if (\method_exists($page, 'set_view')) {
@@ -125,12 +125,12 @@ class Page_Dispatcher
      * @return array<Page>
      * @throws Page_Exception (Code 202)
      */
-    protected function get_pages(\PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Group\Abstract_Group $group) : array
+    protected function get_pages(\pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Group\Abstract_Group $group) : array
     {
         return \array_map(function (string $page) : Page {
             $constructed_page = $this->di_container->create($page);
-            if (!\is_object($constructed_page) || !\is_a($constructed_page, \PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Page\Page::class)) {
-                throw \PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Exception\Page_Exception::invalid_page_type($constructed_page);
+            if (!\is_object($constructed_page) || !\is_a($constructed_page, \pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Page\Page::class)) {
+                throw \pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Exception\Page_Exception::invalid_page_type($constructed_page);
             }
             return $constructed_page;
         }, \array_filter($group->get_pages(), function (string $page) use($group) {
@@ -145,7 +145,7 @@ class Page_Dispatcher
      * @phpcs:disable WordPress.WP.GlobalVariablesOverride.Prohibited
      * @throws Group_Exception (code 253)
      */
-    protected function set_primary_page_details(\PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Group\Abstract_Group $group)
+    protected function set_primary_page_details(\pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Group\Abstract_Group $group)
     {
         global $submenu;
         $primary = $this->get_primary_page($group);
@@ -163,7 +163,7 @@ class Page_Dispatcher
      * @param \PinkCrab\Perique_Admin_Menu\Group\Abstract_Group|null $group
      * @return void
      */
-    public function register_subpage(\PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Page\Page $page, string $parent_slug, ?\PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Group\Abstract_Group $group = null) : void
+    public function register_subpage(\pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Page\Page $page, string $parent_slug, ?\pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Group\Abstract_Group $group = null) : void
     {
         // If user cant access the page, bail before attempting to register.
         if (!current_user_can($page->capability())) {
@@ -185,7 +185,7 @@ class Page_Dispatcher
      * @param \PinkCrab\Perique_Admin_Menu\Page\Page $page
      * @return void
      */
-    public function register_single_page(\PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Page\Page $page) : void
+    public function register_single_page(\pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Page\Page $page) : void
     {
         // Register view if required.
         if (\method_exists($page, 'set_view')) {

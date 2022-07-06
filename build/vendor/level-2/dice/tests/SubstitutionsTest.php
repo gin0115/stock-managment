@@ -1,19 +1,19 @@
 <?php
 
-namespace PC_Woo_Stock_Man;
+namespace pc_stock_man_v1;
 
 /* @description Dice - A minimal Dependency Injection Container for PHP *
  * @author Tom Butler tom@r.je *
  * @copyright 2012-2018 Tom Butler <tom@r.je> | https:// r.je/dice.html *
  * @license http:// www.opensource.org/licenses/bsd-license.php BSD License *
  * @version 3.0 */
-class SubstitutionsTest extends \PC_Woo_Stock_Man\DiceTest
+class SubstitutionsTest extends \pc_stock_man_v1\DiceTest
 {
     public function testNoMoreAssign()
     {
         $rule = [];
-        $rule['substitutions']['Bar77'] = [\PC_Woo_Stock_Man\Dice\Dice::INSTANCE => function () {
-            return \PC_Woo_Stock_Man\Baz77::create();
+        $rule['substitutions']['Bar77'] = [\pc_stock_man_v1\Dice\Dice::INSTANCE => function () {
+            return \pc_stock_man_v1\Baz77::create();
         }];
         $dice = $this->dice->addRule('Foo77', $rule);
         $foo = $dice->create('Foo77');
@@ -31,7 +31,7 @@ class SubstitutionsTest extends \PC_Woo_Stock_Man\DiceTest
     public function testSubstitutionText()
     {
         $rule = [];
-        $rule['substitutions']['B'] = [\PC_Woo_Stock_Man\Dice\Dice::INSTANCE => 'ExtendedB'];
+        $rule['substitutions']['B'] = [\pc_stock_man_v1\Dice\Dice::INSTANCE => 'ExtendedB'];
         $dice = $this->dice->addRule('A', $rule);
         $a = $dice->create('A');
         $this->assertInstanceOf('ExtendedB', $a->b);
@@ -39,7 +39,7 @@ class SubstitutionsTest extends \PC_Woo_Stock_Man\DiceTest
     public function testSubstitutionTextMixedCase()
     {
         $rule = [];
-        $rule['substitutions']['B'] = [\PC_Woo_Stock_Man\Dice\Dice::INSTANCE => 'exTenDedb'];
+        $rule['substitutions']['B'] = [\pc_stock_man_v1\Dice\Dice::INSTANCE => 'exTenDedb'];
         $dice = $this->dice->addRule('A', $rule);
         $a = $dice->create('A');
         $this->assertInstanceOf('ExtendedB', $a->b);
@@ -48,7 +48,7 @@ class SubstitutionsTest extends \PC_Woo_Stock_Man\DiceTest
     {
         $rule = [];
         $injection = $this->dice;
-        $rule['substitutions']['B'] = [\PC_Woo_Stock_Man\Dice\Dice::INSTANCE => function () use($injection) {
+        $rule['substitutions']['B'] = [\pc_stock_man_v1\Dice\Dice::INSTANCE => function () use($injection) {
             return $injection->create('ExtendedB');
         }];
         $dice = $this->dice->addRule('A', $rule);
@@ -66,7 +66,7 @@ class SubstitutionsTest extends \PC_Woo_Stock_Man\DiceTest
     public function testSubstitutionString()
     {
         $rule = [];
-        $rule['substitutions']['B'] = [\PC_Woo_Stock_Man\Dice\Dice::INSTANCE => 'ExtendedB'];
+        $rule['substitutions']['B'] = [\pc_stock_man_v1\Dice\Dice::INSTANCE => 'ExtendedB'];
         $dice = $this->dice->addRule('A', $rule);
         $a = $dice->create('A');
         $this->assertInstanceOf('ExtendedB', $a->b);
@@ -81,7 +81,7 @@ class SubstitutionsTest extends \PC_Woo_Stock_Man\DiceTest
     public function testSubstitutionWithFuncCall()
     {
         $rule = [];
-        $rule['substitutions']['Bar'] = [\PC_Woo_Stock_Man\Dice\Dice::INSTANCE => ['Foo2', 'bar']];
+        $rule['substitutions']['Bar'] = [\pc_stock_man_v1\Dice\Dice::INSTANCE => ['Foo2', 'bar']];
         $dice = $this->dice->addRule('Foo', $rule);
         $a = $dice->create('Foo');
         $this->assertInstanceOf('Baz', $a->bar);
@@ -92,29 +92,29 @@ class SubstitutionsTest extends \PC_Woo_Stock_Man\DiceTest
  * @copyright 2012-2018 Tom Butler <tom@r.je> | https:// r.je/dice.html *
  * @license http:// www.opensource.org/licenses/bsd-license.php BSD License *
  * @version 3.0 */
-\class_alias('PC_Woo_Stock_Man\\SubstitutionsTest', 'SubstitutionsTest', \false);
+\class_alias('pc_stock_man_v1\\SubstitutionsTest', 'SubstitutionsTest', \false);
 class Foo
 {
     public $bar;
-    public function __construct(\PC_Woo_Stock_Man\Bar $bar)
+    public function __construct(\pc_stock_man_v1\Bar $bar)
     {
         $this->bar = $bar;
     }
 }
-\class_alias('PC_Woo_Stock_Man\\Foo', 'Foo', \false);
+\class_alias('pc_stock_man_v1\\Foo', 'Foo', \false);
 class Foo2
 {
     public function bar()
     {
-        return new \PC_Woo_Stock_Man\Baz();
+        return new \pc_stock_man_v1\Baz();
     }
 }
-\class_alias('PC_Woo_Stock_Man\\Foo2', 'Foo2', \false);
+\class_alias('pc_stock_man_v1\\Foo2', 'Foo2', \false);
 interface Bar
 {
 }
-\class_alias('PC_Woo_Stock_Man\\Bar', 'Bar', \false);
-class Baz implements \PC_Woo_Stock_Man\Bar
+\class_alias('pc_stock_man_v1\\Bar', 'Bar', \false);
+class Baz implements \pc_stock_man_v1\Bar
 {
 }
-\class_alias('PC_Woo_Stock_Man\\Baz', 'Baz', \false);
+\class_alias('pc_stock_man_v1\\Baz', 'Baz', \false);

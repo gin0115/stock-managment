@@ -22,9 +22,9 @@ declare (strict_types=1);
  * @package PinkCrab\Perique
  * @since 1.0.6
  */
-namespace PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces;
+namespace pc_stock_man_v1\PinkCrab\Perique\Interfaces;
 
-use PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces\DI_Container;
+use pc_stock_man_v1\PinkCrab\Perique\Interfaces\DI_Container;
 interface Inject_DI_Container
 {
     /**
@@ -33,5 +33,5 @@ interface Inject_DI_Container
      * @param DI_Container $container
      * @return void
      */
-    public function set_di_container(\PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces\DI_Container $container) : void;
+    public function set_di_container(\pc_stock_man_v1\PinkCrab\Perique\Interfaces\DI_Container $container) : void;
 }

@@ -20,9 +20,9 @@ declare (strict_types=1);
  * @license http://www.opensource.org/licenses/mit-license.html  MIT License
  * @package PinkCrab\Registerables
  */
-namespace PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar;
+namespace pc_stock_man_v1\PinkCrab\Registerables\Registrar;
 
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Registration_Middleware\Registerable;
+use pc_stock_man_v1\PinkCrab\Registerables\Registration_Middleware\Registerable;
 interface Registrar
 {
     /**
@@ -31,5 +31,5 @@ interface Registrar
      * @param \PinkCrab\Registerables\Registration_Middleware\Registerable $registerable
      * @return void
      */
-    public function register(\PC_Woo_Stock_Man\PinkCrab\Registerables\Registration_Middleware\Registerable $registerable) : void;
+    public function register(\pc_stock_man_v1\PinkCrab\Registerables\Registration_Middleware\Registerable $registerable) : void;
 }

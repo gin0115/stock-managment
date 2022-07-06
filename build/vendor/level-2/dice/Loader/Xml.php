@@ -5,23 +5,23 @@
  * @copyright 2012-2018 Tom Butler <tom@r.je> | https:// r.je/dice.html *
  * @license http:// www.opensource.org/licenses/bsd-license.php BSD License *
  * @version 3.0 */
-namespace PC_Woo_Stock_Man\Dice\Loader;
+namespace pc_stock_man_v1\Dice\Loader;
 
 class Xml
 {
-    private function getComponent(\PC_Woo_Stock_Man\SimpleXmlElement $element, $forceInstance = \false)
+    private function getComponent(\pc_stock_man_v1\SimpleXmlElement $element, $forceInstance = \false)
     {
         if ($forceInstance) {
-            return [\PC_Woo_Stock_Man\Dice\Dice::INSTANCE => (string) $element];
+            return [\pc_stock_man_v1\Dice\Dice::INSTANCE => (string) $element];
         } else {
             if ($element->instance) {
-                return [\PC_Woo_Stock_Man\Dice\Dice::INSTANCE => (string) $element->instance];
+                return [\pc_stock_man_v1\Dice\Dice::INSTANCE => (string) $element->instance];
             } else {
                 return (string) $element;
             }
         }
     }
-    private function loadV1(\PC_Woo_Stock_Man\SimpleXmlElement $xml, \PC_Woo_Stock_Man\Dice\Dice $dice)
+    private function loadV1(\pc_stock_man_v1\SimpleXmlElement $xml, \pc_stock_man_v1\Dice\Dice $dice)
     {
         $rules = [];
         foreach ($xml as $key => $value) {
@@ -71,7 +71,7 @@ class Xml
         }
         return $rules;
     }
-    private function loadV2(\PC_Woo_Stock_Man\SimpleXmlElement $xml, \PC_Woo_Stock_Man\Dice\Dice $dice)
+    private function loadV2(\pc_stock_man_v1\SimpleXmlElement $xml, \pc_stock_man_v1\Dice\Dice $dice)
     {
         $rules = [];
         foreach ($xml as $key => $value) {
@@ -114,15 +114,15 @@ class Xml
         }
         return $rules;
     }
-    public function load($xml, \PC_Woo_Stock_Man\Dice\Dice $dice = null, $displayWarning = \true)
+    public function load($xml, \pc_stock_man_v1\Dice\Dice $dice = null, $displayWarning = \true)
     {
         if ($displayWarning) {
             \trigger_error('Deprecated: The XML loader is being removed in the next version of Dice please use $xmlLoader->convert(\'' . $xml . '\', \'path/to/rules.json\'); to convert the rules to JSON format', \E_USER_WARNING);
         }
         if ($dice === null) {
-            $dice = new \PC_Woo_Stock_Man\Dice\Dice();
+            $dice = new \pc_stock_man_v1\Dice\Dice();
         }
-        if (!$xml instanceof \PC_Woo_Stock_Man\SimpleXmlElement) {
+        if (!$xml instanceof \pc_stock_man_v1\SimpleXmlElement) {
             $xml = \simplexml_load_file($xml);
         }
         $ns = $xml->getNamespaces();

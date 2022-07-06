@@ -1,5 +1,5 @@
 <?php
 
-namespace PC_Woo_Stock_Man;
+namespace pc_stock_man_v1;
 
 echo $post->post_title;

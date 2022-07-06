@@ -9,19 +9,19 @@ declare (strict_types=1);
  * @license http://www.opensource.org/licenses/mit-license.html  MIT License
  * @package PinkCrab\BladeOne
  */
-namespace PC_Woo_Stock_Man\PinkCrab\BladeOne\Tests\Fixtures;
+namespace pc_stock_man_v1\PinkCrab\BladeOne\Tests\Fixtures;
 
-use PC_Woo_Stock_Man\PinkCrab\BladeOne\BladeOne_Provider;
-use PC_Woo_Stock_Man\PinkCrab\BladeOne\Abstract_BladeOne_Config;
-use PC_Woo_Stock_Man\PinkCrab\BladeOne\Tests\Fixtures\Mock_Service;
-class Mock_Blade_Config extends \PC_Woo_Stock_Man\PinkCrab\BladeOne\Abstract_BladeOne_Config
+use pc_stock_man_v1\PinkCrab\BladeOne\BladeOne_Provider;
+use pc_stock_man_v1\PinkCrab\BladeOne\Abstract_BladeOne_Config;
+use pc_stock_man_v1\PinkCrab\BladeOne\Tests\Fixtures\Mock_Service;
+class Mock_Blade_Config extends \pc_stock_man_v1\PinkCrab\BladeOne\Abstract_BladeOne_Config
 {
     protected $service;
-    public function __construct(\PC_Woo_Stock_Man\PinkCrab\BladeOne\Tests\Fixtures\Mock_Service $service)
+    public function __construct(\pc_stock_man_v1\PinkCrab\BladeOne\Tests\Fixtures\Mock_Service $service)
     {
         $this->service = $service;
     }
-    public function config(\PC_Woo_Stock_Man\PinkCrab\BladeOne\BladeOne_Provider $bladeOne) : void
+    public function config(\pc_stock_man_v1\PinkCrab\BladeOne\BladeOne_Provider $bladeOne) : void
     {
         $bladeOne->set_compiled_extension($this->service->get_cache_file_extension());
         $bladeOne->directive('test', '__return_true');

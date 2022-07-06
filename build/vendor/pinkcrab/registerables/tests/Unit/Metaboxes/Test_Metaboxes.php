@@ -9,17 +9,17 @@ declare (strict_types=1);
  * @license http://www.opensource.org/licenses/mit-license.html  MIT License
  * @package PinkCrab\Perique
  */
-namespace PC_Woo_Stock_Man\PinkCrab\Registerables\Tests\Unit\Metaboxes;
+namespace pc_stock_man_v1\PinkCrab\Registerables\Tests\Unit\Metaboxes;
 
-use PC_Woo_Stock_Man\Gin0115\WPUnit_Helpers\Objects;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Box;
-use PC_Woo_Stock_Man\WP_UnitTestCase;
+use pc_stock_man_v1\Gin0115\WPUnit_Helpers\Objects;
+use pc_stock_man_v1\PinkCrab\Registerables\Meta_Box;
+use pc_stock_man_v1\WP_UnitTestCase;
 class Test_Metaboxes extends \WP_UnitTestCase
 {
     /** @testdox It should be possible to create a NORMAL meta box from a static constructor */
     public function test_static_constructor_normal() : void
     {
-        $mb = \PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Box::normal('normal');
+        $mb = \pc_stock_man_v1\PinkCrab\Registerables\Meta_Box::normal('normal');
         $this->assertEquals('normal', $mb->context);
         $this->assertEquals('normal', $mb->key);
         $this->assertEquals('default', $mb->priority);
@@ -27,7 +27,7 @@ class Test_Metaboxes extends \WP_UnitTestCase
     /** @testdox It should be possible to create a SIDE meta box from a static constructor */
     public function test_static_constructor_side() : void
     {
-        $mb = \PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Box::side('side');
+        $mb = \pc_stock_man_v1\PinkCrab\Registerables\Meta_Box::side('side');
         $this->assertEquals('side', $mb->context);
         $this->assertEquals('side', $mb->key);
         $this->assertEquals('default', $mb->priority);
@@ -35,14 +35,14 @@ class Test_Metaboxes extends \WP_UnitTestCase
     /** @testdox it should be possible to set a label for a meta box */
     public function test_set_label() : void
     {
-        $mb = new \PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Box('label');
+        $mb = new \pc_stock_man_v1\PinkCrab\Registerables\Meta_Box('label');
         $mb->label('foo');
         $this->assertEquals('foo', $mb->label);
     }
     /** @testdox it should be possible to set multiple screens the meta box is displayed on. */
     public function test_add_screen() : void
     {
-        $mb = new \PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Box('screen');
+        $mb = new \pc_stock_man_v1\PinkCrab\Registerables\Meta_Box('screen');
         $mb->screen('foo');
         $mb->screen('bar');
         $this->assertContains('foo', $mb->screen);
@@ -51,7 +51,7 @@ class Test_Metaboxes extends \WP_UnitTestCase
     /** @testdox It should be possible to add view vars which are passed through to the view */
     public function test_can_add_view_vars() : void
     {
-        $mb = new \PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Box('view_vars');
+        $mb = new \pc_stock_man_v1\PinkCrab\Registerables\Meta_Box('view_vars');
         $mb->view_vars(array('a' => 'apple', 'b' => 'bananas'));
         $this->assertArrayHasKey('a', $mb->view_vars);
         $this->assertEquals('apple', $mb->view_vars['a']);
@@ -61,14 +61,14 @@ class Test_Metaboxes extends \WP_UnitTestCase
     /** @testdox it should be possible to set a view template for a meta box */
     public function test_set_view_template() : void
     {
-        $mb = new \PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Box('view_template');
+        $mb = new \pc_stock_man_v1\PinkCrab\Registerables\Meta_Box('view_template');
         $mb->view_template('foo');
         $this->assertEquals('foo', $mb->view_template);
     }
     /** @testdox it should be possible to set a view callable for a meta box */
     public function test_set_view_callable() : void
     {
-        $mb = new \PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Box('view_callable');
+        $mb = new \pc_stock_man_v1\PinkCrab\Registerables\Meta_Box('view_callable');
         $func = function () {
         };
         $mb->view($func);
@@ -81,7 +81,7 @@ class Test_Metaboxes extends \WP_UnitTestCase
      */
     public function test_can_add_actions() : void
     {
-        $mb = \PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Box::normal('test');
+        $mb = \pc_stock_man_v1\PinkCrab\Registerables\Meta_Box::normal('test');
         $mb->add_action('true', '__return_true', 999, 5);
         $mb->add_action('false', '__return_false');
         $this->assertNotEmpty($mb->actions);

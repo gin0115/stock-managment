@@ -20,12 +20,12 @@ declare (strict_types=1);
  * @license http://www.opensource.org/licenses/mit-license.html  MIT License
  * @package PinkCrab\Registerables\Validator
  */
-namespace PC_Woo_Stock_Man\PinkCrab\Registerables\Validator;
+namespace pc_stock_man_v1\PinkCrab\Registerables\Validator;
 
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Post_Type;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Validator\Abstract_Validator;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Registration_Middleware\Registerable;
-class Post_Type_Validator extends \PC_Woo_Stock_Man\PinkCrab\Registerables\Validator\Abstract_Validator
+use pc_stock_man_v1\PinkCrab\Registerables\Post_Type;
+use pc_stock_man_v1\PinkCrab\Registerables\Validator\Abstract_Validator;
+use pc_stock_man_v1\PinkCrab\Registerables\Registration_Middleware\Registerable;
+class Post_Type_Validator extends \pc_stock_man_v1\PinkCrab\Registerables\Validator\Abstract_Validator
 {
     protected const REQUIRED_FIELDS = array('key', 'singular', 'plural');
     /**
@@ -34,10 +34,10 @@ class Post_Type_Validator extends \PC_Woo_Stock_Man\PinkCrab\Registerables\Valid
      * @param \PinkCrab\Registerables\Registration_Middleware\Registerable $object
      * @return bool
      */
-    public function validate(\PC_Woo_Stock_Man\PinkCrab\Registerables\Registration_Middleware\Registerable $object) : bool
+    public function validate(\pc_stock_man_v1\PinkCrab\Registerables\Registration_Middleware\Registerable $object) : bool
     {
         // If this is not a valid post type, just bail here.
-        if (!\is_a($object, \PC_Woo_Stock_Man\PinkCrab\Registerables\Post_Type::class)) {
+        if (!\is_a($object, \pc_stock_man_v1\PinkCrab\Registerables\Post_Type::class)) {
             $this->add_error(\sprintf('%s is not a valid Post Type Model', \get_class($object)));
             return \false;
         }
@@ -53,7 +53,7 @@ class Post_Type_Validator extends \PC_Woo_Stock_Man\PinkCrab\Registerables\Valid
      * @param Post_Type $post_type
      * @return void
      */
-    protected function has_required_fields(\PC_Woo_Stock_Man\PinkCrab\Registerables\Post_Type $post_type) : void
+    protected function has_required_fields(\pc_stock_man_v1\PinkCrab\Registerables\Post_Type $post_type) : void
     {
         foreach (self::REQUIRED_FIELDS as $field) {
             if (!\is_string($post_type->{$field}) || \mb_strlen($post_type->{$field}) === 0) {

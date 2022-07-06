@@ -21,7 +21,7 @@ declare (strict_types=1);
  * @package PinkCrab\Perique\Exceptions
  * @version 0.4.0
  */
-namespace PC_Woo_Stock_Man\PinkCrab\Perique\Exceptions;
+namespace pc_stock_man_v1\PinkCrab\Perique\Exceptions;
 
 use Exception;
 class App_Initialization_Exception extends \Exception
@@ -31,30 +31,30 @@ class App_Initialization_Exception extends \Exception
      * @code 1
      * @return App_Initialization_Exception
      */
-    public static function requires_di_container() : \PC_Woo_Stock_Man\PinkCrab\Perique\Exceptions\App_Initialization_Exception
+    public static function requires_di_container() : \pc_stock_man_v1\PinkCrab\Perique\Exceptions\App_Initialization_Exception
     {
         $message = 'The Application must be populated with a DI_Container before booting.';
-        return new \PC_Woo_Stock_Man\PinkCrab\Perique\Exceptions\App_Initialization_Exception($message, 1);
+        return new \pc_stock_man_v1\PinkCrab\Perique\Exceptions\App_Initialization_Exception($message, 1);
     }
     /**
      * Returns an exception if attempting to overwrite the DI Container.
      * @code 2
      * @return App_Initialization_Exception
      */
-    public static function di_container_exists() : \PC_Woo_Stock_Man\PinkCrab\Perique\Exceptions\App_Initialization_Exception
+    public static function di_container_exists() : \pc_stock_man_v1\PinkCrab\Perique\Exceptions\App_Initialization_Exception
     {
         $message = 'App already contains a DI Container, can not redeclare.';
-        return new \PC_Woo_Stock_Man\PinkCrab\Perique\Exceptions\App_Initialization_Exception($message, 2);
+        return new \pc_stock_man_v1\PinkCrab\Perique\Exceptions\App_Initialization_Exception($message, 2);
     }
     /**
      * Returns an exception if the Registration_Service is not defined.
      * @code 3
      * @return App_Initialization_Exception
      */
-    public static function requires_registration_service() : \PC_Woo_Stock_Man\PinkCrab\Perique\Exceptions\App_Initialization_Exception
+    public static function requires_registration_service() : \pc_stock_man_v1\PinkCrab\Perique\Exceptions\App_Initialization_Exception
     {
         $message = 'App has not defined Registration Service, this must be set before use.';
-        return new \PC_Woo_Stock_Man\PinkCrab\Perique\Exceptions\App_Initialization_Exception($message, 3);
+        return new \pc_stock_man_v1\PinkCrab\Perique\Exceptions\App_Initialization_Exception($message, 3);
     }
     /**
      * Returns an exception if App hasn't been initialised and its getters are accessed
@@ -62,30 +62,30 @@ class App_Initialization_Exception extends \Exception
      * @param string $service The service which has been called without initialising the app.
      * @return App_Initialization_Exception
      */
-    public static function app_not_initialized(string $service) : \PC_Woo_Stock_Man\PinkCrab\Perique\Exceptions\App_Initialization_Exception
+    public static function app_not_initialized(string $service) : \pc_stock_man_v1\PinkCrab\Perique\Exceptions\App_Initialization_Exception
     {
         $message = "App must be initialised before calling {$service}";
-        return new \PC_Woo_Stock_Man\PinkCrab\Perique\Exceptions\App_Initialization_Exception($message, 4);
+        return new \pc_stock_man_v1\PinkCrab\Perique\Exceptions\App_Initialization_Exception($message, 4);
     }
     /**
      * Returns an exception for trying to redefine the App_Config if its already been set.
      * @code 5
      * @return App_Initialization_Exception
      */
-    public static function app_config_exists() : \PC_Woo_Stock_Man\PinkCrab\Perique\Exceptions\App_Initialization_Exception
+    public static function app_config_exists() : \pc_stock_man_v1\PinkCrab\Perique\Exceptions\App_Initialization_Exception
     {
         $message = 'Can not redeclare App_Config as its already set to the application';
-        return new \PC_Woo_Stock_Man\PinkCrab\Perique\Exceptions\App_Initialization_Exception($message, 5);
+        return new \pc_stock_man_v1\PinkCrab\Perique\Exceptions\App_Initialization_Exception($message, 5);
     }
     /**
      * Returns an exception for trying to redefine the Registration_Service if its already been set.
      * @code 7
      * @return App_Initialization_Exception
      */
-    public static function registration_exists() : \PC_Woo_Stock_Man\PinkCrab\Perique\Exceptions\App_Initialization_Exception
+    public static function registration_exists() : \pc_stock_man_v1\PinkCrab\Perique\Exceptions\App_Initialization_Exception
     {
         $message = 'Can not redeclare Registration_Service as its already set to the application';
-        return new \PC_Woo_Stock_Man\PinkCrab\Perique\Exceptions\App_Initialization_Exception($message, 7);
+        return new \pc_stock_man_v1\PinkCrab\Perique\Exceptions\App_Initialization_Exception($message, 7);
     }
     /**
      * Returns an exception for trying to boot application without defining required properties
@@ -93,20 +93,20 @@ class App_Initialization_Exception extends \Exception
      * @param array<int,string> $errors
      * @return App_Initialization_Exception
      */
-    public static function failed_boot_validation(array $errors) : \PC_Woo_Stock_Man\PinkCrab\Perique\Exceptions\App_Initialization_Exception
+    public static function failed_boot_validation(array $errors) : \pc_stock_man_v1\PinkCrab\Perique\Exceptions\App_Initialization_Exception
     {
         $message = \sprintf('App failed boot validation : %s', \join(',', $errors));
-        return new \PC_Woo_Stock_Man\PinkCrab\Perique\Exceptions\App_Initialization_Exception($message, 6);
+        return new \pc_stock_man_v1\PinkCrab\Perique\Exceptions\App_Initialization_Exception($message, 6);
     }
     /**
      * Returns an exception for trying to redefine the Loader if its already been set.
      * @code 8
      * @return App_Initialization_Exception
      */
-    public static function loader_exists() : \PC_Woo_Stock_Man\PinkCrab\Perique\Exceptions\App_Initialization_Exception
+    public static function loader_exists() : \pc_stock_man_v1\PinkCrab\Perique\Exceptions\App_Initialization_Exception
     {
         $message = 'Can not redeclare Loader as its already set to the application';
-        return new \PC_Woo_Stock_Man\PinkCrab\Perique\Exceptions\App_Initialization_Exception($message, 8);
+        return new \pc_stock_man_v1\PinkCrab\Perique\Exceptions\App_Initialization_Exception($message, 8);
     }
     /**
      * Returns an exception for trying to create registration middleware that is not middleware.
@@ -114,9 +114,9 @@ class App_Initialization_Exception extends \Exception
      * @param string $class
      * @return App_Initialization_Exception
      */
-    public static function invalid_registration_middleware_instance(string $class) : \PC_Woo_Stock_Man\PinkCrab\Perique\Exceptions\App_Initialization_Exception
+    public static function invalid_registration_middleware_instance(string $class) : \pc_stock_man_v1\PinkCrab\Perique\Exceptions\App_Initialization_Exception
     {
         $message = \sprintf('%s is not a valid instance of Registration_Middleware', $class);
-        return new \PC_Woo_Stock_Man\PinkCrab\Perique\Exceptions\App_Initialization_Exception($message, 9);
+        return new \pc_stock_man_v1\PinkCrab\Perique\Exceptions\App_Initialization_Exception($message, 9);
     }
 }

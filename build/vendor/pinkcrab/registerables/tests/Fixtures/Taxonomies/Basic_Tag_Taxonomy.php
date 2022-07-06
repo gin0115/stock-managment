@@ -9,10 +9,10 @@ declare (strict_types=1);
  * @license http://www.opensource.org/licenses/mit-license.html  MIT License
  * @package PinkCrab\Registerables
  */
-namespace PC_Woo_Stock_Man\PinkCrab\Registerables\Tests\Fixtures\Taxonomies;
+namespace pc_stock_man_v1\PinkCrab\Registerables\Tests\Fixtures\Taxonomies;
 
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Taxonomy;
-class Basic_Tag_Taxonomy extends \PC_Woo_Stock_Man\PinkCrab\Registerables\Taxonomy
+use pc_stock_man_v1\PinkCrab\Registerables\Taxonomy;
+class Basic_Tag_Taxonomy extends \pc_stock_man_v1\PinkCrab\Registerables\Taxonomy
 {
     public $slug = 'basic_tag_tax';
     public $singular = 'Basic Tag Taxonomy';

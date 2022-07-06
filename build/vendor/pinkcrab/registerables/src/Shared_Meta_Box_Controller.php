@@ -22,18 +22,18 @@ declare (strict_types=1);
  * @package PinkCrab\Registerables
  * @since 0.7.0
  */
-namespace PC_Woo_Stock_Man\PinkCrab\Registerables;
+namespace pc_stock_man_v1\PinkCrab\Registerables;
 
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Box;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Registration_Middleware\Registerable;
-abstract class Shared_Meta_Box_Controller implements \PC_Woo_Stock_Man\PinkCrab\Registerables\Registration_Middleware\Registerable
+use pc_stock_man_v1\PinkCrab\Registerables\Meta_Box;
+use pc_stock_man_v1\PinkCrab\Registerables\Registration_Middleware\Registerable;
+abstract class Shared_Meta_Box_Controller implements \pc_stock_man_v1\PinkCrab\Registerables\Registration_Middleware\Registerable
 {
     /**
      * The primary function which the meta boxes model is defined.
      *
      * @return Meta_Box
      */
-    public abstract function meta_box() : \PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Box;
+    public abstract function meta_box() : \pc_stock_man_v1\PinkCrab\Registerables\Meta_Box;
     /**
      * Sets any meta data against the meta box.
      *

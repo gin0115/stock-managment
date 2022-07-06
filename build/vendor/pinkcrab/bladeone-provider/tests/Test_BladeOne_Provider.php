@@ -9,14 +9,14 @@ declare (strict_types=1);
  * @license http://www.opensource.org/licenses/mit-license.html  MIT License
  * @package PinkCrab\BladeOne
  */
-namespace PC_Woo_Stock_Man\PinkCrab\BladeOne\Tests;
+namespace pc_stock_man_v1\PinkCrab\BladeOne\Tests;
 
-use PC_Woo_Stock_Man\WP_UnitTestCase;
+use pc_stock_man_v1\WP_UnitTestCase;
 use BadMethodCallException;
-use PC_Woo_Stock_Man\eftec\bladeone\BladeOne;
-use PC_Woo_Stock_Man\Gin0115\WPUnit_Helpers\Objects;
-use PC_Woo_Stock_Man\PinkCrab\BladeOne\BladeOne_Provider;
-use PC_Woo_Stock_Man\PinkCrab\Perique\Services\View\View;
+use pc_stock_man_v1\eftec\bladeone\BladeOne;
+use pc_stock_man_v1\Gin0115\WPUnit_Helpers\Objects;
+use pc_stock_man_v1\PinkCrab\BladeOne\BladeOne_Provider;
+use pc_stock_man_v1\PinkCrab\Perique\Services\View\View;
 class Test_BladeOne_Provider extends \WP_UnitTestCase
 {
     protected static $blade;
@@ -25,11 +25,11 @@ class Test_BladeOne_Provider extends \WP_UnitTestCase
         parent::setup();
         static::$blade = $this->get_provider();
     }
-    public function get_provider() : \PC_Woo_Stock_Man\PinkCrab\BladeOne\BladeOne_Provider
+    public function get_provider() : \pc_stock_man_v1\PinkCrab\BladeOne\BladeOne_Provider
     {
         $cache = \dirname(__FILE__) . '/files/cache';
         $views = \dirname(__FILE__) . '/files/views';
-        return \PC_Woo_Stock_Man\PinkCrab\BladeOne\BladeOne_Provider::init($views, $cache, 5);
+        return \pc_stock_man_v1\PinkCrab\BladeOne\BladeOne_Provider::init($views, $cache, 5);
     }
     /**
      * Test is intance of bladeone
@@ -38,7 +38,7 @@ class Test_BladeOne_Provider extends \WP_UnitTestCase
      */
     public function test_can_construct_from_provider() : void
     {
-        $this->assertInstanceOf(\PC_Woo_Stock_Man\PinkCrab\BladeOne\BladeOne_Provider::class, static::$blade);
+        $this->assertInstanceOf(\pc_stock_man_v1\PinkCrab\BladeOne\BladeOne_Provider::class, static::$blade);
     }
     /**
      * Test can call out blade.
@@ -47,7 +47,7 @@ class Test_BladeOne_Provider extends \WP_UnitTestCase
      */
     public function test_can_get_blade() : void
     {
-        $this->assertInstanceOf(\PC_Woo_Stock_Man\eftec\bladeone\BladeOne::class, static::$blade->get_blade());
+        $this->assertInstanceOf(\pc_stock_man_v1\eftec\bladeone\BladeOne::class, static::$blade->get_blade());
     }
     /**
      * Test can render a view (print)
@@ -66,7 +66,7 @@ class Test_BladeOne_Provider extends \WP_UnitTestCase
      */
     public function test_can_return_a_view() : void
     {
-        $this->assertEquals('rendered', static::$blade->render('testview', array('foo' => 'rendered'), \PC_Woo_Stock_Man\PinkCrab\Perique\Services\View\View::RETURN_VIEW));
+        $this->assertEquals('rendered', static::$blade->render('testview', array('foo' => 'rendered'), \pc_stock_man_v1\PinkCrab\Perique\Services\View\View::RETURN_VIEW));
     }
     /**
      * Test can call an instanced method.
@@ -132,7 +132,7 @@ class Test_BladeOne_Provider extends \WP_UnitTestCase
     {
         $this->expectOutputRegex('/<button/');
         $this->expectOutputRegex('/New Component/');
-        static::$blade->render('testhtml', array('foo' => 'rendered'), \PC_Woo_Stock_Man\PinkCrab\Perique\Services\View\View::PRINT_VIEW);
+        static::$blade->render('testhtml', array('foo' => 'rendered'), \pc_stock_man_v1\PinkCrab\Perique\Services\View\View::PRINT_VIEW);
     }
     /** @testdox It should be possible to define if blade templates should be allowed to pipe values through callables. */
     public function test_allow_pipe() : void
@@ -156,8 +156,8 @@ class Test_BladeOne_Provider extends \WP_UnitTestCase
             return "<?php echo {$expression};?>";
         });
         $blade = $provider->get_blade();
-        $this->assertCount(1, \PC_Woo_Stock_Man\Gin0115\WPUnit_Helpers\Objects::get_property($blade, 'customDirectives'));
-        $this->assertArrayHasKey('foo', \PC_Woo_Stock_Man\Gin0115\WPUnit_Helpers\Objects::get_property($blade, 'customDirectives'));
+        $this->assertCount(1, \pc_stock_man_v1\Gin0115\WPUnit_Helpers\Objects::get_property($blade, 'customDirectives'));
+        $this->assertArrayHasKey('foo', \pc_stock_man_v1\Gin0115\WPUnit_Helpers\Objects::get_property($blade, 'customDirectives'));
     }
     /** @testdox It should be possible to define a blade directive from the provider. */
     public function test_add_directive_rt() : void
@@ -167,8 +167,8 @@ class Test_BladeOne_Provider extends \WP_UnitTestCase
             return "<?php echo {$expression};?>";
         });
         $blade = $provider->get_blade();
-        $this->assertCount(1, \PC_Woo_Stock_Man\Gin0115\WPUnit_Helpers\Objects::get_property($blade, 'customDirectivesRT'));
-        $this->assertArrayHasKey('bar', \PC_Woo_Stock_Man\Gin0115\WPUnit_Helpers\Objects::get_property($blade, 'customDirectivesRT'));
+        $this->assertCount(1, \pc_stock_man_v1\Gin0115\WPUnit_Helpers\Objects::get_property($blade, 'customDirectivesRT'));
+        $this->assertArrayHasKey('bar', \pc_stock_man_v1\Gin0115\WPUnit_Helpers\Objects::get_property($blade, 'customDirectivesRT'));
     }
     /** @testdox It should be possible to define an include alias from the provider */
     public function test_add_include() : void
@@ -176,7 +176,7 @@ class Test_BladeOne_Provider extends \WP_UnitTestCase
         $provider = $this->get_provider();
         $provider->add_include('view.admin.bar', 'adminBar');
         $blade = $provider->get_blade();
-        $directives = \PC_Woo_Stock_Man\Gin0115\WPUnit_Helpers\Objects::get_property($blade, 'customDirectives');
+        $directives = \pc_stock_man_v1\Gin0115\WPUnit_Helpers\Objects::get_property($blade, 'customDirectives');
         $this->assertArrayHasKey('adminBar', $directives);
         // Use reflection to access closure
         $func = new \ReflectionFunction($directives['adminBar']);
@@ -188,22 +188,22 @@ class Test_BladeOne_Provider extends \WP_UnitTestCase
     public function test_add_alias_class() : void
     {
         $provider = $this->get_provider();
-        $provider->add_alias_classes('self', \PC_Woo_Stock_Man\PinkCrab\BladeOne\BladeOne_Provider::class);
+        $provider->add_alias_classes('self', \pc_stock_man_v1\PinkCrab\BladeOne\BladeOne_Provider::class);
         $blade = $provider->get_blade();
-        $this->assertEquals(\PC_Woo_Stock_Man\PinkCrab\BladeOne\BladeOne_Provider::class, $blade->aliasClasses['self']);
+        $this->assertEquals(\pc_stock_man_v1\PinkCrab\BladeOne\BladeOne_Provider::class, $blade->aliasClasses['self']);
         $this->assertArrayHasKey('self', $blade->aliasClasses);
     }
     /** @testdox It should be possible to set the mode blade renders using. */
     public function test_set_mode() : void
     {
         $provider = $this->get_provider();
-        $provider->set_mode(\PC_Woo_Stock_Man\eftec\bladeone\BladeOne::MODE_AUTO);
+        $provider->set_mode(\pc_stock_man_v1\eftec\bladeone\BladeOne::MODE_AUTO);
         $this->assertEquals(0, $provider->get_blade()->getMode());
-        $provider->set_mode(\PC_Woo_Stock_Man\eftec\bladeone\BladeOne::MODE_DEBUG);
+        $provider->set_mode(\pc_stock_man_v1\eftec\bladeone\BladeOne::MODE_DEBUG);
         $this->assertEquals(5, $provider->get_blade()->getMode());
-        $provider->set_mode(\PC_Woo_Stock_Man\eftec\bladeone\BladeOne::MODE_FAST);
+        $provider->set_mode(\pc_stock_man_v1\eftec\bladeone\BladeOne::MODE_FAST);
         $this->assertEquals(2, $provider->get_blade()->getMode());
-        $provider->set_mode(\PC_Woo_Stock_Man\eftec\bladeone\BladeOne::MODE_SLOW);
+        $provider->set_mode(\pc_stock_man_v1\eftec\bladeone\BladeOne::MODE_SLOW);
         $this->assertEquals(1, $provider->get_blade()->getMode());
     }
     /** @testdox It should be possible to share a value globally between al templates. */
@@ -212,8 +212,8 @@ class Test_BladeOne_Provider extends \WP_UnitTestCase
         $provider = $this->get_provider();
         $provider->share('foo', 'bar');
         $blade = $provider->get_blade();
-        $this->assertArrayHasKey('foo', \PC_Woo_Stock_Man\Gin0115\WPUnit_Helpers\Objects::get_property($blade, 'variablesGlobal'));
-        $this->assertEquals('bar', \PC_Woo_Stock_Man\Gin0115\WPUnit_Helpers\Objects::get_property($blade, 'variablesGlobal')['foo']);
+        $this->assertArrayHasKey('foo', \pc_stock_man_v1\Gin0115\WPUnit_Helpers\Objects::get_property($blade, 'variablesGlobal'));
+        $this->assertEquals('bar', \pc_stock_man_v1\Gin0115\WPUnit_Helpers\Objects::get_property($blade, 'variablesGlobal')['foo']);
     }
     /** @testdox It should be possible to set a resolver for injecting into bladeone */
     public function test_set_inject_resolver() : void
@@ -221,7 +221,7 @@ class Test_BladeOne_Provider extends \WP_UnitTestCase
         $provider = $this->get_provider();
         $provider->set_inject_resolver('__return_false');
         $blade = $provider->get_blade();
-        $this->assertEquals('__return_false', \PC_Woo_Stock_Man\Gin0115\WPUnit_Helpers\Objects::get_property($blade, 'injectResolver'));
+        $this->assertEquals('__return_false', \pc_stock_man_v1\Gin0115\WPUnit_Helpers\Objects::get_property($blade, 'injectResolver'));
     }
     /** @testdox It should be possible to set a custom file extension for templates from the provider */
     public function test_set_file_extension() : void

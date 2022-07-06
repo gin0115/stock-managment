@@ -20,9 +20,9 @@ declare (strict_types=1);
  * @license http://www.opensource.org/licenses/mit-license.html  MIT License
  * @package PinkCrab\Registerables\Validator
  */
-namespace PC_Woo_Stock_Man\PinkCrab\Registerables\Validator;
+namespace pc_stock_man_v1\PinkCrab\Registerables\Validator;
 
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Registration_Middleware\Registerable;
+use pc_stock_man_v1\PinkCrab\Registerables\Registration_Middleware\Registerable;
 abstract class Abstract_Validator
 {
     /**
@@ -76,5 +76,5 @@ abstract class Abstract_Validator
      * @param \PinkCrab\Registerables\Registration_Middleware\Registerable $object
      * @return bool
      */
-    public abstract function validate(\PC_Woo_Stock_Man\PinkCrab\Registerables\Registration_Middleware\Registerable $object) : bool;
+    public abstract function validate(\pc_stock_man_v1\PinkCrab\Registerables\Registration_Middleware\Registerable $object) : bool;
 }

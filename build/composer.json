@@ -1,9 +1,9 @@
 {
-    "name": "pinkcrab\/woo-stock-man",
+    "name": "pinkcrab\/stock-management",
     "type": "library",
-    "description": "A plugin for making stock management with WooCommerce much easier from a warehousing persoective",
+    "description": "Plugin for making stock management much easier",
     "keywords": [],
-    "homepage": "https:\/\/github.com\/gin0115\/stock-managment",
+    "homepage": "https:\/\/github.com\/gin0115\/stock-management",
     "license": "MIT",
     "authors": [
         {
@@ -14,13 +14,13 @@
     ],
     "autoload": {
         "psr-4": {
-            "PC_Woo_Stock_Man\\PinkCrab\\Stock_Management\\": "..\/src"
+            "PinkCrab\\Stock_Management\\": "..\/src"
         },
         "files": []
     },
     "autoload-dev": {
         "psr-4": {
-            "PC_Woo_Stock_Man\\PinkCrab\\Stock_Management\\Tests\\": "..\/tests"
+            "PinkCrab\\Stock_Management\\Tests\\": "..\/tests"
         }
     },
     "require-dev": {
@@ -34,23 +34,23 @@
         "wp-coding-standards\/wpcs": "*",
         "object-calisthenics\/phpcs-calisthenics-rules": "*",
         "yoast\/phpunit-polyfills": "^0.2.0 || ^1.0.0",
-        "symfony\/var-dumper": "4.*",
+        "symfony\/var-dumper": "*",
         "gin0115\/wpunit-helpers": "~1.0.0",
         "jetbrains\/phpstorm-stubs": "dev-master",
-        "humbug\/php-scoper": "^0.14.0",
+        "humbug\/php-scoper": "*",
         "bamarni\/composer-bin-plugin": "^1.4",
         "kimhf\/woocommerce-stubs": "^0.2.0",
         "kimhf\/advanced-custom-fields-pro-stubs": "^5.9",
-        "pxlrbt\/php-scoper-prefix-remover": "^0.1.0"
+        "pxlrbt\/php-scoper-prefix-remover": "*"
     },
     "require": {
         "php": ">=7.1.0",
         "pinkcrab\/perique-framework-core": "^1",
-        "pinkcrab\/registerables": "^0.8.1",
-        "pinkcrab\/perique-plugin-lifecycle": "^0.2.0",
-        "pinkcrab\/ajax": "^1.0",
-        "pinkcrab\/wp-psr16-cache": "^2.0",
         "pinkcrab\/bladeone-provider": "^1.2",
+        "pinkcrab\/registerables": "^0.8",
+        "pinkcrab\/wp-rest-schema": "0.0.1-beta3",
+        "pinkcrab\/perique-route": "^0.1",
+        "pinkcrab\/perique-plugin-lifecycle": "^0.2",
         "pinkcrab\/perique-admin-menu": "^0.2.0"
     },
     "scripts": {
@@ -63,7 +63,7 @@
         "build-dev": "bash build.sh --dev",
         "build-dump": "composer dump-autoload --working-dir build --classmap-authoritative"
     },
-    "prefer-stable": true,
+    "prefer-stable": false,
     "config": {
         "prepend-autoloader": true,
         "autoloader-suffix": "",

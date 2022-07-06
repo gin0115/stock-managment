@@ -9,30 +9,30 @@ declare (strict_types=1);
  * @license http://www.opensource.org/licenses/mit-license.html  MIT License
  * @package PinkCrab\Perique
  */
-namespace PC_Woo_Stock_Man\PinkCrab\Registerables\Tests\Unit\Meta_Data;
+namespace pc_stock_man_v1\PinkCrab\Registerables\Tests\Unit\Meta_Data;
 
-use PC_Woo_Stock_Man\Gin0115\WPUnit_Helpers\Objects;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Data;
-use PC_Woo_Stock_Man\WP_UnitTestCase;
+use pc_stock_man_v1\Gin0115\WPUnit_Helpers\Objects;
+use pc_stock_man_v1\PinkCrab\Registerables\Meta_Data;
+use pc_stock_man_v1\WP_UnitTestCase;
 class Test_Meta_Data extends \WP_UnitTestCase
 {
     /** @testdox It should be possible to create a new meta data item with its meta key. */
     public function test_can_create_meta() : void
     {
-        $meta = new \PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Data('meta_key');
+        $meta = new \pc_stock_man_v1\PinkCrab\Registerables\Meta_Data('meta_key');
         $this->assertEquals('meta_key', $meta->get_meta_key());
     }
     /** @testdox It should be possible to set the meta type. */
     public function test_can_set_meta_type()
     {
-        $meta = new \PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Data('meta_key');
+        $meta = new \pc_stock_man_v1\PinkCrab\Registerables\Meta_Data('meta_key');
         $meta->meta_type('user');
-        $this->assertEquals('user', \PC_Woo_Stock_Man\Gin0115\WPUnit_Helpers\Objects::get_property($meta, 'meta_type'));
+        $this->assertEquals('user', \pc_stock_man_v1\Gin0115\WPUnit_Helpers\Objects::get_property($meta, 'meta_type'));
     }
     /** @testdox It should be possible to the data type for the meta data. */
     public function test_can_set_object_type() : void
     {
-        $meta = new \PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Data('meta_key');
+        $meta = new \pc_stock_man_v1\PinkCrab\Registerables\Meta_Data('meta_key');
         $meta->type('string');
         $this->assertEquals('string', $meta->parse_args()['type']);
         $this->assertEquals('string', $meta->get_value_type());
@@ -40,38 +40,38 @@ class Test_Meta_Data extends \WP_UnitTestCase
     /** @testdox It should be possible to the description for the meta data. */
     public function test_can_set_description() : void
     {
-        $meta = new \PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Data('meta_key');
+        $meta = new \pc_stock_man_v1\PinkCrab\Registerables\Meta_Data('meta_key');
         $meta->description('string');
         $this->assertEquals('string', $meta->parse_args()['description']);
     }
     /** @testdox It should be possible to the single for the meta data. */
     public function test_can_set_single() : void
     {
-        $meta = new \PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Data('meta_key');
+        $meta = new \pc_stock_man_v1\PinkCrab\Registerables\Meta_Data('meta_key');
         $meta->single();
         $this->assertTrue($meta->parse_args()['single']);
     }
     /** @testdox It should be possible to the default for the meta data. */
     public function test_can_set_default() : void
     {
-        $meta = new \PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Data('meta_key');
+        $meta = new \pc_stock_man_v1\PinkCrab\Registerables\Meta_Data('meta_key');
         $meta->default('string');
         $this->assertEquals('string', $meta->parse_args()['default']);
     }
     /** @testdox It should be possible to the rest_schema for the meta data. */
     public function test_can_set_rest_schema() : void
     {
-        $meta = new \PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Data('meta_key');
+        $meta = new \pc_stock_man_v1\PinkCrab\Registerables\Meta_Data('meta_key');
         $meta->rest_schema('string');
         $this->assertEquals('string', $meta->parse_args()['show_in_rest']);
     }
     /** @testdox It should be possible to set the meta subtype when needed. */
     public function test_can_set_subtype()
     {
-        $user_meta = new \PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Data('user_meta');
+        $user_meta = new \pc_stock_man_v1\PinkCrab\Registerables\Meta_Data('user_meta');
         $user_meta->meta_type('user');
         $this->assertArrayNotHasKey('object_subtype', $user_meta->parse_args());
-        $post_meta = new \PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Data('post_meta');
+        $post_meta = new \pc_stock_man_v1\PinkCrab\Registerables\Meta_Data('post_meta');
         $post_meta->meta_type('post');
         $post_meta->object_subtype('page');
         $this->assertEquals('page', $post_meta->parse_args()['object_subtype']);
@@ -79,7 +79,7 @@ class Test_Meta_Data extends \WP_UnitTestCase
     /** @testdox It should be possible to set the callable used to for the sanitization of the data to be set. */
     public function test_can_set_sanitize_callable() : void
     {
-        $meta = new \PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Data('meta_key');
+        $meta = new \pc_stock_man_v1\PinkCrab\Registerables\Meta_Data('meta_key');
         $meta->sanitize('strtoupper');
         $callable = $meta->parse_args()['sanitize_callback'];
         $this->assertEquals('UPPER', $callable('upper'));
@@ -87,7 +87,7 @@ class Test_Meta_Data extends \WP_UnitTestCase
     /** @testdox It should be possible to set the callable used to for the sanitization of the data to be set. */
     public function test_can_set_permissions_callable() : void
     {
-        $meta = new \PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Data('meta_key');
+        $meta = new \pc_stock_man_v1\PinkCrab\Registerables\Meta_Data('meta_key');
         $meta->permissions('is_string');
         $callable = $meta->parse_args()['auth_callback'];
         $this->assertTrue($callable('upper'));
@@ -96,23 +96,23 @@ class Test_Meta_Data extends \WP_UnitTestCase
     /** @testdox It should be possible to define the meta type as post and the post type in a single expression */
     public function test_post_type_wrapper()
     {
-        $meta = new \PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Data('meta_key');
+        $meta = new \pc_stock_man_v1\PinkCrab\Registerables\Meta_Data('meta_key');
         $meta->post_type('cpt_test');
-        $this->assertEquals('post', \PC_Woo_Stock_Man\Gin0115\WPUnit_Helpers\Objects::get_property($meta, 'meta_type'));
+        $this->assertEquals('post', \pc_stock_man_v1\Gin0115\WPUnit_Helpers\Objects::get_property($meta, 'meta_type'));
         $this->assertEquals('cpt_test', $meta->parse_args()['object_subtype']);
     }
     /** @testdox It should be possible to define the meta type as term and the taxonomy in a single expression */
     public function test_taxonomy_wrapper()
     {
-        $meta = new \PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Data('meta_key');
+        $meta = new \pc_stock_man_v1\PinkCrab\Registerables\Meta_Data('meta_key');
         $meta->taxonomy('tax_test');
-        $this->assertEquals('term', \PC_Woo_Stock_Man\Gin0115\WPUnit_Helpers\Objects::get_property($meta, 'meta_type'));
+        $this->assertEquals('term', \pc_stock_man_v1\Gin0115\WPUnit_Helpers\Objects::get_property($meta, 'meta_type'));
         $this->assertEquals('tax_test', $meta->parse_args()['object_subtype']);
     }
     /** @testdox It should be possible to set and get the rest update callback method */
     public function test_can_set_get_rest_update_callback() : void
     {
-        $meta = new \PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Data('meta_key');
+        $meta = new \pc_stock_man_v1\PinkCrab\Registerables\Meta_Data('meta_key');
         $this->assertNull($meta->get_rest_update());
         $meta->rest_update('strtoupper');
         $this->assertEquals('strtoupper', $meta->get_rest_update());
@@ -120,7 +120,7 @@ class Test_Meta_Data extends \WP_UnitTestCase
     /** @testdox It should be possible to set and get the rest view callback method */
     public function test_can_set_get_rest_view_callback() : void
     {
-        $meta = new \PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Data('meta_key');
+        $meta = new \pc_stock_man_v1\PinkCrab\Registerables\Meta_Data('meta_key');
         $this->assertNull($meta->get_rest_view());
         $meta->rest_view('strtoupper');
         $this->assertEquals('strtoupper', $meta->get_rest_view());

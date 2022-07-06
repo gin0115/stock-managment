@@ -21,26 +21,26 @@ declare (strict_types=1);
  * @license http://www.opensource.org/licenses/mit-license.html  MIT License
  * @package PinkCrab\Loader
  */
-namespace PC_Woo_Stock_Man\PinkCrab\Loader;
+namespace pc_stock_man_v1\PinkCrab\Loader;
 
 use InvalidArgumentException;
-use PC_Woo_Stock_Man\PinkCrab\Loader\Hook;
-use PC_Woo_Stock_Man\PinkCrab\Loader\Hook_Removal;
-use PC_Woo_Stock_Man\PinkCrab\Loader\Exceptions\Invalid_Hook_Callback_Exception;
+use pc_stock_man_v1\PinkCrab\Loader\Hook;
+use pc_stock_man_v1\PinkCrab\Loader\Hook_Removal;
+use pc_stock_man_v1\PinkCrab\Loader\Exceptions\Invalid_Hook_Callback_Exception;
 class Hook_Manager
 {
     /**
      * Maps the hook types to the correct registration method.
      * @var array<string, string>
      */
-    protected const TYPE_MAP = array(\PC_Woo_Stock_Man\PinkCrab\Loader\Hook::ACTION => 'register_action', \PC_Woo_Stock_Man\PinkCrab\Loader\Hook::FILTER => 'register_filter', \PC_Woo_Stock_Man\PinkCrab\Loader\Hook::AJAX => 'register_ajax', \PC_Woo_Stock_Man\PinkCrab\Loader\Hook::SHORTCODE => 'register_shortcode', \PC_Woo_Stock_Man\PinkCrab\Loader\Hook::REMOVE => 'register_remove');
+    protected const TYPE_MAP = array(\pc_stock_man_v1\PinkCrab\Loader\Hook::ACTION => 'register_action', \pc_stock_man_v1\PinkCrab\Loader\Hook::FILTER => 'register_filter', \pc_stock_man_v1\PinkCrab\Loader\Hook::AJAX => 'register_ajax', \pc_stock_man_v1\PinkCrab\Loader\Hook::SHORTCODE => 'register_shortcode', \pc_stock_man_v1\PinkCrab\Loader\Hook::REMOVE => 'register_remove');
     /**
      * Callback used to process a hook
      *
      * @param Hook $hook
      * @return Hook
      */
-    public function process_hook(\PC_Woo_Stock_Man\PinkCrab\Loader\Hook $hook) : \PC_Woo_Stock_Man\PinkCrab\Loader\Hook
+    public function process_hook(\pc_stock_man_v1\PinkCrab\Loader\Hook $hook) : \pc_stock_man_v1\PinkCrab\Loader\Hook
     {
         if ($this->validate_context($hook) && \array_key_exists($hook->get_type(), self::TYPE_MAP)) {
             return $this->register_hook($hook);
@@ -53,7 +53,7 @@ class Hook_Manager
      * @param Hook $hook
      * @return bool
      */
-    protected function validate_context(\PC_Woo_Stock_Man\PinkCrab\Loader\Hook $hook) : bool
+    protected function validate_context(\pc_stock_man_v1\PinkCrab\Loader\Hook $hook) : bool
     {
         if ($hook->is_admin() === \true && $hook->is_front() === \true) {
             return \true;
@@ -64,7 +64,7 @@ class Hook_Manager
         }
         return \false;
     }
-    protected function register_hook(\PC_Woo_Stock_Man\PinkCrab\Loader\Hook $hook) : \PC_Woo_Stock_Man\PinkCrab\Loader\Hook
+    protected function register_hook(\pc_stock_man_v1\PinkCrab\Loader\Hook $hook) : \pc_stock_man_v1\PinkCrab\Loader\Hook
     {
         // Pass to corret handler.
         $method = self::TYPE_MAP[$hook->get_type()];
@@ -77,10 +77,10 @@ class Hook_Manager
      * @return Hook
      * @throws Invalid_Hook_Callback_Exception
      */
-    protected function register_action(\PC_Woo_Stock_Man\PinkCrab\Loader\Hook $hook) : \PC_Woo_Stock_Man\PinkCrab\Loader\Hook
+    protected function register_action(\pc_stock_man_v1\PinkCrab\Loader\Hook $hook) : \pc_stock_man_v1\PinkCrab\Loader\Hook
     {
         if (!\is_callable($hook->get_callback())) {
-            throw \PC_Woo_Stock_Man\PinkCrab\Loader\Exceptions\Invalid_Hook_Callback_Exception::from_hook($hook);
+            throw \pc_stock_man_v1\PinkCrab\Loader\Exceptions\Invalid_Hook_Callback_Exception::from_hook($hook);
         }
         add_action($hook->get_handle(), $hook->get_callback(), $hook->get_priority(), $hook->args_count());
         $hook->registered();
@@ -93,10 +93,10 @@ class Hook_Manager
      * @return Hook
      * @throws Invalid_Hook_Callback_Exception
      */
-    protected function register_filter(\PC_Woo_Stock_Man\PinkCrab\Loader\Hook $hook) : \PC_Woo_Stock_Man\PinkCrab\Loader\Hook
+    protected function register_filter(\pc_stock_man_v1\PinkCrab\Loader\Hook $hook) : \pc_stock_man_v1\PinkCrab\Loader\Hook
     {
         if (!\is_callable($hook->get_callback())) {
-            throw \PC_Woo_Stock_Man\PinkCrab\Loader\Exceptions\Invalid_Hook_Callback_Exception::from_hook($hook);
+            throw \pc_stock_man_v1\PinkCrab\Loader\Exceptions\Invalid_Hook_Callback_Exception::from_hook($hook);
         }
         add_filter($hook->get_handle(), $hook->get_callback(), $hook->get_priority(), $hook->args_count());
         $hook->registered();
@@ -108,13 +108,13 @@ class Hook_Manager
      * @param Hook $hook
      * @return Hook
      */
-    protected function register_remove(\PC_Woo_Stock_Man\PinkCrab\Loader\Hook $hook) : \PC_Woo_Stock_Man\PinkCrab\Loader\Hook
+    protected function register_remove(\pc_stock_man_v1\PinkCrab\Loader\Hook $hook) : \pc_stock_man_v1\PinkCrab\Loader\Hook
     {
         // Remove the hook.
         try {
-            (new \PC_Woo_Stock_Man\PinkCrab\Loader\Hook_Removal($hook->get_handle(), $hook->get_callback(), $hook->get_priority()))->remove();
+            (new \pc_stock_man_v1\PinkCrab\Loader\Hook_Removal($hook->get_handle(), $hook->get_callback(), $hook->get_priority()))->remove();
         } catch (\InvalidArgumentException $th) {
-            throw \PC_Woo_Stock_Man\PinkCrab\Loader\Exceptions\Invalid_Hook_Callback_Exception::from_hook($hook);
+            throw \pc_stock_man_v1\PinkCrab\Loader\Exceptions\Invalid_Hook_Callback_Exception::from_hook($hook);
         }
         $hook->registered();
         return $hook;
@@ -126,10 +126,10 @@ class Hook_Manager
      * @return Hook
      * @throws Invalid_Hook_Callback_Exception
      */
-    protected function register_ajax(\PC_Woo_Stock_Man\PinkCrab\Loader\Hook $hook) : \PC_Woo_Stock_Man\PinkCrab\Loader\Hook
+    protected function register_ajax(\pc_stock_man_v1\PinkCrab\Loader\Hook $hook) : \pc_stock_man_v1\PinkCrab\Loader\Hook
     {
         if (!\is_callable($hook->get_callback())) {
-            throw \PC_Woo_Stock_Man\PinkCrab\Loader\Exceptions\Invalid_Hook_Callback_Exception::from_hook($hook);
+            throw \pc_stock_man_v1\PinkCrab\Loader\Exceptions\Invalid_Hook_Callback_Exception::from_hook($hook);
         }
         // Public Ajax
         if ($hook->is_ajax_public()) {
@@ -149,10 +149,10 @@ class Hook_Manager
      * @return Hook
      * @throws Invalid_Hook_Callback_Exception
      */
-    protected function register_shortcode(\PC_Woo_Stock_Man\PinkCrab\Loader\Hook $hook) : \PC_Woo_Stock_Man\PinkCrab\Loader\Hook
+    protected function register_shortcode(\pc_stock_man_v1\PinkCrab\Loader\Hook $hook) : \pc_stock_man_v1\PinkCrab\Loader\Hook
     {
         if (!\is_callable($hook->get_callback())) {
-            throw \PC_Woo_Stock_Man\PinkCrab\Loader\Exceptions\Invalid_Hook_Callback_Exception::from_hook($hook);
+            throw \pc_stock_man_v1\PinkCrab\Loader\Exceptions\Invalid_Hook_Callback_Exception::from_hook($hook);
         }
         \add_shortcode($hook->get_handle(), $hook->get_callback());
         $hook->registered();

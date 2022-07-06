@@ -20,9 +20,9 @@ declare (strict_types=1);
  * @license http://www.opensource.org/licenses/mit-license.html  MIT License
  * @package PinkCrab\Perique\Container_Aware_Traits
  */
-namespace PC_Woo_Stock_Man\PinkCrab\Perique\Services\Container_Aware_Traits;
+namespace pc_stock_man_v1\PinkCrab\Perique\Services\Container_Aware_Traits;
 
-use PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces\DI_Container;
+use pc_stock_man_v1\PinkCrab\Perique\Interfaces\DI_Container;
 trait Inject_DI_Container_Aware
 {
     /**
@@ -37,7 +37,7 @@ trait Inject_DI_Container_Aware
      * @param DI_Container $container
      * @return void
      */
-    public function set_di_container(\PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces\DI_Container $container) : void
+    public function set_di_container(\pc_stock_man_v1\PinkCrab\Perique\Interfaces\DI_Container $container) : void
     {
         $this->di_container = $container;
     }

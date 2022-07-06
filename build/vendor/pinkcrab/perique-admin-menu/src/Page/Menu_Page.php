@@ -20,12 +20,12 @@ declare (strict_types=1);
  * @license http://www.opensource.org/licenses/mit-license.html  MIT License
  * @package PinkCrab\Perique_Admin_Menu
  */
-namespace PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Page;
+namespace pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Page;
 
-use PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Page\Page;
-use PC_Woo_Stock_Man\PinkCrab\Perique\Services\View\View;
-use PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Exception\Page_Exception;
-abstract class Menu_Page implements \PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Page\Page
+use pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Page\Page;
+use pc_stock_man_v1\PinkCrab\Perique\Services\View\View;
+use pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Exception\Page_Exception;
+abstract class Menu_Page implements \pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Page\Page
 {
     /**
      * The pages menu slug.
@@ -87,7 +87,7 @@ abstract class Menu_Page implements \PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Men
      * @param View $view  View
      * @return self
      */
-    public function set_view(\PC_Woo_Stock_Man\PinkCrab\Perique\Services\View\View $view) : self
+    public function set_view(\pc_stock_man_v1\PinkCrab\Perique\Services\View\View $view) : self
     {
         $this->view = $view;
         return $this;
@@ -105,7 +105,7 @@ abstract class Menu_Page implements \PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Men
     public function slug() : string
     {
         if ($this->page_slug === null) {
-            throw \PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Exception\Page_Exception::undefined_property('page_slug', $this);
+            throw \pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Exception\Page_Exception::undefined_property('page_slug', $this);
         }
         return $this->page_slug;
     }
@@ -115,7 +115,7 @@ abstract class Menu_Page implements \PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Men
     public function menu_title() : string
     {
         if ($this->menu_title === null) {
-            throw \PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Exception\Page_Exception::undefined_property('menu_title', $this);
+            throw \pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Exception\Page_Exception::undefined_property('menu_title', $this);
         }
         return $this->menu_title;
     }
@@ -150,10 +150,10 @@ abstract class Menu_Page implements \PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Men
     public function render_view() : callable
     {
         if (null === $this->view) {
-            throw \PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Exception\Page_Exception::view_not_set($this);
+            throw \pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Exception\Page_Exception::view_not_set($this);
         }
         if (null === $this->view_template) {
-            throw \PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Exception\Page_Exception::undefined_property('view_template', $this);
+            throw \pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Exception\Page_Exception::undefined_property('view_template', $this);
         }
         return function () {
             $this->view->render($this->view_template, $this->view_data);
@@ -166,7 +166,7 @@ abstract class Menu_Page implements \PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Men
      * @return void
      * @codeCoverageIgnore This can be tested as it does nothing and is extended only
      */
-    public function enqueue(\PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Page\Page $page) : void
+    public function enqueue(\pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Page\Page $page) : void
     {
         // Do nothing.
         // Can be extended in any child class that extends.
@@ -178,7 +178,7 @@ abstract class Menu_Page implements \PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Men
      * @return void
      * @codeCoverageIgnore This can be tested as it does nothing and is extended only
      */
-    public function load(\PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Page\Page $page) : void
+    public function load(\pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Page\Page $page) : void
     {
         // Do nothing.
         // Can be extended in any child class that extends.

@@ -20,15 +20,15 @@ declare (strict_types=1);
  * @license http://www.opensource.org/licenses/mit-license.html  MIT License
  * @package PinkCrab\Perique_Admin_Menu
  */
-namespace PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Registration_Middleware;
+namespace pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Registration_Middleware;
 
-use PC_Woo_Stock_Man\PinkCrab\Loader\Hook_Loader;
-use PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Page\Page;
-use PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Group\Abstract_Group;
-use PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces\Registration_Middleware;
-use PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Registrar\Page_Dispatcher;
-use PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Validator\Group_Validator;
-class Page_Middleware implements \PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces\Registration_Middleware
+use pc_stock_man_v1\PinkCrab\Loader\Hook_Loader;
+use pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Page\Page;
+use pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Group\Abstract_Group;
+use pc_stock_man_v1\PinkCrab\Perique\Interfaces\Registration_Middleware;
+use pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Registrar\Page_Dispatcher;
+use pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Validator\Group_Validator;
+class Page_Middleware implements \pc_stock_man_v1\PinkCrab\Perique\Interfaces\Registration_Middleware
 {
     /** @var Page_Dispatcher */
     public $dispatcher;
@@ -36,7 +36,7 @@ class Page_Middleware implements \PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces\R
     public $group_validator;
     /** @var Hook_Loader */
     public $hook_loader;
-    public function __construct(\PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Registrar\Page_Dispatcher $dispatcher, \PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Validator\Group_Validator $group_validator, \PC_Woo_Stock_Man\PinkCrab\Loader\Hook_Loader $hook_loader)
+    public function __construct(\pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Registrar\Page_Dispatcher $dispatcher, \pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Validator\Group_Validator $group_validator, \pc_stock_man_v1\PinkCrab\Loader\Hook_Loader $hook_loader)
     {
         $this->dispatcher = $dispatcher;
         $this->group_validator = $group_validator;
@@ -51,19 +51,19 @@ class Page_Middleware implements \PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces\R
     public function process($class)
     {
         // If we have a valid SUB page.
-        if (\is_a($class, \PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Page\Page::class) && is_admin() && !\is_null($class->parent_slug())) {
+        if (\is_a($class, \pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Page\Page::class) && is_admin() && !\is_null($class->parent_slug())) {
             $this->add_to_loader(function () use($class) : void {
                 $this->dispatcher->register_subpage($class, $class->parent_slug());
             });
         }
         // If we have a valid SINGLE/PARENT page.
-        if (\is_a($class, \PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Page\Page::class) && is_admin() && \is_null($class->parent_slug())) {
+        if (\is_a($class, \pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Page\Page::class) && is_admin() && \is_null($class->parent_slug())) {
             $this->add_to_loader(function () use($class) : void {
                 $this->dispatcher->register_single_page($class);
             });
         }
         // If we have a valid group.
-        if (\is_a($class, \PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Group\Abstract_Group::class) && is_admin()) {
+        if (\is_a($class, \pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Group\Abstract_Group::class) && is_admin()) {
             $this->add_to_loader(function () use($class) : void {
                 $this->dispatcher->register_group($class);
             });

@@ -22,9 +22,9 @@ declare (strict_types=1);
  * @package PinkCrab\Perique
  * @since 1.0.6
  */
-namespace PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces;
+namespace pc_stock_man_v1\PinkCrab\Perique\Interfaces;
 
-use PC_Woo_Stock_Man\PinkCrab\Loader\Hook_Loader;
+use pc_stock_man_v1\PinkCrab\Loader\Hook_Loader;
 interface Inject_Hook_Loader
 {
     /**
@@ -33,5 +33,5 @@ interface Inject_Hook_Loader
      * @param Hook_Loader $hook_loader
      * @return void
      */
-    public function set_hook_loader(\PC_Woo_Stock_Man\PinkCrab\Loader\Hook_Loader $hook_loader) : void;
+    public function set_hook_loader(\pc_stock_man_v1\PinkCrab\Loader\Hook_Loader $hook_loader) : void;
 }

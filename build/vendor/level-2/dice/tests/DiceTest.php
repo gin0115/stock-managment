@@ -1,6 +1,6 @@
 <?php
 
-namespace PC_Woo_Stock_Man;
+namespace pc_stock_man_v1;
 
 /* @description Dice - A minimal Dependency Injection Container for PHP *
  * @author Tom Butler tom@r.je *
@@ -32,7 +32,7 @@ abstract class DiceTest extends \PHPUnit\Framework\TestCase
     protected function setUp() : void
     {
         parent::setUp();
-        $this->dice = new \PC_Woo_Stock_Man\Dice\Dice();
+        $this->dice = new \pc_stock_man_v1\Dice\Dice();
     }
     protected function tearDown() : void
     {
@@ -45,4 +45,4 @@ abstract class DiceTest extends \PHPUnit\Framework\TestCase
  * @copyright 2012-2018 Tom Butler <tom@r.je> | https:// r.je/dice.html *
  * @license http:// www.opensource.org/licenses/bsd-license.php BSD License *
  * @version 3.0 */
-\class_alias('PC_Woo_Stock_Man\\DiceTest', 'DiceTest', \false);
+\class_alias('pc_stock_man_v1\\DiceTest', 'DiceTest', \false);

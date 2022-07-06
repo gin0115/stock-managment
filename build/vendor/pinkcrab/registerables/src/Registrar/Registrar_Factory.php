@@ -20,19 +20,19 @@ declare (strict_types=1);
  * @license http://www.opensource.org/licenses/mit-license.html  MIT License
  * @package PinkCrab\Registerables
  */
-namespace PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar;
+namespace pc_stock_man_v1\PinkCrab\Registerables\Registrar;
 
 use Exception;
-use PC_Woo_Stock_Man\PinkCrab\Loader\Hook_Loader;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Taxonomy;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Post_Type;
-use PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces\DI_Container;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar\Taxonomy_Registrar;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Validator\Meta_Box_Validator;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Validator\Taxonomy_Validator;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar\Post_Type_Registrar;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Validator\Post_Type_Validator;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Registration_Middleware\Registerable;
+use pc_stock_man_v1\PinkCrab\Loader\Hook_Loader;
+use pc_stock_man_v1\PinkCrab\Registerables\Taxonomy;
+use pc_stock_man_v1\PinkCrab\Registerables\Post_Type;
+use pc_stock_man_v1\PinkCrab\Perique\Interfaces\DI_Container;
+use pc_stock_man_v1\PinkCrab\Registerables\Registrar\Taxonomy_Registrar;
+use pc_stock_man_v1\PinkCrab\Registerables\Validator\Meta_Box_Validator;
+use pc_stock_man_v1\PinkCrab\Registerables\Validator\Taxonomy_Validator;
+use pc_stock_man_v1\PinkCrab\Registerables\Registrar\Post_Type_Registrar;
+use pc_stock_man_v1\PinkCrab\Registerables\Validator\Post_Type_Validator;
+use pc_stock_man_v1\PinkCrab\Registerables\Registration_Middleware\Registerable;
 class Registrar_Factory
 {
     /**
@@ -51,13 +51,13 @@ class Registrar_Factory
      * @return Registrar
      * @throws Exception If not valid registerable type passed.
      */
-    public function create_from_registerable(\PC_Woo_Stock_Man\PinkCrab\Registerables\Registration_Middleware\Registerable $registerable) : \PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar\Registrar
+    public function create_from_registerable(\pc_stock_man_v1\PinkCrab\Registerables\Registration_Middleware\Registerable $registerable) : \pc_stock_man_v1\PinkCrab\Registerables\Registrar\Registrar
     {
         switch (\true) {
-            case \is_a($registerable, \PC_Woo_Stock_Man\PinkCrab\Registerables\Post_Type::class):
-                return new \PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar\Post_Type_Registrar(new \PC_Woo_Stock_Man\PinkCrab\Registerables\Validator\Post_Type_Validator(), new \PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar\Meta_Data_Registrar());
-            case \is_a($registerable, \PC_Woo_Stock_Man\PinkCrab\Registerables\Taxonomy::class):
-                return new \PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar\Taxonomy_Registrar(new \PC_Woo_Stock_Man\PinkCrab\Registerables\Validator\Taxonomy_Validator(), new \PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar\Meta_Data_Registrar());
+            case \is_a($registerable, \pc_stock_man_v1\PinkCrab\Registerables\Post_Type::class):
+                return new \pc_stock_man_v1\PinkCrab\Registerables\Registrar\Post_Type_Registrar(new \pc_stock_man_v1\PinkCrab\Registerables\Validator\Post_Type_Validator(), new \pc_stock_man_v1\PinkCrab\Registerables\Registrar\Meta_Data_Registrar());
+            case \is_a($registerable, \pc_stock_man_v1\PinkCrab\Registerables\Taxonomy::class):
+                return new \pc_stock_man_v1\PinkCrab\Registerables\Registrar\Taxonomy_Registrar(new \pc_stock_man_v1\PinkCrab\Registerables\Validator\Taxonomy_Validator(), new \pc_stock_man_v1\PinkCrab\Registerables\Registrar\Meta_Data_Registrar());
             default:
                 $type = \get_class($registerable);
                 throw new \Exception('Invalid registerable (' . $type . ')type (no dispatcher exists)');
@@ -70,17 +70,17 @@ class Registrar_Factory
      * @param \PinkCrab\Loader\Hook_Loader $loader
      * @return Meta_Box_Registrar
      */
-    public function meta_box_registrar(\PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces\DI_Container $container, \PC_Woo_Stock_Man\PinkCrab\Loader\Hook_Loader $loader) : \PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar\Meta_Box_Registrar
+    public function meta_box_registrar(\pc_stock_man_v1\PinkCrab\Perique\Interfaces\DI_Container $container, \pc_stock_man_v1\PinkCrab\Loader\Hook_Loader $loader) : \pc_stock_man_v1\PinkCrab\Registerables\Registrar\Meta_Box_Registrar
     {
-        return new \PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar\Meta_Box_Registrar(new \PC_Woo_Stock_Man\PinkCrab\Registerables\Validator\Meta_Box_Validator(), $container, $loader);
+        return new \pc_stock_man_v1\PinkCrab\Registerables\Registrar\Meta_Box_Registrar(new \pc_stock_man_v1\PinkCrab\Registerables\Validator\Meta_Box_Validator(), $container, $loader);
     }
     /**
      * Returns and instance of the Meta Data registrar.
      *
      * @return Meta_Data_Registrar
      */
-    public function meta_data_registrar() : \PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar\Meta_Data_Registrar
+    public function meta_data_registrar() : \pc_stock_man_v1\PinkCrab\Registerables\Registrar\Meta_Data_Registrar
     {
-        return new \PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar\Meta_Data_Registrar();
+        return new \pc_stock_man_v1\PinkCrab\Registerables\Registrar\Meta_Data_Registrar();
     }
 }

@@ -13,7 +13,7 @@ $parch_dispatcher = new Patcher_Dispatcher( __DIR__ . '/patchers' );
 
 return array(
 	// Set your namespace prefix here
-	'prefix'                     => 'PC_Woo_Stock_Man',
+	'prefix'                     => 'pc_stock_man_v1',
 	'finders'                    => array(
 		Finder::create()
 			->files()
@@ -36,7 +36,8 @@ return array(
 		function ( $filePath, $prefix, $contents ) use ( $parch_dispatcher ) {
 			// $prefixDoubleSlashed = str_replace( '\\', '\\\\', $prefix );
 			// $quotes = array( '\'', '"', '`' );
-
+$contents = str_replace( "\\$prefix\\'dump'", "\\'dump'", $contents );
+$contents = str_replace( "\\$prefix\\'dd'", "\\'dd'", $contents );
 			foreach ( $parch_dispatcher->get_patcher_elements() as $identifier ) {
 				$contents = str_replace( "\\$prefix\\$identifier", "\\$identifier", $contents );
 			}
@@ -50,7 +51,7 @@ return array(
 	'whitelist'                  => array(
 		'PHPUnit\Framework\*',
 		'Composer\Autoload\ClassLoader',
-		'PinkCrab\Headless_Blog\*',
+		'PinkCrab\Stock_Management\*',
 	),
 	'whitelist-global-constants' => true,
 	'whitelist-global-classes'   => true,

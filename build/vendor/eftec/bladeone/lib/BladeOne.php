@@ -18,7 +18,7 @@
  * @noinspection PhpFullyQualifiedNameUsageInspection
  * @noinspection PhpComposerExtensionStubsInspection
  */
-namespace PC_Woo_Stock_Man\eftec\bladeone;
+namespace pc_stock_man_v1\eftec\bladeone;
 
 use ArrayAccess;
 use BadMethodCallException;
@@ -34,13 +34,13 @@ use InvalidArgumentException;
  * @copyright Copyright (c) 2016-2022 Jorge Patricio Castro Castillo MIT License.
  *            Don't delete this comment, its part of the license.
  *            Part of this code is based in the work of Laravel PHP Components.
- * @version   4.5.2
+ * @version   4.5.4
  * @link      https://github.com/EFTEC/BladeOne
  */
 class BladeOne
 {
     //<editor-fold desc="fields">
-    public const VERSION = '4.5.2';
+    public const VERSION = '4.5.4';
     /** @var int BladeOne reads if the compiled file has changed. If it has changed,then the file is replaced. */
     public const MODE_AUTO = 0;
     /** @var int Then compiled file is always replaced. It's slow and it's useful for development. */
@@ -302,7 +302,7 @@ class BladeOne
     /**
      * Escape HTML entities in a string.
      *
-     * @param string|null $value
+     * @param int|string|null $value
      * @return string
      */
     public static function e($value) : string
@@ -310,6 +310,9 @@ class BladeOne
         // Prevent "Deprecated: htmlentities(): Passing null to parameter #1 ($string) of type string is deprecated" message
         if (\is_null($value)) {
             return '';
+        }
+        if (\is_numeric($value)) {
+            return self::e((string) $value);
         }
         if (\is_array($value) || \is_object($value)) {
             return \htmlentities(\print_r($value, \true), \ENT_QUOTES, 'UTF-8', \false);
@@ -475,7 +478,7 @@ class BladeOne
      * @return BladeOne
      * @see \eftec\bladeone\BladeOne::setMode
      */
-    public function setIsCompiled($bool = \false) : \PC_Woo_Stock_Man\eftec\bladeone\BladeOne
+    public function setIsCompiled($bool = \false) : \pc_stock_man_v1\eftec\bladeone\BladeOne
     {
         $this->isCompiled = $bool;
         if (!$bool) {
@@ -1450,7 +1453,7 @@ class BladeOne
     }
     public function ipClient()
     {
-        if (isset($_SERVER['HTTP_X_FORWARDED_FOR']) && \preg_match('/^([d]{1,3}).([d]{1,3}).([d]{1,3}).([d]{1,3})$/', $_SERVER['HTTP_X_FORWARDED_FOR'])) {
+        if (isset($_SERVER['HTTP_X_FORWARDED_FOR']) && \preg_match('/^(d{1,3}).(d{1,3}).(d{1,3}).(d{1,3})$/', $_SERVER['HTTP_X_FORWARDED_FOR'])) {
             return $_SERVER['HTTP_X_FORWARDED_FOR'];
         }
         return $_SERVER['REMOTE_ADDR'] ?? '';
@@ -1586,7 +1589,7 @@ class BladeOne
      * @return $this
      * @see \eftec\bladeone\BladeOne::share
      */
-    public function with($varname, $value = null) : \PC_Woo_Stock_Man\eftec\bladeone\BladeOne
+    public function with($varname, $value = null) : \pc_stock_man_v1\eftec\bladeone\BladeOne
     {
         return $this->share($varname, $value);
     }
@@ -1604,7 +1607,7 @@ class BladeOne
      * @param mixed        $value
      * @return $this
      */
-    public function share($varname, $value = null) : \PC_Woo_Stock_Man\eftec\bladeone\BladeOne
+    public function share($varname, $value = null) : \pc_stock_man_v1\eftec\bladeone\BladeOne
     {
         if (\is_array($varname)) {
             $this->variablesGlobal = \array_merge($this->variablesGlobal, $varname);
@@ -1766,7 +1769,7 @@ class BladeOne
      * @param string $compileTypeFileName=['auto','sha1','md5','nochange'][$i]
      * @return BladeOne
      */
-    public function setCompileTypeFileName(string $compileTypeFileName) : \PC_Woo_Stock_Man\eftec\bladeone\BladeOne
+    public function setCompileTypeFileName(string $compileTypeFileName) : \pc_stock_man_v1\eftec\bladeone\BladeOne
     {
         $this->compileTypeFileName = $compileTypeFileName;
         return $this;
@@ -1889,7 +1892,7 @@ class BladeOne
      * @param string $view
      * @return BladeOne
      */
-    public function setView($view) : \PC_Woo_Stock_Man\eftec\bladeone\BladeOne
+    public function setView($view) : \pc_stock_man_v1\eftec\bladeone\BladeOne
     {
         $this->viewStack = $view;
         return $this;
@@ -1911,7 +1914,7 @@ class BladeOne
      * @param callable|string|null $functionOrClass
      * @return BladeOne
      */
-    public function composer($view = null, $functionOrClass = null) : \PC_Woo_Stock_Man\eftec\bladeone\BladeOne
+    public function composer($view = null, $functionOrClass = null) : \pc_stock_man_v1\eftec\bladeone\BladeOne
     {
         if ($view === null && $functionOrClass === null) {
             $this->composerStack = [];
@@ -2095,7 +2098,7 @@ class BladeOne
      * @param string $baseUrl Example http://www.web.com/folder  https://www.web.com/folder/anotherfolder
      * @return BladeOne
      */
-    public function setBaseUrl($baseUrl) : \PC_Woo_Stock_Man\eftec\bladeone\BladeOne
+    public function setBaseUrl($baseUrl) : \pc_stock_man_v1\eftec\bladeone\BladeOne
     {
         $this->baseUrl = \rtrim($baseUrl, '/');
         // base with the url trimmed
@@ -2182,7 +2185,7 @@ class BladeOne
      * @param string|null $canonUrl
      * @return BladeOne
      */
-    public function setCanonicalUrl($canonUrl = null) : \PC_Woo_Stock_Man\eftec\bladeone\BladeOne
+    public function setCanonicalUrl($canonUrl = null) : \pc_stock_man_v1\eftec\bladeone\BladeOne
     {
         $this->canonicalUrl = $canonUrl;
         return $this;
@@ -2214,7 +2217,7 @@ class BladeOne
      * @param string|null $currentUrl
      * @return BladeOne
      */
-    public function setCurrentUrl($currentUrl = null) : \PC_Woo_Stock_Man\eftec\bladeone\BladeOne
+    public function setCurrentUrl($currentUrl = null) : \pc_stock_man_v1\eftec\bladeone\BladeOne
     {
         $this->currentUrl = $currentUrl;
         return $this;
@@ -2225,7 +2228,7 @@ class BladeOne
      * @param bool $bool
      * @return BladeOne
      */
-    public function setOptimize($bool = \false) : \PC_Woo_Stock_Man\eftec\bladeone\BladeOne
+    public function setOptimize($bool = \false) : \pc_stock_man_v1\eftec\bladeone\BladeOne
     {
         $this->optimize = $bool;
         return $this;
@@ -2315,7 +2318,7 @@ class BladeOne
         $argv[0] = $r;
         // replace the first argument with the translation.
         $result = @\sprintf(...$argv);
-        return $result == \false ? $r : $result;
+        return !$result ? $r : $result;
     }
     /**
      * Tries to translate the word if it's in the array defined by BladeOneLang::$dictionary
@@ -2479,7 +2482,7 @@ class BladeOne
     {
         $ex = $this->stripParentheses($expression);
         $p0 = \strpos($ex, ',');
-        if ($p0 == \false) {
+        if (!$p0) {
             $var = $this->stripQuotes($ex);
             $namespace = '';
         } else {
@@ -2536,6 +2539,7 @@ class BladeOne
      *
      * @param string $value
      * @return string
+     * @throws Exception
      */
     protected function compileEchos($value) : string
     {
@@ -2606,7 +2610,7 @@ class BladeOne
                     return $this->compileStatementClass($match);
                 }
                 if (isset($this->customDirectivesRT[$match[1]])) {
-                    if ($this->customDirectivesRT[$match[1]] == \true) {
+                    if ($this->customDirectivesRT[$match[1]]) {
                         $match[0] = $this->compileStatementCustom($match);
                     } else {
                         $match[0] = \call_user_func($this->customDirectives[$match[1]], $this->stripParentheses(static::get($match, 3)));
@@ -2791,7 +2795,7 @@ class BladeOne
             } else {
                 $nextpart .= $char;
             }
-            if ($char === $separator && $insidePar == \false) {
+            if ($char === $separator && !$insidePar) {
                 $parts[] = \substr($nextpart, 0, -1);
                 $nextpart = '';
             }
@@ -3296,6 +3300,9 @@ class BladeOne
     protected function compileForeach($expression) : string
     {
         //\preg_match('/\( *(.*) * as *([^\)]*)/', $expression, $matches);
+        if ($expression === null) {
+            return '@foreach';
+        }
         \preg_match('/\\( *(.*) * as *([^)]*)/', $expression, $matches);
         $iteratee = \trim($matches[1]);
         $iteration = \trim($matches[2]);
@@ -3915,15 +3922,15 @@ class BladeOne
     }
     //</editor-fold>
 }
-if (!\defined('PHPUNIT_COMPOSER_INSTALL') && !\defined('__PHPUNIT_PHAR__') && isset($_SERVER['PHP_SELF']) && \basename($_SERVER['PHP_SELF']) === 'BladeOne.php' && \PC_Woo_Stock_Man\eftec\bladeone\BladeOne::isCli()) {
-    $compilepath = \PC_Woo_Stock_Man\eftec\bladeone\BladeOne::getParameterCli('compilepath', null);
-    $templatepath = \PC_Woo_Stock_Man\eftec\bladeone\BladeOne::getParameterCli('templatepath', null);
-    if (!\PC_Woo_Stock_Man\eftec\bladeone\BladeOne::isAbsolutePath($compilepath)) {
+if (!\defined('PHPUNIT_COMPOSER_INSTALL') && !\defined('__PHPUNIT_PHAR__') && isset($_SERVER['PHP_SELF']) && \basename($_SERVER['PHP_SELF']) === 'BladeOne.php' && \pc_stock_man_v1\eftec\bladeone\BladeOne::isCli()) {
+    $compilepath = \pc_stock_man_v1\eftec\bladeone\BladeOne::getParameterCli('compilepath', null);
+    $templatepath = \pc_stock_man_v1\eftec\bladeone\BladeOne::getParameterCli('templatepath', null);
+    if (!\pc_stock_man_v1\eftec\bladeone\BladeOne::isAbsolutePath($compilepath)) {
         $compilepath = \getcwd() . '/' . $compilepath;
     }
-    if (!\PC_Woo_Stock_Man\eftec\bladeone\BladeOne::isAbsolutePath($templatepath)) {
+    if (!\pc_stock_man_v1\eftec\bladeone\BladeOne::isAbsolutePath($templatepath)) {
         $templatepath = \getcwd() . '/' . $templatepath;
     }
-    $inst = new \PC_Woo_Stock_Man\eftec\bladeone\BladeOne($templatepath, $compilepath);
+    $inst = new \pc_stock_man_v1\eftec\bladeone\BladeOne($templatepath, $compilepath);
     $inst->cliEngine();
 }

@@ -20,12 +20,12 @@ declare (strict_types=1);
  * @license http://www.opensource.org/licenses/mit-license.html  MIT License
  * @package PinkCrab\Perique\Registration
  */
-namespace PC_Woo_Stock_Man\PinkCrab\Perique\Services\Registration;
+namespace pc_stock_man_v1\PinkCrab\Perique\Services\Registration;
 
-use PC_Woo_Stock_Man\PinkCrab\Loader\Hook_Loader;
-use PC_Woo_Stock_Man\PinkCrab\Perique\Application\Hooks;
-use PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces\DI_Container;
-use PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces\Registration_Middleware;
+use pc_stock_man_v1\PinkCrab\Loader\Hook_Loader;
+use pc_stock_man_v1\PinkCrab\Perique\Application\Hooks;
+use pc_stock_man_v1\PinkCrab\Perique\Interfaces\DI_Container;
+use pc_stock_man_v1\PinkCrab\Perique\Interfaces\Registration_Middleware;
 class Registration_Service
 {
     /**
@@ -58,7 +58,7 @@ class Registration_Service
      * @param DI_Container $di_container
      * @return self
      */
-    public function set_container(\PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces\DI_Container $di_container) : self
+    public function set_container(\pc_stock_man_v1\PinkCrab\Perique\Interfaces\DI_Container $di_container) : self
     {
         $this->di_container = $di_container;
         return $this;
@@ -69,7 +69,7 @@ class Registration_Service
      * @param Hook_Loader $loader
      * @return self
      */
-    public function set_loader(\PC_Woo_Stock_Man\PinkCrab\Loader\Hook_Loader $loader) : self
+    public function set_loader(\pc_stock_man_v1\PinkCrab\Loader\Hook_Loader $loader) : self
     {
         $this->loader = $loader;
         return $this;
@@ -80,7 +80,7 @@ class Registration_Service
      * @param Registration_Middleware $middleware
      * @return self
      */
-    public function push_middleware(\PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces\Registration_Middleware $middleware) : self
+    public function push_middleware(\pc_stock_man_v1\PinkCrab\Perique\Interfaces\Registration_Middleware $middleware) : self
     {
         $this->middleware[\get_class($middleware)] = $middleware;
         return $this;
@@ -115,7 +115,7 @@ class Registration_Service
     public function process() : void
     {
         // Filter all classes, before processing.
-        $class_list = apply_filters(\PC_Woo_Stock_Man\PinkCrab\Perique\Application\Hooks::APP_INIT_REGISTRATION_CLASS_LIST, $this->class_list);
+        $class_list = apply_filters(\pc_stock_man_v1\PinkCrab\Perique\Application\Hooks::APP_INIT_REGISTRATION_CLASS_LIST, $this->class_list);
         foreach ($this->middleware as $middleware) {
             // Set the container if requested.
             if (\method_exists($middleware, 'set_di_container')) {

@@ -1,0 +1,1 @@
+<h1>{{ $i18n->location_page_title() }}</h1>

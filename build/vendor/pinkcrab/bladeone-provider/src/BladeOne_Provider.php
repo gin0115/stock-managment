@@ -20,15 +20,15 @@ declare (strict_types=1);
  * @license http://www.opensource.org/licenses/mit-license.html  MIT License
  * @package PinkCrab\BladeOne_Provider
  */
-namespace PC_Woo_Stock_Man\PinkCrab\BladeOne;
+namespace pc_stock_man_v1\PinkCrab\BladeOne;
 
 use ReflectionClass;
 use BadMethodCallException;
-use PC_Woo_Stock_Man\eftec\bladeone\BladeOne;
-use PC_Woo_Stock_Man\eftec\bladeonehtml\BladeOneHtml;
-use PC_Woo_Stock_Man\PinkCrab\BladeOne\PinkCrab_BladeOne;
-use PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces\Renderable;
-class BladeOne_Provider implements \PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces\Renderable
+use pc_stock_man_v1\eftec\bladeone\BladeOne;
+use pc_stock_man_v1\eftec\bladeonehtml\BladeOneHtml;
+use pc_stock_man_v1\PinkCrab\BladeOne\PinkCrab_BladeOne;
+use pc_stock_man_v1\PinkCrab\Perique\Interfaces\Renderable;
+class BladeOne_Provider implements \pc_stock_man_v1\PinkCrab\Perique\Interfaces\Renderable
 {
     /**
      * BladeOne Instance
@@ -41,7 +41,7 @@ class BladeOne_Provider implements \PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces
      *
      * @param PinkCrab_BladeOne $blade
      */
-    public final function __construct(\PC_Woo_Stock_Man\PinkCrab\BladeOne\PinkCrab_BladeOne $blade)
+    public final function __construct(\pc_stock_man_v1\PinkCrab\BladeOne\PinkCrab_BladeOne $blade)
     {
         static::$blade = $blade;
     }
@@ -55,14 +55,14 @@ class BladeOne_Provider implements \PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces
      */
     public static function init($template_path = null, ?string $compiled_path = null, int $mode = 0) : self
     {
-        return new static(new \PC_Woo_Stock_Man\PinkCrab\BladeOne\PinkCrab_BladeOne($template_path, $compiled_path, $mode));
+        return new static(new \pc_stock_man_v1\PinkCrab\BladeOne\PinkCrab_BladeOne($template_path, $compiled_path, $mode));
     }
     /**
      * Returns the current BladeOne instance.
      *
      * @return BladeOne
      */
-    public function get_blade() : \PC_Woo_Stock_Man\eftec\bladeone\BladeOne
+    public function get_blade() : \pc_stock_man_v1\eftec\bladeone\BladeOne
     {
         return static::$blade;
     }

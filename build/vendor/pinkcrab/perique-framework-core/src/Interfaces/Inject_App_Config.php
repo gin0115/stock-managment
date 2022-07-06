@@ -22,9 +22,9 @@ declare (strict_types=1);
  * @package PinkCrab\Perique
  * @since 1.0.6
  */
-namespace PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces;
+namespace pc_stock_man_v1\PinkCrab\Perique\Interfaces;
 
-use PC_Woo_Stock_Man\PinkCrab\Perique\Application\App_Config;
+use pc_stock_man_v1\PinkCrab\Perique\Application\App_Config;
 interface Inject_App_Config
 {
     /**
@@ -33,5 +33,5 @@ interface Inject_App_Config
      * @param App_Config $app_config
      * @return void
      */
-    public function set_app_config(\PC_Woo_Stock_Man\PinkCrab\Perique\Application\App_Config $app_config) : void;
+    public function set_app_config(\pc_stock_man_v1\PinkCrab\Perique\Application\App_Config $app_config) : void;
 }

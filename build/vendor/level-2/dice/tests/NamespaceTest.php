@@ -1,65 +1,65 @@
 <?php
 
-namespace PC_Woo_Stock_Man;
+namespace pc_stock_man_v1;
 
 /* @description Dice - A minimal Dependency Injection Container for PHP *
  * @author Tom Butler tom@r.je *
  * @copyright 2012-2018 Tom Butler <tom@r.je> | https:// r.je/dice.html *
  * @license http:// www.opensource.org/licenses/bsd-license.php BSD License *
  * @version 3.0 */
-class NamespaceTest extends \PC_Woo_Stock_Man\DiceTest
+class NamespaceTest extends \pc_stock_man_v1\DiceTest
 {
     public function testNamespaceBasic()
     {
-        $a = $this->dice->create('PC_Woo_Stock_Man\\Foo\\A');
-        $this->assertInstanceOf('PC_Woo_Stock_Man\\Foo\\A', $a);
+        $a = $this->dice->create('pc_stock_man_v1\\Foo\\A');
+        $this->assertInstanceOf('pc_stock_man_v1\\Foo\\A', $a);
     }
     public function testNamespaceWithSlash()
     {
-        $a = $this->dice->create('PC_Woo_Stock_Man\\Foo\\A');
-        $this->assertInstanceOf('PC_Woo_Stock_Man\\Foo\\A', $a);
+        $a = $this->dice->create('pc_stock_man_v1\\Foo\\A');
+        $this->assertInstanceOf('pc_stock_man_v1\\Foo\\A', $a);
     }
     public function testNamespaceWithSlashrule()
     {
         $rule = [];
-        $rule['substitutions']['Foo\\A'] = [\PC_Woo_Stock_Man\Dice\Dice::INSTANCE => 'PC_Woo_Stock_Man\\Foo\\ExtendedA'];
-        $dice = $this->dice->addRule('PC_Woo_Stock_Man\\Foo\\B', $rule);
-        $b = $dice->create('PC_Woo_Stock_Man\\Foo\\B');
-        $this->assertInstanceOf('PC_Woo_Stock_Man\\Foo\\ExtendedA', $b->a);
+        $rule['substitutions']['Foo\\A'] = [\pc_stock_man_v1\Dice\Dice::INSTANCE => 'pc_stock_man_v1\\Foo\\ExtendedA'];
+        $dice = $this->dice->addRule('pc_stock_man_v1\\Foo\\B', $rule);
+        $b = $dice->create('pc_stock_man_v1\\Foo\\B');
+        $this->assertInstanceOf('pc_stock_man_v1\\Foo\\ExtendedA', $b->a);
     }
     public function testNamespaceWithSlashruleInstance()
     {
         $rule = [];
-        $rule['substitutions']['Foo\\A'] = [\PC_Woo_Stock_Man\Dice\Dice::INSTANCE => 'PC_Woo_Stock_Man\\Foo\\ExtendedA'];
-        $dice = $this->dice->addRule('PC_Woo_Stock_Man\\Foo\\B', $rule);
-        $b = $dice->create('PC_Woo_Stock_Man\\Foo\\B');
-        $this->assertInstanceOf('PC_Woo_Stock_Man\\Foo\\ExtendedA', $b->a);
+        $rule['substitutions']['Foo\\A'] = [\pc_stock_man_v1\Dice\Dice::INSTANCE => 'pc_stock_man_v1\\Foo\\ExtendedA'];
+        $dice = $this->dice->addRule('pc_stock_man_v1\\Foo\\B', $rule);
+        $b = $dice->create('pc_stock_man_v1\\Foo\\B');
+        $this->assertInstanceOf('pc_stock_man_v1\\Foo\\ExtendedA', $b->a);
     }
     public function testNamespaceTypeHint()
     {
         $rule = [];
         $rule['shared'] = \true;
-        $dice = $this->dice->addRule('PC_Woo_Stock_Man\\Bar\\A', $rule);
-        $c = $dice->create('PC_Woo_Stock_Man\\Foo\\C');
-        $this->assertInstanceOf('PC_Woo_Stock_Man\\Bar\\A', $c->a);
-        $c2 = $dice->create('PC_Woo_Stock_Man\\Foo\\C');
+        $dice = $this->dice->addRule('pc_stock_man_v1\\Bar\\A', $rule);
+        $c = $dice->create('pc_stock_man_v1\\Foo\\C');
+        $this->assertInstanceOf('pc_stock_man_v1\\Bar\\A', $c->a);
+        $c2 = $dice->create('pc_stock_man_v1\\Foo\\C');
         $this->assertNotSame($c, $c2);
         //Check the rule has been correctly recognised for type hinted classes in a different namespace
         $this->assertSame($c2->a, $c->a);
     }
     public function testNamespaceInjection()
     {
-        $b = $this->dice->create('PC_Woo_Stock_Man\\Foo\\B');
-        $this->assertInstanceOf('PC_Woo_Stock_Man\\Foo\\B', $b);
-        $this->assertInstanceOf('PC_Woo_Stock_Man\\Foo\\A', $b->a);
+        $b = $this->dice->create('pc_stock_man_v1\\Foo\\B');
+        $this->assertInstanceOf('pc_stock_man_v1\\Foo\\B', $b);
+        $this->assertInstanceOf('pc_stock_man_v1\\Foo\\A', $b->a);
     }
     public function testNamespaceRuleSubstitution()
     {
         $rule = [];
-        $rule['substitutions']['Foo\\A'] = [\PC_Woo_Stock_Man\Dice\Dice::INSTANCE => 'PC_Woo_Stock_Man\\Foo\\ExtendedA'];
-        $dice = $this->dice->addRule('PC_Woo_Stock_Man\\Foo\\B', $rule);
-        $b = $dice->create('PC_Woo_Stock_Man\\Foo\\B');
-        $this->assertInstanceOf('PC_Woo_Stock_Man\\Foo\\ExtendedA', $b->a);
+        $rule['substitutions']['Foo\\A'] = [\pc_stock_man_v1\Dice\Dice::INSTANCE => 'pc_stock_man_v1\\Foo\\ExtendedA'];
+        $dice = $this->dice->addRule('pc_stock_man_v1\\Foo\\B', $rule);
+        $b = $dice->create('pc_stock_man_v1\\Foo\\B');
+        $this->assertInstanceOf('pc_stock_man_v1\\Foo\\ExtendedA', $b->a);
     }
 }
 /* @description Dice - A minimal Dependency Injection Container for PHP *
@@ -67,4 +67,4 @@ class NamespaceTest extends \PC_Woo_Stock_Man\DiceTest
  * @copyright 2012-2018 Tom Butler <tom@r.je> | https:// r.je/dice.html *
  * @license http:// www.opensource.org/licenses/bsd-license.php BSD License *
  * @version 3.0 */
-\class_alias('PC_Woo_Stock_Man\\NamespaceTest', 'NamespaceTest', \false);
+\class_alias('pc_stock_man_v1\\NamespaceTest', 'NamespaceTest', \false);

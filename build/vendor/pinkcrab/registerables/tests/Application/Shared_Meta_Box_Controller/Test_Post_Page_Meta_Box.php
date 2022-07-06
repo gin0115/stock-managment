@@ -9,13 +9,13 @@ declare (strict_types=1);
  * @license http://www.opensource.org/licenses/mit-license.html  MIT License
  * @package PinkCrab\Perique
  */
-namespace PC_Woo_Stock_Man\PinkCrab\Registerables\Tests\Application\Post_Type;
+namespace pc_stock_man_v1\PinkCrab\Registerables\Tests\Application\Post_Type;
 
-use PC_Woo_Stock_Man\WP_UnitTestCase;
-use PC_Woo_Stock_Man\Gin0115\WPUnit_Helpers\WP\Meta_Box_Inspector;
-use PC_Woo_Stock_Man\Gin0115\WPUnit_Helpers\WP\Meta_Data_Inspector;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Tests\App_Helper_Trait;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Tests\Fixtures\Shared_Metabox\Post_Page_Meta_Box;
+use pc_stock_man_v1\WP_UnitTestCase;
+use pc_stock_man_v1\Gin0115\WPUnit_Helpers\WP\Meta_Box_Inspector;
+use pc_stock_man_v1\Gin0115\WPUnit_Helpers\WP\Meta_Data_Inspector;
+use pc_stock_man_v1\PinkCrab\Registerables\Tests\App_Helper_Trait;
+use pc_stock_man_v1\PinkCrab\Registerables\Tests\Fixtures\Shared_Metabox\Post_Page_Meta_Box;
 class Test_Post_Page_Meta_Box extends \WP_UnitTestCase
 {
     use App_Helper_Trait;
@@ -56,17 +56,17 @@ class Test_Post_Page_Meta_Box extends \WP_UnitTestCase
     {
         parent::setup();
         // Create the CPT and Loader instances.
-        $this->cpt = new \PC_Woo_Stock_Man\PinkCrab\Registerables\Tests\Fixtures\Shared_Metabox\Post_Page_Meta_Box();
-        self::create_with_registerables(\PC_Woo_Stock_Man\PinkCrab\Registerables\Tests\Fixtures\Shared_Metabox\Post_Page_Meta_Box::class)->boot();
+        $this->cpt = new \pc_stock_man_v1\PinkCrab\Registerables\Tests\Fixtures\Shared_Metabox\Post_Page_Meta_Box();
+        self::create_with_registerables(\pc_stock_man_v1\PinkCrab\Registerables\Tests\Fixtures\Shared_Metabox\Post_Page_Meta_Box::class)->boot();
         do_action('init');
         // Build inspector.
-        $this->meta_data_inspector = \PC_Woo_Stock_Man\Gin0115\WPUnit_Helpers\WP\Meta_Data_Inspector::initialise();
+        $this->meta_data_inspector = \pc_stock_man_v1\Gin0115\WPUnit_Helpers\WP\Meta_Data_Inspector::initialise();
         // Register the metaboxes.
         do_action('add_meta_boxes');
         global $wp_meta_boxes;
         $this->wp_meta_boxes = $wp_meta_boxes;
         // Build inspector.
-        $this->meta_box_inspector = \PC_Woo_Stock_Man\Gin0115\WPUnit_Helpers\WP\Meta_Box_Inspector::initialise();
+        $this->meta_box_inspector = \pc_stock_man_v1\Gin0115\WPUnit_Helpers\WP\Meta_Box_Inspector::initialise();
     }
     /** @testdox When registering a shared meta box controller, whatever screens are defined, should see the meta box registered for. */
     public function test_meta_boxes_registered()

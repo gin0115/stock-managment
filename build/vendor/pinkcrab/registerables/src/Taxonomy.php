@@ -20,10 +20,10 @@ declare (strict_types=1);
  * @license http://www.opensource.org/licenses/mit-license.html  MIT License
  * @package PinkCrab\Registerables
  */
-namespace PC_Woo_Stock_Man\PinkCrab\Registerables;
+namespace pc_stock_man_v1\PinkCrab\Registerables;
 
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Registration_Middleware\Registerable;
-abstract class Taxonomy implements \PC_Woo_Stock_Man\PinkCrab\Registerables\Registration_Middleware\Registerable
+use pc_stock_man_v1\PinkCrab\Registerables\Registration_Middleware\Registerable;
+abstract class Taxonomy implements \pc_stock_man_v1\PinkCrab\Registerables\Registration_Middleware\Registerable
 {
     /**
      * The singular label

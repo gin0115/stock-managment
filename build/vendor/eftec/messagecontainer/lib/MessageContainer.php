@@ -1,16 +1,16 @@
 <?php
 
-/** @noinspection UnknownInspectionInspection */
 /** @noinspection SlowArrayOperationsInLoopInspection */
 /** @noinspection PhpUnused */
-namespace PC_Woo_Stock_Man\eftec;
+namespace pc_stock_man_v1\eftec;
 
+use RuntimeException;
 /**
  * Class MessageList
  *
  * @package       eftec
  * @author        Jorge Castro Castillo
- * @version       1.2 2021-03-21
+ * @version       2.5 2022-02-05
  * @copyright (c) Jorge Castro C. mit License  https://github.com/EFTEC/MessageContainer
  * @see           https://github.com/EFTEC/MessageContainer
  */
@@ -30,21 +30,37 @@ class MessageContainer
     public $successCount = 0;
     /** @var string[] Used to convert a type of message to a css class */
     public $cssClasses = ['error' => 'danger', 'warning' => 'warning', 'info' => 'info', 'success' => 'success'];
-    private $firstError;
-    private $firstWarning;
-    private $firstInfo;
-    private $firstSuccess;
+    private $throwOnError = \false;
+    private $logOnError = \false;
+    private $throwOnWarning = \false;
+    private $logOnWarning = \false;
+    /** @var null|MessageContainer singleton */
+    protected static $instance;
     /**
      * MessageList constructor.
      */
-    public function __construct()
+    public function __construct($setSingleton = \true)
     {
         $this->items = array();
+        if ($setSingleton) {
+            self::$instance = $this;
+        }
+    }
+    /**
+     * Obtain the singleton and if it doesn't exist, then it is created.
+     * @return MessageContainer
+     */
+    public static function instance() : \pc_stock_man_v1\eftec\MessageContainer
+    {
+        if (self::$instance === null) {
+            self::$instance = new \pc_stock_man_v1\eftec\MessageContainer(\false);
+        }
+        return self::$instance;
     }
     /**
      * It resets all the container and flush all the results.
      */
-    public function resetAll()
+    public function resetAll() : void
     {
         $this->errorCount = 0;
         $this->warningCount = 0;
@@ -52,59 +68,106 @@ class MessageContainer
         $this->infoCount = 0;
         $this->successCount = 0;
         $this->items = array();
-        $this->firstError = null;
-        $this->firstWarning = null;
-        $this->firstInfo = null;
-        $this->firstSuccess = null;
+        $this->throwOnError = \false;
+        $this->logOnError = \false;
+        $this->throwOnWarning = \false;
     }
     /**
-     * You could add a message (including errors,warning..) and store it in a $idLocker
+     * It resets (clear the messages) of a specific locker by deleting all the messages and keeping the count of them.
+     * @param string $idLocker If the locker doesn't exist, it does nothing.
+     * @return void
+     */
+    public function resetLocker(string $idLocker) : void
+    {
+        if (!$this->hasLocker($idLocker)) {
+            return;
+        }
+        $locker = $this->get($idLocker);
+        $this->errorCount -= $locker->countError();
+        $this->warningCount -= $locker->countWarning();
+        $this->infoCount -= $locker->countInfo();
+        $this->successCount -= $locker->countSuccess();
+        $locker->resetAll();
+    }
+    /**
+     * If we store an error then we also throw a PHP exception.
      *
-     * @param string $idLocker Identified of the locker (where the message will be stored)
-     * @param string $message  message to show. Example: 'the value is incorrect'
-     * @param string $level    =['error','warning','info','success'][$i]
-     * @param array  $context  [optional] it is an associative array with the values of the item<br>
+     * @param bool    $throwOnError   if true (default), then it throws an excepcion every time
+     *                               we store an error.
+     * @param boolean $includeWarning If true then it also includes warnings.
+     * @return MessageContainer
+     */
+    public function throwOnError(bool $throwOnError = \true, bool $includeWarning = \false) : \pc_stock_man_v1\eftec\MessageContainer
+    {
+        $this->throwOnError = $throwOnError;
+        $this->throwOnWarning = $includeWarning;
+        return $this;
+    }
+    /**
+     * If we store an error then we also save the information using error_log()
+     *
+     * @param bool    $logOnError     if true (default), then it throws an excepcion every time
+     *                               we store an error.
+     * @param boolean $includeWarning If true then it also includes warnings.
+     * @return MessageContainer
+     */
+    public function LogOnError(bool $logOnError = \true, bool $includeWarning = \false) : \pc_stock_man_v1\eftec\MessageContainer
+    {
+        $this->logOnError = $logOnError;
+        $this->logOnWarning = $includeWarning;
+        return $this;
+    }
+    /**
+     * You could add a message (including errors,warning, etc.) and store it in a $idLocker
+     *
+     * @param string     $idLocker Identified of the locker (where the message will be stored)
+     * @param string     $message  message to show. Example: 'the value is incorrect'.<br>
+     *                         You can also use variables (if you are set a context). Ex: {{var1}} <br>
+     *                         You can also show the idlocker. Ex: {{_idlocker}}<br>
+     * @param string     $level    =['error','warning','info','success'][$i]
+     * @param array|null $context  [optional] it is an associative array with the values of the item<br>
      *                         For optimization, the context is not update if exists another context.
      */
-    public function addItem($idLocker, $message, $level = 'error', $context = null)
+    public function addItem(string $idLocker, string $message, string $level = 'error', ?array $context = null) : void
     {
         $idLocker = $idLocker === '' ? '0' : $idLocker;
         if (!isset($this->items[$idLocker])) {
-            $this->items[$idLocker] = new \PC_Woo_Stock_Man\eftec\MessageLocker($idLocker, $context);
+            $this->items[$idLocker] = new \pc_stock_man_v1\eftec\MessageLocker($idLocker, $context);
         } else {
             $this->items[$idLocker]->setContext($context);
         }
         // if the message contains a curly braces, then it is convert using the context.
-        $messageTransformed = $this->items[$idLocker]->replaceCurlyVariable($message);
         switch ($level) {
             case 'error':
                 $this->errorCount++;
                 $this->errorOrWarningCount++;
-                if ($this->firstError === null) {
-                    $this->firstError = $messageTransformed;
+                $lastmsg = $this->items[$idLocker]->addError($message);
+                if ($this->logOnError) {
+                    /** @noinspection ForgottenDebugOutputInspection */
+                    \error_log($lastmsg);
                 }
-                $this->items[$idLocker]->addError($message);
+                if ($this->throwOnError) {
+                    throw new \RuntimeException($lastmsg);
+                }
                 break;
             case 'warning':
                 $this->warningCount++;
                 $this->errorOrWarningCount++;
-                if ($this->firstWarning === null) {
-                    $this->firstWarning = $messageTransformed;
+                $lastmsg = $this->items[$idLocker]->addWarning($message);
+                if ($this->logOnWarning) {
+                    /** @noinspection ForgottenDebugOutputInspection */
+                    \error_log($lastmsg);
                 }
-                $this->items[$idLocker]->addWarning($message);
+                if ($this->throwOnWarning) {
+                    throw new \RuntimeException($lastmsg);
+                }
                 break;
             case 'info':
                 $this->infoCount++;
-                if ($this->firstInfo === null) {
-                    $this->firstInfo = $messageTransformed;
-                }
                 $this->items[$idLocker]->addInfo($message);
                 break;
             case 'success':
                 $this->successCount++;
-                if ($this->firstSuccess === null) {
-                    $this->firstSuccess = $messageTransformed;
-                }
                 $this->items[$idLocker]->addSuccess($message);
                 break;
         }
@@ -114,35 +177,40 @@ class MessageContainer
      *
      * @return array
      */
-    public function allIds()
+    public function allIds() : array
     {
         return \array_keys($this->items);
     }
     /**
      * Alias of $this->getMessage()
-     * @param string $idLocker Id of the locker
+     * @param string $idLocker ID of the locker
      * @return MessageLocker
      */
-    public function get($idLocker)
+    public function get(string $idLocker) : \pc_stock_man_v1\eftec\MessageLocker
     {
         return $this->getLocker($idLocker);
     }
     /**
-     * It returns a MessageLocker containing an locker.<br>
+     * It returns a MessageLocker containing a locker.<br>
      * <b>If the locker doesn't exist then it returns an empty object (not null)</b>
      *
-     * @param string $idLocker Id of the locker
+     * @param string $idLocker ID of the locker
      *
      * @return MessageLocker
      */
-    public function getLocker($idLocker = '')
+    public function getLocker(string $idLocker = '') : \pc_stock_man_v1\eftec\MessageLocker
     {
         $idLocker = $idLocker === '' ? '0' : $idLocker;
-        if (!isset($this->items[$idLocker])) {
-            return new \PC_Woo_Stock_Man\eftec\MessageLocker($idLocker);
-            // we returns an empty locker.
-        }
-        return $this->items[$idLocker];
+        return $this->items[$idLocker] ?? new \pc_stock_man_v1\eftec\MessageLocker($idLocker);
+    }
+    /**
+     * returns true if the locker is defined
+     * @param string $idLocker
+     * @return bool
+     */
+    public function hasLocker(string $idLocker) : bool
+    {
+        return isset($this->items[$idLocker]);
     }
     /**
      * It returns a css class associated with the type of errors inside a locker<br>
@@ -153,11 +221,11 @@ class MessageContainer
      * $css=$this->cssClass('customerId');
      * </pre>
      *
-     * @param string $idLocker Id of the locker
+     * @param string $idLocker ID of the locker
      *
      * @return string
      */
-    public function cssClass($idLocker)
+    public function cssClass(string $idLocker) : string
     {
         $idLocker = $idLocker === '' ? '0' : $idLocker;
         if (!isset($this->items[$idLocker])) {
@@ -185,26 +253,46 @@ class MessageContainer
      * @return string empty if there is none
      * @see \eftec\MessageContainer::firstErrorText
      */
-    public function firstErrorOrWarning($default = '')
+    public function firstErrorOrWarning(string $default = '') : string
     {
         return $this->firstErrorText($default, \true);
     }
     /**
-     * It returns the first message of error or empty if none
+     * It returns the first message of error or empty if none<br>
+     * If not, then it returns the first message of warning or empty if none
      *
-     * @param string $default if not message is found, then it returns this value.
-     * @param bool   $includeWarning if true then it also includes warning but any error has priority.
+     * @param string $default if not message is found, then it returns this value
      * @return string empty if there is none
+     * @see \eftec\MessageContainer::firstErrorText
      */
-    public function firstErrorText($default = '', $includeWarning = \false)
+    public function lastErrorOrWarning(string $default = '') : string
     {
-        if ($includeWarning) {
-            if ($this->errorCount) {
-                return $this->firstError;
-            }
-            return $this->warningCount === 0 ? $default : $this->firstWarning;
-        }
-        return $this->errorCount === 0 ? $default : $this->firstError;
+        $r = $this->allErrorArray(\true, 'last');
+        return $r[0] ?? $default;
+    }
+    /**
+     * It returns the first message of error (as text) or empty if none
+     *
+     * @param string $default        if not message is found, then it returns this value.
+     * @param bool   $includeWarning if true then it also includes warning but any error has priority.
+     * @return string empty (or default if there is none
+     */
+    public function firstErrorText(string $default = '', bool $includeWarning = \false) : string
+    {
+        $r = $this->allErrorArray($includeWarning, 'first');
+        return $r[0] ?? $default;
+    }
+    /**
+     * It returns the last message of error (as text) or empty if none
+     *
+     * @param string $default        if not message is found, then it returns this value.
+     * @param bool   $includeWarning if true then it also includes warning but any error has priority.
+     * @return string empty (or default if there is none
+     */
+    public function lastErrorText(string $default = '', bool $includeWarning = \false) : string
+    {
+        $r = $this->allErrorArray($includeWarning, 'last');
+        return $r[0] ?? $default;
     }
     /**
      * It returns the first message of warning or empty if none
@@ -212,9 +300,21 @@ class MessageContainer
      * @param string $default if not message is found, then it returns this value
      * @return string empty if there is none
      */
-    public function firstWarningText($default = '')
+    public function firstWarningText(string $default = '') : string
     {
-        return $this->warningCount === 0 ? $default : $this->firstWarning;
+        $r = $this->allWarningArray('first');
+        return $r[0] ?? $default;
+    }
+    /**
+     * It returns the last message of warning or empty if none
+     *
+     * @param string $default if not message is found, then it returns this value
+     * @return string empty if there is none
+     */
+    public function lastWarningText(string $default = '') : string
+    {
+        $r = $this->allWarningArray('last');
+        return $r[0] ?? $default;
     }
     /**
      * It returns the first message of information or empty if none
@@ -222,9 +322,21 @@ class MessageContainer
      * @param string $default if not message is found, then it returns this value
      * @return string empty if there is none
      */
-    public function firstInfoText($default = '')
+    public function firstInfoText(string $default = '') : string
     {
-        return $this->infoCount === 0 ? $default : $this->firstInfo;
+        $r = $this->allInfoArray('first');
+        return $r[0] ?? $default;
+    }
+    /**
+     * It returns the last message of information or empty if none
+     *
+     * @param string $default if not message is found, then it returns this value
+     * @return string empty if there is none
+     */
+    public function lastInfoText(string $default = '') : string
+    {
+        $r = $this->allInfoArray('last');
+        return $r[0] ?? $default;
     }
     /**
      * It returns the first message of success or empty if none
@@ -232,18 +344,30 @@ class MessageContainer
      * @param string $default if not message is found, then it returns this value
      * @return string empty if there is none
      */
-    public function firstSuccessText($default = '')
+    public function firstSuccessText(string $default = '') : string
     {
-        return $this->successCount === 0 ? $default : $this->firstSuccess;
+        $r = $this->allSuccessArray('first');
+        return $r[0] ?? $default;
+    }
+    /**
+     * It returns the last message of success or empty if none
+     *
+     * @param string $default if not message is found, then it returns this value
+     * @return string empty if there is none
+     */
+    public function lastSuccessText(string $default = '') : string
+    {
+        $r = $this->allSuccessArray('last');
+        return $r[0] ?? $default;
     }
     /**
      * It returns an array with all messages of any type of all lockers
      *
-     * @param null|string $level =[null,'error','warning','errorwarning','info','success'][$i] the level to show.<br>
+     * @param string|null $level =[null,'error','warning','errorwarning','info','success'][$i] the level to show.<br>
      *                           Null means it shows all errors
-     * @return string[] empty if there is none
+     * @return string[] empty array if there is none
      */
-    public function allArray($level = null)
+    public function allArray(string $level = null) : array
     {
         switch ($level) {
             case 'error':
@@ -269,71 +393,176 @@ class MessageContainer
     /**
      * It returns an array with all messages of error of all lockers.
      *
-     * @param bool $includeWarning if true then it also include warnings.
-     * @return string[] empty if there is none
+     * @param bool   $includeWarning if true then it also includes warnings.
+     * @param string $position       =['*','first','last'][$i] the value to read<br>
+     *                               * = reads all the errors (or warnings)<br>
+     *                               first = reads the first error (or warning)<br>
+     *                               last = reads the last error (or warning)<br>
+     *
+     * @return array empty if there is none
      */
-    public function allErrorArray($includeWarning = \false)
+    public function allErrorArray(bool $includeWarning = \false, string $position = '*') : array
     {
+        $r = array();
         if ($includeWarning) {
-            $r = array();
             foreach ($this->items as $v) {
-                $r = \array_merge($r, $v->allError());
-                $r = \array_merge($r, $v->allWarning());
+                switch ($position) {
+                    case '*':
+                        $r = \array_merge($r, $v->allErrorOrWarning());
+                        break;
+                    case 'first':
+                        $tmp = $v->firstErrorOrWarning();
+                        if ($tmp !== null) {
+                            return [$tmp];
+                        }
+                        break;
+                    case 'last':
+                        $tmp = $v->lastErrorOrWarning();
+                        if ($tmp !== null) {
+                            $r[] = $tmp;
+                        }
+                        break;
+                    default:
+                        throw new \RuntimeException("MessageContainer::allErrorArray unknow type {$position}");
+                }
+            }
+            if ($position === 'last') {
+                return \end($r) ? [\end($r)] : [];
             }
             return $r;
         }
-        $r = array();
         foreach ($this->items as $v) {
-            $r = \array_merge($r, $v->allError());
+            switch ($position) {
+                case '*':
+                    $r = \array_merge($r, $v->allError());
+                    break;
+                case 'first':
+                    $tmp = $v->firstError();
+                    if ($tmp !== null) {
+                        return [$tmp];
+                    }
+                    break;
+                case 'last':
+                    $tmp = $v->lastError();
+                    if ($tmp !== null) {
+                        $r[] = $tmp;
+                    }
+                    break;
+                default:
+                    throw new \RuntimeException("MessageContainer::allErrorArray unknow type {$position}");
+            }
         }
         return $r;
     }
     /**
      * It returns an array with all messages of warning of all lockers.
      *
-     * @return string[] empty if there is none
+     * @return string[] empty array if there is none
      */
-    public function allWarningArray()
+    public function allWarningArray($position = '*') : array
     {
         $r = array();
         foreach ($this->items as $v) {
-            $r = \array_merge($r, $v->allWarning());
+            switch ($position) {
+                case '*':
+                    $r = \array_merge($r, $v->allWarning());
+                    break;
+                case 'first':
+                    $tmp = $v->firstWarning();
+                    if ($tmp !== null) {
+                        return [$tmp];
+                    }
+                    break;
+                case 'last':
+                    $tmp = $v->lastWarning();
+                    if ($tmp !== null) {
+                        $r[] = $tmp;
+                    }
+                    break;
+                default:
+                    throw new \RuntimeException("MessageContainer::allWarningArray unknow type {$position}");
+            }
+        }
+        if ($position === 'last') {
+            return \end($r) ? [\end($r)] : [];
         }
         return $r;
     }
     /**
      * It returns an array with all messages of errors and warnings of all lockers.
      *
-     * @return string[] empty if there is none
+     * @return string[] empty array if there is none
      * @see \eftec\MessageContainer::allErrorArray
      */
-    public function allErrorOrWarningArray()
+    public function allErrorOrWarningArray() : array
     {
         return $this->allErrorArray(\true);
     }
     /**
      * It returns an array with all messages of info of all lockers.
      *
-     * @return string[] empty if there is none
+     * @return string[] empty array if there is none
      */
-    public function allInfoArray()
+    public function allInfoArray($position = '*') : array
     {
         $r = array();
         foreach ($this->items as $v) {
-            $r = \array_merge($r, $v->allInfo());
+            switch ($position) {
+                case '*':
+                    $r = \array_merge($r, $v->allInfo());
+                    break;
+                case 'first':
+                    $tmp = $v->firstInfo();
+                    if ($tmp !== null) {
+                        return [$tmp];
+                    }
+                    break;
+                case 'last':
+                    $tmp = $v->lastInfo();
+                    if ($tmp !== null) {
+                        $r[] = $tmp;
+                    }
+                    break;
+                default:
+                    throw new \RuntimeException("MessageContainer::allInfoArray unknow type {$position}");
+            }
+        }
+        if ($position === 'last') {
+            return \end($r) ? [\end($r)] : [];
         }
         return $r;
     }
     /**
      * It returns an array with all messages of success of all lockers.
      *
-     * @return string[] empty if there is none
+     * @return string[] empty array if there is none
      */
-    public function AllSuccessArray()
+    public function allSuccessArray($position = '*') : array
     {
         $r = array();
         foreach ($this->items as $v) {
-            $r = \array_merge($r, $v->allSuccess());
+            switch ($position) {
+                case '*':
+                    $r = \array_merge($r, $v->allSuccess());
+                    break;
+                case 'first':
+                    $tmp = $v->firstSuccess();
+                    if ($tmp !== null) {
+                        return [$tmp];
+                    }
+                    break;
+                case 'last':
+                    $tmp = $v->lastSuccess();
+                    if ($tmp !== null) {
+                        $r[] = $tmp;
+                    }
+                    break;
+                default:
+                    throw new \RuntimeException("MessageContainer::allSuccessArray unknow type {$position}");
+            }
+        }
+        if ($position === 'last') {
+            return \end($r) ? [\end($r)] : [];
         }
         return $r;
     }
@@ -341,33 +570,33 @@ class MessageContainer
      * It returns an associative array of the form <br>
      * <pre>
      * [
-     *  ['id'=>'', // id of the locker
+     *  ['id'=>'', // ID of the locker
      *  'level'=>'' // level of message (error, warning, info or success)
      *  'msg'=>'' // the message to show
      *  ]
      * ]
      * </pre>
      *
-     * @param null|string $level
+     * @param string $level =['*','error','warning','errorwarning','info','success'][$i] '*' (default means all levels).
      * @return array
      */
-    public function allAssocArray($level = null)
+    public function allAssocArray(string $level = '*') : array
     {
         $result = [];
-        foreach ($this->items as $idLocker => $v) {
-            if ($level === 'error' || $level === 'errorwarning' || $level === null) {
+        foreach ($this->items as $v) {
+            if ($level === 'error' || $level === 'errorwarning' || $level === '*') {
                 $tmp = $v->allAssocArray('error');
                 $result = \array_merge($result, $tmp);
             }
-            if ($level === 'warning' || $level === 'errorwarning' || $level === null) {
+            if ($level === 'warning' || $level === 'errorwarning' || $level === '*') {
                 $tmp = $v->allAssocArray('warning');
                 $result = \array_merge($result, $tmp);
             }
-            if ($level === 'info' || $level === null) {
+            if ($level === 'info' || $level === '*') {
                 $tmp = $v->allAssocArray('info');
                 $result = \array_merge($result, $tmp);
             }
-            if ($level === 'success' || $level === null) {
+            if ($level === 'success' || $level === '*') {
                 $tmp = $v->allAssocArray('success');
                 $result = \array_merge($result, $tmp);
             }
@@ -380,7 +609,7 @@ class MessageContainer
      * @param bool $includeWarning If true then it also returns if there is a warning
      * @return bool
      */
-    public function hasError($includeWarning = \false)
+    public function hasError(bool $includeWarning = \false) : bool
     {
         $tmp = $includeWarning ? $this->errorCount : $this->errorOrWarningCount;
         return $tmp !== 0;

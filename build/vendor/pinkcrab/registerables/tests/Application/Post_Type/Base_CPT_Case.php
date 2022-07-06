@@ -11,11 +11,11 @@ declare (strict_types=1);
  * @license http://www.opensource.org/licenses/mit-license.html  MIT License
  * @package PinkCrab\Registerables
  */
-namespace PC_Woo_Stock_Man\PinkCrab\Registerables\Tests\Application\Post_Type;
+namespace pc_stock_man_v1\PinkCrab\Registerables\Tests\Application\Post_Type;
 
-use PC_Woo_Stock_Man\WP_UnitTestCase;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Post_Type;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Tests\App_Helper_Trait;
+use pc_stock_man_v1\WP_UnitTestCase;
+use pc_stock_man_v1\PinkCrab\Registerables\Post_Type;
+use pc_stock_man_v1\PinkCrab\Registerables\Tests\App_Helper_Trait;
 class Base_CPT_Case extends \WP_UnitTestCase
 {
     use App_Helper_Trait;

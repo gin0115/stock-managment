@@ -22,12 +22,12 @@ declare (strict_types=1);
  * @package PinkCrab\Perique\Registration
  * @since 0.4.0
  */
-namespace PC_Woo_Stock_Man\PinkCrab\Perique\Services\Registration\Middleware;
+namespace pc_stock_man_v1\PinkCrab\Perique\Services\Registration\Middleware;
 
-use PC_Woo_Stock_Man\PinkCrab\Loader\Hook_Loader;
-use PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces\Hookable;
-use PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces\Registration_Middleware;
-class Hookable_Middleware implements \PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces\Registration_Middleware
+use pc_stock_man_v1\PinkCrab\Loader\Hook_Loader;
+use pc_stock_man_v1\PinkCrab\Perique\Interfaces\Hookable;
+use pc_stock_man_v1\PinkCrab\Perique\Interfaces\Registration_Middleware;
+class Hookable_Middleware implements \pc_stock_man_v1\PinkCrab\Perique\Interfaces\Registration_Middleware
 {
     /** @var Hook_Loader */
     protected $loader;
@@ -37,7 +37,7 @@ class Hookable_Middleware implements \PC_Woo_Stock_Man\PinkCrab\Perique\Interfac
      * @param Hook_Loader $loader
      * @return void
      */
-    public function set_hook_loader(\PC_Woo_Stock_Man\PinkCrab\Loader\Hook_Loader $loader) : void
+    public function set_hook_loader(\pc_stock_man_v1\PinkCrab\Loader\Hook_Loader $loader) : void
     {
         $this->loader = $loader;
     }
@@ -49,7 +49,7 @@ class Hookable_Middleware implements \PC_Woo_Stock_Man\PinkCrab\Perique\Interfac
      */
     public function process($class)
     {
-        if (\in_array(\PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces\Hookable::class, \class_implements($class) ?: array(), \true)) {
+        if (\in_array(\pc_stock_man_v1\PinkCrab\Perique\Interfaces\Hookable::class, \class_implements($class) ?: array(), \true)) {
             /** @phpstan-ignore-next-line class must implement register for interface*/
             $class->register($this->loader);
         }

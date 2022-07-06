@@ -20,14 +20,14 @@ declare (strict_types=1);
  * @license http://www.opensource.org/licenses/mit-license.html  MIT License
  * @package PinkCrab\Registerables
  */
-namespace PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar;
+namespace pc_stock_man_v1\PinkCrab\Registerables\Registrar;
 
 use Exception;
-use PC_Woo_Stock_Man\PinkCrab\Loader\Hook_Loader;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Box;
-use PC_Woo_Stock_Man\PinkCrab\Perique\Services\View\View;
-use PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces\DI_Container;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Validator\Meta_Box_Validator;
+use pc_stock_man_v1\PinkCrab\Loader\Hook_Loader;
+use pc_stock_man_v1\PinkCrab\Registerables\Meta_Box;
+use pc_stock_man_v1\PinkCrab\Perique\Services\View\View;
+use pc_stock_man_v1\PinkCrab\Perique\Interfaces\DI_Container;
+use pc_stock_man_v1\PinkCrab\Registerables\Validator\Meta_Box_Validator;
 class Meta_Box_Registrar
 {
     /**
@@ -42,7 +42,7 @@ class Meta_Box_Registrar
      * @var Hook_Loader
      */
     protected $loader;
-    public function __construct(\PC_Woo_Stock_Man\PinkCrab\Registerables\Validator\Meta_Box_Validator $validator, \PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces\DI_Container $container, \PC_Woo_Stock_Man\PinkCrab\Loader\Hook_Loader $loader)
+    public function __construct(\pc_stock_man_v1\PinkCrab\Registerables\Validator\Meta_Box_Validator $validator, \pc_stock_man_v1\PinkCrab\Perique\Interfaces\DI_Container $container, \pc_stock_man_v1\PinkCrab\Loader\Hook_Loader $loader)
     {
         $this->validator = $validator;
         $this->container = $container;
@@ -54,7 +54,7 @@ class Meta_Box_Registrar
      * @param Meta_Box $meta_box
      * @return void
      */
-    public function register(\PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Box $meta_box) : void
+    public function register(\pc_stock_man_v1\PinkCrab\Registerables\Meta_Box $meta_box) : void
     {
         if (!$this->validator->verify_meta_box($meta_box)) {
             throw new \Exception(\sprintf('Failed validating meta box model(%s) with errors: %s', \get_class($meta_box), \join(', ', $this->validator->get_errors())));
@@ -95,7 +95,7 @@ class Meta_Box_Registrar
      * @param \PinkCrab\Registerables\Meta_Box $meta_box
      * @return \PinkCrab\Registerables\Meta_Box
      */
-    protected function set_view_callback_from_callable(\PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Box $meta_box) : \PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Box
+    protected function set_view_callback_from_callable(\pc_stock_man_v1\PinkCrab\Registerables\Meta_Box $meta_box) : \pc_stock_man_v1\PinkCrab\Registerables\Meta_Box
     {
         // Get the current view callback.
         $current_callback = $meta_box->view;
@@ -116,11 +116,11 @@ class Meta_Box_Registrar
      * @param \PinkCrab\Registerables\Meta_Box $meta_box
      * @return \PinkCrab\Registerables\Meta_Box
      */
-    protected function set_view_callback_from_renderable(\PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Box $meta_box) : \PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Box
+    protected function set_view_callback_from_renderable(\pc_stock_man_v1\PinkCrab\Registerables\Meta_Box $meta_box) : \pc_stock_man_v1\PinkCrab\Registerables\Meta_Box
     {
         // Create View(View)
-        $view = $this->container->create(\PC_Woo_Stock_Man\PinkCrab\Perique\Services\View\View::class);
-        if (\is_null($view) || !\is_a($view, \PC_Woo_Stock_Man\PinkCrab\Perique\Services\View\View::class)) {
+        $view = $this->container->create(\pc_stock_man_v1\PinkCrab\Perique\Services\View\View::class);
+        if (\is_null($view) || !\is_a($view, \pc_stock_man_v1\PinkCrab\Perique\Services\View\View::class)) {
             throw new \Exception('View not defined');
         }
         $meta_box->view(function (\WP_Post $post, array $args) use($meta_box, $view) {
@@ -136,7 +136,7 @@ class Meta_Box_Registrar
      *
      * @return boolean
      */
-    protected function is_active(\PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Box $meta_box) : bool
+    protected function is_active(\pc_stock_man_v1\PinkCrab\Registerables\Meta_Box $meta_box) : bool
     {
         global $current_screen;
         return !\is_null($current_screen) && !empty($current_screen->post_type) && \in_array($current_screen->post_type, $meta_box->screen, \true);
@@ -149,7 +149,7 @@ class Meta_Box_Registrar
      * @param array<string, mixed> $view_args
      * @return array<string, mixed>
      */
-    public function filter_view_args(\PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Box $meta_box, \WP_Post $post, array $view_args) : array
+    public function filter_view_args(\pc_stock_man_v1\PinkCrab\Registerables\Meta_Box $meta_box, \WP_Post $post, array $view_args) : array
     {
         if (\is_callable($meta_box->view_data_filter)) {
             $view_args = ($meta_box->view_data_filter)($post, $view_args);

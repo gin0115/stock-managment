@@ -8,7 +8,7 @@ declare (strict_types=1);
  * @author Glynn Quelch glynn@pinkcrab.co.uk
  * @since 0.0.1
  */
-namespace PC_Woo_Stock_Man\PinkCrab\Plugin_Lifecycle;
+namespace pc_stock_man_v1\PinkCrab\Plugin_Lifecycle;
 
 use Exception;
 use Throwable;
@@ -21,10 +21,10 @@ class Plugin_State_Exception extends \Exception
      * @param Throwable|null $exception
      * @return Plugin_State_Exception
      */
-    public static function failed_to_create_state_change_event($event, ?\Throwable $exception = null) : \PC_Woo_Stock_Man\PinkCrab\Plugin_Lifecycle\Plugin_State_Exception
+    public static function failed_to_create_state_change_event($event, ?\Throwable $exception = null) : \pc_stock_man_v1\PinkCrab\Plugin_Lifecycle\Plugin_State_Exception
     {
         $message = \sprintf('Failed to construct %s using the DI Container. %s', \is_string($event) ? $event : \get_class($event), $exception ? $exception->getMessage() : '');
-        return new \PC_Woo_Stock_Man\PinkCrab\Plugin_Lifecycle\Plugin_State_Exception($message, 101);
+        return new \pc_stock_man_v1\PinkCrab\Plugin_Lifecycle\Plugin_State_Exception($message, 101);
     }
     /**
      * Returns an exception for adding a none event change class
@@ -32,19 +32,19 @@ class Plugin_State_Exception extends \Exception
      * @param string|object $event
      * @return Plugin_State_Exception
      */
-    public static function invalid_state_change_event_type($event) : \PC_Woo_Stock_Man\PinkCrab\Plugin_Lifecycle\Plugin_State_Exception
+    public static function invalid_state_change_event_type($event) : \pc_stock_man_v1\PinkCrab\Plugin_Lifecycle\Plugin_State_Exception
     {
         $message = \sprintf('%s is not a valid Plugin State Change Event class', \is_string($event) ? $event : \get_class($event));
-        return new \PC_Woo_Stock_Man\PinkCrab\Plugin_Lifecycle\Plugin_State_Exception($message, 102);
+        return new \pc_stock_man_v1\PinkCrab\Plugin_Lifecycle\Plugin_State_Exception($message, 102);
     }
     /**
      * Failed to locate path of file which created an instace of the Plugin State Controller
      * @code 103
      * @return Plugin_State_Exception
      */
-    public static function failed_to_locate_calling_file() : \PC_Woo_Stock_Man\PinkCrab\Plugin_Lifecycle\Plugin_State_Exception
+    public static function failed_to_locate_calling_file() : \pc_stock_man_v1\PinkCrab\Plugin_Lifecycle\Plugin_State_Exception
     {
-        return new \PC_Woo_Stock_Man\PinkCrab\Plugin_Lifecycle\Plugin_State_Exception('Could not locate the file which created the Plugin State Controller. Please define this value manually using $controller->finalise( string $file )', 103);
+        return new \pc_stock_man_v1\PinkCrab\Plugin_Lifecycle\Plugin_State_Exception('Could not locate the file which created the Plugin State Controller. Please define this value manually using $controller->finalise( string $file )', 103);
     }
     /**
      * Throws error while calling run() in state change event.
@@ -53,9 +53,9 @@ class Plugin_State_Exception extends \Exception
      * @param Throwable $exception
      * @return Plugin_State_Exception
      */
-    public static function error_running_state_change_event(\PC_Woo_Stock_Man\PinkCrab\Plugin_Lifecycle\Plugin_State_Change $event, ?\Throwable $exception = null) : \PC_Woo_Stock_Man\PinkCrab\Plugin_Lifecycle\Plugin_State_Exception
+    public static function error_running_state_change_event(\pc_stock_man_v1\PinkCrab\Plugin_Lifecycle\Plugin_State_Change $event, ?\Throwable $exception = null) : \pc_stock_man_v1\PinkCrab\Plugin_Lifecycle\Plugin_State_Exception
     {
         $message = \sprintf('Failed to run %s->run(), error thrown::%s', \get_class($event), $exception === null ? 'NO ERROR PASSED' : $exception->getMessage());
-        return new \PC_Woo_Stock_Man\PinkCrab\Plugin_Lifecycle\Plugin_State_Exception($message, 104);
+        return new \pc_stock_man_v1\PinkCrab\Plugin_Lifecycle\Plugin_State_Exception($message, 104);
     }
 }

@@ -20,11 +20,11 @@ declare (strict_types=1);
  * @license http://www.opensource.org/licenses/mit-license.html  MIT License
  * @package PinkCrab\Perique
  */
-namespace PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces;
+namespace pc_stock_man_v1\PinkCrab\Perique\Interfaces;
 
-use PC_Woo_Stock_Man\PinkCrab\Loader\Hook_Loader;
-use PC_Woo_Stock_Man\Psr\Container\ContainerInterface;
-interface DI_Container extends \PC_Woo_Stock_Man\Psr\Container\ContainerInterface
+use pc_stock_man_v1\PinkCrab\Loader\Hook_Loader;
+use pc_stock_man_v1\Psr\Container\ContainerInterface;
+interface DI_Container extends \pc_stock_man_v1\Psr\Container\ContainerInterface
 {
     /**
      * Add a single rule.
@@ -33,14 +33,14 @@ interface DI_Container extends \PC_Woo_Stock_Man\Psr\Container\ContainerInterfac
      * @param array<string, array<mixed>> $rule
      * @return DI_Container
      */
-    public function addRule(string $name, array $rule) : \PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces\DI_Container;
+    public function addRule(string $name, array $rule) : \pc_stock_man_v1\PinkCrab\Perique\Interfaces\DI_Container;
     /**
      * Add multiple rules
      *
      * @param array<string, array<mixed>> $rules
      * @return DI_Container
      */
-    public function addRules(array $rules) : \PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces\DI_Container;
+    public function addRules(array $rules) : \pc_stock_man_v1\PinkCrab\Perique\Interfaces\DI_Container;
     /**
      * Create an instance of a class, with optional parameters.
      *

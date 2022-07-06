@@ -1,6 +1,6 @@
 <?php
 
-namespace PC_Woo_Stock_Man;
+namespace pc_stock_man_v1;
 
 /* @description Dice - A minimal Dependency Injection Container for PHP *
  * @author Tom Butler tom@r.je *

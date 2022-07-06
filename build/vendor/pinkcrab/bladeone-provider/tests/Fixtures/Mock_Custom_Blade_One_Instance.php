@@ -9,9 +9,9 @@ declare (strict_types=1);
  * @license http://www.opensource.org/licenses/mit-license.html  MIT License
  * @package PinkCrab\BladeOne
  */
-namespace PC_Woo_Stock_Man\PinkCrab\BladeOne\Tests\Fixtures;
+namespace pc_stock_man_v1\PinkCrab\BladeOne\Tests\Fixtures;
 
-use PC_Woo_Stock_Man\PinkCrab\BladeOne\PinkCrab_BladeOne;
-class Mock_Custom_Blade_One_Instance extends \PC_Woo_Stock_Man\PinkCrab\BladeOne\PinkCrab_BladeOne
+use pc_stock_man_v1\PinkCrab\BladeOne\PinkCrab_BladeOne;
+class Mock_Custom_Blade_One_Instance extends \pc_stock_man_v1\PinkCrab\BladeOne\PinkCrab_BladeOne
 {
 }

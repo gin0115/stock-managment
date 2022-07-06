@@ -21,10 +21,10 @@ declare (strict_types=1);
  * @license http://www.opensource.org/licenses/mit-license.html  MIT License
  * @package PinkCrab\Loader
  */
-namespace PC_Woo_Stock_Man\PinkCrab\Loader;
+namespace pc_stock_man_v1\PinkCrab\Loader;
 
 use Countable;
-use PC_Woo_Stock_Man\PinkCrab\Loader\Hook;
+use pc_stock_man_v1\PinkCrab\Loader\Hook;
 class Hook_Collection implements \Countable
 {
     /**
@@ -43,7 +43,7 @@ class Hook_Collection implements \Countable
      * @param Hook $hook
      * @return self
      */
-    public function push(\PC_Woo_Stock_Man\PinkCrab\Loader\Hook $hook) : self
+    public function push(\pc_stock_man_v1\PinkCrab\Loader\Hook $hook) : self
     {
         $this->hooks[] = $hook;
         return $this;
@@ -82,7 +82,7 @@ class Hook_Collection implements \Countable
      *
      * @return Hook|null
      */
-    public function pop() : ?\PC_Woo_Stock_Man\PinkCrab\Loader\Hook
+    public function pop() : ?\pc_stock_man_v1\PinkCrab\Loader\Hook
     {
         if ($this->count() !== 0) {
             return \array_pop($this->hooks);

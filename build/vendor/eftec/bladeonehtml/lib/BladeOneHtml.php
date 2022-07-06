@@ -1,17 +1,15 @@
 <?php
 
-/** @noinspection PhpMissingParamTypeInspection */
-/** @noinspection ReturnTypeCanBeDeclaredInspection */
-/** @noinspection PhpMissingReturnTypeInspection */
+/** @noinspection PhpUnused */
 /** @noinspection UnknownInspectionInspection
  * @noinspection RequiredAttributes
  * @noinspection HtmlRequiredAltAttribute
  * @noinspection HtmlUnknownAttribute
  * @noinspection PhpFullyQualifiedNameUsageInspection
  */
-namespace PC_Woo_Stock_Man\eftec\bladeonehtml;
+namespace pc_stock_man_v1\eftec\bladeonehtml;
 
-use PC_Woo_Stock_Man\eftec\MessageContainer;
+use pc_stock_man_v1\eftec\MessageContainer;
 /**
  * trait BladeOneHtml
  * Copyright (c) 2021 Jorge Patricio Castro Castillo MIT License. Don't delete this comment, its part of the license.
@@ -25,7 +23,7 @@ use PC_Woo_Stock_Man\eftec\MessageContainer;
  * </code>
  *
  * @package  BladeOneHtml
- * @version  2.0
+ * @version  2.3
  * @link     https://github.com/EFTEC/BladeOneHtml
  * @author   Jorge Patricio Castro Castillo <jcastro arroba eftec dot cl>
  */
@@ -54,7 +52,7 @@ trait BladeOneHtml
      * It is the automatic constructor. It is loaded by BladeOne.
      * @noinspection PhpUnused
      */
-    public function BladeOneHtml()
+    public function BladeOneHtml() : void
     {
     }
     //<editor-fold desc="definitions function message">
@@ -62,7 +60,7 @@ trait BladeOneHtml
      * @param MessageContainer $messageContainer
      * @return MessageContainer
      */
-    public function message($messageContainer = null)
+    public function message($messageContainer = null) : \pc_stock_man_v1\eftec\MessageContainer
     {
         if ($messageContainer !== null) {
             $this->messageContainer = $messageContainer;
@@ -72,12 +70,12 @@ trait BladeOneHtml
             // already injected, returning instance
             return $this->messageContainer;
         }
-        if (\function_exists('PC_Woo_Stock_Man\\message')) {
+        if (\function_exists('pc_stock_man_v1\\message')) {
             // self inject a function called message() if any.
             $this->messageContainer = message();
         } else {
             // create a new instance of message container.
-            $this->messageContainer = new \PC_Woo_Stock_Man\eftec\MessageContainer();
+            $this->messageContainer = new \pc_stock_man_v1\eftec\MessageContainer();
         }
         return $this->messageContainer;
     }
@@ -101,9 +99,18 @@ trait BladeOneHtml
         // inner, between, pre, post
         return $this->render($args, 'message', $result);
     }
+    /**
+     * Only used for testing.
+     * @param $expression
+     * @return array
+     */
+    public function getArgsProxy($expression) : array
+    {
+        return $this->getArgs($expression);
+    }
     //</editor-fold desc="definitions function message">
     //<editor-fold desc="definitions function">
-    public function useBootstrap3($useCDN = \false)
+    public function useBootstrap3($useCDN = \false) : void
     {
         // Amazing but it still highly used, and it works fine.
         $this->style = 'bootstrap3';
@@ -115,7 +122,7 @@ trait BladeOneHtml
             $this->addJs('<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" ' . 'integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" ' . 'crossorigin="anonymous"></script>', 'bootstrap');
         }
     }
-    public function useBootstrap4($useCDN = \false)
+    public function useBootstrap4($useCDN = \false) : void
     {
         $this->style = 'bootstrap4';
         $bs4 = ['button' => 'btn', 'input' => 'form-control', 'textarea' => 'form-control', 'checkbox_item' => 'form-check-input', 'select' => 'form-control', 'file' => 'form-control-file', 'range' => 'form-control-range', 'radio' => 'form-check-input', 'radio_item' => 'form-check-input', 'ul' => 'list-group', 'ul_item' => 'list-group-item', 'ol' => 'list-group', 'ol_item' => 'list-group-item', 'table' => 'table', 'alert' => 'alert', 'container' => 'container-fluid', 'row' => 'row', 'col' => 'col'];
@@ -146,7 +153,7 @@ trait BladeOneHtml
                         crossorigin="anonymous"></script>', 'bootstrap');
         }
     }
-    public function useBootstrap5($useCDN = \false)
+    public function useBootstrap5($useCDN = \false) : void
     {
         $this->style = 'bootstrap5';
         $bs4 = ['button' => 'btn', 'input' => 'form-control', 'textarea' => 'form-control', 'checkbox_item' => 'form-check-input', 'select' => 'form-control', 'file' => 'form-control', 'range' => 'form-range', 'radio' => 'form-check-input', 'radio_item' => 'form-check-input', 'ul' => 'list-group', 'ul_item' => 'list-group-item', 'ol' => 'list-group', 'ol_item' => 'list-group-item', 'table' => 'table', 'alert' => 'alert', 'container' => 'container-fluid', 'row' => 'row', 'col' => 'col'];
@@ -181,7 +188,7 @@ trait BladeOneHtml
      * @return string
      * @noinspection PhpUnused
      */
-    public function addArgUrl($newArg)
+    public function addArgUrl($newArg) : string
     {
         $get = \array_merge($_GET, $newArg);
         return $this->getCurrentUrl(\true) . '?' . \http_build_query($get);
@@ -189,7 +196,7 @@ trait BladeOneHtml
     /**
      * @return array
      */
-    public function getTranslationControl()
+    public function getTranslationControl() : array
     {
         return $this->translationControl;
     }
@@ -205,7 +212,7 @@ trait BladeOneHtml
      *
      * @return $this
      */
-    public function setTranslationControl($translationControl)
+    public function setTranslationControl($translationControl) : self
     {
         foreach ($translationControl as $k => $v) {
             $this->translationControl[$k] = $v;
@@ -227,7 +234,7 @@ trait BladeOneHtml
      * @param string $css  It could be a url or a link tag.
      * @param string $name if name is empty then it is added automatically. The name is used to avoid adding duplicates
      */
-    public function addCss($css, $name = '')
+    public function addCss($css, $name = '') : void
     {
         if (\strpos($css, '<link') === \false) {
             if (\strpos($css, '//') === \false) {
@@ -255,7 +262,7 @@ trait BladeOneHtml
      * @param string $js   It must be a link to a javscript
      * @param string $name if name is empty then it is added. The name avoid adding duplicates
      */
-    public function addJs($js, $name = '')
+    public function addJs($js, $name = '') : void
     {
         if (\strpos($js, '<script') === \false) {
             if (\strpos($js, '//') === \false) {
@@ -277,7 +284,7 @@ trait BladeOneHtml
      * @param string $js   It must be a script (without the tag < script >)
      * @param string $name if name is empty then it is added. The name avoid adding duplicates
      */
-    public function addJsCode($js, $name = '')
+    public function addJsCode($js, $name = '') : void
     {
         if ($name && !isset($this->htmlJsCode[$name])) {
             $this->htmlJsCode[$name] = $js;
@@ -326,7 +333,7 @@ trait BladeOneHtml
      * @param array $result        =['inner','between','pre','post','text'] (it is the result array).
      * @param bool  $escapeBetween (default is true), if true, then 'between' is escaped (_e(...)), otherwise it's not.
      */
-    protected function processArgs($args, &$result, $escapeBetween = \true)
+    protected function processArgs($args, &$result, $escapeBetween = \true) : void
     {
         if (isset($args['idname'])) {
             $args['id'] = $args['idname'];
@@ -373,6 +380,7 @@ trait BladeOneHtml
      * @param $expression
      *
      * @return string|string[]
+     * @noinspection PhpUnused
      */
     protected function compilePagination($expression)
     {
@@ -433,17 +441,17 @@ trait BladeOneHtml
         return $this->render($args, 'pagination', $result);
     }
     /** @noinspection PhpUnused */
-    protected function compileCssBox()
+    protected function compileCssBox() : string
     {
         return \implode("\n", $this->htmlCss);
     }
     /** @noinspection PhpUnused */
-    protected function compileJsBox()
+    protected function compileJsBox() : string
     {
         return \implode("\n", $this->htmlJs);
     }
     /** @noinspection PhpUnused */
-    protected function compilejsCodeBox($expression)
+    protected function compilejsCodeBox($expression) : string
     {
         $args = $this->getArgs($expression);
         $js = "<script>\n";
@@ -516,7 +524,7 @@ trait BladeOneHtml
         return \str_replace('{{checked}}', $this->phpTag . ' echo (' . $args['value'] . "=={$parent['value']})?'{$checkedname}':''; ?>", $htmlItem);
     }
     /** @noinspection PhpUnused */
-    protected function compileItems($expression)
+    protected function compileItems($expression) : string
     {
         // we add a new attribute with the type of the current open tag
         $parent = \end($this->htmlItem);
@@ -798,7 +806,7 @@ trait BladeOneHtml
         return $this->render($args, 'ol', $result);
     }
     /** @noinspection PhpParameterByRefIsNotUsedAsReferenceInspection */
-    protected function constructorItem($type, &$args)
+    protected function constructorItem($type, &$args) : array
     {
         return ['type' => $type, 'value' => $args['value'] ?? null, 'values' => $args['values'] ?? null, 'alias' => $args['alias'] ?? null, 'id' => $args['id'] ?? null, 'name' => $args['name'] ?? null, 'idname' => $args['idname'] ?? null];
     }
@@ -842,7 +850,7 @@ trait BladeOneHtml
         return $this->pattern['optgroup_end'];
     }
     /** @noinspection PhpUnused */
-    protected function compileFile($expression)
+    protected function compileFile($expression) : string
     {
         $args = $this->getArgs($expression);
         $result = ['', '', '', ''];
@@ -883,7 +891,7 @@ trait BladeOneHtml
         return $this->render($args, 'table_end', $result);
     }
     /** @noinspection PhpUnused */
-    protected function compileTableBody($expression)
+    protected function compileTableBody($expression) : string
     {
         $parent = \end($this->htmlItem);
         $args = $this->getArgs($expression);
@@ -895,7 +903,7 @@ trait BladeOneHtml
         return $html;
     }
     /** @noinspection PhpUnused */
-    protected function compileEndTableBody($expression)
+    protected function compileEndTableBody($expression) : string
     {
         $parent = @\array_pop($this->htmlItem);
         if ($parent === null) {
@@ -1014,7 +1022,7 @@ trait BladeOneHtml
         // inner, between, pre, post
         return $this->render($args, 'alert', $result);
     }
-    protected function compileTrio($expression)
+    protected function compileTrio($expression) : string
     {
         // we add a new attribute with the type of the current open tag
         $parent = \end($this->htmlItem);
@@ -1023,7 +1031,7 @@ trait BladeOneHtml
         return $this->phpTag . "echo \$this->trio{$x}; ?>";
     }
     /** @noinspection PhpUnused */
-    protected function compileTrios($expression)
+    protected function compileTrios($expression) : string
     {
         // we add a new attribute with the type of the current open tag
         $parent = \end($this->htmlItem);

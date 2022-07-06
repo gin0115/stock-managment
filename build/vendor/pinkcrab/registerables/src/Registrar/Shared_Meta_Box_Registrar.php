@@ -21,15 +21,15 @@ declare (strict_types=1);
  * @package PinkCrab\Registerables
  * @since 0.7.0
  */
-namespace PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar;
+namespace pc_stock_man_v1\PinkCrab\Registerables\Registrar;
 
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Data;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar\Registrar;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Shared_Meta_Box_Controller;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar\Meta_Box_Registrar;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar\Meta_Data_Registrar;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Registration_Middleware\Registerable;
-class Shared_Meta_Box_Registrar implements \PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar\Registrar
+use pc_stock_man_v1\PinkCrab\Registerables\Meta_Data;
+use pc_stock_man_v1\PinkCrab\Registerables\Registrar\Registrar;
+use pc_stock_man_v1\PinkCrab\Registerables\Shared_Meta_Box_Controller;
+use pc_stock_man_v1\PinkCrab\Registerables\Registrar\Meta_Box_Registrar;
+use pc_stock_man_v1\PinkCrab\Registerables\Registrar\Meta_Data_Registrar;
+use pc_stock_man_v1\PinkCrab\Registerables\Registration_Middleware\Registerable;
+class Shared_Meta_Box_Registrar implements \pc_stock_man_v1\PinkCrab\Registerables\Registrar\Registrar
 {
     /**
      * The Meta Box Registrar
@@ -43,7 +43,7 @@ class Shared_Meta_Box_Registrar implements \PC_Woo_Stock_Man\PinkCrab\Registerab
      * @var Meta_Data_Registrar
      */
     protected $meta_data_registrar;
-    public function __construct(\PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar\Meta_Box_Registrar $meta_box_registrar, \PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar\Meta_Data_Registrar $meta_data_registrar)
+    public function __construct(\pc_stock_man_v1\PinkCrab\Registerables\Registrar\Meta_Box_Registrar $meta_box_registrar, \pc_stock_man_v1\PinkCrab\Registerables\Registrar\Meta_Data_Registrar $meta_data_registrar)
     {
         $this->meta_box_registrar = $meta_box_registrar;
         $this->meta_data_registrar = $meta_data_registrar;
@@ -54,9 +54,9 @@ class Shared_Meta_Box_Registrar implements \PC_Woo_Stock_Man\PinkCrab\Registerab
      * @param \PinkCrab\Registerables\Registration_Middleware\Registerable $registerable
      * @return void
      */
-    public function register(\PC_Woo_Stock_Man\PinkCrab\Registerables\Registration_Middleware\Registerable $registerable) : void
+    public function register(\pc_stock_man_v1\PinkCrab\Registerables\Registration_Middleware\Registerable $registerable) : void
     {
-        if (!\is_a($registerable, \PC_Woo_Stock_Man\PinkCrab\Registerables\Shared_Meta_Box_Controller::class)) {
+        if (!\is_a($registerable, \pc_stock_man_v1\PinkCrab\Registerables\Shared_Meta_Box_Controller::class)) {
             return;
         }
         /** @var Shared_Meta_Box_Controller $registerable, Validation call below catches no Shared_Meta_Box_Controller Registerables */
@@ -82,7 +82,7 @@ class Shared_Meta_Box_Registrar implements \PC_Woo_Stock_Man\PinkCrab\Registerab
     protected function filter_meta_data(array $meta_data) : array
     {
         return \array_filter($meta_data, function ($e) {
-            return \is_a($e, \PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Data::class);
+            return \is_a($e, \pc_stock_man_v1\PinkCrab\Registerables\Meta_Data::class);
         });
     }
 }

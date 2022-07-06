@@ -1,5 +1,6 @@
 <?php
 
+
 declare(strict_types=1);
 
 /**
@@ -11,4 +12,12 @@ declare(strict_types=1);
  * @since 0.1.0
  */
 
-return array();
+use PinkCrab\Stock_Management\Location\Location_Taxonomy;
+use PinkCrab\Stock_Management\WP_Admin\Page\Stock_Location_Page;
+
+return array(
+
+	// Location
+	Location_Taxonomy::class,
+	Stock_Location_Page::class,
+);

@@ -1,11 +1,11 @@
 <?php
 
-namespace PC_Woo_Stock_Man\Dice\Extra;
+namespace pc_stock_man_v1\Dice\Extra;
 
 class RuleValidator
 {
     private $dice;
-    public function __construct(\PC_Woo_Stock_Man\Dice\Dice $dice)
+    public function __construct(\pc_stock_man_v1\Dice\Dice $dice)
     {
         $this->dice = $dice;
     }

@@ -9,27 +9,27 @@ declare (strict_types=1);
  * @license http://www.opensource.org/licenses/mit-license.html  MIT License
  * @package PinkCrab\Registerables
  */
-namespace PC_Woo_Stock_Man\PinkCrab\Registerables\Tests\Unit\Registrar;
+namespace pc_stock_man_v1\PinkCrab\Registerables\Tests\Unit\Registrar;
 
 use Exception;
 use PHPUnit\Framework\TestCase;
-use PC_Woo_Stock_Man\PinkCrab\Loader\Hook_Loader;
-use PC_Woo_Stock_Man\Gin0115\WPUnit_Helpers\Objects;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Box;
-use PC_Woo_Stock_Man\PinkCrab\Perique\Services\View\View;
-use PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces\DI_Container;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar\Meta_Box_Registrar;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Validator\Meta_Box_Validator;
+use pc_stock_man_v1\PinkCrab\Loader\Hook_Loader;
+use pc_stock_man_v1\Gin0115\WPUnit_Helpers\Objects;
+use pc_stock_man_v1\PinkCrab\Registerables\Meta_Box;
+use pc_stock_man_v1\PinkCrab\Perique\Services\View\View;
+use pc_stock_man_v1\PinkCrab\Perique\Interfaces\DI_Container;
+use pc_stock_man_v1\PinkCrab\Registerables\Registrar\Meta_Box_Registrar;
+use pc_stock_man_v1\PinkCrab\Registerables\Validator\Meta_Box_Validator;
 class Test_Meta_Box_Registrar extends \PHPUnit\Framework\TestCase
 {
     /** @testdox If a Meta Box fails validation and exception should be thrown */
     public function test_fails_validation_if_none_post_type_registerable() : void
     {
-        $validator = $this->createMock(\PC_Woo_Stock_Man\PinkCrab\Registerables\Validator\Meta_Box_Validator::class);
+        $validator = $this->createMock(\pc_stock_man_v1\PinkCrab\Registerables\Validator\Meta_Box_Validator::class);
         $validator->method('validate')->willReturn(\false);
         $validator->method('get_errors')->willReturn(array('error1', 'error2'));
-        $registrar = new \PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar\Meta_Box_Registrar($validator, $this->createMock(\PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces\DI_Container::class), $this->createMock(\PC_Woo_Stock_Man\PinkCrab\Loader\Hook_Loader::class));
-        $meta_box = $this->createMock(\PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Box::class);
+        $registrar = new \pc_stock_man_v1\PinkCrab\Registerables\Registrar\Meta_Box_Registrar($validator, $this->createMock(\pc_stock_man_v1\PinkCrab\Perique\Interfaces\DI_Container::class), $this->createMock(\pc_stock_man_v1\PinkCrab\Loader\Hook_Loader::class));
+        $meta_box = $this->createMock(\pc_stock_man_v1\PinkCrab\Registerables\Meta_Box::class);
         $this->expectException(\Exception::class);
         $this->expectExceptionMessage('Failed validating meta box model(' . \get_class($meta_box) . ') with errors: error1, error2');
         $registrar->register($meta_box);
@@ -38,18 +38,18 @@ class Test_Meta_Box_Registrar extends \PHPUnit\Framework\TestCase
     public function test_populates_render_with_view() : void
     {
         // Setup the validator, DI Container and Loader
-        $validator = $this->createMock(\PC_Woo_Stock_Man\PinkCrab\Registerables\Validator\Meta_Box_Validator::class);
+        $validator = $this->createMock(\pc_stock_man_v1\PinkCrab\Registerables\Validator\Meta_Box_Validator::class);
         $validator->method('verify_meta_box')->willReturn(\true);
-        $view = $this->createMock(\PC_Woo_Stock_Man\PinkCrab\Perique\Services\View\View::class);
+        $view = $this->createMock(\pc_stock_man_v1\PinkCrab\Perique\Services\View\View::class);
         $view->method('render')->will($this->returnCallback(function (...$a) : void {
             print 'MOCK OUTPUT';
         }));
-        $di_container = $this->createMock(\PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces\DI_Container::class);
+        $di_container = $this->createMock(\pc_stock_man_v1\PinkCrab\Perique\Interfaces\DI_Container::class);
         $di_container->method('create')->willReturn($view);
         // Build registrar
-        $registrar = new \PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar\Meta_Box_Registrar($validator, $di_container, $this->createMock(\PC_Woo_Stock_Man\PinkCrab\Loader\Hook_Loader::class));
+        $registrar = new \pc_stock_man_v1\PinkCrab\Registerables\Registrar\Meta_Box_Registrar($validator, $di_container, $this->createMock(\pc_stock_man_v1\PinkCrab\Loader\Hook_Loader::class));
         // Register our meta box
-        $meta_box = new \PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Box('test');
+        $meta_box = new \pc_stock_man_v1\PinkCrab\Registerables\Meta_Box('test');
         $meta_box->view_template = 'foo';
         $registrar->register($meta_box);
         // This should populate the view callable to use the View
@@ -60,14 +60,14 @@ class Test_Meta_Box_Registrar extends \PHPUnit\Framework\TestCase
     public function test_throws_exception_if_view_cant_be_created_with_DI() : void
     {
         // Setup the validator, DI Container and Loader
-        $validator = $this->createMock(\PC_Woo_Stock_Man\PinkCrab\Registerables\Validator\Meta_Box_Validator::class);
+        $validator = $this->createMock(\pc_stock_man_v1\PinkCrab\Registerables\Validator\Meta_Box_Validator::class);
         $validator->method('verify_meta_box')->willReturn(\true);
-        $di_container = $this->createMock(\PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces\DI_Container::class);
+        $di_container = $this->createMock(\pc_stock_man_v1\PinkCrab\Perique\Interfaces\DI_Container::class);
         $di_container->method('create')->willReturn(null);
         // Build registrar
-        $registrar = new \PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar\Meta_Box_Registrar($validator, $di_container, $this->createMock(\PC_Woo_Stock_Man\PinkCrab\Loader\Hook_Loader::class));
+        $registrar = new \pc_stock_man_v1\PinkCrab\Registerables\Registrar\Meta_Box_Registrar($validator, $di_container, $this->createMock(\pc_stock_man_v1\PinkCrab\Loader\Hook_Loader::class));
         // Register our meta box
-        $meta_box = new \PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Box('test');
+        $meta_box = new \pc_stock_man_v1\PinkCrab\Registerables\Meta_Box('test');
         $meta_box->view_template = 'foo';
         // Should throw an exception when being called if View can not be created.
         $this->expectException(\Exception::class);
@@ -78,15 +78,15 @@ class Test_Meta_Box_Registrar extends \PHPUnit\Framework\TestCase
     public function test_can_check_if_meta_box_is_active() : void
     {
         // Mock the Registrar
-        $registrar = $registrar = new \PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar\Meta_Box_Registrar($this->createMock(\PC_Woo_Stock_Man\PinkCrab\Registerables\Validator\Meta_Box_Validator::class), $this->createMock(\PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces\DI_Container::class), $this->createMock(\PC_Woo_Stock_Man\PinkCrab\Loader\Hook_Loader::class));
+        $registrar = $registrar = new \pc_stock_man_v1\PinkCrab\Registerables\Registrar\Meta_Box_Registrar($this->createMock(\pc_stock_man_v1\PinkCrab\Registerables\Validator\Meta_Box_Validator::class), $this->createMock(\pc_stock_man_v1\PinkCrab\Perique\Interfaces\DI_Container::class), $this->createMock(\pc_stock_man_v1\PinkCrab\Loader\Hook_Loader::class));
         global $current_screen;
         $current_screen = (object) array('post_type' => 'post');
         // Should be active for post, post type
-        $mb_post = \PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Box::normal('mb_post')->screen('post');
-        $this->assertTrue(\PC_Woo_Stock_Man\Gin0115\WPUnit_Helpers\Objects::invoke_method($registrar, 'is_active', array($mb_post)));
+        $mb_post = \pc_stock_man_v1\PinkCrab\Registerables\Meta_Box::normal('mb_post')->screen('post');
+        $this->assertTrue(\pc_stock_man_v1\Gin0115\WPUnit_Helpers\Objects::invoke_method($registrar, 'is_active', array($mb_post)));
         // Should be inactive for page, post type
-        $mb_page = \PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Box::normal('mb_page')->screen('page');
-        $this->assertFalse(\PC_Woo_Stock_Man\Gin0115\WPUnit_Helpers\Objects::invoke_method($registrar, 'is_active', array($mb_page)));
+        $mb_page = \pc_stock_man_v1\PinkCrab\Registerables\Meta_Box::normal('mb_page')->screen('page');
+        $this->assertFalse(\pc_stock_man_v1\Gin0115\WPUnit_Helpers\Objects::invoke_method($registrar, 'is_active', array($mb_page)));
         // Reset
         $current_screen = null;
     }
@@ -94,16 +94,16 @@ class Test_Meta_Box_Registrar extends \PHPUnit\Framework\TestCase
     public function test_adds_valid_meta_box_to_hook_loader() : void
     {
         // Setup the validator, DI Container and Loader
-        $validator = $this->createMock(\PC_Woo_Stock_Man\PinkCrab\Registerables\Validator\Meta_Box_Validator::class);
+        $validator = $this->createMock(\pc_stock_man_v1\PinkCrab\Registerables\Validator\Meta_Box_Validator::class);
         $validator->method('verify_meta_box')->willReturn(\true);
-        $loader = new \PC_Woo_Stock_Man\PinkCrab\Loader\Hook_Loader();
-        $registrar = new \PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar\Meta_Box_Registrar($validator, $this->createMock(\PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces\DI_Container::class), $loader);
-        $meta_box = \PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Box::normal('mb_post')->view(function (...$a) {
+        $loader = new \pc_stock_man_v1\PinkCrab\Loader\Hook_Loader();
+        $registrar = new \pc_stock_man_v1\PinkCrab\Registerables\Registrar\Meta_Box_Registrar($validator, $this->createMock(\pc_stock_man_v1\PinkCrab\Perique\Interfaces\DI_Container::class), $loader);
+        $meta_box = \pc_stock_man_v1\PinkCrab\Registerables\Meta_Box::normal('mb_post')->view(function (...$a) {
         });
         $registrar->register($meta_box);
         // Should now have add_meta_box hook added to loader.
-        $hooks = \PC_Woo_Stock_Man\Gin0115\WPUnit_Helpers\Objects::get_property($loader, 'hooks');
-        $hooks = \PC_Woo_Stock_Man\Gin0115\WPUnit_Helpers\Objects::get_property($hooks, 'hooks');
+        $hooks = \pc_stock_man_v1\Gin0115\WPUnit_Helpers\Objects::get_property($loader, 'hooks');
+        $hooks = \pc_stock_man_v1\Gin0115\WPUnit_Helpers\Objects::get_property($hooks, 'hooks');
         $this->assertCount(2, $hooks);
         $this->assertEquals('action', $hooks[0]->get_type());
         $this->assertEquals('add_meta_boxes', $hooks[0]->get_handle());
@@ -118,17 +118,17 @@ class Test_Meta_Box_Registrar extends \PHPUnit\Framework\TestCase
         global $current_screen;
         $current_screen = (object) array('post_type' => 'post', 'is_block_editor' => \false);
         // Setup the validator, DI Container and Loader
-        $validator = $this->createMock(\PC_Woo_Stock_Man\PinkCrab\Registerables\Validator\Meta_Box_Validator::class);
+        $validator = $this->createMock(\pc_stock_man_v1\PinkCrab\Registerables\Validator\Meta_Box_Validator::class);
         $validator->method('verify_meta_box')->willReturn(\true);
-        $loader = new \PC_Woo_Stock_Man\PinkCrab\Loader\Hook_Loader();
-        $registrar = new \PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar\Meta_Box_Registrar($validator, $this->createMock(\PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces\DI_Container::class), $loader);
-        $mb_post = \PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Box::normal('mb_post')->screen('post')->add_action('init_for_post', '__return_false')->add_action('foo_for_post', '__return_true')->view('__return_true');
+        $loader = new \pc_stock_man_v1\PinkCrab\Loader\Hook_Loader();
+        $registrar = new \pc_stock_man_v1\PinkCrab\Registerables\Registrar\Meta_Box_Registrar($validator, $this->createMock(\pc_stock_man_v1\PinkCrab\Perique\Interfaces\DI_Container::class), $loader);
+        $mb_post = \pc_stock_man_v1\PinkCrab\Registerables\Meta_Box::normal('mb_post')->screen('post')->add_action('init_for_post', '__return_false')->add_action('foo_for_post', '__return_true')->view('__return_true');
         $registrar->register($mb_post);
         // Should now have add_meta_box hook added to loader.
         $loader->register_hooks();
         // Should have 3 (register MB and trigger hooks)
-        $hooks = \PC_Woo_Stock_Man\Gin0115\WPUnit_Helpers\Objects::get_property($loader, 'hooks');
-        $hooks = \PC_Woo_Stock_Man\Gin0115\WPUnit_Helpers\Objects::get_property($hooks, 'hooks');
+        $hooks = \pc_stock_man_v1\Gin0115\WPUnit_Helpers\Objects::get_property($loader, 'hooks');
+        $hooks = \pc_stock_man_v1\Gin0115\WPUnit_Helpers\Objects::get_property($hooks, 'hooks');
         $this->assertCount(2, $hooks);
         // Manually trigger the current screen action. (avoids issue with old versions of WP)
         $hooks[1]->get_callback()();
@@ -145,17 +145,17 @@ class Test_Meta_Box_Registrar extends \PHPUnit\Framework\TestCase
         global $current_screen;
         $current_screen = (object) array('post_type' => 'post', 'is_block_editor' => \false);
         // Setup the validator, DI Container and Loader
-        $validator = $this->createMock(\PC_Woo_Stock_Man\PinkCrab\Registerables\Validator\Meta_Box_Validator::class);
+        $validator = $this->createMock(\pc_stock_man_v1\PinkCrab\Registerables\Validator\Meta_Box_Validator::class);
         $validator->method('verify_meta_box')->willReturn(\true);
-        $loader = new \PC_Woo_Stock_Man\PinkCrab\Loader\Hook_Loader();
-        $registrar = new \PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar\Meta_Box_Registrar($validator, $this->createMock(\PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces\DI_Container::class), $loader);
-        $mb_page = \PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Box::normal('mb_page')->screen('page')->add_action('init_for_page', '__return_false')->add_action('foo_for_page', '__return_true')->view('__return_true');
+        $loader = new \pc_stock_man_v1\PinkCrab\Loader\Hook_Loader();
+        $registrar = new \pc_stock_man_v1\PinkCrab\Registerables\Registrar\Meta_Box_Registrar($validator, $this->createMock(\pc_stock_man_v1\PinkCrab\Perique\Interfaces\DI_Container::class), $loader);
+        $mb_page = \pc_stock_man_v1\PinkCrab\Registerables\Meta_Box::normal('mb_page')->screen('page')->add_action('init_for_page', '__return_false')->add_action('foo_for_page', '__return_true')->view('__return_true');
         $registrar->register($mb_page);
         // Should now have add_meta_box hook added to loader.
         $loader->register_hooks();
         // Should now have add_meta_box hook added to loader.
-        $hooks = \PC_Woo_Stock_Man\Gin0115\WPUnit_Helpers\Objects::get_property($loader, 'hooks');
-        $hooks = \PC_Woo_Stock_Man\Gin0115\WPUnit_Helpers\Objects::get_property($hooks, 'hooks');
+        $hooks = \pc_stock_man_v1\Gin0115\WPUnit_Helpers\Objects::get_property($loader, 'hooks');
+        $hooks = \pc_stock_man_v1\Gin0115\WPUnit_Helpers\Objects::get_property($hooks, 'hooks');
         // Manually trigger the current screen action. (avoids issue with old versions of WP)
         $hooks[1]->get_callback()();
         // Should have 2 (register MB and defer action)

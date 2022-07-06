@@ -1,13 +1,13 @@
 <?php
 
-namespace PC_Woo_Stock_Man;
+namespace pc_stock_man_v1;
 
 /* @description Dice - A minimal Dependency Injection Container for PHP *
  * @author Tom Butler tom@r.je *
  * @copyright 2012-2018 Tom Butler <tom@r.je> | https:// r.je/dice.html *
  * @license http:// www.opensource.org/licenses/bsd-license.php BSD License *
  * @version 3.0 */
-class NamedInstancesTest extends \PC_Woo_Stock_Man\DiceTest
+class NamedInstancesTest extends \pc_stock_man_v1\DiceTest
 {
     public function testMultipleSharedInstancesByNameMixed()
     {
@@ -22,7 +22,7 @@ class NamedInstancesTest extends \PC_Woo_Stock_Man\DiceTest
         $rule['constructParams'][] = 'SecondY';
         $dice = $dice->addRule('[Y2]', $rule);
         $rule = [];
-        $rule['constructParams'] = [[\PC_Woo_Stock_Man\Dice\Dice::INSTANCE => 'Y'], [\PC_Woo_Stock_Man\Dice\Dice::INSTANCE => '[Y2]']];
+        $rule['constructParams'] = [[\pc_stock_man_v1\Dice\Dice::INSTANCE => 'Y'], [\pc_stock_man_v1\Dice\Dice::INSTANCE => '[Y2]']];
         $dice = $dice->addRule('Z', $rule);
         $z = $dice->create('Z');
         $this->assertEquals($z->y1->name, 'FirstY');
@@ -34,7 +34,7 @@ class NamedInstancesTest extends \PC_Woo_Stock_Man\DiceTest
         $rule['instanceOf'] = 'ExtendedB';
         $dice = $this->dice->addRule('$B', $rule);
         $rule = [];
-        $rule['constructParams'][] = [\PC_Woo_Stock_Man\Dice\Dice::INSTANCE => '$B'];
+        $rule['constructParams'][] = [\pc_stock_man_v1\Dice\Dice::INSTANCE => '$B'];
         $dice = $dice->addRule('A', $rule);
         $a = $dice->create('A');
         $this->assertInstanceOf('ExtendedB', $a->b);
@@ -49,7 +49,7 @@ class NamedInstancesTest extends \PC_Woo_Stock_Man\DiceTest
         //echo $y2->name;
         $this->assertInstanceOf('Y3', $y2);
         $rule = [];
-        $rule['constructParams'][] = [\PC_Woo_Stock_Man\Dice\Dice::INSTANCE => '$Y2'];
+        $rule['constructParams'][] = [\pc_stock_man_v1\Dice\Dice::INSTANCE => '$Y2'];
         $dice = $dice->addRule('Y1', $rule);
         $y1 = $dice->create('Y1');
         $this->assertInstanceOf('Y3', $y1->y2);
@@ -60,7 +60,7 @@ class NamedInstancesTest extends \PC_Woo_Stock_Man\DiceTest
         $rule['instanceOf'] = 'ExtendedB';
         $dice = $this->dice->addRule('$B', $rule);
         $rule = [];
-        $rule['substitutions']['B'] = [\PC_Woo_Stock_Man\Dice\Dice::INSTANCE => '$B'];
+        $rule['substitutions']['B'] = [\pc_stock_man_v1\Dice\Dice::INSTANCE => '$B'];
         $dice = $dice->addRule('A', $rule);
         $a = $dice->create('A');
         $this->assertInstanceOf('ExtendedB', $a->b);
@@ -76,7 +76,7 @@ class NamedInstancesTest extends \PC_Woo_Stock_Man\DiceTest
         $rule['constructParams'][] = 'second';
         $dice = $dice->addRule('$Y2B', $rule);
         $rule = [];
-        $rule['constructParams'] = array([\PC_Woo_Stock_Man\Dice\Dice::INSTANCE => '$Y2A'], [\PC_Woo_Stock_Man\Dice\Dice::INSTANCE => '$Y2B']);
+        $rule['constructParams'] = array([\pc_stock_man_v1\Dice\Dice::INSTANCE => '$Y2A'], [\pc_stock_man_v1\Dice\Dice::INSTANCE => '$Y2B']);
         $dice = $dice->addRule('HasTwoSameDependencies', $rule);
         $twodep = $dice->create('HasTwoSameDependencies');
         $this->assertEquals('first', $twodep->y2a->name);
@@ -111,4 +111,4 @@ class NamedInstancesTest extends \PC_Woo_Stock_Man\DiceTest
  * @copyright 2012-2018 Tom Butler <tom@r.je> | https:// r.je/dice.html *
  * @license http:// www.opensource.org/licenses/bsd-license.php BSD License *
  * @version 3.0 */
-\class_alias('PC_Woo_Stock_Man\\NamedInstancesTest', 'NamedInstancesTest', \false);
+\class_alias('pc_stock_man_v1\\NamedInstancesTest', 'NamedInstancesTest', \false);

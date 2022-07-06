@@ -10,18 +10,18 @@ declare (strict_types=1);
  * @license http://www.opensource.org/licenses/mit-license.html  MIT License
  * @package PinkCrab\Registerables
  */
-namespace PC_Woo_Stock_Man\PinkCrab\Registerables\Tests;
+namespace pc_stock_man_v1\PinkCrab\Registerables\Tests;
 
-use PC_Woo_Stock_Man\PinkCrab\Perique\Application\App;
-use PC_Woo_Stock_Man\PinkCrab\Perique\Services\View\View;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Registration_Middleware\Registerable_Middleware;
-use PC_Woo_Stock_Man\PinkCrab\Loader\Hook_Loader;
-use PC_Woo_Stock_Man\Dice\Dice;
-use PC_Woo_Stock_Man\PinkCrab\Perique\Services\Dice\PinkCrab_Dice;
-use PC_Woo_Stock_Man\PinkCrab\Perique\Services\Registration\Registration_Service;
-use PC_Woo_Stock_Man\Gin0115\WPUnit_Helpers\Objects;
-use PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces\Renderable;
-use PC_Woo_Stock_Man\PinkCrab\Perique\Services\View\PHP_Engine;
+use pc_stock_man_v1\PinkCrab\Perique\Application\App;
+use pc_stock_man_v1\PinkCrab\Perique\Services\View\View;
+use pc_stock_man_v1\PinkCrab\Registerables\Registration_Middleware\Registerable_Middleware;
+use pc_stock_man_v1\PinkCrab\Loader\Hook_Loader;
+use pc_stock_man_v1\Dice\Dice;
+use pc_stock_man_v1\PinkCrab\Perique\Services\Dice\PinkCrab_Dice;
+use pc_stock_man_v1\PinkCrab\Perique\Services\Registration\Registration_Service;
+use pc_stock_man_v1\Gin0115\WPUnit_Helpers\Objects;
+use pc_stock_man_v1\PinkCrab\Perique\Interfaces\Renderable;
+use pc_stock_man_v1\PinkCrab\Perique\Services\View\PHP_Engine;
 trait App_Helper_Trait
 {
     /**
@@ -31,30 +31,30 @@ trait App_Helper_Trait
      */
     protected static function unset_app_instance() : void
     {
-        $app = new \PC_Woo_Stock_Man\PinkCrab\Perique\Application\App();
-        \PC_Woo_Stock_Man\Gin0115\WPUnit_Helpers\Objects::set_property($app, 'app_config', null);
-        \PC_Woo_Stock_Man\Gin0115\WPUnit_Helpers\Objects::set_property($app, 'container', null);
-        \PC_Woo_Stock_Man\Gin0115\WPUnit_Helpers\Objects::set_property($app, 'registration', null);
-        \PC_Woo_Stock_Man\Gin0115\WPUnit_Helpers\Objects::set_property($app, 'loader', null);
-        \PC_Woo_Stock_Man\Gin0115\WPUnit_Helpers\Objects::set_property($app, 'booted', \false);
+        $app = new \pc_stock_man_v1\PinkCrab\Perique\Application\App();
+        \pc_stock_man_v1\Gin0115\WPUnit_Helpers\Objects::set_property($app, 'app_config', null);
+        \pc_stock_man_v1\Gin0115\WPUnit_Helpers\Objects::set_property($app, 'container', null);
+        \pc_stock_man_v1\Gin0115\WPUnit_Helpers\Objects::set_property($app, 'registration', null);
+        \pc_stock_man_v1\Gin0115\WPUnit_Helpers\Objects::set_property($app, 'loader', null);
+        \pc_stock_man_v1\Gin0115\WPUnit_Helpers\Objects::set_property($app, 'booted', \false);
         $app = null;
     }
-    protected static function create_with_registerables(string ...$class) : \PC_Woo_Stock_Man\PinkCrab\Perique\Application\App
+    protected static function create_with_registerables(string ...$class) : \pc_stock_man_v1\PinkCrab\Perique\Application\App
     {
         // Build and populate the app.
-        $app = new \PC_Woo_Stock_Man\PinkCrab\Perique\Application\App();
-        $registration = new \PC_Woo_Stock_Man\PinkCrab\Perique\Services\Registration\Registration_Service();
-        $container = new \PC_Woo_Stock_Man\PinkCrab\Perique\Services\Dice\PinkCrab_Dice(new \PC_Woo_Stock_Man\Dice\Dice());
-        $loader = new \PC_Woo_Stock_Man\PinkCrab\Loader\Hook_Loader();
+        $app = new \pc_stock_man_v1\PinkCrab\Perique\Application\App();
+        $registration = new \pc_stock_man_v1\PinkCrab\Perique\Services\Registration\Registration_Service();
+        $container = new \pc_stock_man_v1\PinkCrab\Perique\Services\Dice\PinkCrab_Dice(new \pc_stock_man_v1\Dice\Dice());
+        $loader = new \pc_stock_man_v1\PinkCrab\Loader\Hook_Loader();
         $app->set_container($container);
         $app->set_registration_services($registration);
         $app->set_loader($loader);
-        $app->construct_registration_middleware(\PC_Woo_Stock_Man\PinkCrab\Registerables\Registration_Middleware\Registerable_Middleware::class);
+        $app->construct_registration_middleware(\pc_stock_man_v1\PinkCrab\Registerables\Registration_Middleware\Registerable_Middleware::class);
         if (!empty($class)) {
             $app->registration_classes($class);
         }
         $app->set_app_config(array());
-        $container->addRules(array('*' => array('substitutions' => array(\PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces\Renderable::class => new \PC_Woo_Stock_Man\PinkCrab\Perique\Services\View\PHP_Engine(\FIXTURES . '/Views')))));
+        $container->addRules(array('*' => array('substitutions' => array(\pc_stock_man_v1\PinkCrab\Perique\Interfaces\Renderable::class => new \pc_stock_man_v1\PinkCrab\Perique\Services\View\PHP_Engine(\FIXTURES . '/Views')))));
         return $app;
     }
 }

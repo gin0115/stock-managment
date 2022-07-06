@@ -12,14 +12,14 @@ declare (strict_types=1);
  * @author Glynn Quelch glynn@pinkcrab.co.uk
  * @since 0.0.1
  */
-namespace PC_Woo_Stock_Man\PinkCrab\Plugin_Lifecycle;
+namespace pc_stock_man_v1\PinkCrab\Plugin_Lifecycle;
 
-use PC_Woo_Stock_Man\PinkCrab\Plugin_Lifecycle\State_Change_Queue;
-use PC_Woo_Stock_Man\PinkCrab\Plugin_Lifecycle\State_Event\Deactivation;
-use PC_Woo_Stock_Man\PinkCrab\Plugin_Lifecycle\Plugin_State_Change;
-use PC_Woo_Stock_Man\PinkCrab\Plugin_Lifecycle\State_Event\Activation;
-use PC_Woo_Stock_Man\PinkCrab\Perique\Application\App;
-use PC_Woo_Stock_Man\PinkCrab\Plugin_Lifecycle\State_Event\Uninstall;
+use pc_stock_man_v1\PinkCrab\Plugin_Lifecycle\State_Change_Queue;
+use pc_stock_man_v1\PinkCrab\Plugin_Lifecycle\State_Event\Deactivation;
+use pc_stock_man_v1\PinkCrab\Plugin_Lifecycle\Plugin_State_Change;
+use pc_stock_man_v1\PinkCrab\Plugin_Lifecycle\State_Event\Activation;
+use pc_stock_man_v1\PinkCrab\Perique\Application\App;
+use pc_stock_man_v1\PinkCrab\Plugin_Lifecycle\State_Event\Uninstall;
 class Plugin_State_Controller
 {
     /**
@@ -41,7 +41,7 @@ class Plugin_State_Controller
      * @var string|null
      */
     protected $plugin_base_file = null;
-    public function __construct(\PC_Woo_Stock_Man\PinkCrab\Perique\Application\App $app, ?string $plugin_base_file = null)
+    public function __construct(\pc_stock_man_v1\PinkCrab\Perique\Application\App $app, ?string $plugin_base_file = null)
     {
         $this->app = $app;
         $this->plugin_base_file = $plugin_base_file;
@@ -52,7 +52,7 @@ class Plugin_State_Controller
      * @param App $app
      * @return self
      */
-    public static function init(\PC_Woo_Stock_Man\PinkCrab\Perique\Application\App $app, ?string $plugin_base_file = null) : self
+    public static function init(\pc_stock_man_v1\PinkCrab\Perique\Application\App $app, ?string $plugin_base_file = null) : self
     {
         $instance = new self($app, $plugin_base_file);
         return $instance;
@@ -62,7 +62,7 @@ class Plugin_State_Controller
      *
      * @return App
      */
-    public function get_app() : \PC_Woo_Stock_Man\PinkCrab\Perique\Application\App
+    public function get_app() : \pc_stock_man_v1\PinkCrab\Perique\Application\App
     {
         return $this->app;
     }
@@ -86,8 +86,8 @@ class Plugin_State_Controller
      */
     public function event($state_event) : self
     {
-        if (!\is_subclass_of($state_event, \PC_Woo_Stock_Man\PinkCrab\Plugin_Lifecycle\Plugin_State_Change::class)) {
-            throw \PC_Woo_Stock_Man\PinkCrab\Plugin_Lifecycle\Plugin_State_Exception::invalid_state_change_event_type($state_event);
+        if (!\is_subclass_of($state_event, \pc_stock_man_v1\PinkCrab\Plugin_Lifecycle\Plugin_State_Change::class)) {
+            throw \pc_stock_man_v1\PinkCrab\Plugin_Lifecycle\Plugin_State_Exception::invalid_state_change_event_type($state_event);
         }
         // If its a string, attempt to create via DI container.
         if (\is_string($state_event)) {
@@ -96,11 +96,11 @@ class Plugin_State_Controller
                 /** @var Plugin_State_Change|null */
                 $state_event = $this->app->get_container()->create($state_event);
             } catch (\Throwable $th) {
-                throw \PC_Woo_Stock_Man\PinkCrab\Plugin_Lifecycle\Plugin_State_Exception::failed_to_create_state_change_event($state_event_string);
+                throw \pc_stock_man_v1\PinkCrab\Plugin_Lifecycle\Plugin_State_Exception::failed_to_create_state_change_event($state_event_string);
             }
             // Throw exception if failed to create
-            if (null === $state_event || !\is_a($state_event, \PC_Woo_Stock_Man\PinkCrab\Plugin_Lifecycle\Plugin_State_Change::class)) {
-                throw \PC_Woo_Stock_Man\PinkCrab\Plugin_Lifecycle\Plugin_State_Exception::failed_to_create_state_change_event($state_event_string);
+            if (null === $state_event || !\is_a($state_event, \pc_stock_man_v1\PinkCrab\Plugin_Lifecycle\Plugin_State_Change::class)) {
+                throw \pc_stock_man_v1\PinkCrab\Plugin_Lifecycle\Plugin_State_Exception::failed_to_create_state_change_event($state_event_string);
             }
         }
         $this->state_events[] = $state_event;
@@ -119,15 +119,15 @@ class Plugin_State_Controller
             $file = $this->plugin_base_file ?? $this->get_called_file();
         }
         // Activation hooks if need adding.
-        if ($this->has_events_for_state(\PC_Woo_Stock_Man\PinkCrab\Plugin_Lifecycle\State_Event\Activation::class)) {
+        if ($this->has_events_for_state(\pc_stock_man_v1\PinkCrab\Plugin_Lifecycle\State_Event\Activation::class)) {
             register_activation_hook($file, $this->activation());
         }
         // Deactivation hooks.
-        if ($this->has_events_for_state(\PC_Woo_Stock_Man\PinkCrab\Plugin_Lifecycle\State_Event\Deactivation::class)) {
+        if ($this->has_events_for_state(\pc_stock_man_v1\PinkCrab\Plugin_Lifecycle\State_Event\Deactivation::class)) {
             register_deactivation_hook($file, $this->deactivation());
         }
         // If we have an uninstall events, add then during activation.
-        if ($this->has_events_for_state(\PC_Woo_Stock_Man\PinkCrab\Plugin_Lifecycle\State_Event\Uninstall::class)) {
+        if ($this->has_events_for_state(\pc_stock_man_v1\PinkCrab\Plugin_Lifecycle\State_Event\Uninstall::class)) {
             $callback = $this->uninstall();
             // Register the callback so itsits included (but wont run due to serialization issues).
             register_activation_hook($file, static function () use($file, $callback) : void {
@@ -165,27 +165,27 @@ class Plugin_State_Controller
      *
      * @return State_Change_Queue
      */
-    public function activation() : \PC_Woo_Stock_Man\PinkCrab\Plugin_Lifecycle\State_Change_Queue
+    public function activation() : \pc_stock_man_v1\PinkCrab\Plugin_Lifecycle\State_Change_Queue
     {
-        return new \PC_Woo_Stock_Man\PinkCrab\Plugin_Lifecycle\State_Change_Queue(...$this->get_events_for_state(\PC_Woo_Stock_Man\PinkCrab\Plugin_Lifecycle\State_Event\Activation::class));
+        return new \pc_stock_man_v1\PinkCrab\Plugin_Lifecycle\State_Change_Queue(...$this->get_events_for_state(\pc_stock_man_v1\PinkCrab\Plugin_Lifecycle\State_Event\Activation::class));
     }
     /**
      * Returns an instance of the State_Change_Queue, populated with Deactivation events.
      *
      * @return State_Change_Queue
      */
-    public function deactivation() : \PC_Woo_Stock_Man\PinkCrab\Plugin_Lifecycle\State_Change_Queue
+    public function deactivation() : \pc_stock_man_v1\PinkCrab\Plugin_Lifecycle\State_Change_Queue
     {
-        return new \PC_Woo_Stock_Man\PinkCrab\Plugin_Lifecycle\State_Change_Queue(...$this->get_events_for_state(\PC_Woo_Stock_Man\PinkCrab\Plugin_Lifecycle\State_Event\Deactivation::class));
+        return new \pc_stock_man_v1\PinkCrab\Plugin_Lifecycle\State_Change_Queue(...$this->get_events_for_state(\pc_stock_man_v1\PinkCrab\Plugin_Lifecycle\State_Event\Deactivation::class));
     }
     /**
      * Returns an instance of the State_Change_Queue, populated with Uninstall events.
      *
      * @return State_Change_Queue
      */
-    public function uninstall() : \PC_Woo_Stock_Man\PinkCrab\Plugin_Lifecycle\State_Change_Queue
+    public function uninstall() : \pc_stock_man_v1\PinkCrab\Plugin_Lifecycle\State_Change_Queue
     {
-        return new \PC_Woo_Stock_Man\PinkCrab\Plugin_Lifecycle\State_Change_Queue(...$this->get_events_for_state(\PC_Woo_Stock_Man\PinkCrab\Plugin_Lifecycle\State_Event\Uninstall::class));
+        return new \pc_stock_man_v1\PinkCrab\Plugin_Lifecycle\State_Change_Queue(...$this->get_events_for_state(\pc_stock_man_v1\PinkCrab\Plugin_Lifecycle\State_Event\Uninstall::class));
     }
     /**
      * Attempts to get the name of the file which called the class.
@@ -204,7 +204,7 @@ class Plugin_State_Controller
             }
         }
         // @codeCoverageIgnoreStart
-        throw \PC_Woo_Stock_Man\PinkCrab\Plugin_Lifecycle\Plugin_State_Exception::failed_to_locate_calling_file();
+        throw \pc_stock_man_v1\PinkCrab\Plugin_Lifecycle\Plugin_State_Exception::failed_to_locate_calling_file();
         // @codeCoverageIgnoreEnd
     }
 }

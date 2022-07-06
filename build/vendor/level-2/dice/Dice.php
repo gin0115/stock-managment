@@ -5,7 +5,7 @@
  * @copyright 2012-2020 Tom Butler <tom@r.je> | https://r.je/dice
  * @license http://www.opensource.org/licenses/bsd-license.php BSD License
  * @version 4.0 */
-namespace PC_Woo_Stock_Man\Dice;
+namespace pc_stock_man_v1\Dice;
 
 class Dice
 {
@@ -52,7 +52,7 @@ class Dice
         }
         return $dice;
     }
-    private function addRuleTo(\PC_Woo_Stock_Man\Dice\Dice $dice, string $name, array $rule)
+    private function addRuleTo(\pc_stock_man_v1\Dice\Dice $dice, string $name, array $rule)
     {
         if (isset($rule['instanceOf']) && (!\array_key_exists('inherit', $rule) || $rule['inherit'] === \true)) {
             $rule = \array_replace_recursive($dice->getRule($rule['instanceOf']), $rule);

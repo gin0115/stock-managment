@@ -20,9 +20,9 @@ declare (strict_types=1);
  * @license http://www.opensource.org/licenses/mit-license.html  MIT License
  * @package PinkCrab\Perique\Container_Aware_Traits
  */
-namespace PC_Woo_Stock_Man\PinkCrab\Perique\Services\Container_Aware_Traits;
+namespace pc_stock_man_v1\PinkCrab\Perique\Services\Container_Aware_Traits;
 
-use PC_Woo_Stock_Man\PinkCrab\Perique\Application\App_Config;
+use pc_stock_man_v1\PinkCrab\Perique\Application\App_Config;
 trait Inject_App_Config_Aware
 {
     /**
@@ -37,7 +37,7 @@ trait Inject_App_Config_Aware
      * @param App_Config $app_config
      * @return void
      */
-    public function set_app_config(\PC_Woo_Stock_Man\PinkCrab\Perique\Application\App_Config $app_config) : void
+    public function set_app_config(\pc_stock_man_v1\PinkCrab\Perique\Application\App_Config $app_config) : void
     {
         $this->app_config = $app_config;
     }

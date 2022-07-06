@@ -1,6 +1,6 @@
 <?php
 
-namespace PC_Woo_Stock_Man;
+namespace pc_stock_man_v1;
 
 /* @description Dice - A minimal Dependency Injection Container for PHP *
  * @author Tom Butler tom@r.je *
@@ -11,7 +11,7 @@ class ConsumeArgsTop
 {
     public $s;
     public $a;
-    public function __construct(\PC_Woo_Stock_Man\ConsumeArgsSub $a, $s)
+    public function __construct(\pc_stock_man_v1\ConsumeArgsSub $a, $s)
     {
         $this->a = $a;
         $this->s = $s;
@@ -22,7 +22,7 @@ class ConsumeArgsTop
  * @copyright 2012-2018 Tom Butler <tom@r.je> | https:// r.je/dice.html *
  * @license http:// www.opensource.org/licenses/bsd-license.php BSD License *
  * @version 3.0 */
-\class_alias('PC_Woo_Stock_Man\\ConsumeArgsTop', 'ConsumeArgsTop', \false);
+\class_alias('pc_stock_man_v1\\ConsumeArgsTop', 'ConsumeArgsTop', \false);
 class ConsumeArgsSub
 {
     public $s;
@@ -31,57 +31,57 @@ class ConsumeArgsSub
         $this->s = $s;
     }
 }
-\class_alias('PC_Woo_Stock_Man\\ConsumeArgsSub', 'ConsumeArgsSub', \false);
+\class_alias('pc_stock_man_v1\\ConsumeArgsSub', 'ConsumeArgsSub', \false);
 class A2
 {
     public $b;
     public $c;
     public $foo;
-    public function __construct(\PC_Woo_Stock_Man\B $b, \PC_Woo_Stock_Man\C $c, $foo)
+    public function __construct(\pc_stock_man_v1\B $b, \pc_stock_man_v1\C $c, $foo)
     {
         $this->b = $b;
         $this->foo = $foo;
         $this->c = $c;
     }
 }
-\class_alias('PC_Woo_Stock_Man\\A2', 'A2', \false);
+\class_alias('pc_stock_man_v1\\A2', 'A2', \false);
 class A3
 {
     public $b;
     public $c;
     public $foo;
-    public function __construct(\PC_Woo_Stock_Man\C $c, $foo, \PC_Woo_Stock_Man\B $b)
+    public function __construct(\pc_stock_man_v1\C $c, $foo, \pc_stock_man_v1\B $b)
     {
         $this->b = $b;
         $this->foo = $foo;
         $this->c = $c;
     }
 }
-\class_alias('PC_Woo_Stock_Man\\A3', 'A3', \false);
+\class_alias('pc_stock_man_v1\\A3', 'A3', \false);
 class A4
 {
     public $m1;
     public $m2;
-    public function __construct(\PC_Woo_Stock_Man\M1 $m1, \PC_Woo_Stock_Man\M2 $m2)
+    public function __construct(\pc_stock_man_v1\M1 $m1, \pc_stock_man_v1\M2 $m2)
     {
         $this->m1 = $m1;
         $this->m2 = $m2;
     }
 }
-\class_alias('PC_Woo_Stock_Man\\A4', 'A4', \false);
+\class_alias('pc_stock_man_v1\\A4', 'A4', \false);
 class BestMatch
 {
     public $a;
     public $string;
     public $b;
-    public function __construct($string, \PC_Woo_Stock_Man\A $a, \PC_Woo_Stock_Man\B $b)
+    public function __construct($string, \pc_stock_man_v1\A $a, \pc_stock_man_v1\B $b)
     {
         $this->a = $a;
         $this->string = $string;
         $this->b = $b;
     }
 }
-\class_alias('PC_Woo_Stock_Man\\BestMatch', 'BestMatch', \false);
+\class_alias('pc_stock_man_v1\\BestMatch', 'BestMatch', \false);
 //From: https://github.com/TomBZombie/Dice/issues/62#issuecomment-112370319
 class ScalarConstructors
 {
@@ -94,4 +94,4 @@ class ScalarConstructors
     }
 }
 //From: https://github.com/TomBZombie/Dice/issues/62#issuecomment-112370319
-\class_alias('PC_Woo_Stock_Man\\ScalarConstructors', 'ScalarConstructors', \false);
+\class_alias('pc_stock_man_v1\\ScalarConstructors', 'ScalarConstructors', \false);

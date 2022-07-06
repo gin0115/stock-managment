@@ -5,7 +5,7 @@
  * @copyright 2012-2018 Tom Butler <tom@r.je> | https:// r.je/dice.html *
  * @license http:// www.opensource.org/licenses/bsd-license.php BSD License *
  * @version 3.0 */
-namespace PC_Woo_Stock_Man\Foo;
+namespace pc_stock_man_v1\Foo;
 
 class A
 {
@@ -13,23 +13,23 @@ class A
 class B
 {
     public $a;
-    public function __construct(\PC_Woo_Stock_Man\Foo\A $a)
+    public function __construct(\pc_stock_man_v1\Foo\A $a)
     {
         $this->a = $a;
     }
 }
-class ExtendedA extends \PC_Woo_Stock_Man\Foo\A
+class ExtendedA extends \pc_stock_man_v1\Foo\A
 {
 }
 class C
 {
     public $a;
-    public function __construct(\PC_Woo_Stock_Man\Bar\A $a)
+    public function __construct(\pc_stock_man_v1\Bar\A $a)
     {
         $this->a = $a;
     }
 }
-namespace PC_Woo_Stock_Man\Bar;
+namespace pc_stock_man_v1\Bar;
 
 class A
 {

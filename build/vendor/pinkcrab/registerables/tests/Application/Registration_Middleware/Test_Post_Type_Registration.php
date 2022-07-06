@@ -9,11 +9,11 @@ declare (strict_types=1);
  * @license http://www.opensource.org/licenses/mit-license.html  MIT License
  * @package PinkCrab\Registerables-Registerables
  */
-namespace PC_Woo_Stock_Man\PinkCrab\Registerables\Tests\Application\Registration_Middleware;
+namespace pc_stock_man_v1\PinkCrab\Registerables\Tests\Application\Registration_Middleware;
 
-use PC_Woo_Stock_Man\WP_UnitTestCase;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Tests\App_Helper_Trait;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Tests\Fixtures\CPT\Basic_CPT;
+use pc_stock_man_v1\WP_UnitTestCase;
+use pc_stock_man_v1\PinkCrab\Registerables\Tests\App_Helper_Trait;
+use pc_stock_man_v1\PinkCrab\Registerables\Tests\Fixtures\CPT\Basic_CPT;
 class Test_Meta_Data_CPT extends \WP_UnitTestCase
 {
     /**
@@ -32,12 +32,12 @@ class Test_Meta_Data_CPT extends \WP_UnitTestCase
     /** @testdox It should be possible to register a valid post type using the registerable Middleware. */
     public function test_can_register_valid_cpt() : void
     {
-        self::create_with_registerables(\PC_Woo_Stock_Man\PinkCrab\Registerables\Tests\Fixtures\CPT\Basic_CPT::class)->boot();
+        self::create_with_registerables(\pc_stock_man_v1\PinkCrab\Registerables\Tests\Fixtures\CPT\Basic_CPT::class)->boot();
         $admin_user = self::factory()->user->create(array('role' => 'administrator'));
         wp_set_current_user($admin_user);
         set_current_screen('dashboard');
         do_action('init');
-        $this->assertArrayHasKey((new \PC_Woo_Stock_Man\PinkCrab\Registerables\Tests\Fixtures\CPT\Basic_CPT())->key, \get_post_types());
-        $this->assertContains((new \PC_Woo_Stock_Man\PinkCrab\Registerables\Tests\Fixtures\CPT\Basic_CPT())->key, \get_post_types());
+        $this->assertArrayHasKey((new \pc_stock_man_v1\PinkCrab\Registerables\Tests\Fixtures\CPT\Basic_CPT())->key, \get_post_types());
+        $this->assertContains((new \pc_stock_man_v1\PinkCrab\Registerables\Tests\Fixtures\CPT\Basic_CPT())->key, \get_post_types());
     }
 }

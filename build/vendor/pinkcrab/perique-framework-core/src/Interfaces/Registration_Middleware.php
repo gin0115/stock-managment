@@ -21,7 +21,7 @@ declare (strict_types=1);
  * @package PinkCrab\Perique\Registration
  * @since 0.4.0
  */
-namespace PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces;
+namespace pc_stock_man_v1\PinkCrab\Perique\Interfaces;
 
 interface Registration_Middleware
 {

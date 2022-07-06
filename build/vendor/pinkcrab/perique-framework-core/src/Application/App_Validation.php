@@ -10,9 +10,9 @@ declare (strict_types=1);
  * @package PinkCrab\Perique
  * @since 0.4.0
  */
-namespace PC_Woo_Stock_Man\PinkCrab\Perique\Application;
+namespace pc_stock_man_v1\PinkCrab\Perique\Application;
 
-use PC_Woo_Stock_Man\PinkCrab\Perique\Application\App;
+use pc_stock_man_v1\PinkCrab\Perique\Application\App;
 use Reflection;
 use ReflectionProperty;
 class App_Validation
@@ -32,7 +32,7 @@ class App_Validation
     public $errors = array();
     /** @var App */
     protected $app;
-    public function __construct(\PC_Woo_Stock_Man\PinkCrab\Perique\Application\App $app)
+    public function __construct(\pc_stock_man_v1\PinkCrab\Perique\Application\App $app)
     {
         $this->app = $app;
     }

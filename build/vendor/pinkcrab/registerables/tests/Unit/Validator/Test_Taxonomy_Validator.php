@@ -9,19 +9,19 @@ declare (strict_types=1);
  * @license http://www.opensource.org/licenses/mit-license.html  MIT License
  * @package PinkCrab\Registerables
  */
-namespace PC_Woo_Stock_Man\PinkCrab\Registerables\Tests\Unit\Validator;
+namespace pc_stock_man_v1\PinkCrab\Registerables\Tests\Unit\Validator;
 
 use PHPUnit\Framework\TestCase;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Validator\Taxonomy_Validator;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Registration_Middleware\Registerable;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Tests\Fixtures\Taxonomies\Basic_Tag_Taxonomy;
+use pc_stock_man_v1\PinkCrab\Registerables\Validator\Taxonomy_Validator;
+use pc_stock_man_v1\PinkCrab\Registerables\Registration_Middleware\Registerable;
+use pc_stock_man_v1\PinkCrab\Registerables\Tests\Fixtures\Taxonomies\Basic_Tag_Taxonomy;
 class Test_Taxonomy_Validator extends \PHPUnit\Framework\TestCase
 {
     /** @testdox When validating a taxonomy, errors should be generated if attempting with none taxonomy Registerable. */
     public function test_generates_errors_if_not_post_type() : void
     {
-        $validator = new \PC_Woo_Stock_Man\PinkCrab\Registerables\Validator\Taxonomy_Validator();
-        $mock = $this->createMock(\PC_Woo_Stock_Man\PinkCrab\Registerables\Registration_Middleware\Registerable::class);
+        $validator = new \pc_stock_man_v1\PinkCrab\Registerables\Validator\Taxonomy_Validator();
+        $mock = $this->createMock(\pc_stock_man_v1\PinkCrab\Registerables\Registration_Middleware\Registerable::class);
         $result = $validator->validate($mock);
         // Should return false for error.
         $this->assertFalse($result);
@@ -32,49 +32,49 @@ class Test_Taxonomy_Validator extends \PHPUnit\Framework\TestCase
     /** @testdox When validating a taxonomy, key, singular and plural must be string and not empty. If any are, then validation should fail with error messages. */
     public function test_fails_if_required_fields_are_missing() : void
     {
-        $validator = new \PC_Woo_Stock_Man\PinkCrab\Registerables\Validator\Taxonomy_Validator();
-        $tax = new \PC_Woo_Stock_Man\PinkCrab\Registerables\Tests\Fixtures\Taxonomies\Basic_Tag_Taxonomy();
+        $validator = new \pc_stock_man_v1\PinkCrab\Registerables\Validator\Taxonomy_Validator();
+        $tax = new \pc_stock_man_v1\PinkCrab\Registerables\Tests\Fixtures\Taxonomies\Basic_Tag_Taxonomy();
         // Key empty string
         $tax->slug = '';
         $result = $validator->validate($tax);
         $this->assertFalse($result);
         $this->assertContains('slug is not set on PinkCrab\\Registerables\\Tests\\Fixtures\\Taxonomies\\Basic_Tag_Taxonomy Taxonomy Model', $validator->get_errors());
         $validator->reset_errors();
-        $tax = new \PC_Woo_Stock_Man\PinkCrab\Registerables\Tests\Fixtures\Taxonomies\Basic_Tag_Taxonomy();
+        $tax = new \pc_stock_man_v1\PinkCrab\Registerables\Tests\Fixtures\Taxonomies\Basic_Tag_Taxonomy();
         // Key none string.
         $tax->slug = null;
         $result = $validator->validate($tax);
         $this->assertFalse($result);
         $this->assertContains('slug is not set on PinkCrab\\Registerables\\Tests\\Fixtures\\Taxonomies\\Basic_Tag_Taxonomy Taxonomy Model', $validator->get_errors());
         $validator->reset_errors();
-        $tax = new \PC_Woo_Stock_Man\PinkCrab\Registerables\Tests\Fixtures\Taxonomies\Basic_Tag_Taxonomy();
+        $tax = new \pc_stock_man_v1\PinkCrab\Registerables\Tests\Fixtures\Taxonomies\Basic_Tag_Taxonomy();
         // singular empty string
         $tax->singular = '';
         $result = $validator->validate($tax);
         $this->assertFalse($result);
         $this->assertContains('singular is not set on PinkCrab\\Registerables\\Tests\\Fixtures\\Taxonomies\\Basic_Tag_Taxonomy Taxonomy Model', $validator->get_errors());
         $validator->reset_errors();
-        $tax = new \PC_Woo_Stock_Man\PinkCrab\Registerables\Tests\Fixtures\Taxonomies\Basic_Tag_Taxonomy();
+        $tax = new \pc_stock_man_v1\PinkCrab\Registerables\Tests\Fixtures\Taxonomies\Basic_Tag_Taxonomy();
         // singular none string.
         $tax->singular = array(null);
         $result = $validator->validate($tax);
         $this->assertFalse($result);
         $this->assertContains('singular is not set on PinkCrab\\Registerables\\Tests\\Fixtures\\Taxonomies\\Basic_Tag_Taxonomy Taxonomy Model', $validator->get_errors());
         $validator->reset_errors();
-        $tax = new \PC_Woo_Stock_Man\PinkCrab\Registerables\Tests\Fixtures\Taxonomies\Basic_Tag_Taxonomy();
+        $tax = new \pc_stock_man_v1\PinkCrab\Registerables\Tests\Fixtures\Taxonomies\Basic_Tag_Taxonomy();
         // plural empty string
         $tax->plural = '';
         $result = $validator->validate($tax);
         $this->assertFalse($result);
         $this->assertContains('plural is not set on PinkCrab\\Registerables\\Tests\\Fixtures\\Taxonomies\\Basic_Tag_Taxonomy Taxonomy Model', $validator->get_errors());
         $validator->reset_errors();
-        $tax = new \PC_Woo_Stock_Man\PinkCrab\Registerables\Tests\Fixtures\Taxonomies\Basic_Tag_Taxonomy();
+        $tax = new \pc_stock_man_v1\PinkCrab\Registerables\Tests\Fixtures\Taxonomies\Basic_Tag_Taxonomy();
         // plural none string.
         $tax->plural = (object) array('r' => null);
         $result = $validator->validate($tax);
         $this->assertFalse($result);
         $this->assertContains('plural is not set on PinkCrab\\Registerables\\Tests\\Fixtures\\Taxonomies\\Basic_Tag_Taxonomy Taxonomy Model', $validator->get_errors());
         $validator->reset_errors();
-        $tax = new \PC_Woo_Stock_Man\PinkCrab\Registerables\Tests\Fixtures\Taxonomies\Basic_Tag_Taxonomy();
+        $tax = new \pc_stock_man_v1\PinkCrab\Registerables\Tests\Fixtures\Taxonomies\Basic_Tag_Taxonomy();
     }
 }

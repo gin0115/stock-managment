@@ -1,13 +1,13 @@
 <?php
 
-namespace PC_Woo_Stock_Man;
+namespace pc_stock_man_v1;
 
 /* @description Dice - A minimal Dependency Injection Container for PHP *
  * @author Tom Butler tom@r.je *
  * @copyright 2012-2018 Tom Butler <tom@r.je> | https:// r.je/dice.html *
  * @license http:// www.opensource.org/licenses/bsd-license.php BSD License *
  * @version 3.0 */
-class ConstructParamsTest extends \PC_Woo_Stock_Man\DiceTest
+class ConstructParamsTest extends \pc_stock_man_v1\DiceTest
 {
     public function testConstructParams()
     {
@@ -45,7 +45,7 @@ class ConstructParamsTest extends \PC_Woo_Stock_Man\DiceTest
     public function testDefaultNullAssigned()
     {
         $rule = [];
-        $rule['constructParams'] = [[\PC_Woo_Stock_Man\Dice\Dice::INSTANCE => 'A'], null];
+        $rule['constructParams'] = [[\pc_stock_man_v1\Dice\Dice::INSTANCE => 'A'], null];
         $dice = $this->dice->addRule('MethodWithDefaultNull', $rule);
         $obj = $dice->create('MethodWithDefaultNull');
         $this->assertNull($obj->b);
@@ -119,4 +119,4 @@ class ConstructParamsTest extends \PC_Woo_Stock_Man\DiceTest
  * @copyright 2012-2018 Tom Butler <tom@r.je> | https:// r.je/dice.html *
  * @license http:// www.opensource.org/licenses/bsd-license.php BSD License *
  * @version 3.0 */
-\class_alias('PC_Woo_Stock_Man\\ConstructParamsTest', 'ConstructParamsTest', \false);
+\class_alias('pc_stock_man_v1\\ConstructParamsTest', 'ConstructParamsTest', \false);

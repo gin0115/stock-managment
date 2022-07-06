@@ -23,10 +23,10 @@ declare (strict_types=1);
  * @package PinkCrab\Registerables
  * @since 0.8.0
  */
-namespace PC_Woo_Stock_Man\PinkCrab\Registerables;
+namespace pc_stock_man_v1\PinkCrab\Registerables;
 
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Registration_Middleware\Registerable;
-abstract class Additional_Meta_Data_Controller implements \PC_Woo_Stock_Man\PinkCrab\Registerables\Registration_Middleware\Registerable
+use pc_stock_man_v1\PinkCrab\Registerables\Registration_Middleware\Registerable;
+abstract class Additional_Meta_Data_Controller implements \pc_stock_man_v1\PinkCrab\Registerables\Registration_Middleware\Registerable
 {
     /**
      * Sets any meta data against the meta box.

@@ -20,9 +20,9 @@ declare (strict_types=1);
  * @license http://www.opensource.org/licenses/mit-license.html  MIT License
  * @package PinkCrab\Perique\View
  */
-namespace PC_Woo_Stock_Man\PinkCrab\Perique\Services\View;
+namespace pc_stock_man_v1\PinkCrab\Perique\Services\View;
 
-use PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces\Renderable;
+use pc_stock_man_v1\PinkCrab\Perique\Interfaces\Renderable;
 class View
 {
     /**
@@ -44,7 +44,7 @@ class View
      *
      * @param Renderable $engine
      */
-    public function __construct(\PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces\Renderable $engine)
+    public function __construct(\pc_stock_man_v1\PinkCrab\Perique\Interfaces\Renderable $engine)
     {
         $this->engine = $engine;
     }
@@ -83,7 +83,7 @@ class View
      *
      * @return Renderable
      */
-    public function engine() : \PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces\Renderable
+    public function engine() : \pc_stock_man_v1\PinkCrab\Perique\Interfaces\Renderable
     {
         return $this->engine;
     }

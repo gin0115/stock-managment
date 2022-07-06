@@ -20,9 +20,9 @@ declare (strict_types=1);
  * @license http://www.opensource.org/licenses/mit-license.html  MIT License
  * @package PinkCrab\Perique\Container_Aware_Traits
  */
-namespace PC_Woo_Stock_Man\PinkCrab\Perique\Services\Container_Aware_Traits;
+namespace pc_stock_man_v1\PinkCrab\Perique\Services\Container_Aware_Traits;
 
-use PC_Woo_Stock_Man\PinkCrab\Loader\Hook_Loader;
+use pc_stock_man_v1\PinkCrab\Loader\Hook_Loader;
 trait Inject_Hook_Loader_Aware
 {
     /**
@@ -37,7 +37,7 @@ trait Inject_Hook_Loader_Aware
      * @param Hook_Loader $container
      * @return void
      */
-    public function set_hook_loader(\PC_Woo_Stock_Man\PinkCrab\Loader\Hook_Loader $hook_loader) : void
+    public function set_hook_loader(\pc_stock_man_v1\PinkCrab\Loader\Hook_Loader $hook_loader) : void
     {
         $this->loader = $hook_loader;
     }

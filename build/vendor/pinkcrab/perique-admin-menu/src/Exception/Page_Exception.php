@@ -20,10 +20,10 @@ declare (strict_types=1);
  * @license http://www.opensource.org/licenses/mit-license.html  MIT License
  * @package PinkCrab\Perique_Admin_Menu
  */
-namespace PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Exception;
+namespace pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Exception;
 
 use Exception;
-use PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Page\Page;
+use pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Page\Page;
 class Page_Exception extends \Exception
 {
     /**
@@ -34,7 +34,7 @@ class Page_Exception extends \Exception
      * @return self
      * @code 200
      */
-    public static function view_not_set(\PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Page\Page $page) : self
+    public static function view_not_set(\pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Page\Page $page) : self
     {
         return new self(\sprintf('View must be defined in %s to render template', \get_class($page)), 200);
     }
@@ -45,7 +45,7 @@ class Page_Exception extends \Exception
      * @return self
      * @code 201
      */
-    public static function undefined_property(string $property, \PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Page\Page $page) : self
+    public static function undefined_property(string $property, \pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Page\Page $page) : self
     {
         return new self(\sprintf('%s is a required property, not set in %s', $property, \get_class($page)), 201);
     }

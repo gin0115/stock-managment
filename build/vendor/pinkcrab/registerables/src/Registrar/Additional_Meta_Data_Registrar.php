@@ -21,16 +21,16 @@ declare (strict_types=1);
  * @package PinkCrab\Registerables
  * @since 0.7.0
  */
-namespace PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar;
+namespace pc_stock_man_v1\PinkCrab\Registerables\Registrar;
 
 use Exception;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Data;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar\Registrar;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar\Meta_Data_Registrar;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Additional_Meta_Data_Controller;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Tests\Fixtures\Additional_Meta_Data;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Registration_Middleware\Registerable;
-class Additional_Meta_Data_Registrar implements \PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar\Registrar
+use pc_stock_man_v1\PinkCrab\Registerables\Meta_Data;
+use pc_stock_man_v1\PinkCrab\Registerables\Registrar\Registrar;
+use pc_stock_man_v1\PinkCrab\Registerables\Registrar\Meta_Data_Registrar;
+use pc_stock_man_v1\PinkCrab\Registerables\Additional_Meta_Data_Controller;
+use pc_stock_man_v1\PinkCrab\Registerables\Tests\Fixtures\Additional_Meta_Data;
+use pc_stock_man_v1\PinkCrab\Registerables\Registration_Middleware\Registerable;
+class Additional_Meta_Data_Registrar implements \pc_stock_man_v1\PinkCrab\Registerables\Registrar\Registrar
 {
     /**
      * The Meta Data Registrar
@@ -38,7 +38,7 @@ class Additional_Meta_Data_Registrar implements \PC_Woo_Stock_Man\PinkCrab\Regis
      * @var Meta_Data_Registrar
      */
     protected $meta_data_registrar;
-    public function __construct(\PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar\Meta_Data_Registrar $meta_data_registrar)
+    public function __construct(\pc_stock_man_v1\PinkCrab\Registerables\Registrar\Meta_Data_Registrar $meta_data_registrar)
     {
         $this->meta_data_registrar = $meta_data_registrar;
     }
@@ -51,9 +51,9 @@ class Additional_Meta_Data_Registrar implements \PC_Woo_Stock_Man\PinkCrab\Regis
      * @throws Exception If a none Additional_Meta_Data_Controller registerable is attempted to be registered.
      * @throws Exception If a meta type which is not POST, USER, TERM or COMMENT is attempted to be registered.
      */
-    public function register(\PC_Woo_Stock_Man\PinkCrab\Registerables\Registration_Middleware\Registerable $registerable) : void
+    public function register(\pc_stock_man_v1\PinkCrab\Registerables\Registration_Middleware\Registerable $registerable) : void
     {
-        if (!\is_a($registerable, \PC_Woo_Stock_Man\PinkCrab\Registerables\Additional_Meta_Data_Controller::class)) {
+        if (!\is_a($registerable, \pc_stock_man_v1\PinkCrab\Registerables\Additional_Meta_Data_Controller::class)) {
             throw new \Exception('Registerable must be an instance of Additional_Meta_Data_Controller');
         }
         /** @var Additional_Meta_Data $registerable, Validation call below catches no Additional_Meta_Data Registerables */
@@ -95,7 +95,7 @@ class Additional_Meta_Data_Registrar implements \PC_Woo_Stock_Man\PinkCrab\Regis
     protected function filter_meta_data(array $meta_data) : array
     {
         return \array_filter($meta_data, function ($e) {
-            return \is_a($e, \PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Data::class);
+            return \is_a($e, \pc_stock_man_v1\PinkCrab\Registerables\Meta_Data::class);
         });
     }
 }

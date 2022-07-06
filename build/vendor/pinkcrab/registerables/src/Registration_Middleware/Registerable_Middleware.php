@@ -20,21 +20,21 @@ declare (strict_types=1);
  * @license http://www.opensource.org/licenses/mit-license.html  MIT License
  * @package PinkCrab\Registerables
  */
-namespace PC_Woo_Stock_Man\PinkCrab\Registerables\Registration_Middleware;
+namespace pc_stock_man_v1\PinkCrab\Registerables\Registration_Middleware;
 
-use PC_Woo_Stock_Man\PinkCrab\Loader\Hook_Loader;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Taxonomy;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Post_Type;
-use PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces\DI_Container;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Shared_Meta_Box_Controller;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar\Registrar_Factory;
-use PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces\Registration_Middleware;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar\Meta_Box_Registrar;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Additional_Meta_Data_Controller;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar\Shared_Meta_Box_Registrar;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Registration_Middleware\Registerable;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar\Additional_Meta_Data_Registrar;
-class Registerable_Middleware implements \PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces\Registration_Middleware
+use pc_stock_man_v1\PinkCrab\Loader\Hook_Loader;
+use pc_stock_man_v1\PinkCrab\Registerables\Taxonomy;
+use pc_stock_man_v1\PinkCrab\Registerables\Post_Type;
+use pc_stock_man_v1\PinkCrab\Perique\Interfaces\DI_Container;
+use pc_stock_man_v1\PinkCrab\Registerables\Shared_Meta_Box_Controller;
+use pc_stock_man_v1\PinkCrab\Registerables\Registrar\Registrar_Factory;
+use pc_stock_man_v1\PinkCrab\Perique\Interfaces\Registration_Middleware;
+use pc_stock_man_v1\PinkCrab\Registerables\Registrar\Meta_Box_Registrar;
+use pc_stock_man_v1\PinkCrab\Registerables\Additional_Meta_Data_Controller;
+use pc_stock_man_v1\PinkCrab\Registerables\Registrar\Shared_Meta_Box_Registrar;
+use pc_stock_man_v1\PinkCrab\Registerables\Registration_Middleware\Registerable;
+use pc_stock_man_v1\PinkCrab\Registerables\Registrar\Additional_Meta_Data_Registrar;
+class Registerable_Middleware implements \pc_stock_man_v1\PinkCrab\Perique\Interfaces\Registration_Middleware
 {
     /** @var Hook_Loader */
     protected $loader;
@@ -46,7 +46,7 @@ class Registerable_Middleware implements \PC_Woo_Stock_Man\PinkCrab\Perique\Inte
      * @param \PinkCrab\Loader\Hook_Loader $loader
      * @return void
      */
-    public function set_hook_loader(\PC_Woo_Stock_Man\PinkCrab\Loader\Hook_Loader $loader)
+    public function set_hook_loader(\pc_stock_man_v1\PinkCrab\Loader\Hook_Loader $loader)
     {
         $this->loader = $loader;
     }
@@ -56,7 +56,7 @@ class Registerable_Middleware implements \PC_Woo_Stock_Man\PinkCrab\Perique\Inte
      * @param \PinkCrab\Perique\Interfaces\DI_Container $container
      * @return void
      */
-    public function set_di_container(\PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces\DI_Container $container) : void
+    public function set_di_container(\pc_stock_man_v1\PinkCrab\Perique\Interfaces\DI_Container $container) : void
     {
         $this->container = $container;
     }
@@ -68,21 +68,21 @@ class Registerable_Middleware implements \PC_Woo_Stock_Man\PinkCrab\Perique\Inte
      */
     public function process($class)
     {
-        if (!\is_a($class, \PC_Woo_Stock_Man\PinkCrab\Registerables\Registration_Middleware\Registerable::class)) {
+        if (!\is_a($class, \pc_stock_man_v1\PinkCrab\Registerables\Registration_Middleware\Registerable::class)) {
             return $class;
         }
         // Based on the registerable type.
         switch (\true) {
-            case \is_a($class, \PC_Woo_Stock_Man\PinkCrab\Registerables\Post_Type::class):
+            case \is_a($class, \pc_stock_man_v1\PinkCrab\Registerables\Post_Type::class):
                 $this->process_post_type($class);
                 break;
-            case \is_a($class, \PC_Woo_Stock_Man\PinkCrab\Registerables\Taxonomy::class):
+            case \is_a($class, \pc_stock_man_v1\PinkCrab\Registerables\Taxonomy::class):
                 $this->process_taxonomy($class);
                 break;
-            case \is_a($class, \PC_Woo_Stock_Man\PinkCrab\Registerables\Shared_Meta_Box_Controller::class):
+            case \is_a($class, \pc_stock_man_v1\PinkCrab\Registerables\Shared_Meta_Box_Controller::class):
                 $this->process_shared_meta_box($class);
                 break;
-            case \is_a($class, \PC_Woo_Stock_Man\PinkCrab\Registerables\Additional_Meta_Data_Controller::class):
+            case \is_a($class, \pc_stock_man_v1\PinkCrab\Registerables\Additional_Meta_Data_Controller::class):
                 $this->process_additional_meta_data($class);
                 break;
             default:
@@ -98,10 +98,10 @@ class Registerable_Middleware implements \PC_Woo_Stock_Man\PinkCrab\Perique\Inte
      * @return void
      * @since 0.7.0
      */
-    protected function process_taxonomy(\PC_Woo_Stock_Man\PinkCrab\Registerables\Taxonomy $taxonomy) : void
+    protected function process_taxonomy(\pc_stock_man_v1\PinkCrab\Registerables\Taxonomy $taxonomy) : void
     {
         $this->loader->action('init', static function () use($taxonomy) {
-            \PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar\Registrar_Factory::new()->create_from_registerable($taxonomy)->register($taxonomy);
+            \pc_stock_man_v1\PinkCrab\Registerables\Registrar\Registrar_Factory::new()->create_from_registerable($taxonomy)->register($taxonomy);
         });
     }
     /**
@@ -111,11 +111,11 @@ class Registerable_Middleware implements \PC_Woo_Stock_Man\PinkCrab\Perique\Inte
      * @return void
      * @since 0.7.0
      */
-    protected function process_post_type(\PC_Woo_Stock_Man\PinkCrab\Registerables\Post_Type $post_type_registerable)
+    protected function process_post_type(\pc_stock_man_v1\PinkCrab\Registerables\Post_Type $post_type_registerable)
     {
         // Register registerable.
         $this->loader->action('init', static function () use($post_type_registerable) {
-            \PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar\Registrar_Factory::new()->create_from_registerable($post_type_registerable)->register($post_type_registerable);
+            \pc_stock_man_v1\PinkCrab\Registerables\Registrar\Registrar_Factory::new()->create_from_registerable($post_type_registerable)->register($post_type_registerable);
         });
         // Define use of gutenberg
         $this->loader->filter('use_block_editor_for_post_type', static function (bool $state, string $post_type) use($post_type_registerable) : bool {
@@ -141,9 +141,9 @@ class Registerable_Middleware implements \PC_Woo_Stock_Man\PinkCrab\Perique\Inte
      * @return void
      * @since 0.7.0
      */
-    public function process_shared_meta_box(\PC_Woo_Stock_Man\PinkCrab\Registerables\Shared_Meta_Box_Controller $controller) : void
+    public function process_shared_meta_box(\pc_stock_man_v1\PinkCrab\Registerables\Shared_Meta_Box_Controller $controller) : void
     {
-        $registrar = new \PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar\Shared_Meta_Box_Registrar($this->get_meta_box_registrar(), \PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar\Registrar_Factory::new()->meta_data_registrar());
+        $registrar = new \pc_stock_man_v1\PinkCrab\Registerables\Registrar\Shared_Meta_Box_Registrar($this->get_meta_box_registrar(), \pc_stock_man_v1\PinkCrab\Registerables\Registrar\Registrar_Factory::new()->meta_data_registrar());
         $registrar->register($controller);
     }
     /**
@@ -153,9 +153,9 @@ class Registerable_Middleware implements \PC_Woo_Stock_Man\PinkCrab\Perique\Inte
      * @return void
      * @since 0.8.0
      */
-    public function process_additional_meta_data(\PC_Woo_Stock_Man\PinkCrab\Registerables\Additional_Meta_Data_Controller $controller) : void
+    public function process_additional_meta_data(\pc_stock_man_v1\PinkCrab\Registerables\Additional_Meta_Data_Controller $controller) : void
     {
-        $registrar = new \PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar\Additional_Meta_Data_Registrar(\PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar\Registrar_Factory::new()->meta_data_registrar());
+        $registrar = new \pc_stock_man_v1\PinkCrab\Registerables\Registrar\Additional_Meta_Data_Registrar(\pc_stock_man_v1\PinkCrab\Registerables\Registrar\Registrar_Factory::new()->meta_data_registrar());
         $registrar->register($controller);
     }
     /**
@@ -164,9 +164,9 @@ class Registerable_Middleware implements \PC_Woo_Stock_Man\PinkCrab\Perique\Inte
      * @return \PinkCrab\Registerables\Registrar\Meta_Box_Registrar
      * @since 0.7.0
      */
-    public function get_meta_box_registrar() : \PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar\Meta_Box_Registrar
+    public function get_meta_box_registrar() : \pc_stock_man_v1\PinkCrab\Registerables\Registrar\Meta_Box_Registrar
     {
-        return \PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar\Registrar_Factory::new()->meta_box_registrar($this->container, $this->loader);
+        return \pc_stock_man_v1\PinkCrab\Registerables\Registrar\Registrar_Factory::new()->meta_box_registrar($this->container, $this->loader);
     }
     public function setup() : void
     {

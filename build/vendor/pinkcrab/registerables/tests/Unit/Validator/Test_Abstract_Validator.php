@@ -9,12 +9,12 @@ declare (strict_types=1);
  * @license http://www.opensource.org/licenses/mit-license.html  MIT License
  * @package PinkCrab\Registerables
  */
-namespace PC_Woo_Stock_Man\PinkCrab\Registerables\Tests\Unit\Validator;
+namespace pc_stock_man_v1\PinkCrab\Registerables\Tests\Unit\Validator;
 
 use PHPUnit\Framework\TestCase;
-use PC_Woo_Stock_Man\Gin0115\WPUnit_Helpers\Objects;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Validator\Abstract_Validator;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Registration_Middleware\Registerable;
+use pc_stock_man_v1\Gin0115\WPUnit_Helpers\Objects;
+use pc_stock_man_v1\PinkCrab\Registerables\Validator\Abstract_Validator;
+use pc_stock_man_v1\PinkCrab\Registerables\Registration_Middleware\Registerable;
 class Test_Abstract_Validator extends \PHPUnit\Framework\TestCase
 {
     /**
@@ -22,11 +22,11 @@ class Test_Abstract_Validator extends \PHPUnit\Framework\TestCase
      *
      * @return \PinkCrab\Registerables\Validator\Abstract_Validator
      */
-    public function get_validator() : \PC_Woo_Stock_Man\PinkCrab\Registerables\Validator\Abstract_Validator
+    public function get_validator() : \pc_stock_man_v1\PinkCrab\Registerables\Validator\Abstract_Validator
     {
-        return new class extends \PC_Woo_Stock_Man\PinkCrab\Registerables\Validator\Abstract_Validator
+        return new class extends \pc_stock_man_v1\PinkCrab\Registerables\Validator\Abstract_Validator
         {
-            public function validate(\PC_Woo_Stock_Man\PinkCrab\Registerables\Registration_Middleware\Registerable $object) : bool
+            public function validate(\pc_stock_man_v1\PinkCrab\Registerables\Registration_Middleware\Registerable $object) : bool
             {
                 return \true;
             }
@@ -37,8 +37,8 @@ class Test_Abstract_Validator extends \PHPUnit\Framework\TestCase
     {
         $validator = $this->get_validator();
         $validator->add_error('ERROR');
-        $this->assertCount(1, \PC_Woo_Stock_Man\Gin0115\WPUnit_Helpers\Objects::get_property($validator, 'errors'));
-        $this->assertContains('ERROR', \PC_Woo_Stock_Man\Gin0115\WPUnit_Helpers\Objects::get_property($validator, 'errors'));
+        $this->assertCount(1, \pc_stock_man_v1\Gin0115\WPUnit_Helpers\Objects::get_property($validator, 'errors'));
+        $this->assertContains('ERROR', \pc_stock_man_v1\Gin0115\WPUnit_Helpers\Objects::get_property($validator, 'errors'));
     }
     /** @testdox It should be possible to check if the validator has logged any errors */
     public function test_has_errors() : void

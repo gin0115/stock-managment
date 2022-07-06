@@ -20,10 +20,10 @@ declare (strict_types=1);
  * @license http://www.opensource.org/licenses/mit-license.html  MIT License
  * @package PinkCrab\Perique_Admin_Menu
  */
-namespace PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Registrar;
+namespace pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Registrar;
 
-use PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Page\Page;
-use PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Group\Abstract_Group;
+use pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Page\Page;
+use pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Group\Abstract_Group;
 class Page_Load_Action
 {
     /**
@@ -38,7 +38,7 @@ class Page_Load_Action
      * @var Abstract_Group|null
      */
     protected $group;
-    public function __construct(\PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Page\Page $page, ?\PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Group\Abstract_Group $group = null)
+    public function __construct(\pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Page\Page $page, ?\pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Group\Abstract_Group $group = null)
     {
         $this->page = $page;
         $this->group = $group;

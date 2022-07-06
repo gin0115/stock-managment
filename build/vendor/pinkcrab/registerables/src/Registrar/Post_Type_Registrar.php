@@ -20,16 +20,16 @@ declare (strict_types=1);
  * @license http://www.opensource.org/licenses/mit-license.html  MIT License
  * @package PinkCrab\Registerables
  */
-namespace PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar;
+namespace pc_stock_man_v1\PinkCrab\Registerables\Registrar;
 
 use Exception;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Post_Type;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Registerable_Hooks;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar\Registrar;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar\Meta_Data_Registrar;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Validator\Post_Type_Validator;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Registration_Middleware\Registerable;
-class Post_Type_Registrar implements \PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar\Registrar
+use pc_stock_man_v1\PinkCrab\Registerables\Post_Type;
+use pc_stock_man_v1\PinkCrab\Registerables\Registerable_Hooks;
+use pc_stock_man_v1\PinkCrab\Registerables\Registrar\Registrar;
+use pc_stock_man_v1\PinkCrab\Registerables\Registrar\Meta_Data_Registrar;
+use pc_stock_man_v1\PinkCrab\Registerables\Validator\Post_Type_Validator;
+use pc_stock_man_v1\PinkCrab\Registerables\Registration_Middleware\Registerable;
+class Post_Type_Registrar implements \pc_stock_man_v1\PinkCrab\Registerables\Registrar\Registrar
 {
     /**
      * Post Type Validator
@@ -43,7 +43,7 @@ class Post_Type_Registrar implements \PC_Woo_Stock_Man\PinkCrab\Registerables\Re
      * @var Meta_Data_Registrar
      */
     protected $meta_data_registrar;
-    public function __construct(\PC_Woo_Stock_Man\PinkCrab\Registerables\Validator\Post_Type_Validator $validator, \PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar\Meta_Data_Registrar $meta_data_registrar)
+    public function __construct(\pc_stock_man_v1\PinkCrab\Registerables\Validator\Post_Type_Validator $validator, \pc_stock_man_v1\PinkCrab\Registerables\Registrar\Meta_Data_Registrar $meta_data_registrar)
     {
         $this->validator = $validator;
         $this->meta_data_registrar = $meta_data_registrar;
@@ -54,7 +54,7 @@ class Post_Type_Registrar implements \PC_Woo_Stock_Man\PinkCrab\Registerables\Re
      * @param \PinkCrab\Registerables\Registration_Middleware\Registerable $registerable
      * @return void
      */
-    public function register(\PC_Woo_Stock_Man\PinkCrab\Registerables\Registration_Middleware\Registerable $registerable) : void
+    public function register(\pc_stock_man_v1\PinkCrab\Registerables\Registration_Middleware\Registerable $registerable) : void
     {
         /** @var Post_Type $registerable, Validation call below catches no Post_Type Registerables */
         if (!$this->validator->validate($registerable)) {
@@ -79,7 +79,7 @@ class Post_Type_Registrar implements \PC_Woo_Stock_Man\PinkCrab\Registerables\Re
      * @param \PinkCrab\Registerables\Post_Type $post_type
      * @return void
      */
-    protected function register_meta_data(\PC_Woo_Stock_Man\PinkCrab\Registerables\Post_Type $post_type) : void
+    protected function register_meta_data(\pc_stock_man_v1\PinkCrab\Registerables\Post_Type $post_type) : void
     {
         // Get all meta fields for post_type.
         $meta_fields = $post_type->meta_data(array());
@@ -98,7 +98,7 @@ class Post_Type_Registrar implements \PC_Woo_Stock_Man\PinkCrab\Registerables\Re
      * @param \PinkCrab\Registerables\Post_Type $post_type
      * @return array<string, string|int|array<string, string>>
      */
-    protected function compile_args(\PC_Woo_Stock_Man\PinkCrab\Registerables\Post_Type $post_type) : array
+    protected function compile_args(\pc_stock_man_v1\PinkCrab\Registerables\Post_Type $post_type) : array
     {
         // Create the labels.
         $labels = array(
@@ -166,7 +166,7 @@ class Post_Type_Registrar implements \PC_Woo_Stock_Man\PinkCrab\Registerables\Re
          * @param Post_Type $cpt
          * @return array<string, string>
          */
-        $labels = apply_filters(\PC_Woo_Stock_Man\PinkCrab\Registerables\Registerable_Hooks::POST_TYPE_LABELS, $post_type->filter_labels($labels), $post_type);
+        $labels = apply_filters(\pc_stock_man_v1\PinkCrab\Registerables\Registerable_Hooks::POST_TYPE_LABELS, $post_type->filter_labels($labels), $post_type);
         // Set the rewrite rules if not defined.
         if (\is_null($post_type->rewrite)) {
             $post_type->rewrite = array('slug' => $post_type->key, 'with_front' => \true, 'feeds' => \false, 'pages' => \false);
@@ -182,6 +182,6 @@ class Post_Type_Registrar implements \PC_Woo_Stock_Man\PinkCrab\Registerables\Re
          * @return array<string, string|bool|int|null|array<string, string>
          */
         /* @phpstan-ignore-next-line, this is due to apply_filters type hints being wrong. */
-        return apply_filters(\PC_Woo_Stock_Man\PinkCrab\Registerables\Registerable_Hooks::POST_TYPE_ARGS, $post_type->filter_args($args), $post_type);
+        return apply_filters(\pc_stock_man_v1\PinkCrab\Registerables\Registerable_Hooks::POST_TYPE_ARGS, $post_type->filter_args($args), $post_type);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace PC_Woo_Stock_Man;
+namespace pc_stock_man_v1;
 
 /**
  * PHPUnit bootstrap file
@@ -9,7 +9,7 @@ namespace PC_Woo_Stock_Man;
 require_once \dirname(__DIR__) . '/vendor/autoload.php';
 // Give access to tests_add_filter() function.
 require_once \getenv('WP_PHPUNIT__DIR') . '/includes/functions.php';
-\PC_Woo_Stock_Man\tests_add_filter('muplugins_loaded', function () {
+\pc_stock_man_v1\tests_add_filter('muplugins_loaded', function () {
 });
 // Start up the WP testing environment.
 require \getenv('WP_PHPUNIT__DIR') . '/includes/bootstrap.php';

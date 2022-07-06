@@ -11,11 +11,11 @@ declare (strict_types=1);
  * @license http://www.opensource.org/licenses/mit-license.html  MIT License
  * @package PinkCrab\Core
  */
-namespace PC_Woo_Stock_Man\PinkCrab\Loader\Tests\Fixtures;
+namespace pc_stock_man_v1\PinkCrab\Loader\Tests\Fixtures;
 
-use PC_Woo_Stock_Man\PinkCrab\Loader\Hook;
-use PC_Woo_Stock_Man\PinkCrab\Loader\Hook_Manager;
-class Hook_Manager_Object_Mock extends \PC_Woo_Stock_Man\PinkCrab\Loader\Hook_Manager
+use pc_stock_man_v1\PinkCrab\Loader\Hook;
+use pc_stock_man_v1\PinkCrab\Loader\Hook_Manager;
+class Hook_Manager_Object_Mock extends \pc_stock_man_v1\PinkCrab\Loader\Hook_Manager
 {
     /** Holds all the hooks which have been registered. */
     public $_hooks = array('actions' => array(), 'filters' => array(), 'remove' => array());
@@ -45,7 +45,7 @@ class Hook_Manager_Object_Mock extends \PC_Woo_Stock_Man\PinkCrab\Loader\Hook_Ma
      * @param Hook $hook
      * @return Hook
      */
-    protected function register_action(\PC_Woo_Stock_Man\PinkCrab\Loader\Hook $hook) : \PC_Woo_Stock_Man\PinkCrab\Loader\Hook
+    protected function register_action(\pc_stock_man_v1\PinkCrab\Loader\Hook $hook) : \pc_stock_man_v1\PinkCrab\Loader\Hook
     {
         $this->_add_action($hook->get_handle(), $hook->get_callback(), $hook->get_priority(), $hook->args_count());
         $hook->registered();
@@ -57,7 +57,7 @@ class Hook_Manager_Object_Mock extends \PC_Woo_Stock_Man\PinkCrab\Loader\Hook_Ma
      * @param Hook $hook
      * @return Hook
      */
-    protected function register_filter(\PC_Woo_Stock_Man\PinkCrab\Loader\Hook $hook) : \PC_Woo_Stock_Man\PinkCrab\Loader\Hook
+    protected function register_filter(\pc_stock_man_v1\PinkCrab\Loader\Hook $hook) : \pc_stock_man_v1\PinkCrab\Loader\Hook
     {
         $this->_add_filter($hook->get_handle(), $hook->get_callback(), $hook->get_priority(), $hook->args_count());
         $hook->registered();
@@ -69,7 +69,7 @@ class Hook_Manager_Object_Mock extends \PC_Woo_Stock_Man\PinkCrab\Loader\Hook_Ma
      * @param Hook $hook
      * @return Hook
      */
-    protected function register_remove(\PC_Woo_Stock_Man\PinkCrab\Loader\Hook $hook) : \PC_Woo_Stock_Man\PinkCrab\Loader\Hook
+    protected function register_remove(\pc_stock_man_v1\PinkCrab\Loader\Hook $hook) : \pc_stock_man_v1\PinkCrab\Loader\Hook
     {
         $this->_remove_hook($hook->get_handle(), $hook->get_callback(), $hook->get_priority());
         $hook->registered();

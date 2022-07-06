@@ -21,9 +21,9 @@ declare (strict_types=1);
  * @package PinkCrab\Registerables
  * @since 0.7.1
  */
-namespace PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar;
+namespace pc_stock_man_v1\PinkCrab\Registerables\Registrar;
 
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Data;
+use pc_stock_man_v1\PinkCrab\Registerables\Meta_Data;
 class Meta_Data_Registrar
 {
     /**
@@ -34,7 +34,7 @@ class Meta_Data_Registrar
      * @return bool
      * @throws \Exception if fails to register meta data.
      */
-    public function register_for_post_type(\PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Data $meta, string $post_type) : bool
+    public function register_for_post_type(\pc_stock_man_v1\PinkCrab\Registerables\Meta_Data $meta, string $post_type) : bool
     {
         return $this->register_meta($meta, 'post', $post_type);
     }
@@ -46,7 +46,7 @@ class Meta_Data_Registrar
      * @return bool
      * @throws \Exception if fails to register meta data.
      */
-    public function register_for_term(\PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Data $meta, string $taxonomy) : bool
+    public function register_for_term(\pc_stock_man_v1\PinkCrab\Registerables\Meta_Data $meta, string $taxonomy) : bool
     {
         return $this->register_meta($meta, 'term', $taxonomy);
     }
@@ -57,7 +57,7 @@ class Meta_Data_Registrar
      * @return bool
      * @throws \Exception if fails to register meta data.
      */
-    public function register_for_user(\PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Data $meta) : bool
+    public function register_for_user(\pc_stock_man_v1\PinkCrab\Registerables\Meta_Data $meta) : bool
     {
         return $this->register_meta($meta, 'user', '');
     }
@@ -68,7 +68,7 @@ class Meta_Data_Registrar
      * @return bool
      * @throws \Exception if fails to register meta data.
      */
-    public function register_for_comment(\PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Data $meta) : bool
+    public function register_for_comment(\pc_stock_man_v1\PinkCrab\Registerables\Meta_Data $meta) : bool
     {
         return $this->register_meta($meta, 'comment', '');
     }
@@ -83,7 +83,7 @@ class Meta_Data_Registrar
      * @return bool
      * @throws \Exception if fails to register meta data.
      */
-    protected function register_meta(\PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Data $meta, string $meta_type, string $sub_type) : bool
+    protected function register_meta(\pc_stock_man_v1\PinkCrab\Registerables\Meta_Data $meta, string $meta_type, string $sub_type) : bool
     {
         // Clone and set the post type, while enforcing it as a post meta.
         $meta = clone $meta;
@@ -109,10 +109,10 @@ class Meta_Data_Registrar
      * @param \PinkCrab\Registerables\Meta_Data $meta
      * @return \PinkCrab\Registerables\Meta_Data
      */
-    protected function normalise_rest_schema(\PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Data $meta) : \PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Data
+    protected function normalise_rest_schema(\pc_stock_man_v1\PinkCrab\Registerables\Meta_Data $meta) : \pc_stock_man_v1\PinkCrab\Registerables\Meta_Data
     {
-        if (\class_exists('PC_Woo_Stock_Man\\PinkCrab\\WP_Rest_Schema\\Argument\\Argument') && $meta->get_rest_schema() instanceof \PC_Woo_Stock_Man\PinkCrab\WP_Rest_Schema\Argument\Argument) {
-            $meta->rest_schema(\PC_Woo_Stock_Man\PinkCrab\WP_Rest_Schema\Parser\Argument_Parser::for_meta_data($meta->get_rest_schema()));
+        if (\class_exists('pc_stock_man_v1\\PinkCrab\\WP_Rest_Schema\\Argument\\Argument') && $meta->get_rest_schema() instanceof \pc_stock_man_v1\PinkCrab\WP_Rest_Schema\Argument\Argument) {
+            $meta->rest_schema(\pc_stock_man_v1\PinkCrab\WP_Rest_Schema\Parser\Argument_Parser::for_meta_data($meta->get_rest_schema()));
         }
         return $meta;
     }
@@ -122,7 +122,7 @@ class Meta_Data_Registrar
      * @param \PinkCrab\Registerables\Meta_Data $meta
      * @return void
      */
-    public function register_meta_rest_field(\PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Data $meta)
+    public function register_meta_rest_field(\pc_stock_man_v1\PinkCrab\Registerables\Meta_Data $meta)
     {
         // Skip if not sub type defined for post or term.
         if (null === $meta->get_subtype()) {
@@ -143,7 +143,7 @@ class Meta_Data_Registrar
      * @param \PinkCrab\Registerables\Meta_Data $meta
      * @return callable(array<mixed>):void
      */
-    protected function create_rest_get_method(\PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Data $meta) : callable
+    protected function create_rest_get_method(\pc_stock_man_v1\PinkCrab\Registerables\Meta_Data $meta) : callable
     {
         return function ($model) use($meta) {
             switch ($meta->get_meta_type()) {
@@ -172,7 +172,7 @@ class Meta_Data_Registrar
      * @param Meta_Data $meta
      * @return callable(mixed $value, \WP_Post|\WP_Term|\WP_User|\WP_Comment $object)
      */
-    protected function create_rest_update_method(\PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Data $meta) : callable
+    protected function create_rest_update_method(\pc_stock_man_v1\PinkCrab\Registerables\Meta_Data $meta) : callable
     {
         /**
          * @param mixed $value

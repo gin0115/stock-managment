@@ -1,13 +1,13 @@
 <?php
 
-namespace PC_Woo_Stock_Man;
+namespace pc_stock_man_v1;
 
 /* @description Dice - A minimal Dependency Injection Container for PHP *
  * @author Tom Butler tom@r.je *
  * @copyright 2012-2018 Tom Butler <tom@r.je> | https:// r.je/dice.html *
  * @license http:// www.opensource.org/licenses/bsd-license.php BSD License *
  * @version 3.0 */
-class ShareInstancesTest extends \PC_Woo_Stock_Man\DiceTest
+class ShareInstancesTest extends \pc_stock_man_v1\DiceTest
 {
     public function testShareInstances()
     {
@@ -69,4 +69,4 @@ class ShareInstancesTest extends \PC_Woo_Stock_Man\DiceTest
  * @copyright 2012-2018 Tom Butler <tom@r.je> | https:// r.je/dice.html *
  * @license http:// www.opensource.org/licenses/bsd-license.php BSD License *
  * @version 3.0 */
-\class_alias('PC_Woo_Stock_Man\\ShareInstancesTest', 'ShareInstancesTest', \false);
+\class_alias('pc_stock_man_v1\\ShareInstancesTest', 'ShareInstancesTest', \false);

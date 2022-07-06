@@ -20,14 +20,14 @@ declare (strict_types=1);
  * @license http://www.opensource.org/licenses/mit-license.html  MIT License
  * @package PinkCrab\BladeOne_Provider
  */
-namespace PC_Woo_Stock_Man\PinkCrab\BladeOne;
+namespace pc_stock_man_v1\PinkCrab\BladeOne;
 
-use PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces\Hookable;
-use PC_Woo_Stock_Man\eftec\bladeone\BladeOne;
-use PC_Woo_Stock_Man\PinkCrab\BladeOne\BladeOne_Provider;
-use PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces\Renderable;
-use PC_Woo_Stock_Man\PinkCrab\Loader\Hook_Loader;
-abstract class Abstract_BladeOne_Config implements \PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces\Hookable
+use pc_stock_man_v1\PinkCrab\Perique\Interfaces\Hookable;
+use pc_stock_man_v1\eftec\bladeone\BladeOne;
+use pc_stock_man_v1\PinkCrab\BladeOne\BladeOne_Provider;
+use pc_stock_man_v1\PinkCrab\Perique\Interfaces\Renderable;
+use pc_stock_man_v1\PinkCrab\Loader\Hook_Loader;
+abstract class Abstract_BladeOne_Config implements \pc_stock_man_v1\PinkCrab\Perique\Interfaces\Hookable
 {
     /**
      * The current view model.
@@ -35,7 +35,7 @@ abstract class Abstract_BladeOne_Config implements \PC_Woo_Stock_Man\PinkCrab\Pe
      * @var BladeOne_Provider|null
      */
     protected $renderable;
-    public final function register(\PC_Woo_Stock_Man\PinkCrab\Loader\Hook_Loader $loader) : void
+    public final function register(\pc_stock_man_v1\PinkCrab\Loader\Hook_Loader $loader) : void
     {
         $loader->action('wp_loaded', array($this, 'configure_blade_handler'), 10, 2);
     }
@@ -45,7 +45,7 @@ abstract class Abstract_BladeOne_Config implements \PC_Woo_Stock_Man\PinkCrab\Pe
      * @param BladeOne_Provider $renderable
      * @return void
      */
-    public function set_renderable(\PC_Woo_Stock_Man\PinkCrab\BladeOne\BladeOne_Provider $renderable) : void
+    public function set_renderable(\pc_stock_man_v1\PinkCrab\BladeOne\BladeOne_Provider $renderable) : void
     {
         $this->renderable = $renderable;
     }
@@ -56,7 +56,7 @@ abstract class Abstract_BladeOne_Config implements \PC_Woo_Stock_Man\PinkCrab\Pe
      */
     public final function configure_blade_handler() : void
     {
-        if (!\is_null($this->renderable) && \is_a($this->renderable, \PC_Woo_Stock_Man\PinkCrab\BladeOne\BladeOne_Provider::class)) {
+        if (!\is_null($this->renderable) && \is_a($this->renderable, \pc_stock_man_v1\PinkCrab\BladeOne\BladeOne_Provider::class)) {
             $this->config($this->renderable);
         }
     }
@@ -66,5 +66,5 @@ abstract class Abstract_BladeOne_Config implements \PC_Woo_Stock_Man\PinkCrab\Pe
      * @param BladeOne_Provider $bladeone
      * @return void
      */
-    public abstract function config(\PC_Woo_Stock_Man\PinkCrab\BladeOne\BladeOne_Provider $bladeone) : void;
+    public abstract function config(\pc_stock_man_v1\PinkCrab\BladeOne\BladeOne_Provider $bladeone) : void;
 }

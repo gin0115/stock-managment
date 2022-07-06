@@ -4,287 +4,240 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit62431815ef05dc6b3985a3cdbc61c040
+class ComposerStaticInite44b872435e6281437936cf117b54f0a
 {
     public static $files = array (
         'be8785f285476d960a9374d1a827f21a' => __DIR__ . '/..' . '/pinkcrab/hook-loader/tests/Fixtures/functions.php',
     );
 
     public static $prefixLengthsPsr4 = array (
+        'p' => 
+        array (
+            'pc_stock_man_v1\\eftec\\bladeonehtml\\' => 35,
+            'pc_stock_man_v1\\eftec\\bladeone\\' => 31,
+            'pc_stock_man_v1\\eftec\\' => 22,
+            'pc_stock_man_v1\\Psr\\Container\\' => 30,
+            'pc_stock_man_v1\\PinkCrab\\WP_Rest_Schema\\' => 40,
+            'pc_stock_man_v1\\PinkCrab\\Route\\' => 31,
+            'pc_stock_man_v1\\PinkCrab\\Registerables\\' => 39,
+            'pc_stock_man_v1\\PinkCrab\\Plugin_Lifecycle\\' => 42,
+            'pc_stock_man_v1\\PinkCrab\\Perique_Admin_Menu\\' => 44,
+            'pc_stock_man_v1\\PinkCrab\\Perique\\' => 33,
+            'pc_stock_man_v1\\PinkCrab\\Loader\\' => 32,
+            'pc_stock_man_v1\\PinkCrab\\Collection\\' => 36,
+            'pc_stock_man_v1\\PinkCrab\\BladeOne\\' => 34,
+            'pc_stock_man_v1\\Gin0115\\WPUnit_Helpers\\' => 39,
+            'pc_stock_man_v1\\Dice\\' => 21,
+        ),
         'P' => 
         array (
-            'PC_Woo_Stock_Man\\eftec\\bladeonehtml\\' => 36,
-            'PC_Woo_Stock_Man\\eftec\\bladeone\\' => 32,
-            'PC_Woo_Stock_Man\\eftec\\' => 23,
-            'PC_Woo_Stock_Man\\Psr\\SimpleCache\\' => 33,
-            'PC_Woo_Stock_Man\\Psr\\Http\\Message\\' => 34,
-            'PC_Woo_Stock_Man\\Psr\\Container\\' => 31,
-            'PC_Woo_Stock_Man\\PinkCrab\\WP_PSR16_Cache\\' => 41,
-            'PC_Woo_Stock_Man\\PinkCrab\\Stock_Management\\' => 43,
-            'PC_Woo_Stock_Man\\PinkCrab\\Registerables\\' => 40,
-            'PC_Woo_Stock_Man\\PinkCrab\\Plugin_Lifecycle\\' => 43,
-            'PC_Woo_Stock_Man\\PinkCrab\\Perique_Admin_Menu\\' => 45,
-            'PC_Woo_Stock_Man\\PinkCrab\\Perique\\' => 34,
-            'PC_Woo_Stock_Man\\PinkCrab\\Nonce\\' => 32,
-            'PC_Woo_Stock_Man\\PinkCrab\\Loader\\' => 33,
-            'PC_Woo_Stock_Man\\PinkCrab\\HTTP\\' => 31,
-            'PC_Woo_Stock_Man\\PinkCrab\\Enqueue\\' => 34,
-            'PC_Woo_Stock_Man\\PinkCrab\\BladeOne\\' => 35,
-            'PC_Woo_Stock_Man\\PinkCrab\\Ajax\\' => 31,
-            'PC_Woo_Stock_Man\\Nyholm\\Psr7\\' => 29,
-            'PC_Woo_Stock_Man\\Nyholm\\Psr7Server\\' => 35,
-            'PC_Woo_Stock_Man\\Http\\Message\\' => 30,
-            'PC_Woo_Stock_Man\\Gin0115\\WPUnit_Helpers\\' => 40,
-            'PC_Woo_Stock_Man\\Dice\\' => 22,
+            'PinkCrab\\Stock_Management\\' => 26,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'PC_Woo_Stock_Man\\eftec\\bladeonehtml\\' => 
+        'pc_stock_man_v1\\eftec\\bladeonehtml\\' => 
         array (
             0 => __DIR__ . '/..' . '/eftec/bladeonehtml/lib',
         ),
-        'PC_Woo_Stock_Man\\eftec\\bladeone\\' => 
+        'pc_stock_man_v1\\eftec\\bladeone\\' => 
         array (
             0 => __DIR__ . '/..' . '/eftec/bladeone/lib',
         ),
-        'PC_Woo_Stock_Man\\eftec\\' => 
+        'pc_stock_man_v1\\eftec\\' => 
         array (
             0 => __DIR__ . '/..' . '/eftec/messagecontainer/lib',
         ),
-        'PC_Woo_Stock_Man\\Psr\\SimpleCache\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/psr/simple-cache/src',
-        ),
-        'PC_Woo_Stock_Man\\Psr\\Http\\Message\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/psr/http-factory/src',
-            1 => __DIR__ . '/..' . '/psr/http-message/src',
-        ),
-        'PC_Woo_Stock_Man\\Psr\\Container\\' => 
+        'pc_stock_man_v1\\Psr\\Container\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
         ),
-        'PC_Woo_Stock_Man\\PinkCrab\\WP_PSR16_Cache\\' => 
+        'pc_stock_man_v1\\PinkCrab\\WP_Rest_Schema\\' => 
         array (
-            0 => __DIR__ . '/..' . '/pinkcrab/wp-psr16-cache/src',
+            0 => __DIR__ . '/..' . '/pinkcrab/wp-rest-schema/src',
         ),
-        'PC_Woo_Stock_Man\\PinkCrab\\Stock_Management\\' => 
+        'pc_stock_man_v1\\PinkCrab\\Route\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/../src',
+            0 => __DIR__ . '/..' . '/pinkcrab/perique-route/src',
         ),
-        'PC_Woo_Stock_Man\\PinkCrab\\Registerables\\' => 
+        'pc_stock_man_v1\\PinkCrab\\Registerables\\' => 
         array (
             0 => __DIR__ . '/..' . '/pinkcrab/registerables/src',
         ),
-        'PC_Woo_Stock_Man\\PinkCrab\\Plugin_Lifecycle\\' => 
+        'pc_stock_man_v1\\PinkCrab\\Plugin_Lifecycle\\' => 
         array (
             0 => __DIR__ . '/..' . '/pinkcrab/perique-plugin-lifecycle/src',
         ),
-        'PC_Woo_Stock_Man\\PinkCrab\\Perique_Admin_Menu\\' => 
+        'pc_stock_man_v1\\PinkCrab\\Perique_Admin_Menu\\' => 
         array (
             0 => __DIR__ . '/..' . '/pinkcrab/perique-admin-menu/src',
         ),
-        'PC_Woo_Stock_Man\\PinkCrab\\Perique\\' => 
+        'pc_stock_man_v1\\PinkCrab\\Perique\\' => 
         array (
             0 => __DIR__ . '/..' . '/pinkcrab/perique-framework-core/src',
         ),
-        'PC_Woo_Stock_Man\\PinkCrab\\Nonce\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/pinkcrab/wp-nonce/src',
-        ),
-        'PC_Woo_Stock_Man\\PinkCrab\\Loader\\' => 
+        'pc_stock_man_v1\\PinkCrab\\Loader\\' => 
         array (
             0 => __DIR__ . '/..' . '/pinkcrab/hook-loader/src',
         ),
-        'PC_Woo_Stock_Man\\PinkCrab\\HTTP\\' => 
+        'pc_stock_man_v1\\PinkCrab\\Collection\\' => 
         array (
-            0 => __DIR__ . '/..' . '/pinkcrab/http/src',
+            0 => __DIR__ . '/..' . '/pinkcrab/collection/src',
         ),
-        'PC_Woo_Stock_Man\\PinkCrab\\Enqueue\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/pinkcrab/enqueue/src',
-        ),
-        'PC_Woo_Stock_Man\\PinkCrab\\BladeOne\\' => 
+        'pc_stock_man_v1\\PinkCrab\\BladeOne\\' => 
         array (
             0 => __DIR__ . '/..' . '/pinkcrab/bladeone-provider/src',
         ),
-        'PC_Woo_Stock_Man\\PinkCrab\\Ajax\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/pinkcrab/ajax/src',
-        ),
-        'PC_Woo_Stock_Man\\Nyholm\\Psr7\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/nyholm/psr7/src',
-        ),
-        'PC_Woo_Stock_Man\\Nyholm\\Psr7Server\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/nyholm/psr7-server/src',
-        ),
-        'PC_Woo_Stock_Man\\Http\\Message\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/php-http/message-factory/src',
-        ),
-        'PC_Woo_Stock_Man\\Gin0115\\WPUnit_Helpers\\' => 
+        'pc_stock_man_v1\\Gin0115\\WPUnit_Helpers\\' => 
         array (
             0 => __DIR__ . '/..' . '/pinkcrab/registerables/WPUnit_Helpers',
         ),
-        'PC_Woo_Stock_Man\\Dice\\' => 
+        'pc_stock_man_v1\\Dice\\' => 
         array (
             0 => __DIR__ . '/..' . '/level-2/dice',
+        ),
+        'PinkCrab\\Stock_Management\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/../src',
         ),
     );
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
-        'PC_Woo_Stock_Man\\Dice\\Dice' => __DIR__ . '/..' . '/level-2/dice/Dice.php',
-        'PC_Woo_Stock_Man\\Dice\\Extra\\RuleValidator' => __DIR__ . '/..' . '/level-2/dice/Extra/RuleValidator.php',
-        'PC_Woo_Stock_Man\\Dice\\Loader\\Xml' => __DIR__ . '/..' . '/level-2/dice/Loader/Xml.php',
-        'PC_Woo_Stock_Man\\Http\\Message\\MessageFactory' => __DIR__ . '/..' . '/php-http/message-factory/src/MessageFactory.php',
-        'PC_Woo_Stock_Man\\Http\\Message\\RequestFactory' => __DIR__ . '/..' . '/php-http/message-factory/src/RequestFactory.php',
-        'PC_Woo_Stock_Man\\Http\\Message\\ResponseFactory' => __DIR__ . '/..' . '/php-http/message-factory/src/ResponseFactory.php',
-        'PC_Woo_Stock_Man\\Http\\Message\\StreamFactory' => __DIR__ . '/..' . '/php-http/message-factory/src/StreamFactory.php',
-        'PC_Woo_Stock_Man\\Http\\Message\\UriFactory' => __DIR__ . '/..' . '/php-http/message-factory/src/UriFactory.php',
-        'PC_Woo_Stock_Man\\Nyholm\\Psr7Server\\ServerRequestCreator' => __DIR__ . '/..' . '/nyholm/psr7-server/src/ServerRequestCreator.php',
-        'PC_Woo_Stock_Man\\Nyholm\\Psr7Server\\ServerRequestCreatorInterface' => __DIR__ . '/..' . '/nyholm/psr7-server/src/ServerRequestCreatorInterface.php',
-        'PC_Woo_Stock_Man\\Nyholm\\Psr7\\Factory\\HttplugFactory' => __DIR__ . '/..' . '/nyholm/psr7/src/Factory/HttplugFactory.php',
-        'PC_Woo_Stock_Man\\Nyholm\\Psr7\\Factory\\Psr17Factory' => __DIR__ . '/..' . '/nyholm/psr7/src/Factory/Psr17Factory.php',
-        'PC_Woo_Stock_Man\\Nyholm\\Psr7\\MessageTrait' => __DIR__ . '/..' . '/nyholm/psr7/src/MessageTrait.php',
-        'PC_Woo_Stock_Man\\Nyholm\\Psr7\\Request' => __DIR__ . '/..' . '/nyholm/psr7/src/Request.php',
-        'PC_Woo_Stock_Man\\Nyholm\\Psr7\\RequestTrait' => __DIR__ . '/..' . '/nyholm/psr7/src/RequestTrait.php',
-        'PC_Woo_Stock_Man\\Nyholm\\Psr7\\Response' => __DIR__ . '/..' . '/nyholm/psr7/src/Response.php',
-        'PC_Woo_Stock_Man\\Nyholm\\Psr7\\ServerRequest' => __DIR__ . '/..' . '/nyholm/psr7/src/ServerRequest.php',
-        'PC_Woo_Stock_Man\\Nyholm\\Psr7\\Stream' => __DIR__ . '/..' . '/nyholm/psr7/src/Stream.php',
-        'PC_Woo_Stock_Man\\Nyholm\\Psr7\\UploadedFile' => __DIR__ . '/..' . '/nyholm/psr7/src/UploadedFile.php',
-        'PC_Woo_Stock_Man\\Nyholm\\Psr7\\Uri' => __DIR__ . '/..' . '/nyholm/psr7/src/Uri.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Ajax\\Ajax' => __DIR__ . '/..' . '/pinkcrab/ajax/src/Ajax.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Ajax\\Ajax_Bootstrap' => __DIR__ . '/..' . '/pinkcrab/ajax/src/Ajax_Bootstrap.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Ajax\\Ajax_Exception' => __DIR__ . '/..' . '/pinkcrab/ajax/src/Ajax_Exception.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Ajax\\Ajax_Helper' => __DIR__ . '/..' . '/pinkcrab/ajax/src/Ajax_Helper.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Ajax\\Ajax_Hooks' => __DIR__ . '/..' . '/pinkcrab/ajax/src/Ajax_Hooks.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Ajax\\Dispatcher\\Ajax_Controller' => __DIR__ . '/..' . '/pinkcrab/ajax/src/Dispatcher/Ajax_Controller.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Ajax\\Dispatcher\\Ajax_Dispatcher' => __DIR__ . '/..' . '/pinkcrab/ajax/src/Dispatcher/Ajax_Dispatcher.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Ajax\\Dispatcher\\Ajax_Request_Validator' => __DIR__ . '/..' . '/pinkcrab/ajax/src/Dispatcher/Ajax_Request_Validator.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Ajax\\Dispatcher\\Response_Factory' => __DIR__ . '/..' . '/pinkcrab/ajax/src/Dispatcher/Response_Factory.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Ajax\\Registration_Middleware\\Ajax_Middleware' => __DIR__ . '/..' . '/pinkcrab/ajax/src/Registration_Middleware/Ajax_Middleware.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\BladeOne\\Abstract_BladeOne_Config' => __DIR__ . '/..' . '/pinkcrab/bladeone-provider/src/Abstract_BladeOne_Config.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\BladeOne\\BladeOne_Bootstrap' => __DIR__ . '/..' . '/pinkcrab/bladeone-provider/src/BladeOne_Bootstrap.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\BladeOne\\BladeOne_Provider' => __DIR__ . '/..' . '/pinkcrab/bladeone-provider/src/BladeOne_Provider.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\BladeOne\\PinkCrab_BladeOne' => __DIR__ . '/..' . '/pinkcrab/bladeone-provider/src/PinkCrab_BladeOne.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Enqueue\\Enqueue' => __DIR__ . '/..' . '/pinkcrab/enqueue/src/Enqueue.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\HTTP\\HTTP' => __DIR__ . '/..' . '/pinkcrab/http/src/HTTP.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\HTTP\\HTTP_Helper' => __DIR__ . '/..' . '/pinkcrab/http/src/HTTP_Helper.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Loader\\Exceptions\\Invalid_Hook_Callback_Exception' => __DIR__ . '/..' . '/pinkcrab/hook-loader/src/Exceptions/Invalid_Hook_Callback_Exception.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Loader\\Hook' => __DIR__ . '/..' . '/pinkcrab/hook-loader/src/Hook.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Loader\\Hook_Collection' => __DIR__ . '/..' . '/pinkcrab/hook-loader/src/Hook_Collection.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Loader\\Hook_Factory' => __DIR__ . '/..' . '/pinkcrab/hook-loader/src/Hook_Factory.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Loader\\Hook_Loader' => __DIR__ . '/..' . '/pinkcrab/hook-loader/src/Hook_Loader.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Loader\\Hook_Manager' => __DIR__ . '/..' . '/pinkcrab/hook-loader/src/Hook_Manager.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Loader\\Hook_Removal' => __DIR__ . '/..' . '/pinkcrab/hook-loader/src/Hook_Removal.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Loader\\Loader' => __DIR__ . '/..' . '/pinkcrab/hook-loader/src/Loader.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Nonce\\Nonce' => __DIR__ . '/..' . '/pinkcrab/wp-nonce/src/Nonce.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Perique\\Application\\App' => __DIR__ . '/..' . '/pinkcrab/perique-framework-core/src/Application/App.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Perique\\Application\\App_Config' => __DIR__ . '/..' . '/pinkcrab/perique-framework-core/src/Application/App_Config.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Perique\\Application\\App_Factory' => __DIR__ . '/..' . '/pinkcrab/perique-framework-core/src/Application/App_Factory.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Perique\\Application\\App_Validation' => __DIR__ . '/..' . '/pinkcrab/perique-framework-core/src/Application/App_Validation.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Perique\\Application\\Config' => __DIR__ . '/..' . '/pinkcrab/perique-framework-core/src/Application/Config.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Perique\\Application\\Hooks' => __DIR__ . '/..' . '/pinkcrab/perique-framework-core/src/Application/Hooks.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Perique\\Exceptions\\App_Initialization_Exception' => __DIR__ . '/..' . '/pinkcrab/perique-framework-core/src/Exceptions/App_Initialization_Exception.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Perique\\Exceptions\\DI_Container_Exception' => __DIR__ . '/..' . '/pinkcrab/perique-framework-core/src/Exceptions/DI_Container_Exception.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Perique\\Interfaces\\DI_Container' => __DIR__ . '/..' . '/pinkcrab/perique-framework-core/src/Interfaces/DI_Container.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Perique\\Interfaces\\Hookable' => __DIR__ . '/..' . '/pinkcrab/perique-framework-core/src/Interfaces/Hookable.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Perique\\Interfaces\\Inject_App_Config' => __DIR__ . '/..' . '/pinkcrab/perique-framework-core/src/Interfaces/Inject_App_Config.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Perique\\Interfaces\\Inject_DI_Container' => __DIR__ . '/..' . '/pinkcrab/perique-framework-core/src/Interfaces/Inject_DI_Container.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Perique\\Interfaces\\Inject_Hook_Loader' => __DIR__ . '/..' . '/pinkcrab/perique-framework-core/src/Interfaces/Inject_Hook_Loader.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Perique\\Interfaces\\Registration_Middleware' => __DIR__ . '/..' . '/pinkcrab/perique-framework-core/src/Interfaces/Registration_Middleware.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Perique\\Interfaces\\Renderable' => __DIR__ . '/..' . '/pinkcrab/perique-framework-core/src/Interfaces/Renderable.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Perique\\Services\\Container_Aware_Traits\\Inject_App_Config_Aware' => __DIR__ . '/..' . '/pinkcrab/perique-framework-core/src/Services/Container_Aware_Traits/Inject_App_Config_Aware.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Perique\\Services\\Container_Aware_Traits\\Inject_DI_Container_Aware' => __DIR__ . '/..' . '/pinkcrab/perique-framework-core/src/Services/Container_Aware_Traits/Inject_DI_Container_Aware.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Perique\\Services\\Container_Aware_Traits\\Inject_Hook_Loader_Aware' => __DIR__ . '/..' . '/pinkcrab/perique-framework-core/src/Services/Container_Aware_Traits/Inject_Hook_Loader_Aware.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Perique\\Services\\Dice\\PinkCrab_Dice' => __DIR__ . '/..' . '/pinkcrab/perique-framework-core/src/Services/Dice/PinkCrab_Dice.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Perique\\Services\\Registration\\Middleware\\Hookable_Middleware' => __DIR__ . '/..' . '/pinkcrab/perique-framework-core/src/Services/Registration/Middleware/Hookable_Middleware.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Perique\\Services\\Registration\\Registration_Service' => __DIR__ . '/..' . '/pinkcrab/perique-framework-core/src/Services/Registration/Registration_Service.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Perique\\Services\\View\\PHP_Engine' => __DIR__ . '/..' . '/pinkcrab/perique-framework-core/src/Services/View/PHP_Engine.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Perique\\Services\\View\\View' => __DIR__ . '/..' . '/pinkcrab/perique-framework-core/src/Services/View/View.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Perique_Admin_Menu\\Exception\\Group_Exception' => __DIR__ . '/..' . '/pinkcrab/perique-admin-menu/src/Exception/Group_Exception.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Perique_Admin_Menu\\Exception\\Page_Exception' => __DIR__ . '/..' . '/pinkcrab/perique-admin-menu/src/Exception/Page_Exception.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Perique_Admin_Menu\\Group\\Abstract_Group' => __DIR__ . '/..' . '/pinkcrab/perique-admin-menu/src/Group/Abstract_Group.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Perique_Admin_Menu\\Hooks' => __DIR__ . '/..' . '/pinkcrab/perique-admin-menu/src/Hooks.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Perique_Admin_Menu\\Page\\Menu_Page' => __DIR__ . '/..' . '/pinkcrab/perique-admin-menu/src/Page/Menu_Page.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Perique_Admin_Menu\\Page\\Page' => __DIR__ . '/..' . '/pinkcrab/perique-admin-menu/src/Page/Page.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Perique_Admin_Menu\\Registrar\\Page_Dispatcher' => __DIR__ . '/..' . '/pinkcrab/perique-admin-menu/src/Registrar/Page_Dispatcher.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Perique_Admin_Menu\\Registrar\\Page_Enqueue_Action' => __DIR__ . '/..' . '/pinkcrab/perique-admin-menu/src/Registrar/Page_Enqueue_Action.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Perique_Admin_Menu\\Registrar\\Page_Load_Action' => __DIR__ . '/..' . '/pinkcrab/perique-admin-menu/src/Registrar/Page_Load_Action.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Perique_Admin_Menu\\Registrar\\Registrar' => __DIR__ . '/..' . '/pinkcrab/perique-admin-menu/src/Registrar/Registrar.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Perique_Admin_Menu\\Registration_Middleware\\Page_Middleware' => __DIR__ . '/..' . '/pinkcrab/perique-admin-menu/src/Registration_Middleware/Page_Middleware.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Perique_Admin_Menu\\Validator\\Abstract_Validator' => __DIR__ . '/..' . '/pinkcrab/perique-admin-menu/src/Validator/Abstract_Validator.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Perique_Admin_Menu\\Validator\\Group_Validator' => __DIR__ . '/..' . '/pinkcrab/perique-admin-menu/src/Validator/Group_Validator.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Plugin_Lifecycle\\Plugin_State_Change' => __DIR__ . '/..' . '/pinkcrab/perique-plugin-lifecycle/src/Plugin_State_Change.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Plugin_Lifecycle\\Plugin_State_Controller' => __DIR__ . '/..' . '/pinkcrab/perique-plugin-lifecycle/src/Plugin_State_Controller.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Plugin_Lifecycle\\Plugin_State_Exception' => __DIR__ . '/..' . '/pinkcrab/perique-plugin-lifecycle/src/Plugin_State_Exception.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Plugin_Lifecycle\\State_Change_Queue' => __DIR__ . '/..' . '/pinkcrab/perique-plugin-lifecycle/src/State_Change_Queue.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Plugin_Lifecycle\\State_Event\\Activation' => __DIR__ . '/..' . '/pinkcrab/perique-plugin-lifecycle/src/State_Event/Activation.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Plugin_Lifecycle\\State_Event\\Deactivation' => __DIR__ . '/..' . '/pinkcrab/perique-plugin-lifecycle/src/State_Event/Deactivation.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Plugin_Lifecycle\\State_Event\\Uninstall' => __DIR__ . '/..' . '/pinkcrab/perique-plugin-lifecycle/src/State_Event/Uninstall.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Registerables\\Additional_Meta_Data_Controller' => __DIR__ . '/..' . '/pinkcrab/registerables/src/Additional_Meta_Data_Controller.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Registerables\\Meta_Box' => __DIR__ . '/..' . '/pinkcrab/registerables/src/Meta_Box.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Registerables\\Meta_Data' => __DIR__ . '/..' . '/pinkcrab/registerables/src/Meta_Data.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Registerables\\Post_Type' => __DIR__ . '/..' . '/pinkcrab/registerables/src/Post_Type.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Registerables\\Registerable_Hooks' => __DIR__ . '/..' . '/pinkcrab/registerables/src/Registerable_Hooks.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Registerables\\Registrar\\Additional_Meta_Data_Registrar' => __DIR__ . '/..' . '/pinkcrab/registerables/src/Registrar/Additional_Meta_Data_Registrar.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Registerables\\Registrar\\Meta_Box_Registrar' => __DIR__ . '/..' . '/pinkcrab/registerables/src/Registrar/Meta_Box_Registrar.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Registerables\\Registrar\\Meta_Data_Registrar' => __DIR__ . '/..' . '/pinkcrab/registerables/src/Registrar/Meta_Data_Registrar.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Registerables\\Registrar\\Post_Type_Registrar' => __DIR__ . '/..' . '/pinkcrab/registerables/src/Registrar/Post_Type_Registrar.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Registerables\\Registrar\\Registrar' => __DIR__ . '/..' . '/pinkcrab/registerables/src/Registrar/Registrar.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Registerables\\Registrar\\Registrar_Factory' => __DIR__ . '/..' . '/pinkcrab/registerables/src/Registrar/Registrar_Factory.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Registerables\\Registrar\\Shared_Meta_Box_Registrar' => __DIR__ . '/..' . '/pinkcrab/registerables/src/Registrar/Shared_Meta_Box_Registrar.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Registerables\\Registrar\\Taxonomy_Registrar' => __DIR__ . '/..' . '/pinkcrab/registerables/src/Registrar/Taxonomy_Registrar.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Registerables\\Registration_Middleware\\Registerable' => __DIR__ . '/..' . '/pinkcrab/registerables/src/Registration_Middleware/Registerable.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Registerables\\Registration_Middleware\\Registerable_Middleware' => __DIR__ . '/..' . '/pinkcrab/registerables/src/Registration_Middleware/Registerable_Middleware.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Registerables\\Shared_Meta_Box_Controller' => __DIR__ . '/..' . '/pinkcrab/registerables/src/Shared_Meta_Box_Controller.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Registerables\\Taxonomy' => __DIR__ . '/..' . '/pinkcrab/registerables/src/Taxonomy.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Registerables\\Validator\\Abstract_Validator' => __DIR__ . '/..' . '/pinkcrab/registerables/src/Validator/Abstract_Validator.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Registerables\\Validator\\Meta_Box_Validator' => __DIR__ . '/..' . '/pinkcrab/registerables/src/Validator/Meta_Box_Validator.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Registerables\\Validator\\Post_Type_Validator' => __DIR__ . '/..' . '/pinkcrab/registerables/src/Validator/Post_Type_Validator.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\Registerables\\Validator\\Taxonomy_Validator' => __DIR__ . '/..' . '/pinkcrab/registerables/src/Validator/Taxonomy_Validator.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\WP_PSR16_Cache\\CacheInterface_Trait' => __DIR__ . '/..' . '/pinkcrab/wp-psr16-cache/src/CacheInterface_Trait.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\WP_PSR16_Cache\\Cache_Item' => __DIR__ . '/..' . '/pinkcrab/wp-psr16-cache/src/Cache_Item.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\WP_PSR16_Cache\\File_Cache' => __DIR__ . '/..' . '/pinkcrab/wp-psr16-cache/src/File_Cache.php',
-        'PC_Woo_Stock_Man\\PinkCrab\\WP_PSR16_Cache\\Transient_Cache' => __DIR__ . '/..' . '/pinkcrab/wp-psr16-cache/src/Transient_Cache.php',
-        'PC_Woo_Stock_Man\\Psr\\Container\\ContainerExceptionInterface' => __DIR__ . '/..' . '/psr/container/src/ContainerExceptionInterface.php',
-        'PC_Woo_Stock_Man\\Psr\\Container\\ContainerInterface' => __DIR__ . '/..' . '/psr/container/src/ContainerInterface.php',
-        'PC_Woo_Stock_Man\\Psr\\Container\\NotFoundExceptionInterface' => __DIR__ . '/..' . '/psr/container/src/NotFoundExceptionInterface.php',
-        'PC_Woo_Stock_Man\\Psr\\Http\\Message\\MessageInterface' => __DIR__ . '/..' . '/psr/http-message/src/MessageInterface.php',
-        'PC_Woo_Stock_Man\\Psr\\Http\\Message\\RequestFactoryInterface' => __DIR__ . '/..' . '/psr/http-factory/src/RequestFactoryInterface.php',
-        'PC_Woo_Stock_Man\\Psr\\Http\\Message\\RequestInterface' => __DIR__ . '/..' . '/psr/http-message/src/RequestInterface.php',
-        'PC_Woo_Stock_Man\\Psr\\Http\\Message\\ResponseFactoryInterface' => __DIR__ . '/..' . '/psr/http-factory/src/ResponseFactoryInterface.php',
-        'PC_Woo_Stock_Man\\Psr\\Http\\Message\\ResponseInterface' => __DIR__ . '/..' . '/psr/http-message/src/ResponseInterface.php',
-        'PC_Woo_Stock_Man\\Psr\\Http\\Message\\ServerRequestFactoryInterface' => __DIR__ . '/..' . '/psr/http-factory/src/ServerRequestFactoryInterface.php',
-        'PC_Woo_Stock_Man\\Psr\\Http\\Message\\ServerRequestInterface' => __DIR__ . '/..' . '/psr/http-message/src/ServerRequestInterface.php',
-        'PC_Woo_Stock_Man\\Psr\\Http\\Message\\StreamFactoryInterface' => __DIR__ . '/..' . '/psr/http-factory/src/StreamFactoryInterface.php',
-        'PC_Woo_Stock_Man\\Psr\\Http\\Message\\StreamInterface' => __DIR__ . '/..' . '/psr/http-message/src/StreamInterface.php',
-        'PC_Woo_Stock_Man\\Psr\\Http\\Message\\UploadedFileFactoryInterface' => __DIR__ . '/..' . '/psr/http-factory/src/UploadedFileFactoryInterface.php',
-        'PC_Woo_Stock_Man\\Psr\\Http\\Message\\UploadedFileInterface' => __DIR__ . '/..' . '/psr/http-message/src/UploadedFileInterface.php',
-        'PC_Woo_Stock_Man\\Psr\\Http\\Message\\UriFactoryInterface' => __DIR__ . '/..' . '/psr/http-factory/src/UriFactoryInterface.php',
-        'PC_Woo_Stock_Man\\Psr\\Http\\Message\\UriInterface' => __DIR__ . '/..' . '/psr/http-message/src/UriInterface.php',
-        'PC_Woo_Stock_Man\\Psr\\SimpleCache\\CacheException' => __DIR__ . '/..' . '/psr/simple-cache/src/CacheException.php',
-        'PC_Woo_Stock_Man\\Psr\\SimpleCache\\CacheInterface' => __DIR__ . '/..' . '/psr/simple-cache/src/CacheInterface.php',
-        'PC_Woo_Stock_Man\\Psr\\SimpleCache\\InvalidArgumentException' => __DIR__ . '/..' . '/psr/simple-cache/src/InvalidArgumentException.php',
-        'PC_Woo_Stock_Man\\eftec\\MessageContainer' => __DIR__ . '/..' . '/eftec/messagecontainer/lib/MessageContainer.php',
-        'PC_Woo_Stock_Man\\eftec\\MessageLocker' => __DIR__ . '/..' . '/eftec/messagecontainer/lib/MessageLocker.php',
-        'PC_Woo_Stock_Man\\eftec\\bladeone\\BladeOne' => __DIR__ . '/..' . '/eftec/bladeone/lib/BladeOne.php',
-        'PC_Woo_Stock_Man\\eftec\\bladeone\\BladeOneCache' => __DIR__ . '/..' . '/eftec/bladeone/lib/BladeOneCache.php',
-        'PC_Woo_Stock_Man\\eftec\\bladeone\\BladeOneCacheRedis' => __DIR__ . '/..' . '/eftec/bladeone/lib/BladeOneCacheRedis.php',
-        'PC_Woo_Stock_Man\\eftec\\bladeone\\BladeOneCustom' => __DIR__ . '/..' . '/eftec/bladeone/lib/BladeOneCustom.php',
-        'PC_Woo_Stock_Man\\eftec\\bladeonehtml\\BladeOneHtml' => __DIR__ . '/..' . '/eftec/bladeonehtml/lib/BladeOneHtml.php',
+        'PinkCrab\\Stock_Management\\I18n\\Stock_Location_Translations' => __DIR__ . '/../..' . '/../src/I18n/Stock_Location_Translations.php',
+        'PinkCrab\\Stock_Management\\Location\\Location_Taxonomy' => __DIR__ . '/../..' . '/../src/Location/Location_Taxonomy.php',
+        'PinkCrab\\Stock_Management\\WP_Admin\\Page\\Stock_Location_Page' => __DIR__ . '/../..' . '/../src/WP_Admin/Page/Stock_Location_Page.php',
+        'pc_stock_man_v1\\Dice\\Dice' => __DIR__ . '/..' . '/level-2/dice/Dice.php',
+        'pc_stock_man_v1\\Dice\\Extra\\RuleValidator' => __DIR__ . '/..' . '/level-2/dice/Extra/RuleValidator.php',
+        'pc_stock_man_v1\\Dice\\Loader\\Xml' => __DIR__ . '/..' . '/level-2/dice/Loader/Xml.php',
+        'pc_stock_man_v1\\PinkCrab\\BladeOne\\Abstract_BladeOne_Config' => __DIR__ . '/..' . '/pinkcrab/bladeone-provider/src/Abstract_BladeOne_Config.php',
+        'pc_stock_man_v1\\PinkCrab\\BladeOne\\BladeOne_Bootstrap' => __DIR__ . '/..' . '/pinkcrab/bladeone-provider/src/BladeOne_Bootstrap.php',
+        'pc_stock_man_v1\\PinkCrab\\BladeOne\\BladeOne_Provider' => __DIR__ . '/..' . '/pinkcrab/bladeone-provider/src/BladeOne_Provider.php',
+        'pc_stock_man_v1\\PinkCrab\\BladeOne\\PinkCrab_BladeOne' => __DIR__ . '/..' . '/pinkcrab/bladeone-provider/src/PinkCrab_BladeOne.php',
+        'pc_stock_man_v1\\PinkCrab\\Collection\\Collection' => __DIR__ . '/..' . '/pinkcrab/collection/src/Collection.php',
+        'pc_stock_man_v1\\PinkCrab\\Collection\\Traits\\Has_ArrayAccess' => __DIR__ . '/..' . '/pinkcrab/collection/src/Traits/Has_ArrayAccess.php',
+        'pc_stock_man_v1\\PinkCrab\\Collection\\Traits\\Indexed' => __DIR__ . '/..' . '/pinkcrab/collection/src/Traits/Indexed.php',
+        'pc_stock_man_v1\\PinkCrab\\Collection\\Traits\\Is_Iterable' => __DIR__ . '/..' . '/pinkcrab/collection/src/Traits/Is_Iterable.php',
+        'pc_stock_man_v1\\PinkCrab\\Collection\\Traits\\Is_JsonSerializable' => __DIR__ . '/..' . '/pinkcrab/collection/src/Traits/Is_JsonSerializable.php',
+        'pc_stock_man_v1\\PinkCrab\\Collection\\Traits\\Sequence' => __DIR__ . '/..' . '/pinkcrab/collection/src/Traits/Sequence.php',
+        'pc_stock_man_v1\\PinkCrab\\Loader\\Exceptions\\Invalid_Hook_Callback_Exception' => __DIR__ . '/..' . '/pinkcrab/hook-loader/src/Exceptions/Invalid_Hook_Callback_Exception.php',
+        'pc_stock_man_v1\\PinkCrab\\Loader\\Hook' => __DIR__ . '/..' . '/pinkcrab/hook-loader/src/Hook.php',
+        'pc_stock_man_v1\\PinkCrab\\Loader\\Hook_Collection' => __DIR__ . '/..' . '/pinkcrab/hook-loader/src/Hook_Collection.php',
+        'pc_stock_man_v1\\PinkCrab\\Loader\\Hook_Factory' => __DIR__ . '/..' . '/pinkcrab/hook-loader/src/Hook_Factory.php',
+        'pc_stock_man_v1\\PinkCrab\\Loader\\Hook_Loader' => __DIR__ . '/..' . '/pinkcrab/hook-loader/src/Hook_Loader.php',
+        'pc_stock_man_v1\\PinkCrab\\Loader\\Hook_Manager' => __DIR__ . '/..' . '/pinkcrab/hook-loader/src/Hook_Manager.php',
+        'pc_stock_man_v1\\PinkCrab\\Loader\\Hook_Removal' => __DIR__ . '/..' . '/pinkcrab/hook-loader/src/Hook_Removal.php',
+        'pc_stock_man_v1\\PinkCrab\\Loader\\Loader' => __DIR__ . '/..' . '/pinkcrab/hook-loader/src/Loader.php',
+        'pc_stock_man_v1\\PinkCrab\\Perique\\Application\\App' => __DIR__ . '/..' . '/pinkcrab/perique-framework-core/src/Application/App.php',
+        'pc_stock_man_v1\\PinkCrab\\Perique\\Application\\App_Config' => __DIR__ . '/..' . '/pinkcrab/perique-framework-core/src/Application/App_Config.php',
+        'pc_stock_man_v1\\PinkCrab\\Perique\\Application\\App_Factory' => __DIR__ . '/..' . '/pinkcrab/perique-framework-core/src/Application/App_Factory.php',
+        'pc_stock_man_v1\\PinkCrab\\Perique\\Application\\App_Validation' => __DIR__ . '/..' . '/pinkcrab/perique-framework-core/src/Application/App_Validation.php',
+        'pc_stock_man_v1\\PinkCrab\\Perique\\Application\\Config' => __DIR__ . '/..' . '/pinkcrab/perique-framework-core/src/Application/Config.php',
+        'pc_stock_man_v1\\PinkCrab\\Perique\\Application\\Hooks' => __DIR__ . '/..' . '/pinkcrab/perique-framework-core/src/Application/Hooks.php',
+        'pc_stock_man_v1\\PinkCrab\\Perique\\Exceptions\\App_Initialization_Exception' => __DIR__ . '/..' . '/pinkcrab/perique-framework-core/src/Exceptions/App_Initialization_Exception.php',
+        'pc_stock_man_v1\\PinkCrab\\Perique\\Exceptions\\DI_Container_Exception' => __DIR__ . '/..' . '/pinkcrab/perique-framework-core/src/Exceptions/DI_Container_Exception.php',
+        'pc_stock_man_v1\\PinkCrab\\Perique\\Interfaces\\DI_Container' => __DIR__ . '/..' . '/pinkcrab/perique-framework-core/src/Interfaces/DI_Container.php',
+        'pc_stock_man_v1\\PinkCrab\\Perique\\Interfaces\\Hookable' => __DIR__ . '/..' . '/pinkcrab/perique-framework-core/src/Interfaces/Hookable.php',
+        'pc_stock_man_v1\\PinkCrab\\Perique\\Interfaces\\Inject_App_Config' => __DIR__ . '/..' . '/pinkcrab/perique-framework-core/src/Interfaces/Inject_App_Config.php',
+        'pc_stock_man_v1\\PinkCrab\\Perique\\Interfaces\\Inject_DI_Container' => __DIR__ . '/..' . '/pinkcrab/perique-framework-core/src/Interfaces/Inject_DI_Container.php',
+        'pc_stock_man_v1\\PinkCrab\\Perique\\Interfaces\\Inject_Hook_Loader' => __DIR__ . '/..' . '/pinkcrab/perique-framework-core/src/Interfaces/Inject_Hook_Loader.php',
+        'pc_stock_man_v1\\PinkCrab\\Perique\\Interfaces\\Registration_Middleware' => __DIR__ . '/..' . '/pinkcrab/perique-framework-core/src/Interfaces/Registration_Middleware.php',
+        'pc_stock_man_v1\\PinkCrab\\Perique\\Interfaces\\Renderable' => __DIR__ . '/..' . '/pinkcrab/perique-framework-core/src/Interfaces/Renderable.php',
+        'pc_stock_man_v1\\PinkCrab\\Perique\\Services\\Container_Aware_Traits\\Inject_App_Config_Aware' => __DIR__ . '/..' . '/pinkcrab/perique-framework-core/src/Services/Container_Aware_Traits/Inject_App_Config_Aware.php',
+        'pc_stock_man_v1\\PinkCrab\\Perique\\Services\\Container_Aware_Traits\\Inject_DI_Container_Aware' => __DIR__ . '/..' . '/pinkcrab/perique-framework-core/src/Services/Container_Aware_Traits/Inject_DI_Container_Aware.php',
+        'pc_stock_man_v1\\PinkCrab\\Perique\\Services\\Container_Aware_Traits\\Inject_Hook_Loader_Aware' => __DIR__ . '/..' . '/pinkcrab/perique-framework-core/src/Services/Container_Aware_Traits/Inject_Hook_Loader_Aware.php',
+        'pc_stock_man_v1\\PinkCrab\\Perique\\Services\\Dice\\PinkCrab_Dice' => __DIR__ . '/..' . '/pinkcrab/perique-framework-core/src/Services/Dice/PinkCrab_Dice.php',
+        'pc_stock_man_v1\\PinkCrab\\Perique\\Services\\Registration\\Middleware\\Hookable_Middleware' => __DIR__ . '/..' . '/pinkcrab/perique-framework-core/src/Services/Registration/Middleware/Hookable_Middleware.php',
+        'pc_stock_man_v1\\PinkCrab\\Perique\\Services\\Registration\\Registration_Service' => __DIR__ . '/..' . '/pinkcrab/perique-framework-core/src/Services/Registration/Registration_Service.php',
+        'pc_stock_man_v1\\PinkCrab\\Perique\\Services\\View\\PHP_Engine' => __DIR__ . '/..' . '/pinkcrab/perique-framework-core/src/Services/View/PHP_Engine.php',
+        'pc_stock_man_v1\\PinkCrab\\Perique\\Services\\View\\View' => __DIR__ . '/..' . '/pinkcrab/perique-framework-core/src/Services/View/View.php',
+        'pc_stock_man_v1\\PinkCrab\\Perique_Admin_Menu\\Exception\\Group_Exception' => __DIR__ . '/..' . '/pinkcrab/perique-admin-menu/src/Exception/Group_Exception.php',
+        'pc_stock_man_v1\\PinkCrab\\Perique_Admin_Menu\\Exception\\Page_Exception' => __DIR__ . '/..' . '/pinkcrab/perique-admin-menu/src/Exception/Page_Exception.php',
+        'pc_stock_man_v1\\PinkCrab\\Perique_Admin_Menu\\Group\\Abstract_Group' => __DIR__ . '/..' . '/pinkcrab/perique-admin-menu/src/Group/Abstract_Group.php',
+        'pc_stock_man_v1\\PinkCrab\\Perique_Admin_Menu\\Hooks' => __DIR__ . '/..' . '/pinkcrab/perique-admin-menu/src/Hooks.php',
+        'pc_stock_man_v1\\PinkCrab\\Perique_Admin_Menu\\Page\\Menu_Page' => __DIR__ . '/..' . '/pinkcrab/perique-admin-menu/src/Page/Menu_Page.php',
+        'pc_stock_man_v1\\PinkCrab\\Perique_Admin_Menu\\Page\\Page' => __DIR__ . '/..' . '/pinkcrab/perique-admin-menu/src/Page/Page.php',
+        'pc_stock_man_v1\\PinkCrab\\Perique_Admin_Menu\\Registrar\\Page_Dispatcher' => __DIR__ . '/..' . '/pinkcrab/perique-admin-menu/src/Registrar/Page_Dispatcher.php',
+        'pc_stock_man_v1\\PinkCrab\\Perique_Admin_Menu\\Registrar\\Page_Enqueue_Action' => __DIR__ . '/..' . '/pinkcrab/perique-admin-menu/src/Registrar/Page_Enqueue_Action.php',
+        'pc_stock_man_v1\\PinkCrab\\Perique_Admin_Menu\\Registrar\\Page_Load_Action' => __DIR__ . '/..' . '/pinkcrab/perique-admin-menu/src/Registrar/Page_Load_Action.php',
+        'pc_stock_man_v1\\PinkCrab\\Perique_Admin_Menu\\Registrar\\Registrar' => __DIR__ . '/..' . '/pinkcrab/perique-admin-menu/src/Registrar/Registrar.php',
+        'pc_stock_man_v1\\PinkCrab\\Perique_Admin_Menu\\Registration_Middleware\\Page_Middleware' => __DIR__ . '/..' . '/pinkcrab/perique-admin-menu/src/Registration_Middleware/Page_Middleware.php',
+        'pc_stock_man_v1\\PinkCrab\\Perique_Admin_Menu\\Validator\\Abstract_Validator' => __DIR__ . '/..' . '/pinkcrab/perique-admin-menu/src/Validator/Abstract_Validator.php',
+        'pc_stock_man_v1\\PinkCrab\\Perique_Admin_Menu\\Validator\\Group_Validator' => __DIR__ . '/..' . '/pinkcrab/perique-admin-menu/src/Validator/Group_Validator.php',
+        'pc_stock_man_v1\\PinkCrab\\Plugin_Lifecycle\\Plugin_State_Change' => __DIR__ . '/..' . '/pinkcrab/perique-plugin-lifecycle/src/Plugin_State_Change.php',
+        'pc_stock_man_v1\\PinkCrab\\Plugin_Lifecycle\\Plugin_State_Controller' => __DIR__ . '/..' . '/pinkcrab/perique-plugin-lifecycle/src/Plugin_State_Controller.php',
+        'pc_stock_man_v1\\PinkCrab\\Plugin_Lifecycle\\Plugin_State_Exception' => __DIR__ . '/..' . '/pinkcrab/perique-plugin-lifecycle/src/Plugin_State_Exception.php',
+        'pc_stock_man_v1\\PinkCrab\\Plugin_Lifecycle\\State_Change_Queue' => __DIR__ . '/..' . '/pinkcrab/perique-plugin-lifecycle/src/State_Change_Queue.php',
+        'pc_stock_man_v1\\PinkCrab\\Plugin_Lifecycle\\State_Event\\Activation' => __DIR__ . '/..' . '/pinkcrab/perique-plugin-lifecycle/src/State_Event/Activation.php',
+        'pc_stock_man_v1\\PinkCrab\\Plugin_Lifecycle\\State_Event\\Deactivation' => __DIR__ . '/..' . '/pinkcrab/perique-plugin-lifecycle/src/State_Event/Deactivation.php',
+        'pc_stock_man_v1\\PinkCrab\\Plugin_Lifecycle\\State_Event\\Uninstall' => __DIR__ . '/..' . '/pinkcrab/perique-plugin-lifecycle/src/State_Event/Uninstall.php',
+        'pc_stock_man_v1\\PinkCrab\\Registerables\\Additional_Meta_Data_Controller' => __DIR__ . '/..' . '/pinkcrab/registerables/src/Additional_Meta_Data_Controller.php',
+        'pc_stock_man_v1\\PinkCrab\\Registerables\\Meta_Box' => __DIR__ . '/..' . '/pinkcrab/registerables/src/Meta_Box.php',
+        'pc_stock_man_v1\\PinkCrab\\Registerables\\Meta_Data' => __DIR__ . '/..' . '/pinkcrab/registerables/src/Meta_Data.php',
+        'pc_stock_man_v1\\PinkCrab\\Registerables\\Post_Type' => __DIR__ . '/..' . '/pinkcrab/registerables/src/Post_Type.php',
+        'pc_stock_man_v1\\PinkCrab\\Registerables\\Registerable_Hooks' => __DIR__ . '/..' . '/pinkcrab/registerables/src/Registerable_Hooks.php',
+        'pc_stock_man_v1\\PinkCrab\\Registerables\\Registrar\\Additional_Meta_Data_Registrar' => __DIR__ . '/..' . '/pinkcrab/registerables/src/Registrar/Additional_Meta_Data_Registrar.php',
+        'pc_stock_man_v1\\PinkCrab\\Registerables\\Registrar\\Meta_Box_Registrar' => __DIR__ . '/..' . '/pinkcrab/registerables/src/Registrar/Meta_Box_Registrar.php',
+        'pc_stock_man_v1\\PinkCrab\\Registerables\\Registrar\\Meta_Data_Registrar' => __DIR__ . '/..' . '/pinkcrab/registerables/src/Registrar/Meta_Data_Registrar.php',
+        'pc_stock_man_v1\\PinkCrab\\Registerables\\Registrar\\Post_Type_Registrar' => __DIR__ . '/..' . '/pinkcrab/registerables/src/Registrar/Post_Type_Registrar.php',
+        'pc_stock_man_v1\\PinkCrab\\Registerables\\Registrar\\Registrar' => __DIR__ . '/..' . '/pinkcrab/registerables/src/Registrar/Registrar.php',
+        'pc_stock_man_v1\\PinkCrab\\Registerables\\Registrar\\Registrar_Factory' => __DIR__ . '/..' . '/pinkcrab/registerables/src/Registrar/Registrar_Factory.php',
+        'pc_stock_man_v1\\PinkCrab\\Registerables\\Registrar\\Shared_Meta_Box_Registrar' => __DIR__ . '/..' . '/pinkcrab/registerables/src/Registrar/Shared_Meta_Box_Registrar.php',
+        'pc_stock_man_v1\\PinkCrab\\Registerables\\Registrar\\Taxonomy_Registrar' => __DIR__ . '/..' . '/pinkcrab/registerables/src/Registrar/Taxonomy_Registrar.php',
+        'pc_stock_man_v1\\PinkCrab\\Registerables\\Registration_Middleware\\Registerable' => __DIR__ . '/..' . '/pinkcrab/registerables/src/Registration_Middleware/Registerable.php',
+        'pc_stock_man_v1\\PinkCrab\\Registerables\\Registration_Middleware\\Registerable_Middleware' => __DIR__ . '/..' . '/pinkcrab/registerables/src/Registration_Middleware/Registerable_Middleware.php',
+        'pc_stock_man_v1\\PinkCrab\\Registerables\\Shared_Meta_Box_Controller' => __DIR__ . '/..' . '/pinkcrab/registerables/src/Shared_Meta_Box_Controller.php',
+        'pc_stock_man_v1\\PinkCrab\\Registerables\\Taxonomy' => __DIR__ . '/..' . '/pinkcrab/registerables/src/Taxonomy.php',
+        'pc_stock_man_v1\\PinkCrab\\Registerables\\Validator\\Abstract_Validator' => __DIR__ . '/..' . '/pinkcrab/registerables/src/Validator/Abstract_Validator.php',
+        'pc_stock_man_v1\\PinkCrab\\Registerables\\Validator\\Meta_Box_Validator' => __DIR__ . '/..' . '/pinkcrab/registerables/src/Validator/Meta_Box_Validator.php',
+        'pc_stock_man_v1\\PinkCrab\\Registerables\\Validator\\Post_Type_Validator' => __DIR__ . '/..' . '/pinkcrab/registerables/src/Validator/Post_Type_Validator.php',
+        'pc_stock_man_v1\\PinkCrab\\Registerables\\Validator\\Taxonomy_Validator' => __DIR__ . '/..' . '/pinkcrab/registerables/src/Validator/Taxonomy_Validator.php',
+        'pc_stock_man_v1\\PinkCrab\\Route\\Registration\\Route_Manager' => __DIR__ . '/..' . '/pinkcrab/perique-route/src/Registration/Route_Manager.php',
+        'pc_stock_man_v1\\PinkCrab\\Route\\Registration\\WP_Rest_Registrar' => __DIR__ . '/..' . '/pinkcrab/perique-route/src/Registration/WP_Rest_Registrar.php',
+        'pc_stock_man_v1\\PinkCrab\\Route\\Registration\\WP_Rest_Route' => __DIR__ . '/..' . '/pinkcrab/perique-route/src/Registration/WP_Rest_Route.php',
+        'pc_stock_man_v1\\PinkCrab\\Route\\Registration_Middleware\\Route_Controller' => __DIR__ . '/..' . '/pinkcrab/perique-route/src/Registration_Middleware/Route_Controller.php',
+        'pc_stock_man_v1\\PinkCrab\\Route\\Registration_Middleware\\Route_Middleware' => __DIR__ . '/..' . '/pinkcrab/perique-route/src/Registration_Middleware/Route_Middleware.php',
+        'pc_stock_man_v1\\PinkCrab\\Route\\Route\\Abstract_Route' => __DIR__ . '/..' . '/pinkcrab/perique-route/src/Route/Abstract_Route.php',
+        'pc_stock_man_v1\\PinkCrab\\Route\\Route\\Route' => __DIR__ . '/..' . '/pinkcrab/perique-route/src/Route/Route.php',
+        'pc_stock_man_v1\\PinkCrab\\Route\\Route\\Route_Group' => __DIR__ . '/..' . '/pinkcrab/perique-route/src/Route/Route_Group.php',
+        'pc_stock_man_v1\\PinkCrab\\Route\\Route_Collection' => __DIR__ . '/..' . '/pinkcrab/perique-route/src/Route_Collection.php',
+        'pc_stock_man_v1\\PinkCrab\\Route\\Route_Exception' => __DIR__ . '/..' . '/pinkcrab/perique-route/src/Route_Exception.php',
+        'pc_stock_man_v1\\PinkCrab\\Route\\Route_Factory' => __DIR__ . '/..' . '/pinkcrab/perique-route/src/Route_Factory.php',
+        'pc_stock_man_v1\\PinkCrab\\Route\\Utils' => __DIR__ . '/..' . '/pinkcrab/perique-route/src/Utils.php',
+        'pc_stock_man_v1\\PinkCrab\\WP_Rest_Schema\\Argument\\Argument' => __DIR__ . '/..' . '/pinkcrab/wp-rest-schema/src/Argument/Argument.php',
+        'pc_stock_man_v1\\PinkCrab\\WP_Rest_Schema\\Argument\\Array_Type' => __DIR__ . '/..' . '/pinkcrab/wp-rest-schema/src/Argument/Array_Type.php',
+        'pc_stock_man_v1\\PinkCrab\\WP_Rest_Schema\\Argument\\Attribute\\Children' => __DIR__ . '/..' . '/pinkcrab/wp-rest-schema/src/Argument/Attribute/Children.php',
+        'pc_stock_man_v1\\PinkCrab\\WP_Rest_Schema\\Argument\\Attribute\\Element_Requirements' => __DIR__ . '/..' . '/pinkcrab/wp-rest-schema/src/Argument/Attribute/Element_Requirements.php',
+        'pc_stock_man_v1\\PinkCrab\\WP_Rest_Schema\\Argument\\Attribute\\Number_Attributes' => __DIR__ . '/..' . '/pinkcrab/wp-rest-schema/src/Argument/Attribute/Number_Attributes.php',
+        'pc_stock_man_v1\\PinkCrab\\WP_Rest_Schema\\Argument\\Boolean_Type' => __DIR__ . '/..' . '/pinkcrab/wp-rest-schema/src/Argument/Boolean_Type.php',
+        'pc_stock_man_v1\\PinkCrab\\WP_Rest_Schema\\Argument\\Integer_Type' => __DIR__ . '/..' . '/pinkcrab/wp-rest-schema/src/Argument/Integer_Type.php',
+        'pc_stock_man_v1\\PinkCrab\\WP_Rest_Schema\\Argument\\Null_Type' => __DIR__ . '/..' . '/pinkcrab/wp-rest-schema/src/Argument/Null_Type.php',
+        'pc_stock_man_v1\\PinkCrab\\WP_Rest_Schema\\Argument\\Number_Type' => __DIR__ . '/..' . '/pinkcrab/wp-rest-schema/src/Argument/Number_Type.php',
+        'pc_stock_man_v1\\PinkCrab\\WP_Rest_Schema\\Argument\\Object_Type' => __DIR__ . '/..' . '/pinkcrab/wp-rest-schema/src/Argument/Object_Type.php',
+        'pc_stock_man_v1\\PinkCrab\\WP_Rest_Schema\\Argument\\String_Type' => __DIR__ . '/..' . '/pinkcrab/wp-rest-schema/src/Argument/String_Type.php',
+        'pc_stock_man_v1\\PinkCrab\\WP_Rest_Schema\\Parser\\Abstract_Parser' => __DIR__ . '/..' . '/pinkcrab/wp-rest-schema/src/Parser/Abstract_Parser.php',
+        'pc_stock_man_v1\\PinkCrab\\WP_Rest_Schema\\Parser\\Argument_Parser' => __DIR__ . '/..' . '/pinkcrab/wp-rest-schema/src/Parser/Argument_Parser.php',
+        'pc_stock_man_v1\\PinkCrab\\WP_Rest_Schema\\Parser\\Array_Attribute_Parser' => __DIR__ . '/..' . '/pinkcrab/wp-rest-schema/src/Parser/Array_Attribute_Parser.php',
+        'pc_stock_man_v1\\PinkCrab\\WP_Rest_Schema\\Parser\\Object_Attribute_Parser' => __DIR__ . '/..' . '/pinkcrab/wp-rest-schema/src/Parser/Object_Attribute_Parser.php',
+        'pc_stock_man_v1\\PinkCrab\\WP_Rest_Schema\\Parser\\String_Attribute_Parser' => __DIR__ . '/..' . '/pinkcrab/wp-rest-schema/src/Parser/String_Attribute_Parser.php',
+        'pc_stock_man_v1\\Psr\\Container\\ContainerExceptionInterface' => __DIR__ . '/..' . '/psr/container/src/ContainerExceptionInterface.php',
+        'pc_stock_man_v1\\Psr\\Container\\ContainerInterface' => __DIR__ . '/..' . '/psr/container/src/ContainerInterface.php',
+        'pc_stock_man_v1\\Psr\\Container\\NotFoundExceptionInterface' => __DIR__ . '/..' . '/psr/container/src/NotFoundExceptionInterface.php',
+        'pc_stock_man_v1\\eftec\\MessageContainer' => __DIR__ . '/..' . '/eftec/messagecontainer/lib/MessageContainer.php',
+        'pc_stock_man_v1\\eftec\\MessageLocker' => __DIR__ . '/..' . '/eftec/messagecontainer/lib/MessageLocker.php',
+        'pc_stock_man_v1\\eftec\\bladeone\\BladeOne' => __DIR__ . '/..' . '/eftec/bladeone/lib/BladeOne.php',
+        'pc_stock_man_v1\\eftec\\bladeone\\BladeOneCache' => __DIR__ . '/..' . '/eftec/bladeone/lib/BladeOneCache.php',
+        'pc_stock_man_v1\\eftec\\bladeone\\BladeOneCacheRedis' => __DIR__ . '/..' . '/eftec/bladeone/lib/BladeOneCacheRedis.php',
+        'pc_stock_man_v1\\eftec\\bladeone\\BladeOneCustom' => __DIR__ . '/..' . '/eftec/bladeone/lib/BladeOneCustom.php',
+        'pc_stock_man_v1\\eftec\\bladeonehtml\\BladeOneHtml' => __DIR__ . '/..' . '/eftec/bladeonehtml/lib/BladeOneHtml.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit62431815ef05dc6b3985a3cdbc61c040::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit62431815ef05dc6b3985a3cdbc61c040::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit62431815ef05dc6b3985a3cdbc61c040::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInite44b872435e6281437936cf117b54f0a::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInite44b872435e6281437936cf117b54f0a::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInite44b872435e6281437936cf117b54f0a::$classMap;
 
         }, null, ClassLoader::class);
     }

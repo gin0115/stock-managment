@@ -11,6 +11,6 @@
  * @since 0.1.0
  */
 
-namespace PC_Woo_Stock_Man; 
+namespace pc_stock_man_v1; 
 
 

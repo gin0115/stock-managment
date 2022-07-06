@@ -12,7 +12,7 @@ declare (strict_types=1);
  * @author Glynn Quelch glynn@pinkcrab.co.uk
  * @since 0.0.1
  */
-namespace PC_Woo_Stock_Man\PinkCrab\Plugin_Lifecycle;
+namespace pc_stock_man_v1\PinkCrab\Plugin_Lifecycle;
 
 interface Plugin_State_Change
 {

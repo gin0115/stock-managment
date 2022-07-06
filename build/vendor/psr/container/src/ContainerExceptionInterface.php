@@ -1,6 +1,6 @@
 <?php
 
-namespace PC_Woo_Stock_Man\Psr\Container;
+namespace pc_stock_man_v1\Psr\Container;
 
 use Throwable;
 /**

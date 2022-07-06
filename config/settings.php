@@ -6,13 +6,16 @@ declare(strict_types=1);
  * Holds all custom app config values.
  * See docs at https://app.gitbook.com/@glynn-quelch/s/pinkcrab/application/app_config
  *
- * @package PinkCrab\Framework
+ * @package PinkCrab\Stock_Management
  * @author Glynn Quelch glynn.quelch@gmail.com
  * @since 0.1.0
  */
 
 return array(
-	'taxonomies' => array( 'location' => 'stock_location' ),
+	'post_types' => array(),
+	'taxonomies' => array(
+		'location' => 'pc_stockman_location',
+	),
 	'meta'       => array(
 		'post' => array(),
 		'user' => array(),
@@ -20,7 +23,12 @@ return array(
 	),
 	'plugin'     => array( 'version' => '0.1.0' ),
 	'namespaces' => array(
-		'rest'  => 'pinkcrab/boilerplate',
-		'cache' => 'pinkcrab_boilerplate',
+		'rest'  => 'pinkcrab/stock_management/v1/rest',
+		'cache' => 'pinkcrab_stock_management',
+	),
+	'additional' => array(
+		'admin_slugs' => (object) array(
+			'location' => 'pc_stockman_location',
+		),
 	),
 );

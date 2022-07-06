@@ -20,13 +20,13 @@ declare (strict_types=1);
  * @license http://www.opensource.org/licenses/mit-license.html  MIT License
  * @package PinkCrab\Registerables\Validator
  */
-namespace PC_Woo_Stock_Man\PinkCrab\Registerables\Validator;
+namespace pc_stock_man_v1\PinkCrab\Registerables\Validator;
 
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Box;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Post_Type;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Validator\Abstract_Validator;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Registration_Middleware\Registerable;
-class Meta_Box_Validator extends \PC_Woo_Stock_Man\PinkCrab\Registerables\Validator\Abstract_Validator
+use pc_stock_man_v1\PinkCrab\Registerables\Meta_Box;
+use pc_stock_man_v1\PinkCrab\Registerables\Post_Type;
+use pc_stock_man_v1\PinkCrab\Registerables\Validator\Abstract_Validator;
+use pc_stock_man_v1\PinkCrab\Registerables\Registration_Middleware\Registerable;
+class Meta_Box_Validator extends \pc_stock_man_v1\PinkCrab\Registerables\Validator\Abstract_Validator
 {
     protected const REQUIRED_FIELDS = array('key', 'label');
     /**
@@ -35,7 +35,7 @@ class Meta_Box_Validator extends \PC_Woo_Stock_Man\PinkCrab\Registerables\Valida
      * @param \PinkCrab\Registerables\Registration_Middleware\Registerable $object
      * @return bool
      */
-    public function validate(\PC_Woo_Stock_Man\PinkCrab\Registerables\Registration_Middleware\Registerable $object) : bool
+    public function validate(\pc_stock_man_v1\PinkCrab\Registerables\Registration_Middleware\Registerable $object) : bool
     {
         // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundInExtendedClass
         return \false;
@@ -50,7 +50,7 @@ class Meta_Box_Validator extends \PC_Woo_Stock_Man\PinkCrab\Registerables\Valida
     public function verify_meta_box($meta_box) : bool
     {
         // If this is not a valid post type, just bail here.
-        if (!\is_object($meta_box) || !\is_a($meta_box, \PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Box::class)) {
+        if (!\is_object($meta_box) || !\is_a($meta_box, \pc_stock_man_v1\PinkCrab\Registerables\Meta_Box::class)) {
             $this->add_error(\sprintf('%s is not a valid Meta Box Model', \is_object($meta_box) ? \get_class($meta_box) : \gettype($meta_box)));
             return \false;
         }
@@ -68,7 +68,7 @@ class Meta_Box_Validator extends \PC_Woo_Stock_Man\PinkCrab\Registerables\Valida
      * @param Meta_Box $meta_box
      * @return void
      */
-    protected function has_required_fields(\PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Box $meta_box) : void
+    protected function has_required_fields(\pc_stock_man_v1\PinkCrab\Registerables\Meta_Box $meta_box) : void
     {
         foreach (self::REQUIRED_FIELDS as $field) {
             if (!\is_string($meta_box->{$field}) || \mb_strlen($meta_box->{$field}) === 0) {
@@ -83,7 +83,7 @@ class Meta_Box_Validator extends \PC_Woo_Stock_Man\PinkCrab\Registerables\Valida
      * @param \PinkCrab\Registerables\Meta_Box $meta_box
      * @return void
      */
-    protected function has_valid_view(\PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Box $meta_box) : void
+    protected function has_valid_view(\pc_stock_man_v1\PinkCrab\Registerables\Meta_Box $meta_box) : void
     {
         if (!\is_callable($meta_box->view) && (!\is_string($meta_box->view_template) || \is_string($meta_box->view_template) && \mb_strlen($meta_box->view_template) === 0)) {
             $this->add_error(\sprintf('%s doesn\'t have a valid view defined.', \get_class($meta_box)));

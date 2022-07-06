@@ -7,7 +7,7 @@
 /** @noinspection TypeUnsafeComparisonInspection */
 /** @noinspection PhpUnused */
 /** @noinspection DuplicatedCode */
-namespace PC_Woo_Stock_Man\eftec\bladeone;
+namespace pc_stock_man_v1\eftec\bladeone;
 
 use Exception;
 use function fclose;

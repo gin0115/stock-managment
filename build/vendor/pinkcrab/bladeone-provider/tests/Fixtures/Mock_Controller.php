@@ -9,18 +9,18 @@ declare (strict_types=1);
  * @license http://www.opensource.org/licenses/mit-license.html  MIT License
  * @package PinkCrab\BladeOne
  */
-namespace PC_Woo_Stock_Man\PinkCrab\BladeOne\Tests\Fixtures;
+namespace pc_stock_man_v1\PinkCrab\BladeOne\Tests\Fixtures;
 
-use PC_Woo_Stock_Man\eftec\bladeone\BladeOne;
-use PC_Woo_Stock_Man\PinkCrab\Perique\Services\View\View;
+use pc_stock_man_v1\eftec\bladeone\BladeOne;
+use pc_stock_man_v1\PinkCrab\Perique\Services\View\View;
 class Mock_Controller
 {
     public $view;
-    public function __construct(\PC_Woo_Stock_Man\PinkCrab\Perique\Services\View\View $view)
+    public function __construct(\pc_stock_man_v1\PinkCrab\Perique\Services\View\View $view)
     {
         $this->view = $view;
     }
-    public function get_blade() : \PC_Woo_Stock_Man\eftec\bladeone\BladeOne
+    public function get_blade() : \pc_stock_man_v1\eftec\bladeone\BladeOne
     {
         return $this->view->engine()->get_blade();
     }

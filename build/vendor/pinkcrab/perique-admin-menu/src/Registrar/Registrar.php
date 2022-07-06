@@ -20,15 +20,15 @@ declare (strict_types=1);
  * @license http://www.opensource.org/licenses/mit-license.html  MIT License
  * @package PinkCrab\Perique_Admin_Menu
  */
-namespace PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Registrar;
+namespace pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Registrar;
 
 use TypeError;
-use PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Hooks;
-use PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Page\Page;
-use PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Page\Menu_Page;
-use PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Group\Abstract_Group;
-use PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Exception\Page_Exception;
-use PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Registrar\Page_Load_Action;
+use pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Hooks;
+use pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Page\Page;
+use pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Page\Menu_Page;
+use pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Group\Abstract_Group;
+use pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Exception\Page_Exception;
+use pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Registrar\Page_Load_Action;
 class Registrar
 {
     /**
@@ -38,11 +38,11 @@ class Registrar
      * @param \PinkCrab\Perique_Admin_Menu\Group\Abstract_Group|null $group
      * @return void
      */
-    public function register_primary(\PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Page\Page $page, ?\PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Group\Abstract_Group $group = null) : void
+    public function register_primary(\pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Page\Page $page, ?\pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Group\Abstract_Group $group = null) : void
     {
         switch (\get_parent_class($page)) {
             // For menu pages
-            case \PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Page\Menu_Page::class:
+            case \pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Page\Menu_Page::class:
                 $hook = add_menu_page($page->page_title() ?? '', $group ? $group->get_group_title() : $page->menu_title(), $group ? $group->get_capability() : $page->capability(), $page->slug(), $page->render_view(), $group ? $group->get_icon() : '', (int) ($group ? $group->get_position() : $page->position()));
                 // Register Enqueue hooks for page/group.
                 $this->enqueue_scripts($hook, $page, $group);
@@ -50,7 +50,7 @@ class Registrar
                 $this->pre_load_hook($hook, $page, $group);
                 break;
             default:
-                do_action(\PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Hooks::PAGE_REGISTRAR_PRIMARY, $page, $group);
+                do_action(\pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Hooks::PAGE_REGISTRAR_PRIMARY, $page, $group);
         }
     }
     /**
@@ -61,10 +61,10 @@ class Registrar
      * @param \PinkCrab\Perique_Admin_Menu\Group\Abstract_Group|null $group
      * @return void
      */
-    public function register_subpage(\PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Page\Page $page, string $parent_slug, ?\PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Group\Abstract_Group $group = null) : void
+    public function register_subpage(\pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Page\Page $page, string $parent_slug, ?\pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Group\Abstract_Group $group = null) : void
     {
         switch (\get_parent_class($page)) {
-            case \PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Page\Menu_Page::class:
+            case \pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Page\Menu_Page::class:
                 $hook = add_submenu_page($parent_slug, $page->page_title() ?? '', $page->menu_title(), $page->capability(), $page->slug(), $page->render_view(), $page->position());
                 // If the sub page cant be registered because of permissions. Then we need to register the page as a primary page.
                 if (!\is_string($hook)) {
@@ -76,7 +76,7 @@ class Registrar
                 $this->pre_load_hook($hook, $page, $group);
                 break;
             default:
-                do_action(\PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Hooks::PAGE_REGISTRAR_SUB, $page, $parent_slug);
+                do_action(\pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Hooks::PAGE_REGISTRAR_SUB, $page, $parent_slug);
         }
     }
     /**
@@ -87,9 +87,9 @@ class Registrar
      * @param \PinkCrab\Perique_Admin_Menu\Group\Abstract_Group|null $group
      * @return void
      */
-    protected function enqueue_scripts(string $hook, \PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Page\Page $page, ?\PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Group\Abstract_Group $group = null) : void
+    protected function enqueue_scripts(string $hook, \pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Page\Page $page, ?\pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Group\Abstract_Group $group = null) : void
     {
-        add_action('admin_enqueue_scripts', new \PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Registrar\Page_Enqueue_Action($hook, $page, $group));
+        add_action('admin_enqueue_scripts', new \pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Registrar\Page_Enqueue_Action($hook, $page, $group));
     }
     /**
      * Adds the pre load actions for the current page.
@@ -99,8 +99,8 @@ class Registrar
      * @param \PinkCrab\Perique_Admin_Menu\Group\Abstract_Group|null $group
      * @return void
      */
-    protected function pre_load_hook(string $hook, \PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Page\Page $page, ?\PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Group\Abstract_Group $group = null) : void
+    protected function pre_load_hook(string $hook, \pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Page\Page $page, ?\pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Group\Abstract_Group $group = null) : void
     {
-        add_action('load-' . $hook, new \PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Registrar\Page_Load_Action($page, $group));
+        add_action('load-' . $hook, new \pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Registrar\Page_Load_Action($page, $group));
     }
 }

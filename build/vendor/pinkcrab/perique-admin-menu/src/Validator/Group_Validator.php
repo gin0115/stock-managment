@@ -20,11 +20,11 @@ declare (strict_types=1);
  * @license http://www.opensource.org/licenses/mit-license.html  MIT License
  * @package PinkCrab\Perique_Admin_Menu
  */
-namespace PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Validator;
+namespace pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Validator;
 
-use PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Group\Abstract_Group;
-use PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Validator\Abstract_Validator;
-class Group_Validator extends \PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Validator\Abstract_Validator
+use pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Group\Abstract_Group;
+use pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Validator\Abstract_Validator;
+class Group_Validator extends \pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Validator\Abstract_Validator
 {
     /**
      * Validates a passed group.
@@ -35,7 +35,7 @@ class Group_Validator extends \PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Vali
     public function validate($group) : bool
     {
         $this->reset_errors();
-        if (!\is_a($group, \PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Group\Abstract_Group::class)) {
+        if (!\is_a($group, \pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Group\Abstract_Group::class)) {
             $this->push_error(\sprintf('%s Is not a valid group type.', \get_class($group)));
             return \false;
         }
@@ -48,7 +48,7 @@ class Group_Validator extends \PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Vali
      * @param \PinkCrab\Perique_Admin_Menu\Group\Abstract_Group $group
      * @return bool
      */
-    protected function check_properties(\PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Group\Abstract_Group $group) : bool
+    protected function check_properties(\pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Group\Abstract_Group $group) : bool
     {
         try {
             $group->get_primary_page();

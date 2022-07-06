@@ -20,12 +20,12 @@ declare (strict_types=1);
  * @license http://www.opensource.org/licenses/mit-license.html  MIT License
  * @package PinkCrab\Perique_Admin_Menu
  */
-namespace PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Exception;
+namespace pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Exception;
 
 use Exception;
-use PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Group\Abstract_Group;
-use PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Validator\Group_Validator;
-use PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Validator\Abstract_Validator;
+use pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Group\Abstract_Group;
+use pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Validator\Group_Validator;
+use pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Validator\Abstract_Validator;
 class Group_Exception extends \Exception
 {
     /**
@@ -35,7 +35,7 @@ class Group_Exception extends \Exception
      * @return self
      * @code 250
      */
-    public static function primary_page_undefined(\PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Group\Abstract_Group $group) : self
+    public static function primary_page_undefined(\pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Group\Abstract_Group $group) : self
     {
         return new self(\sprintf('The primary page is not defined in %s', \get_class($group)), 250);
     }
@@ -46,7 +46,7 @@ class Group_Exception extends \Exception
      * @return self
      * @code 251
      */
-    public static function group_title_undefined(\PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Group\Abstract_Group $group) : self
+    public static function group_title_undefined(\pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Group\Abstract_Group $group) : self
     {
         return new self(\sprintf('The group title is not defined in %s', \get_class($group)), 251);
     }
@@ -58,7 +58,7 @@ class Group_Exception extends \Exception
      * @return self
      * @code 252
      */
-    public static function failed_validation(\PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Validator\Group_Validator $validator, \PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Group\Abstract_Group $group) : self
+    public static function failed_validation(\pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Validator\Group_Validator $validator, \pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Group\Abstract_Group $group) : self
     {
         return new self(\sprintf('%s failed Group validation (%s)', \get_class($group), \join(',', $validator->get_errors())), 252);
     }

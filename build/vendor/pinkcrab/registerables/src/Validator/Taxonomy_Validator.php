@@ -20,12 +20,12 @@ declare (strict_types=1);
  * @license http://www.opensource.org/licenses/mit-license.html  MIT License
  * @package PinkCrab\Registerables\Validator
  */
-namespace PC_Woo_Stock_Man\PinkCrab\Registerables\Validator;
+namespace pc_stock_man_v1\PinkCrab\Registerables\Validator;
 
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Taxonomy;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Validator\Abstract_Validator;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Registration_Middleware\Registerable;
-class Taxonomy_Validator extends \PC_Woo_Stock_Man\PinkCrab\Registerables\Validator\Abstract_Validator
+use pc_stock_man_v1\PinkCrab\Registerables\Taxonomy;
+use pc_stock_man_v1\PinkCrab\Registerables\Validator\Abstract_Validator;
+use pc_stock_man_v1\PinkCrab\Registerables\Registration_Middleware\Registerable;
+class Taxonomy_Validator extends \pc_stock_man_v1\PinkCrab\Registerables\Validator\Abstract_Validator
 {
     protected const REQUIRED_FIELDS = array('slug', 'singular', 'plural');
     /**
@@ -34,10 +34,10 @@ class Taxonomy_Validator extends \PC_Woo_Stock_Man\PinkCrab\Registerables\Valida
      * @param \PinkCrab\Registerables\Registration_Middleware\Registerable $object
      * @return bool
      */
-    public function validate(\PC_Woo_Stock_Man\PinkCrab\Registerables\Registration_Middleware\Registerable $object) : bool
+    public function validate(\pc_stock_man_v1\PinkCrab\Registerables\Registration_Middleware\Registerable $object) : bool
     {
         // If this is not a valid taxonomy, just bail here.
-        if (!\is_a($object, \PC_Woo_Stock_Man\PinkCrab\Registerables\Taxonomy::class)) {
+        if (!\is_a($object, \pc_stock_man_v1\PinkCrab\Registerables\Taxonomy::class)) {
             $this->add_error(\sprintf('%s is not a valid Taxonomy Model', \get_class($object)));
             return \false;
         }
@@ -53,7 +53,7 @@ class Taxonomy_Validator extends \PC_Woo_Stock_Man\PinkCrab\Registerables\Valida
      * @param Taxonomy $taxonomy
      * @return void
      */
-    protected function has_required_fields(\PC_Woo_Stock_Man\PinkCrab\Registerables\Taxonomy $taxonomy) : void
+    protected function has_required_fields(\pc_stock_man_v1\PinkCrab\Registerables\Taxonomy $taxonomy) : void
     {
         foreach (self::REQUIRED_FIELDS as $field) {
             if (!\is_string($taxonomy->{$field}) || \mb_strlen($taxonomy->{$field}) === 0) {

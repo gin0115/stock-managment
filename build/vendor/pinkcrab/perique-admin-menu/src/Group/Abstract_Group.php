@@ -20,11 +20,11 @@ declare (strict_types=1);
  * @license http://www.opensource.org/licenses/mit-license.html  MIT License
  * @package PinkCrab\Perique_Admin_Menu
  */
-namespace PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Group;
+namespace pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Group;
 
-use PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Exception\Group_Exception;
-use PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Page\Page;
-use PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Page\Menu_Page;
+use pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Exception\Group_Exception;
+use pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Page\Page;
+use pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Page\Menu_Page;
 abstract class Abstract_Group
 {
     /**
@@ -74,7 +74,7 @@ abstract class Abstract_Group
     public function get_group_title() : string
     {
         if ($this->group_title === null) {
-            throw \PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Exception\Group_Exception::group_title_undefined($this);
+            throw \pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Exception\Group_Exception::group_title_undefined($this);
         }
         return $this->group_title;
     }
@@ -104,7 +104,7 @@ abstract class Abstract_Group
     public function get_primary_page() : string
     {
         if ($this->primary_page === null) {
-            throw \PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Exception\Group_Exception::primary_page_undefined($this);
+            throw \pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Exception\Group_Exception::primary_page_undefined($this);
         }
         return $this->primary_page;
     }
@@ -134,7 +134,7 @@ abstract class Abstract_Group
      * @return void
      * @codeCoverageIgnore This can't be tested as it does nothing and is extended only
      */
-    public function enqueue(\PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Group\Abstract_Group $group, \PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Page\Page $page) : void
+    public function enqueue(\pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Group\Abstract_Group $group, \pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Page\Page $page) : void
     {
         // Do nothing by default.
     }
@@ -146,7 +146,7 @@ abstract class Abstract_Group
      * @return void
      * @codeCoverageIgnore This can't be tested as it does nothing and is extended only
      */
-    public function load(\PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Group\Abstract_Group $group, \PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Page\Page $page) : void
+    public function load(\pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Group\Abstract_Group $group, \pc_stock_man_v1\PinkCrab\Perique_Admin_Menu\Page\Page $page) : void
     {
         // Do nothing by default.
     }

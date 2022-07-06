@@ -9,14 +9,14 @@ declare (strict_types=1);
  * @license http://www.opensource.org/licenses/mit-license.html  MIT License
  * @package PinkCrab\Registerables
  */
-namespace PC_Woo_Stock_Man\PinkCrab\Registerables\Tests\Unit\Registrar;
+namespace pc_stock_man_v1\PinkCrab\Registerables\Tests\Unit\Registrar;
 
-use PC_Woo_Stock_Man\WP_UnitTestCase;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Data;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar\Meta_Data_Registrar;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Additional_Meta_Data_Controller;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Registration_Middleware\Registerable;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar\Additional_Meta_Data_Registrar;
+use pc_stock_man_v1\WP_UnitTestCase;
+use pc_stock_man_v1\PinkCrab\Registerables\Meta_Data;
+use pc_stock_man_v1\PinkCrab\Registerables\Registrar\Meta_Data_Registrar;
+use pc_stock_man_v1\PinkCrab\Registerables\Additional_Meta_Data_Controller;
+use pc_stock_man_v1\PinkCrab\Registerables\Registration_Middleware\Registerable;
+use pc_stock_man_v1\PinkCrab\Registerables\Registrar\Additional_Meta_Data_Registrar;
 class Test_Additional_Meta_Data_Registrar extends \WP_UnitTestCase
 {
     /**
@@ -26,20 +26,20 @@ class Test_Additional_Meta_Data_Registrar extends \WP_UnitTestCase
     {
         $this->expectExceptionMessage('Registerable must be an instance of Additional_Meta_Data_Controller');
         $this->expectException(\Exception::class);
-        $registrar = new \PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar\Additional_Meta_Data_Registrar(new \PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar\Meta_Data_Registrar());
-        $registrar->register($this->createMock(\PC_Woo_Stock_Man\PinkCrab\Registerables\Registration_Middleware\Registerable::class));
+        $registrar = new \pc_stock_man_v1\PinkCrab\Registerables\Registrar\Additional_Meta_Data_Registrar(new \pc_stock_man_v1\PinkCrab\Registerables\Registrar\Meta_Data_Registrar());
+        $registrar->register($this->createMock(\pc_stock_man_v1\PinkCrab\Registerables\Registration_Middleware\Registerable::class));
     }
     /** @testdox Attempting to register meta which isn't USER, TERM, POST or COMMENT should result in an error */
     public function test_throws_exception_for_unknown_meta_types() : void
     {
         $this->expectExceptionMessage('Unexpected meta type');
         $this->expectException(\Exception::class);
-        $registrar = new \PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar\Additional_Meta_Data_Registrar(new \PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar\Meta_Data_Registrar());
-        $controller = new class extends \PC_Woo_Stock_Man\PinkCrab\Registerables\Additional_Meta_Data_Controller
+        $registrar = new \pc_stock_man_v1\PinkCrab\Registerables\Registrar\Additional_Meta_Data_Registrar(new \pc_stock_man_v1\PinkCrab\Registerables\Registrar\Meta_Data_Registrar());
+        $controller = new class extends \pc_stock_man_v1\PinkCrab\Registerables\Additional_Meta_Data_Controller
         {
             public function meta_data(array $array) : array
             {
-                return array((new \PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Data('ff'))->meta_type('UNKNOWN'));
+                return array((new \pc_stock_man_v1\PinkCrab\Registerables\Meta_Data('ff'))->meta_type('UNKNOWN'));
             }
         };
         $registrar->register($controller);
@@ -49,12 +49,12 @@ class Test_Additional_Meta_Data_Registrar extends \WP_UnitTestCase
     {
         $this->expectExceptionMessage('A post type must be defined when attempting to register post meta with meta key : mock_post_meta');
         $this->expectException(\Exception::class);
-        $registrar = new \PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar\Additional_Meta_Data_Registrar(new \PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar\Meta_Data_Registrar());
-        $controller = new class extends \PC_Woo_Stock_Man\PinkCrab\Registerables\Additional_Meta_Data_Controller
+        $registrar = new \pc_stock_man_v1\PinkCrab\Registerables\Registrar\Additional_Meta_Data_Registrar(new \pc_stock_man_v1\PinkCrab\Registerables\Registrar\Meta_Data_Registrar());
+        $controller = new class extends \pc_stock_man_v1\PinkCrab\Registerables\Additional_Meta_Data_Controller
         {
             public function meta_data(array $array) : array
             {
-                return array((new \PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Data('mock_post_meta'))->meta_type('post'));
+                return array((new \pc_stock_man_v1\PinkCrab\Registerables\Meta_Data('mock_post_meta'))->meta_type('post'));
             }
         };
         $registrar->register($controller);
@@ -64,12 +64,12 @@ class Test_Additional_Meta_Data_Registrar extends \WP_UnitTestCase
     {
         $this->expectExceptionMessage('A taxonomy must be defined when attempting to register tern meta with meta key : mock_term_meta');
         $this->expectException(\Exception::class);
-        $registrar = new \PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar\Additional_Meta_Data_Registrar(new \PC_Woo_Stock_Man\PinkCrab\Registerables\Registrar\Meta_Data_Registrar());
-        $controller = new class extends \PC_Woo_Stock_Man\PinkCrab\Registerables\Additional_Meta_Data_Controller
+        $registrar = new \pc_stock_man_v1\PinkCrab\Registerables\Registrar\Additional_Meta_Data_Registrar(new \pc_stock_man_v1\PinkCrab\Registerables\Registrar\Meta_Data_Registrar());
+        $controller = new class extends \pc_stock_man_v1\PinkCrab\Registerables\Additional_Meta_Data_Controller
         {
             public function meta_data(array $array) : array
             {
-                return array((new \PC_Woo_Stock_Man\PinkCrab\Registerables\Meta_Data('mock_term_meta'))->meta_type('term'));
+                return array((new \pc_stock_man_v1\PinkCrab\Registerables\Meta_Data('mock_term_meta'))->meta_type('term'));
             }
         };
         $registrar->register($controller);

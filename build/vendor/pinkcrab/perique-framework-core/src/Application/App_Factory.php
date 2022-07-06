@@ -9,19 +9,19 @@ declare (strict_types=1);
  * @package PinkCrab\Perique
  * @since 0.4.0
  */
-namespace PC_Woo_Stock_Man\PinkCrab\Perique\Application;
+namespace pc_stock_man_v1\PinkCrab\Perique\Application;
 
-use PC_Woo_Stock_Man\Dice\Dice;
-use PC_Woo_Stock_Man\PinkCrab\Loader\Hook_Loader;
-use PC_Woo_Stock_Man\PinkCrab\Perique\Application\App;
-use PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces\Renderable;
-use PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces\DI_Container;
-use PC_Woo_Stock_Man\PinkCrab\Perique\Services\View\PHP_Engine;
-use PC_Woo_Stock_Man\PinkCrab\Perique\Services\Dice\PinkCrab_Dice;
-use PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces\Registration_Middleware;
-use PC_Woo_Stock_Man\PinkCrab\Perique\Exceptions\App_Initialization_Exception;
-use PC_Woo_Stock_Man\PinkCrab\Perique\Services\Registration\Registration_Service;
-use PC_Woo_Stock_Man\PinkCrab\Perique\Services\Registration\Middleware\Hookable_Middleware;
+use pc_stock_man_v1\Dice\Dice;
+use pc_stock_man_v1\PinkCrab\Loader\Hook_Loader;
+use pc_stock_man_v1\PinkCrab\Perique\Application\App;
+use pc_stock_man_v1\PinkCrab\Perique\Interfaces\Renderable;
+use pc_stock_man_v1\PinkCrab\Perique\Interfaces\DI_Container;
+use pc_stock_man_v1\PinkCrab\Perique\Services\View\PHP_Engine;
+use pc_stock_man_v1\PinkCrab\Perique\Services\Dice\PinkCrab_Dice;
+use pc_stock_man_v1\PinkCrab\Perique\Interfaces\Registration_Middleware;
+use pc_stock_man_v1\PinkCrab\Perique\Exceptions\App_Initialization_Exception;
+use pc_stock_man_v1\PinkCrab\Perique\Services\Registration\Registration_Service;
+use pc_stock_man_v1\PinkCrab\Perique\Services\Registration\Middleware\Hookable_Middleware;
 class App_Factory
 {
     /**
@@ -38,7 +38,7 @@ class App_Factory
     protected $base_path;
     public function __construct(?string $base_path = null)
     {
-        $this->app = new \PC_Woo_Stock_Man\PinkCrab\Perique\Application\App();
+        $this->app = new \pc_stock_man_v1\PinkCrab\Perique\Application\App();
         if (null === $base_path) {
             $trace = \debug_backtrace();
             //phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_debug_backtrace
@@ -59,18 +59,18 @@ class App_Factory
      */
     public function with_wp_dice(bool $include_default_rules = \false) : self
     {
-        $loader = new \PC_Woo_Stock_Man\PinkCrab\Loader\Hook_Loader();
+        $loader = new \pc_stock_man_v1\PinkCrab\Loader\Hook_Loader();
         // Setup DI Container
-        $container = \PC_Woo_Stock_Man\PinkCrab\Perique\Services\Dice\PinkCrab_Dice::withDice(new \PC_Woo_Stock_Man\Dice\Dice());
+        $container = \pc_stock_man_v1\PinkCrab\Perique\Services\Dice\PinkCrab_Dice::withDice(new \pc_stock_man_v1\Dice\Dice());
         if ($include_default_rules === \true) {
             $container->addRules($this->default_di_rules());
         }
         $this->app->set_container($container);
         // Set registration middleware
-        $this->app->set_registration_services(new \PC_Woo_Stock_Man\PinkCrab\Perique\Services\Registration\Registration_Service());
+        $this->app->set_registration_services(new \pc_stock_man_v1\PinkCrab\Perique\Services\Registration\Registration_Service());
         $this->app->set_loader($loader);
         // Include Hookable.
-        $this->app->registration_middleware(new \PC_Woo_Stock_Man\PinkCrab\Perique\Services\Registration\Middleware\Hookable_Middleware());
+        $this->app->registration_middleware(new \pc_stock_man_v1\PinkCrab\Perique\Services\Registration\Middleware\Hookable_Middleware());
         return $this;
     }
     /**
@@ -81,7 +81,7 @@ class App_Factory
      */
     protected function default_di_rules() : array
     {
-        return array('*' => array('substitutions' => array(\PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces\Renderable::class => new \PC_Woo_Stock_Man\PinkCrab\Perique\Services\View\PHP_Engine($this->base_path))));
+        return array('*' => array('substitutions' => array(\pc_stock_man_v1\PinkCrab\Perique\Interfaces\Renderable::class => new \pc_stock_man_v1\PinkCrab\Perique\Services\View\PHP_Engine($this->base_path))));
     }
     /**
      * Set the DI rules
@@ -91,7 +91,7 @@ class App_Factory
      */
     public function di_rules(array $rules) : self
     {
-        $this->app->container_config(function (\PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces\DI_Container $container) use($rules) : void {
+        $this->app->container_config(function (\pc_stock_man_v1\PinkCrab\Perique\Interfaces\DI_Container $container) use($rules) : void {
             $container->addRules($rules);
         });
         return $this;
@@ -123,7 +123,7 @@ class App_Factory
      *
      * @return \PinkCrab\Perique\Application\App
      */
-    public function app() : \PC_Woo_Stock_Man\PinkCrab\Perique\Application\App
+    public function app() : \pc_stock_man_v1\PinkCrab\Perique\Application\App
     {
         return $this->app;
     }
@@ -132,7 +132,7 @@ class App_Factory
      *
      * @return \PinkCrab\Perique\Application\App
      */
-    public function boot() : \PC_Woo_Stock_Man\PinkCrab\Perique\Application\App
+    public function boot() : \pc_stock_man_v1\PinkCrab\Perique\Application\App
     {
         // Sets default settings if not already set.
         if (!$this->app->has_app_config()) {
@@ -172,7 +172,7 @@ class App_Factory
      * @return self
      * @throws App_Initialization_Exception Code 3
      */
-    public function registration_middleware(\PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces\Registration_Middleware $middleware) : self
+    public function registration_middleware(\pc_stock_man_v1\PinkCrab\Perique\Interfaces\Registration_Middleware $middleware) : self
     {
         $this->app->registration_middleware($middleware);
         return $this;

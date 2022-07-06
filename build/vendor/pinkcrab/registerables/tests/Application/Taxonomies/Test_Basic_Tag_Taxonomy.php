@@ -9,13 +9,13 @@ declare (strict_types=1);
  * @license http://www.opensource.org/licenses/mit-license.html  MIT License
  * @package PinkCrab\Perique
  */
-namespace PC_Woo_Stock_Man\PinkCrab\Registerables\Tests\Application\Taxonomies;
+namespace pc_stock_man_v1\PinkCrab\Registerables\Tests\Application\Taxonomies;
 
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Tests\Fixtures\Taxonomies\Basic_Tag_Taxonomy;
-use PC_Woo_Stock_Man\PinkCrab\Registerables\Tests\Application\Taxonomies\Base_Taxonomy_Runner;
-class Test_Basic_Tag_Taxonomy extends \PC_Woo_Stock_Man\PinkCrab\Registerables\Tests\Application\Taxonomies\Base_Taxonomy_Runner
+use pc_stock_man_v1\PinkCrab\Registerables\Tests\Fixtures\Taxonomies\Basic_Tag_Taxonomy;
+use pc_stock_man_v1\PinkCrab\Registerables\Tests\Application\Taxonomies\Base_Taxonomy_Runner;
+class Test_Basic_Tag_Taxonomy extends \pc_stock_man_v1\PinkCrab\Registerables\Tests\Application\Taxonomies\Base_Taxonomy_Runner
 {
-    protected $taxonomy_class = \PC_Woo_Stock_Man\PinkCrab\Registerables\Tests\Fixtures\Taxonomies\Basic_Tag_Taxonomy::class;
+    protected $taxonomy_class = \pc_stock_man_v1\PinkCrab\Registerables\Tests\Fixtures\Taxonomies\Basic_Tag_Taxonomy::class;
     protected $post_types = array('basic_cpt');
     protected $settings = array('name' => 'basic_tag_tax', 'label' => 'Basic Tag Taxonomies', 'description' => 'The Basic Tag Taxonomy.', 'public' => \true, 'publicly_queryable' => \true, 'hierarchical' => \false, 'show_ui' => \true, 'show_in_menu' => \true, 'show_in_nav_menus' => \true, 'show_tagcloud' => \false, 'show_in_quick_edit' => \true, 'show_admin_column' => \true, 'rewrite' => 'basic_tag_tax', 'query_var' => \false, 'update_count_callback' => '_update_post_term_count', 'show_in_rest' => \false, 'rest_base' => 'basic_tag_tax', 'rest_controller_class' => 'WP_REST_Terms_Controller', 'default_term' => null);
     protected $labels = array(

@@ -1,13 +1,13 @@
 <?php
 
-namespace PC_Woo_Stock_Man;
+namespace pc_stock_man_v1;
 
 /* @description Dice - A minimal Dependency Injection Container for PHP *
  * @author Tom Butler tom@r.je *
  * @copyright 2012-2018 Tom Butler <tom@r.je> | https:// r.je/dice.html *
  * @license http:// www.opensource.org/licenses/bsd-license.php BSD License *
  * @version 3.0 */
-class CallTest extends \PC_Woo_Stock_Man\DiceTest
+class CallTest extends \pc_stock_man_v1\DiceTest
 {
     public function testCall()
     {
@@ -29,7 +29,7 @@ class CallTest extends \PC_Woo_Stock_Man\DiceTest
     public function testCallWithInstance()
     {
         $rule = [];
-        $rule['call'][] = array('callMe', array([\PC_Woo_Stock_Man\Dice\Dice::INSTANCE => 'A']));
+        $rule['call'][] = array('callMe', array([\pc_stock_man_v1\Dice\Dice::INSTANCE => 'A']));
         $dice = $this->dice->addRule('TestCall3', $rule);
         $object = $dice->create('TestCall3');
         $this->assertInstanceOf('a', $object->a);
@@ -56,7 +56,7 @@ class CallTest extends \PC_Woo_Stock_Man\DiceTest
     }
     public function testCallChain()
     {
-        $rules = ['TestCallImmutable' => ['call' => [['call1', ['foo'], \PC_Woo_Stock_Man\Dice\Dice::CHAIN_CALL], ['call2', ['bar'], \PC_Woo_Stock_Man\Dice\Dice::CHAIN_CALL]]]];
+        $rules = ['TestCallImmutable' => ['call' => [['call1', ['foo'], \pc_stock_man_v1\Dice\Dice::CHAIN_CALL], ['call2', ['bar'], \pc_stock_man_v1\Dice\Dice::CHAIN_CALL]]]];
         $dice = $this->dice->addRules($rules);
         $object = $dice->create('TestCallImmutable');
         $this->assertEquals('foo', $object->a);
@@ -67,7 +67,7 @@ class CallTest extends \PC_Woo_Stock_Man\DiceTest
         // Shared params should not be passed to variadic call
         $rules = ['TestCallVariadic' => ['call' => [['callMe', ['test1']]]]];
         $dice = $this->dice->addRules($rules);
-        $object = $dice->create('TestCallVariadic', [], [new \PC_Woo_Stock_Man\F()]);
+        $object = $dice->create('TestCallVariadic', [], [new \pc_stock_man_v1\F()]);
         $this->assertEquals(['test1'], $object->data);
     }
 }
@@ -76,4 +76,4 @@ class CallTest extends \PC_Woo_Stock_Man\DiceTest
  * @copyright 2012-2018 Tom Butler <tom@r.je> | https:// r.je/dice.html *
  * @license http:// www.opensource.org/licenses/bsd-license.php BSD License *
  * @version 3.0 */
-\class_alias('PC_Woo_Stock_Man\\CallTest', 'CallTest', \false);
+\class_alias('pc_stock_man_v1\\CallTest', 'CallTest', \false);

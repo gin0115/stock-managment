@@ -20,9 +20,9 @@ declare (strict_types=1);
  * @license http://www.opensource.org/licenses/mit-license.html  MIT License
  * @package PinkCrab\Perique
  */
-namespace PC_Woo_Stock_Man\PinkCrab\Perique\Interfaces;
+namespace pc_stock_man_v1\PinkCrab\Perique\Interfaces;
 
-use PC_Woo_Stock_Man\PinkCrab\Loader\Hook_Loader;
+use pc_stock_man_v1\PinkCrab\Loader\Hook_Loader;
 interface Hookable
 {
     /**
@@ -31,5 +31,5 @@ interface Hookable
      * @param Hook_Loader $loader
      * @return void
      */
-    public function register(\PC_Woo_Stock_Man\PinkCrab\Loader\Hook_Loader $loader) : void;
+    public function register(\pc_stock_man_v1\PinkCrab\Loader\Hook_Loader $loader) : void;
 }

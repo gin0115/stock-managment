@@ -20,11 +20,11 @@ declare (strict_types=1);
  * @license http://www.opensource.org/licenses/mit-license.html  MIT License
  * @package PinkCrab\BladeOne_Provider
  */
-namespace PC_Woo_Stock_Man\PinkCrab\BladeOne;
+namespace pc_stock_man_v1\PinkCrab\BladeOne;
 
-use PC_Woo_Stock_Man\eftec\bladeone\BladeOne;
-use PC_Woo_Stock_Man\eftec\bladeonehtml\BladeOneHtml;
-class PinkCrab_BladeOne extends \PC_Woo_Stock_Man\eftec\bladeone\BladeOne
+use pc_stock_man_v1\eftec\bladeone\BladeOne;
+use pc_stock_man_v1\eftec\bladeonehtml\BladeOneHtml;
+class PinkCrab_BladeOne extends \pc_stock_man_v1\eftec\bladeone\BladeOne
 {
     use BladeOneHtml;
 }

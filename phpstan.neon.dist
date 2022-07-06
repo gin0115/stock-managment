@@ -10,9 +10,7 @@ parameters:
         - %currentWorkingDirectory%/src/
     excludes_analyse:
         - %currentWorkingDirectory%/tests/*
-    scanDirectories:
-      - build/vendor
     bootstrapFiles:
         - vendor/php-stubs/wordpress-stubs/wordpress-stubs.php
-        - vendor/kimhf/woocommerce-stubs/woocommerce-stubs.php
+        #- vendor/kimhf/woocommerce-stubs/woocommerce-stubs.php
         #- vendor/kimhf/advanced-custom-fields-pro-stubs/advanced-custom-fields-pro-stubs.php
