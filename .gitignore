@@ -27,7 +27,7 @@ tests/cypress/videos/
 tests/cypress/screenshots/
 
 # Editor directories and files
-.vscode/*
+.vscode
 !.vscode/extensions.json
 .idea
 *.suo
