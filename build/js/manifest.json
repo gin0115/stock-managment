@@ -1,6 +1,6 @@
 {
   "index.html": {
-    "file": "assets/index.01a49ee6.js",
+    "file": "assets/index.586ba75f.js",
     "src": "index.html",
     "isEntry": true,
     "dynamicImports": [
@@ -14,7 +14,7 @@
     ]
   },
   "js/views/AboutView.vue": {
-    "file": "assets/AboutView.b3ecf3b6.js",
+    "file": "assets/AboutView.c3b352ea.js",
     "src": "js/views/AboutView.vue",
     "isDynamicEntry": true,
     "imports": [

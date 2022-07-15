@@ -62,10 +62,6 @@ class Stock_Location_Page extends Menu_Page {
 		$this->menu_title    = $this->translations->location_page_title();
 		$this->page_title    = $this->translations->location_page_title();
 		$this->view_template = 'views/wp-admin/spa';
-		// $this->view_data     = array(
-		// 	'i18n'     => $this->translations,
-		// 	'settings' => $this->settings,
-		// );
 	}
 
 	/**
