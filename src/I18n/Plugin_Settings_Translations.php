@@ -14,13 +14,39 @@ namespace PinkCrab\Stock_Management\I18n;
 
 class Plugin_Settings_Translations {
 
+
 	/**
-	 * Failed to update settings option.
-	 *
+	 * Settings update notification for successfully updating.
 	 * @return string
 	 */
-	public function failed_to_update_settings(): string {
-		return __( 'Failed to update settings.', 'pc-woo-stock-man' );
+	public function update_success_notification(): string {
+		return esc_html_x( 'Custom settings updated', 'The success notification updating custom settings.', 'pc_stock_man' );
 	}
+
+	/**
+	 * Settings update notification for failed to update
+	 * @return string
+	 */
+	public function update_failed_notification(): string {
+		return esc_html_x( 'Failed to update custom settings.', 'The failed notification updating custom settings.', 'pc_stock_man' );
+	}
+
+	/**
+	 * Message for successfully deleting the options.
+	 * @return string
+	 */
+	public function delete_success_notification(): string {
+		return esc_html_x( 'Custom settings deleted', 'The success notification deleting custom settings.', 'pc_stock_man' );
+	}
+
+
+	/**
+	 * Message for failing to delete the options.
+	 * @return string
+	 */
+	public function delete_failed_notification(): string {
+		return esc_html_x( 'Failed to delete custom settings', 'The failed notification deleting custom settings.', 'pc_stock_man' );
+	}
+
 
 }

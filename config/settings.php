@@ -16,11 +16,20 @@ return array(
 	'meta'       => array(
 		'post' => array(),
 		'user' => array(),
-		'term' => array(),
+		'term' => array(
+			'type'    => 'location_type',
+			'ref'     => 'location_ref',
+			'barcode' => 'location_barcode',
+		),
 	),
 	'plugin'     => array( 'version' => '0.1.0' ),
 	'namespaces' => array(
-		'rest'  => 'pinkcrab/boilerplate',
-		'cache' => 'pinkcrab_boilerplate',
+		'rest'  => 'pinkcrab/stockman/v1',
+		'cache' => 'pinkcrab_stockman',
+	),
+	'additional' => array(
+		'admin_slugs'    => (object) array(
+			'location' => 'pc_stockman_location',
+		),
 	),
 );
