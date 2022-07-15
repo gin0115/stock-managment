@@ -29,7 +29,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 // Bootstrap all required modules (sets up DI Rules)
 Ajax_Bootstrap::use();
-BladeOne_Bootstrap::use( __DIR__ . DIRECTORY_SEPARATOR . 'views' );
+// BladeOne_Bootstrap::use( __DIR__ . DIRECTORY_SEPARATOR . 'views' );
 
 // Boot the application
 $app = ( new App_Factory( __DIR__ ) )->with_wp_dice( true )
