@@ -13,6 +13,7 @@
  * Text Domain:     pc_stock_man
  */
 
+use PinkCrab\Stock_Management\SPA\Spa_Assets;
 use PC_Woo_Stock_Man\PinkCrab\Ajax\Ajax_Bootstrap;
 use PC_Woo_Stock_Man\PinkCrab\BladeOne\BladeOne_Bootstrap;
 use PC_Woo_Stock_Man\PinkCrab\Perique\Application\App_Factory;
@@ -43,3 +44,4 @@ $app = ( new App_Factory( __DIR__ ) )->with_wp_dice( true )
 
 // Register the plugin lifecycle events.
 $plugin_state_controller = new Plugin_State_Controller( $app, __FILE__ );
+

@@ -11,12 +11,16 @@ declare(strict_types=1);
  * @since 0.1.0
  */
 
+use PinkCrab\Stock_Management\SPA\Spa_Assets;
+
 return array(
-	// Sets the base path for views.
-	// If you are using a different views path, please update in PHP_Engine args
-	// Remove this if not planning to use the View or replace if using BladeOne
-	'*' => array(
-		'substitutions' => array(
+	'*'               => array(
+		'substitutions' => array(),
+	),
+	Spa_Assets::class => array(
+		'constructParams' => array(
+			dirname( __FILE__, 2 ) . '/build/js/manifest.json',
+			plugin_dir_url( dirname( __FILE__, 1 ) ) . 'build',
 		),
 	),
 );

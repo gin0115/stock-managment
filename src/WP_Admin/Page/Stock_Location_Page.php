@@ -24,6 +24,8 @@ declare( strict_types=1 );
 
 namespace PinkCrab\Stock_Management\WP_Admin\Page;
 
+use PinkCrab\Stock_Management\SPA\Spa_Assets;
+use PC_Woo_Stock_Man\PinkCrab\Enqueue\Enqueue;
 use PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Page\Page;
 use PC_Woo_Stock_Man\PinkCrab\Perique\Application\App_Config;
 use PinkCrab\Stock_Management\Plugin\Settings\Plugin_Settings;
@@ -41,15 +43,20 @@ class Stock_Location_Page extends Menu_Page {
 	/** @var Plugin_Settings */
 	private $settings;
 
+	/** @var Spa_Assets */
+	private $assets;
+
 
 	public function __construct(
 		App_Config $config,
 		Stock_Location_Translations $translations,
-		Plugin_Settings $settings
+		Plugin_Settings $settings,
+		Spa_Assets $assets
 	) {
 		$this->config       = $config;
 		$this->translations = $translations;
 		$this->settings     = $settings;
+		$this->assets       = $assets;
 
 		$this->page_slug     = $this->config->admin_slugs->location;
 		$this->menu_title    = $this->translations->location_page_title();
@@ -68,6 +75,15 @@ class Stock_Location_Page extends Menu_Page {
 	 * @return void
 	 */
 	public function enqueue( Page $page ) : void {
-		// dump( $page );
+		Enqueue::script( 'stock_man' )
+			->src( $this->assets->get_js_uri() )
+			->localize(
+				array(
+					'foo' => 'bar',
+				)
+			)
+            ->attribute('type', 'module')
+            ->header()
+			->register();
 	}
 }

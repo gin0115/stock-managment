@@ -1,9 +1,10 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 
+
+
 const router = createRouter({
-    history: createWebHistory(
-        import.meta.env.BASE_URL),
+    history: createWebHashHistory('wp-content/plugins/stock-managment/build/js'),
     routes: [{
             path: '/',
             name: 'home',
@@ -18,8 +19,7 @@ const router = createRouter({
             component: () =>
                 import ('../views/AboutView.vue')
         }
-    ],
-    base: 'https://pinkcrab.gq/wp-admin/admin.php?page=pc_stockman_location/'
+    ]
 })
 
 export default router
