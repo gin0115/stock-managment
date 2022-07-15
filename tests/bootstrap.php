@@ -7,6 +7,11 @@
 // Composer autoloader must be loaded before WP_PHPUNIT__DIR will be available
 require_once dirname( __DIR__ ) . '/build/vendor/autoload.php';
 
+// Include help files.
+foreach ( glob( dirname( __DIR__ ) . '/tests/Helper/*.php' ) as $file ) {
+	require_once $file;
+}
+
 // Give access to tests_add_filter() function.
 require_once getenv( 'WP_PHPUNIT__DIR' ) . '/includes/functions.php';
 

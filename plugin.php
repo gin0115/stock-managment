@@ -13,20 +13,23 @@
  * Text Domain:     pc_stock_man
  */
 
+use PinkCrab\Stock_Management\SPA\Spa_Assets;
 use PC_Woo_Stock_Man\PinkCrab\Ajax\Ajax_Bootstrap;
 use PC_Woo_Stock_Man\PinkCrab\BladeOne\BladeOne_Bootstrap;
 use PC_Woo_Stock_Man\PinkCrab\Perique\Application\App_Factory;
 use PC_Woo_Stock_Man\PinkCrab\Plugin_Lifecycle\Plugin_State_Controller;
 use PC_Woo_Stock_Man\PinkCrab\Ajax\Registration_Middleware\Ajax_Middleware;
+use PC_Woo_Stock_Man\PinkCrab\Route\Registration_Middleware\Route_Middleware;
 use PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Registration_Middleware\Page_Middleware;
+use PC_Woo_Stock_Man\PinkCrab\Registerables\Registration_Middleware\Registerable_Middleware;
 
 require_once __DIR__ . '/function_pollyfills.php';
-require_once __DIR__ . '/build/vendor/autoload.php';
+require_once __DIR__ . '/build/php/vendor/autoload.php';
 require_once __DIR__ . '/vendor/autoload.php';
 
 // Bootstrap all required modules (sets up DI Rules)
 Ajax_Bootstrap::use();
-BladeOne_Bootstrap::use( __DIR__ . DIRECTORY_SEPARATOR . 'views' );
+// BladeOne_Bootstrap::use( __DIR__ . DIRECTORY_SEPARATOR . 'views' );
 
 // Boot the application
 $app = ( new App_Factory( __DIR__ ) )->with_wp_dice( true )
@@ -35,7 +38,10 @@ $app = ( new App_Factory( __DIR__ ) )->with_wp_dice( true )
 	->registration_classes( require __DIR__ . '/config/registration.php' )
 	->construct_registration_middleware( Page_Middleware::class )
 	->construct_registration_middleware( Ajax_Middleware::class )
+	->construct_registration_middleware( Route_Middleware::class )
+	->construct_registration_middleware( Registerable_Middleware::class )
 	->boot();
 
 // Register the plugin lifecycle events.
-$plugin_state_controller = new Plugin_State_Controller($app, __FILE__);
+$plugin_state_controller = new Plugin_State_Controller( $app, __FILE__ );
+

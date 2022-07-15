@@ -21,19 +21,19 @@ php build-tools/create_patchers.php
 # Run production build
 echo "Building production"
 composer config autoloader-suffix ""
-rm -rf build 
+rm -rf build/php 
 rm -rf vendor
 composer clear-cache
 composer install --no-dev
 
 echo "Running php-scoper"
-mkdir -p build
-php build-tools/scoper.phar add-prefix --output-dir=build --force --config=build-tools/scoper.inc.php
+mkdir -p build/php
+php build-tools/scoper.phar add-prefix --output-dir=build/php --force --config=build-tools/scoper.inc.php
 
 # Reset autoloader pefix & dump the autoloader to the new build path.
 echo "Reset prefix for dev & rebuild autoloader in build"
 composer config autoloader-suffix pc_stock_man_010
-composer dump-autoload --working-dir build --classmap-authoritative
+composer dump-autoload --working-dir build/php --classmap-authoritative
 
 if [ $instal_dev = "--dev" ]
 then

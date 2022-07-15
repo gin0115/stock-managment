@@ -7,7 +7,7 @@
  * @author Glynn Quelch glynn.quelch@gmail.com
  * @since 0.1.0
  */
-namespace PinkCrab\WP_Repository\Tests\Unit\WP_Repository;
+namespace PinkCrab\Stock_Management\Tests\Unit\WP_Repository;
 
 use PinkCrab\Stock_Management\WP_Repository\Options_Repository;
 
