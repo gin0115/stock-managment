@@ -34,10 +34,10 @@ use PC_Woo_Stock_Man\PinkCrab\Perique_Admin_Menu\Page\Menu_Page;
 
 class Stock_Location_Page extends Menu_Page {
 
-	/* @var App_Config */
+	/** @var App_Config */
 	private $config;
 
-	/* @var Stock_Location_Translations*/
+	/** @var Stock_Location_Translations */
 	private $translations;
 
 	/** @var Plugin_Settings */
@@ -48,19 +48,15 @@ class Stock_Location_Page extends Menu_Page {
 
 
 	public function __construct(
-		App_Config $config,
-		Stock_Location_Translations $translations,
 		Plugin_Settings $settings,
 		Spa_Assets $assets
 	) {
-		$this->config       = $config;
-		$this->translations = $translations;
-		$this->settings     = $settings;
-		$this->assets       = $assets;
+		$this->settings = $settings;
+		$this->assets   = $assets;
 
-		$this->page_slug     = $this->config->admin_slugs->location;
-		$this->menu_title    = $this->translations->location_page_title();
-		$this->page_title    = $this->translations->location_page_title();
+		$this->page_slug     = $settings->app_config()->admin_slugs->location;
+		$this->menu_title    = $settings->translations()->stock_location()->location_page_title();
+		$this->page_title    = $settings->translations()->stock_location()->location_page_title();
 		$this->view_template = 'views/wp-admin/spa';
 	}
 
@@ -71,15 +67,23 @@ class Stock_Location_Page extends Menu_Page {
 	 * @return void
 	 */
 	public function enqueue( Page $page ) : void {
-		Enqueue::script( 'stock_man' )
+		// Enqueue primary vue script.
+		Enqueue::script( 'stockMan' )
 			->src( $this->assets->get_js_uri() )
 			->localize(
 				array(
-					'foo' => 'bar',
+					'i18n' => $this->settings->translations(),
 				)
 			)
-			->attribute( 'type', 'module' )
+			->script_type( 'module' )
 			->header()
 			->register();
+
+		// Iterate through all css files and enqueue them.
+		foreach ( $this->assets->get_css_uris() as $key => $css_file ) {
+			Enqueue::style( 'stockMan_' . $key )
+				->src( $css_file )
+				->register();
+		}
 	}
 }

@@ -24,7 +24,12 @@ declare( strict_types=1 );
 
 namespace PinkCrab\Stock_Management\I18n;
 
-class Stock_Location_Translations {
+use JsonSerializable;
+use PinkCrab\Stock_Management\I18n\Json_Serialize_Translation_Trait;
+
+class Stock_Location_Translations implements JsonSerializable {
+
+	use Json_Serialize_Translation_Trait;
 
 	/**
 	 * The single label for the Stock Location taxonomy

@@ -12,9 +12,13 @@ declare(strict_types=1);
 
 namespace PinkCrab\Stock_Management\I18n;
 
-class Plugin_Settings_Translations {
+use JsonSerializable;
+use PinkCrab\Stock_Management\I18n\Json_Serialize_Translation_Trait;
 
+class Plugin_Settings_Translations implements JsonSerializable {
 
+	use Json_Serialize_Translation_Trait;
+	
 	/**
 	 * Settings update notification for successfully updating.
 	 * @return string
