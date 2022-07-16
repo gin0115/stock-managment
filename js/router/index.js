@@ -2,7 +2,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 
 
-
+console.log(stockMan);
 const router = createRouter({
     history: createWebHashHistory('wp-content/plugins/stock-managment/build/js'),
     routes: [{

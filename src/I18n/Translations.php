@@ -24,9 +24,13 @@ declare( strict_types=1 );
 
 namespace PinkCrab\Stock_Management\I18n;
 
+use JsonSerializable;
 use PinkCrab\Stock_Management\I18n\Plugin_Settings_Translations;
+use PinkCrab\Stock_Management\I18n\Json_Serialize_Translation_Trait;
 
-class Translations {
+class Translations implements JsonSerializable {
+
+	use Json_Serialize_Translation_Trait;
 
 	/**
 	 * Get plugin settings translations.
@@ -45,4 +49,5 @@ class Translations {
 	public function stock_location(): Stock_Location_Translations {
 		return new Stock_Location_Translations();
 	}
+
 }
