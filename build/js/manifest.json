@@ -1,20 +1,25 @@
 {
   "index.html": {
-    "file": "assets/index.891f3f36.js",
+    "file": "assets/index.6f44692e.js",
     "src": "index.html",
     "isEntry": true,
     "dynamicImports": [
       "js/views/AboutView.vue"
     ],
     "css": [
-      "assets/index.91f7a831.css"
+      "assets/index.0d2b2762.css"
     ],
     "assets": [
-      "assets/logo.da9b9095.svg"
+      "assets/material-icons.69cec6db.woff2",
+      "assets/material-icons.84a767f9.woff",
+      "assets/material-icons-outlined.7a778367.woff2",
+      "assets/material-icons-round.f41b199b.woff2",
+      "assets/material-icons-two-tone.9b25d522.woff2",
+      "assets/material-icons-sharp.8339eb43.woff2"
     ]
   },
   "js/views/AboutView.vue": {
-    "file": "assets/AboutView.415e2b8f.js",
+    "file": "assets/AboutView.f8b26c8f.js",
     "src": "js/views/AboutView.vue",
     "isDynamicEntry": true,
     "imports": [

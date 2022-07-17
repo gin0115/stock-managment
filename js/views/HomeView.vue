@@ -1,9 +1,9 @@
 <script setup>
-import TheWelcome from '@/components/TheWelcome.vue'
+import LocationGrid from "@/components/LocationGrid.vue";
 </script>
 
 <template>
   <main>
-    <TheWelcome />
+    <LocationGrid />
   </main>
 </template>
