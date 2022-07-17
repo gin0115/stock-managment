@@ -3,7 +3,7 @@
 declare( strict_types=1 );
 
 /**
- * Primary index of all translations.
+ * User model
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
@@ -22,42 +22,51 @@ declare( strict_types=1 );
  * @package PinkCrab\Stock_Management
  */
 
-namespace PinkCrab\Stock_Management\I18n;
+namespace PinkCrab\Stock_Management\User;
 
-use JsonSerializable;
-use PinkCrab\Stock_Management\I18n\App_Translations;
-use PinkCrab\Stock_Management\I18n\Plugin_Settings_Translations;
-use PinkCrab\Stock_Management\I18n\Json_Serialize_Translation_Trait;
+use PinkCrab\Stock_Management\User\User;
 
-class Translations implements JsonSerializable {
-
-	use Json_Serialize_Translation_Trait;
+class User_Repository {
 
 	/**
-	 * Get plugin settings translations.
+	 * Finds a user based on the user id.
 	 *
-	 * @return \PinkCrab\Stock_Management\I18n\Plugin_Settings_Translations
+	 * @param int $user_id
+	 * @return User|null
 	 */
-	public function plugin_settings(): Plugin_Settings_Translations {
-		return new Plugin_Settings_Translations();
+	public function find_by_id( int $user_id ): ?User {
+		$wp_user = get_user_by( 'id', $user_id );
+		if ( $wp_user ) {
+			return new User( $wp_user );
+		}
+		return null;
 	}
 
 	/**
-	 * Get stock location translations.
+	 * Find a user by email
 	 *
-	 * @return \PinkCrab\Stock_Management\I18n\Stock_Location_Translations
+	 * @param string $email
+	 * @return User|null
 	 */
-	public function stock_location(): Stock_Location_Translations {
-		return new Stock_Location_Translations();
+	public function find_by_email( string $email ): ?User {
+		$wp_user = get_user_by( 'email', $email );
+		if ( $wp_user ) {
+			return new User( $wp_user );
+		}
+		return null;
 	}
 
 	/**
-	 * Returns the main app translations.
+	 * Get the current logged in user
 	 *
-	 * @return App_Translations
+	 * @return User|null
 	 */
-	public function app(): App_Translations {
-		return new App_Translations();
+	public function get_current_user(): ?User {
+		if ( is_user_logged_in() ) {
+			return new User(
+				wp_get_current_user()
+			);
+		}
+		return null;
 	}
-
 }

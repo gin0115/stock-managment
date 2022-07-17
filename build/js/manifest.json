@@ -1,13 +1,13 @@
 {
   "index.html": {
-    "file": "assets/index.6f44692e.js",
+    "file": "assets/index.b0c02056.js",
     "src": "index.html",
     "isEntry": true,
     "dynamicImports": [
       "js/views/AboutView.vue"
     ],
     "css": [
-      "assets/index.0d2b2762.css"
+      "assets/index.89348776.css"
     ],
     "assets": [
       "assets/material-icons.69cec6db.woff2",
@@ -19,7 +19,7 @@
     ]
   },
   "js/views/AboutView.vue": {
-    "file": "assets/AboutView.f8b26c8f.js",
+    "file": "assets/AboutView.ef9bdd01.js",
     "src": "js/views/AboutView.vue",
     "isDynamicEntry": true,
     "imports": [

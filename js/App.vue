@@ -1,53 +1,38 @@
 <script setup>
-import { RouterLink, RouterView } from "vue-router";
-import HelloWorld from "./components/HelloWorld.vue";
+import PrimaryNav from "./components/ui/PrimaryNav.vue";
+import PrimaryHeader from "./components/ui/PrimaryHeader.vue";
+
 </script>
 
 <template>
-  <div class="demo-container">
-    <!-- Drawer -->
-    <ui-drawer type="modal" nav-id="demo-menu" viewport-height>
-      <ui-drawer-header>
-        <ui-drawer-title>Title</ui-drawer-title>
-        <ui-drawer-subtitle>Subtitle</ui-drawer-subtitle>
-      </ui-drawer-header>
-      <ui-drawer-content>
-        <ui-nav>
-          <ui-nav-item active><RouterLink to="/" active>Home</RouterLink></ui-nav-item>
-          <ui-nav-item><RouterLink to="/about">About</RouterLink></ui-nav-item>
-        </ui-nav>
-      </ui-drawer-content>
-    </ui-drawer>
-    <!-- Content -->
-    <div class="demo-content">
-      <!-- App bar -->
-      <!-- App bar -->
-      <ui-top-app-bar
-        fixed
-        class="demo-app-bar"
-        content-selector=".demo-app-content"
-        nav-id="demo-menu"
-      >
-        Title
-      </ui-top-app-bar>
-      <!-- App content -->
-      <div class="demo-app-content">
+  <div id="stock-man-app">
+    <PrimaryNav />
+    <div class="stock-man-app-wrapper">
+      <PrimaryHeader />
+      <div class="stock-man-app-content">
         <RouterView />
       </div>
     </div>
   </div>
+  
 </template>
 
 <style>
-.demo-container {
+#stock-man-app {
   z-index: 99999;
 }
 .demo-content {
   width: 100%;
 }
 
-.demo-app-content {
+.stock-man-app-wrapper {
   height: 100%;
   overflow: auto;
+}
+#app{
+    position: absolute;
+    top: -10px;
+    left: -54px;
+    height: calc(100vh - 36px);
 }
 </style>

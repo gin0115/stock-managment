@@ -45,3 +45,16 @@ $app = ( new App_Factory( __DIR__ ) )->with_wp_dice( true )
 // Register the plugin lifecycle events.
 $plugin_state_controller = new Plugin_State_Controller( $app, __FILE__ );
 
+// Debug helpers, remove this in production.
+add_filter(
+	'wp_php_error_args',
+	function( $message, $error ) {
+		echo "<strong>Error type</strong> : {$error['type']}<hr>";
+		echo "<strong>Message </strong> : <pre style='color: #333; font-face:monospace; font-size:8pt;'>{$error['message']}</pre><hr>";
+		echo "<strong>File </strong> : {$error['file']}<hr>";
+		echo "<strong>Line </strong> : {$error['line']}<hr>";
+		dd( $error, $message );
+	},
+	2,
+	10
+);

@@ -1,9 +1,9 @@
 <script setup>
-import LocationGrid from "@/components/LocationGrid.vue";
+import Dashboard from "@/components/page/Dashboard.vue";
 </script>
 
 <template>
   <main>
-    <LocationGrid />
+    <Dashboard />
   </main>
 </template>
