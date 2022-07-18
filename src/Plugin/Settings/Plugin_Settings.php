@@ -46,7 +46,8 @@ class Plugin_Settings {
 	 * @return Settings
 	 */
 	public function get_custom_settings(): Settings {
-		return $this->options_repository->get( self::SETTINGS_KEY, new Settings() );
+		$settings = $this->options_repository->get( self::SETTINGS_KEY, new Settings() );
+		return $settings instanceof Settings ? $settings : new Settings();
 	}
 
 	/**

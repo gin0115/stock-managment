@@ -21,4 +21,6 @@ export default defineConfig({
 
 
     },
+    // This is not ideal, but should be fine, i hope.
+    base: 'wp-content/plugins/stock-managment/build/js/',
 })

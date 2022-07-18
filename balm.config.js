@@ -1,9 +1,9 @@
-const config = require('./config/balmrc');
-const api = require('./config/balm.api');
+const config = require('./js/balm-config/balmrc');
+const api = require('./js/balm-config/balm.api');
 
 module.exports = () => {
-  return {
-    config,
-    api
-  };
+    return {
+        config,
+        api
+    };
 };

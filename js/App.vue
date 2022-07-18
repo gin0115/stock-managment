@@ -1,7 +1,19 @@
 <script setup>
 import PrimaryNav from "./components/ui/PrimaryNav.vue";
 import PrimaryHeader from "./components/ui/PrimaryHeader.vue";
+import { db } from "./db/locations.js";
+// console.log(getAll());
+console.log(db);
 
+const id = await db.friends.add({
+          name: 'this.friendName',
+          age: 12,
+        });
+
+        let r = `Friend ${this.friendName}
+          successfully added. Got id ${id}`;
+
+          console.log(r, db.friends.get(id));
 </script>
 
 <template>
@@ -14,7 +26,6 @@ import PrimaryHeader from "./components/ui/PrimaryHeader.vue";
       </div>
     </div>
   </div>
-  
 </template>
 
 <style>
