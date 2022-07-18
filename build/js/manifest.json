@@ -1,13 +1,14 @@
 {
   "index.html": {
-    "file": "assets/index.3a2d4a15.js",
+    "file": "assets/index.b5955f2a.js",
     "src": "index.html",
     "isEntry": true,
     "dynamicImports": [
-      "js/views/AboutView.vue"
+      "js/views/AboutView.vue",
+      "js/views/location/LocationHomeView.vue"
     ],
     "css": [
-      "assets/index.b1ea1c1d.css"
+      "assets/index.32c4b3dc.css"
     ],
     "assets": [
       "assets/material-icons.69cec6db.woff2",
@@ -19,7 +20,7 @@
     ]
   },
   "js/views/AboutView.vue": {
-    "file": "assets/AboutView.a7bf8ed0.js",
+    "file": "assets/AboutView.68cf688f.js",
     "src": "js/views/AboutView.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -27,6 +28,14 @@
     ],
     "css": [
       "assets/AboutView.ab071ea6.css"
+    ]
+  },
+  "js/views/location/LocationHomeView.vue": {
+    "file": "assets/LocationHomeView.939f89de.js",
+    "src": "js/views/location/LocationHomeView.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "index.html"
     ]
   }
 }

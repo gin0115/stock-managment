@@ -5,15 +5,6 @@ import { db } from "./db/locations.js";
 // console.log(getAll());
 console.log(db);
 
-const id = await db.friends.add({
-          name: 'this.friendName',
-          age: 12,
-        });
-
-        let r = `Friend ${this.friendName}
-          successfully added. Got id ${id}`;
-
-          console.log(r, db.friends.get(id));
 </script>
 
 <template>
@@ -28,7 +19,7 @@ const id = await db.friends.add({
   </div>
 </template>
 
-<style>
+<!-- <style>
 #stock-man-app {
   z-index: 99999;
 }
@@ -45,5 +36,14 @@ const id = await db.friends.add({
     top: -10px;
     left: -54px;
     height: calc(100vh - 36px);
+    position: absolute;
+    top: -10px;
+    left: -54px;
+    height: calc(100vh - 36px);
+    width: calc(100vw - 144px);
+    background: antiquewhite;
+    overflow: visible;
+    display: flex;
+    grid-template-columns: none;
 }
-</style>
+</style> -->

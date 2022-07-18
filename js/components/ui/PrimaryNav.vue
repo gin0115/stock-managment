@@ -16,8 +16,9 @@ const {i18n} = useWpStore();
                     <RouterLink to="/" active>{{ i18n.nav.home }}</RouterLink>
                 </ui-nav-item>
                 <ui-nav-item>
-                    <RouterLink to="/about">{{ i18n.nav.locations }}</RouterLink>
+                    <RouterLink to="/locations">{{ i18n.nav.locations }}</RouterLink>
                 </ui-nav-item>
+
             </ui-nav>
         </ui-drawer-content>
     </ui-drawer>
