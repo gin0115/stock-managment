@@ -33,14 +33,18 @@ php build-tools/scoper.phar add-prefix --output-dir=build/php --force --config=b
 # Reset autoloader pefix & dump the autoloader to the new build path.
 echo "Reset prefix for dev & rebuild autoloader in build"
 composer config autoloader-suffix pc_stock_man_010
-composer dump-autoload --working-dir build/php --classmap-authoritative
 
+# Baesd on dev/prodction dump class map
 if [ $instal_dev = "--dev" ]
 then
+    composer dump-autoload --working-dir build/php
     echo "Rebuilding dev dependencies"
     composer install 
     echo "Rebuilt all dev dependencies"
+else
+    composer dump-autoload --working-dir build/php --classmap-authoritative
 fi
+
 
 echo "Finished!!"
 

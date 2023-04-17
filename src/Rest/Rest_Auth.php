@@ -24,6 +24,8 @@ declare( strict_types=1 );
 
 namespace PinkCrab\Stock_Management\Rest;
 
+use Closure;
+
 class Rest_Auth {
 		/**
 	 * Allows the passing of multiple checks where all must pass.
@@ -107,6 +109,18 @@ class Rest_Auth {
 
 			return in_array( $role, $roles, true );
 		};
+	}
+
+	/**
+	 * Checks that the user is logged in and an admin.
+	 *
+	 * @return \Closure
+	 */
+	public function is_logged_in_admin(): Closure {
+		return $this->multiple_all(
+			$this->is_logged_in(),
+			$this->is_role( 'administrator' )
+		);
 	}
 }
 

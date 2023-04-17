@@ -62,7 +62,7 @@ class Plugin_Settings {
 
 	/**
 	 * Deletes the custom settings.
-	 * 
+	 *
 	 * @return bool
 	 */
 	public function delete_custom_settings(): bool {
@@ -102,6 +102,15 @@ class Plugin_Settings {
 	 */
 	public function version(): string {
 		return $this->app_config->version();
+	}
+
+	/**
+	 * Gets the assets URI
+	 *
+	 * @return string
+	 */
+	public function assets_url(): string {
+		return $this->app_config->url( 'assets' );
 	}
 
 	/**

@@ -11,6 +11,9 @@ declare(strict_types=1);
  * @since 0.1.0
  */
 
+// Need to get the current table prefix
+global $wpdb;
+
 return array(
 	'taxonomies' => array( 'location' => 'stock_location' ),
 	'meta'       => array(
@@ -28,8 +31,12 @@ return array(
 		'cache' => 'pinkcrab_stockman',
 	),
 	'additional' => array(
-		'admin_slugs'    => (object) array(
+		'admin_slugs' => (object) array(
 			'location' => 'pc_stockman_location',
 		),
+	),
+	'db_tables'  => array(
+		'location' => "stockman_location",
+		'location_cache' => "stockman_location_cache",
 	),
 );

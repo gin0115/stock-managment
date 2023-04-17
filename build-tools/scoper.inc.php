@@ -43,6 +43,7 @@ return array(
 
 			// Add in any additional symbols to not prefix.
 			// $contents = str_replace( "\\$prefix\\my_global_function", '\\my_global_function', $contents );
+			$contents = str_replace( "'Respect\\Validation\\Rules\\'", "'$prefix\\Respect\\Validation\\Rules\\'", $contents );
 
 			return $contents;
 		},
@@ -51,6 +52,7 @@ return array(
 		'PHPUnit\Framework\*',
 		'Composer\Autoload\ClassLoader',
 		'PinkCrab\Stock_Management\*',
+		'PinkCrab\Perique_Page_Router\*',
 	),
 	'whitelist-global-constants' => true,
 	'whitelist-global-classes'   => true,

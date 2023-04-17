@@ -24,6 +24,8 @@ declare( strict_types=1 );
 
 namespace PinkCrab\Stock_Management\Location\Model;
 
-class Location_Site {
+use PinkCrab\Stock_Management\Location\Model\Location;
+
+class Location_Site extends Location {
 
 }

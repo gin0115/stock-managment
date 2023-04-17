@@ -3,7 +3,7 @@
 declare( strict_types=1 );
 
 /**
- * Base location type model.
+ * Admin GUI Route interface.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
@@ -22,65 +22,62 @@ declare( strict_types=1 );
  * @package PinkCrab\Stock_Management
  */
 
-namespace PinkCrab\Stock_Management\Location\Model;
+namespace PinkCrab\Stock_Management\WP_Admin\GUI\Route;
 
-abstract class Location_Type {
+use PinkCrab\Stock_Management\WP_Admin\GUI\View_Model;
 
-	/** @type \WP_Term */
-	private $term;
-
-	/**
-	 * Constructor.
-	 *
-	 * @param \WP_Term $term
-	 */
-	public function __construct( \WP_Term $term ) {
-		$this->term = $term;
-	}
+interface Route {
 
 	/**
-	 * Get the term ID.
-	 *
-	 * @return int
-	 */
-	public function get_id(): int {
-		return $this->term->term_id;
-	}
-
-	/**
-	 * Get the term name.
+	 * Returns the WP Page slug.
 	 *
 	 * @return string
 	 */
-	public function get_name(): string {
-		return $this->term->name;
-	}
+	public function get_page_slug(): string;
 
 	/**
-	 * Get the term slug.
+	 * Returns the base slug for the route.
 	 *
 	 * @return string
 	 */
-	public function get_slug(): string {
-		return $this->term->slug;
-	}
+	public function get_route_slug(): string;
 
 	/**
-	 * Get the term instance.
+	 * Return all on load events.
+     * These are run before the routing is initiated.
 	 *
-	 * @return WP_Term
+	 * @return array<string, callable>
 	 */
-	public function get_term(): \WP_Term {
-		return $this->term;
-	}
+	public function on_load_events(): array;
 
 	/**
-	 * Get the term parent.
+	 * Returns the index (list) view path.
 	 *
-	 * @return int
+	 * @return View_Model|null
 	 */
-	public function get_parent(): int {
-		return $this->term->parent;
-	}
+	public function index_view(): ?View_Model;
+
+
+	/**
+	 * Returns the create view path.
+	 *
+	 * @return View_Model|null
+	 */
+	public function create_view(): ?View_Model;
+
+	/**
+	 * Returns the edit view path.
+	 *
+	 * @return View_Model|null
+	 */
+	public function edit_view(): ?View_Model;
+
+	/**
+	 * Returns the delete view path.
+	 *
+	 * @return View_Model|null
+	 */
+	public function delete_view(): ?View_Model;
+
 
 }

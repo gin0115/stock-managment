@@ -26,6 +26,7 @@ namespace PinkCrab\Stock_Management\I18n;
 
 use JsonSerializable;
 use PinkCrab\Stock_Management\I18n\App_Translations;
+use PinkCrab\Stock_Management\I18n\Admin_GUI_Translations;
 use PinkCrab\Stock_Management\I18n\Plugin_Settings_Translations;
 use PinkCrab\Stock_Management\I18n\Json_Serialize_Translation_Trait;
 
@@ -58,6 +59,15 @@ class Translations implements JsonSerializable {
 	 */
 	public function app(): App_Translations {
 		return new App_Translations();
+	}
+
+	/**
+	 * Returns the Admin GUI Translations.
+	 *
+	 * @return Admin_Gui_Translations
+	 */
+	public function admin_gui(): Admin_Gui_Translations {
+		return new Admin_Gui_Translations();
 	}
 
 }

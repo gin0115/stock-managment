@@ -26,7 +26,7 @@ trait Json_Serialize_Translation_Trait {
 		// Get all public methods except this one.
 		$methods = get_class_methods( $this );
 		foreach ( $methods as $method ) {
-			if ( $method !== __FUNCTION__ ) {
+			if ( $method !== __FUNCTION__ && $method !== '__construct' ) {
 				$translations[ $method ] = $this->$method();
 			}
 		}

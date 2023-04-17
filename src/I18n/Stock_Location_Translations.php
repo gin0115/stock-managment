@@ -71,5 +71,4 @@ class Stock_Location_Translations implements JsonSerializable {
 		return esc_html_x( 'The type of location, can be Site, Bay or Bin', 'A locations type meta field description. Used in rest etc.', 'pc_stock_man' );
 	}
 
-
 }
